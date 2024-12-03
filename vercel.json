@@ -13,11 +13,11 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/server.js"  
+      "dest": "/server.js"
     },
     {
       "src": "/build/(.*)",
-      "dest": "/build/$1"  
+      "dest": "/build/$1"
     }
   ]
 }
