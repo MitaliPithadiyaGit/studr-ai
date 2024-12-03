@@ -1,7 +1,7 @@
-import { defineConfig } from "vite"
-import { remixConfig } from "@remix-run/dev"
+// vite.config.js
+import { defineConfig } from 'vite';
+import VitePluginNext from 'vite-plugin-next';
 
 export default defineConfig({
-  ...remixConfig,
-  plugins: []
-})
+  plugins: [VitePluginNext()],
+});
