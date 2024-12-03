@@ -1,6 +1,4 @@
-import { createRequestHandler } from '@remix-run/vercel';
-import * as build from './public/build/routes/_index-PA3NKEXX'; // Ensure this path is correct
+import { createRequestHandler } from "@remix-run/vercel";
+import * as build from "@remix-run/dev/server-build";
 
-export default function handleRequest(req, res) {
-  return createRequestHandler({ build, req, res });
-}
+export default createRequestHandler({ build });
