@@ -1,9 +1,7 @@
-// tailwind.config.js
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./public/**/*.html"
+    './app/**/*.{js,jsx,ts,tsx}',
+    './node_modules/@remix-run/**/*.{js,jsx,ts,tsx}',
   ],
   theme: {
     extend: {},
