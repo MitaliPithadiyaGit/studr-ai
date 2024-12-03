@@ -2,22 +2,26 @@
   "version": 2,
   "builds": [
     {
+      "src": "remix.config.mjs",
+      "use": "@remix-run/vercel"
+    },
+    {
       "src": "server.js",
       "use": "@vercel/node"
     },
     {
-      "src": "public/build/*", 
+      "src": "build/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/server.js"
+      "src": "/build/(.*)",
+      "dest": "/build/$1"
     },
     {
-      "src": "/build/(.*)",
-      "dest": "/public/build/$1"
+      "src": "/(.*)",
+      "dest": "/server.js"
     }
   ]
 }
