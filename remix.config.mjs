@@ -1,8 +1,6 @@
 export default {
+  serverBuildTarget: "vercel",
+  serverBuildPath: "build/index.js", // Ensure build path points outside 'public'
+  publicPath: "/public/build/",       // Static files location
   appDirectory: "app",
-  assetsBuildDirectory: "public/build",
-  publicPath: "/build/",
-  serverBuildPath: "build/index.js", // Adjust based on your needs
-  ignoredRouteFiles: ["**/.*"],
-  env: ["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_ANON_KEY"]
 };
