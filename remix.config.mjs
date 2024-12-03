@@ -5,6 +5,6 @@ export default {
   appDirectory: "app", // Default app directory for Remix
   assetsBuildDirectory: "public/build", // Where to output assets
   publicPath: "/build/", // Path to static assets
-  serverBuildPath: "build/index.js", // Path to the server build (use .mjs for ES modules)
+  serverBuildPath: "public/build/", // Path to the server build (use .mjs for ES modules)
   devServerPort: 8002, // Local development port
 };
