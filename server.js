@@ -1,9 +1,9 @@
-import { createRequestHandler } from '@remix-run/node'; // For server-side routing in Remix
-import * as build from './build'; // Make sure this path points to your build folder
+import { createRequestHandler } from '@remix-run/node'; // Remix runtime for handling requests
+import * as build from './build'; // Ensure this points to the correct build path
 
 export default createRequestHandler({
   build,
   getLoadContext() {
-    // Optionally, you can add context here (e.g., session data, authentication, etc.)
+    // Optionally add context for things like session or database
   },
 });
