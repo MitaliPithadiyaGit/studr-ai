@@ -1,6 +1,10 @@
-import { defineConfig } from "vite"
-import { remixConfig } from "@remix-run/dev"
+import { defineConfig } from "vite";
+import { remixConfig } from "@remix-run/dev";
+
+// Merge Remix config with Vite-specific configurations
 export default defineConfig({
-  ...remixConfig,
-  plugins: []
-})
+  plugins: [remixConfig()],
+  build: {
+    target: "esnext",
+  },
+});

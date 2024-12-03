@@ -1,9 +1,7 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
   serverBuildTarget: "vercel", // Important for Vercel deployments
-  server: "./server.js", // This should point to your custom server entry
-  serverBuildTarget: "vercel",
-  server: "./server.js", // Ensure this is accurate
+  server: "./server.js", // Make sure the server file path is correct
   appDirectory: "app",
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
