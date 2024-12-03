@@ -52,7 +52,7 @@
     "remix": "^2.15.0",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
-    "vite": "^6.0.2",
+    "vite": "^5.1.0",
     "vite-plugin-next": "^0.0.1-beta.1"
   },
   "devDependencies": {
