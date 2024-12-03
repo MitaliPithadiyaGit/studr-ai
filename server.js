@@ -1,4 +1,6 @@
-import { createRequestHandler } from '@remix-run/vercel';
-import * as build from '@remix-run/dev/server-build';
+import { createRequestHandler } from '@remix-run/node';
+import { build } from './build';  // Your build artifacts should be imported here
 
-export default createRequestHandler({ build });
+export default function handler(req, res) {
+  return createRequestHandler({ build })(req, res);
+}
