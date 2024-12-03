@@ -1,10 +1,9 @@
-module.exports = {
-  content: [
-    './app/**/*.{js,jsx,ts,tsx}',
-    './node_modules/@remix-run/**/*.{js,jsx,ts,tsx}',
-  ],
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./app/**/{**,.client,.server}/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
   },
   plugins: [],
 }
+
