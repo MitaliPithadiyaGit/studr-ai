@@ -2,12 +2,10 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
- "scripts": {
-  "preinstall": "npx remix --version",
+"scripts": {
   "build": "remix build",
   "dev": "remix dev",
-  "start": "remix-serve ./build/index.js",
-  "typecheck": "tsc"
+  "start": "remix-serve build"
 },
   "dependencies": {
     "remix": "^2.15.0",
