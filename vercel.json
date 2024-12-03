@@ -2,6 +2,6 @@
 
 {
   "version":2,
-  "builds":[{"src":"./app/root","use":"@vercel/node"}],
+  "builds":[{"src":"./public/build/","use":"@vercel/node"}],
   "routes":[{"src":"/(.*)","dest":"/"}]
 }
