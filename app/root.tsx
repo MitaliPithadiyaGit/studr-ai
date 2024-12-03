@@ -68,7 +68,7 @@ export default function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         <Meta />
-        <link rel="stylesheet" href={styles} />
+        {/* <link rel="stylesheet" href={styles} /> */}
         <Links />
       </head>
       <body>

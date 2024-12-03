@@ -18,14 +18,6 @@
     {
       "src": "/(.*)",
       "dest": "/server.js"
-    },
-    {
-      "src": "/build/(.*)",
-      "dest": "/build/$1"
-    },
-    {
-      "src": "/public/(.*)",
-      "dest": "/build/$1"
     }
   ]
 }
