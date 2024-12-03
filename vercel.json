@@ -1,8 +1,5 @@
 {
-  "version": 2,
-  "framework": "remix",
-  "buildCommand": "npm run build",
-  "devCommand": "remix dev",
-  "installCommand": "npm install",
-  "regions": ["iad1"]
+  "version":2,
+  "builds":[{"src":"./server.js","use":"@vercel/node"}],
+  "routes":[{"src":"/(.*)","dest":"/"}]
 }
