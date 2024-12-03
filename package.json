@@ -2,15 +2,14 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
- "scripts": {
-  "preinstall": "npx remix --version",
-  "build": "remix build",
-  "dev": "remix dev",
-  "start": "remix-serve ./build/index.js",
-  "typecheck": "tsc"
-},
+  "scripts": {
+    "preinstall": "npx remix --version",
+    "build": "remix build",
+    "dev": "remix dev",
+    "start": "remix-serve ./build/index.js",
+    "typecheck": "tsc"
+  },
   "dependencies": {
-    "remix": "^2.15.0",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-collapsible": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.2",
@@ -45,12 +44,16 @@
     "framer-motion": "^11.0.8",
     "isbot": "^3.6.8",
     "lucide-react": "^0.462.0",
+    "next": "^15.0.3",
     "openai": "^4.28.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1",
+    "remix": "^2.15.0",
     "tailwind-merge": "^2.1.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vite": "^6.0.2",
+    "vite-plugin-next": "^0.0.1-beta.1"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.15.0",
