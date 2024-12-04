@@ -5,6 +5,8 @@ import { remixConfig } from "@remix-run/dev";
 export default defineConfig({
   plugins: [remixConfig()],
   build: {
-    target: "esnext",
+    outDir: 'public/build', // Ensure the build goes here
+    assetsDir: '_assets',
   },
+  publicDir: 'public',
 });
