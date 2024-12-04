@@ -12,9 +12,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
   await supabase.auth.signOut()
 
-  return redirect("/auth/login", {
+  return redirect("https://studr-ai-six.vercel.app/auth/login", {
     headers: response.headers,
   })
 }
 
-export const loader = async () => redirect("/")
+export const loader = async () => redirect("https://studr-ai-six.vercel.app/")

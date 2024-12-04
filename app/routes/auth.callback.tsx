@@ -16,7 +16,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     await supabase.auth.exchangeCodeForSession(code)
   }
 
-  return redirect("/", {
+  return redirect("https://studr-ai-six.vercel.app/", {
     headers: response.headers,
   })
 }
