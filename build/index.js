@@ -437,7 +437,7 @@ async function requireAuth(request) {
     data: { session }
   } = await supabase.auth.getSession();
   if (!session)
-    throw redirect("https://studr-gilt.vercel.app/auth/login", {
+    throw redirect("/auth/login", {
       headers: response.headers
     });
   return { session, response, supabase };
@@ -4989,12 +4989,12 @@ __export(auth_callback_exports, {
 import { redirect as redirect2 } from "@remix-run/node";
 import { createServerClient as createServerClient2 } from "@supabase/auth-helpers-remix";
 var loader6 = async ({ request }) => {
-  let response = new Response(), code = new URL("https://studr-gilt.vercel.app/").searchParams.get("code");
+  let response = new Response(), code = new URL(request.url).searchParams.get("code");
   return code && await createServerClient2(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     { request, response }
-  ).auth.exchangeCodeForSession(code), redirect2("https://studr-gilt.vercel.app/", {
+  ).auth.exchangeCodeForSession(code), redirect2("/", {
     headers: response.headers
   });
 };
@@ -5018,7 +5018,7 @@ var loader7 = async ({ request }) => {
   ), {
     data: { session }
   } = await supabase.auth.getSession();
-  return session ? redirect3("https://studr-gilt.vercel.app/") : json10(null, {
+  return session ? redirect3("/") : json10(null, {
     headers: response.headers
   });
 }, action8 = async ({ request }) => {
@@ -5053,7 +5053,7 @@ var loader7 = async ({ request }) => {
       token_usage: 0
     }
   ]);
-  return profileError ? json10({ error: profileError.message }, { status: 400 }) : redirect3("https://studr-gilt.vercel.app/", {
+  return profileError ? json10({ error: profileError.message }, { status: 400 }) : redirect3("/", {
     headers: response.headers
   });
 };
@@ -5242,10 +5242,10 @@ var action10 = async ({ request }) => {
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     { request, response }
-  ).auth.signOut(), redirect4("https://studr-gilt.vercel.app/auth/login", {
+  ).auth.signOut(), redirect4("/auth/login", {
     headers: response.headers
   });
-}, loader8 = async () => redirect4("https://studr-gilt.vercel.app/");
+}, loader8 = async () => redirect4("/");
 
 // app/routes/library.$id.tsx
 var library_id_exports = {};
@@ -5366,7 +5366,7 @@ var loader9 = async ({ request }) => {
   ), {
     data: { session }
   } = await supabase.auth.getSession();
-  return session ? redirect5("https://studr-gilt.vercel.app/") : json12(null, {
+  return session ? redirect5("/") : json12(null, {
     headers: response.headers
   });
 }, action11 = async ({ request }) => {
@@ -5390,13 +5390,13 @@ var loader9 = async ({ request }) => {
     email,
     password
   });
-  return error ? json12({ error: error.message }, { status: 400 }) : redirect5("https://studr-gilt.vercel.app/", {
+  return error ? json12({ error: error.message }, { status: 400 }) : redirect5("/", {
     headers: response.headers
   });
 };
 function LoginPage() {
   let actionData = useActionData2(), isSubmitting = useNavigation2().state === "submitting";
-  return /* @__PURE__ */ jsx54("div", { className: "flex flex-col justify-center min-h-screen bg-muted/40", children: /* @__PURE__ */ jsxs42("div", { className: "mx-auto w-full max-w-[350px] space-y-6", children: [
+  return /* @__PURE__ */ jsx54("div", { className: "flex min-h-screen flex-col justify-center bg-muted/40", children: /* @__PURE__ */ jsxs42("div", { className: "mx-auto w-full max-w-[350px] space-y-6", children: [
     /* @__PURE__ */ jsxs42("div", { className: "flex flex-col space-y-2 text-center", children: [
       /* @__PURE__ */ jsx54("h1", { className: "text-2xl font-semibold tracking-tight", children: "Welcome back" }),
       /* @__PURE__ */ jsx54("p", { className: "text-sm text-muted-foreground", children: "Enter your credentials to access your account" })
@@ -5412,7 +5412,7 @@ function LoginPage() {
             className: "w-full bg-background",
             disabled: isSubmitting,
             children: [
-              /* @__PURE__ */ jsxs42("svg", { className: "w-4 h-4 mr-2", viewBox: "0 0 24 24", children: [
+              /* @__PURE__ */ jsxs42("svg", { className: "mr-2 h-4 w-4", viewBox: "0 0 24 24", children: [
                 /* @__PURE__ */ jsx54(
                   "path",
                   {
@@ -5449,7 +5449,7 @@ function LoginPage() {
       ] }),
       /* @__PURE__ */ jsxs42("div", { className: "relative", children: [
         /* @__PURE__ */ jsx54("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ jsx54("span", { className: "w-full border-t" }) }),
-        /* @__PURE__ */ jsx54("div", { className: "relative flex justify-center text-xs uppercase", children: /* @__PURE__ */ jsx54("span", { className: "px-2 bg-background text-muted-foreground", children: "Or continue with" }) })
+        /* @__PURE__ */ jsx54("div", { className: "relative flex justify-center text-xs uppercase", children: /* @__PURE__ */ jsx54("span", { className: "bg-background px-2 text-muted-foreground", children: "Or continue with" }) })
       ] }),
       /* @__PURE__ */ jsxs42(Form2, { method: "post", className: "grid gap-4", children: [
         /* @__PURE__ */ jsxs42("div", { className: "grid gap-2", children: [
@@ -5484,7 +5484,7 @@ function LoginPage() {
         /* @__PURE__ */ jsx54(Button, { className: "w-full", disabled: isSubmitting, children: isSubmitting ? "Signing in..." : "Sign in" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs42("div", { className: "text-sm text-center", children: [
+    /* @__PURE__ */ jsxs42("div", { className: "text-center text-sm", children: [
       "Don't have an account?",
       " ",
       /* @__PURE__ */ jsx54(
@@ -5887,7 +5887,7 @@ function AskAiPage() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-42RXAVJ3.js", imports: ["/build/_shared/chunk-BTR25ETF.js", "/build/_shared/chunk-ADMCF34Z.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-3D6GBP6H.js", imports: ["/build/_shared/chunk-SSCGI46Q.js", "/build/_shared/chunk-VZQVWFLO.js", "/build/_shared/chunk-EJN3WSGI.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-PA3NKEXX.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.ai.chat": { id: "routes/api.ai.chat", parentId: "root", path: "api/ai/chat", index: void 0, caseSensitive: void 0, module: "/build/routes/api.ai.chat-MDMCJIAM.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.analytics": { id: "routes/api.documents.analytics", parentId: "root", path: "api/documents/analytics", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.analytics-AULYKJVM.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.archive": { id: "routes/api.documents.archive", parentId: "root", path: "api/documents/archive", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.archive-SFHWZAY7.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.create": { id: "routes/api.documents.create", parentId: "root", path: "api/documents/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.create-3AKBCRTE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.share": { id: "routes/api.documents.share", parentId: "root", path: "api/documents/share", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.share-GDZ545KH.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.update": { id: "routes/api.documents.update", parentId: "root", path: "api/documents/update", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.update-GEUH6PAG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.versions": { id: "routes/api.documents.versions", parentId: "root", path: "api/documents/versions", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.versions-DJOJAU4C.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.workspaces.create": { id: "routes/api.workspaces.create", parentId: "root", path: "api/workspaces/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.workspaces.create-2QXVU4PY.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/askai": { id: "routes/askai", parentId: "root", path: "askai", index: void 0, caseSensitive: void 0, module: "/build/routes/askai-JGLIR5EP.js", imports: ["/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.callback": { id: "routes/auth.callback", parentId: "root", path: "auth/callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.callback-DVJNLOQV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.login": { id: "routes/auth.login", parentId: "root", path: "auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.login-LX2DPFQS.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.logout": { id: "routes/auth.logout", parentId: "root", path: "auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.logout-WEDPT6S2.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.register": { id: "routes/auth.register", parentId: "root", path: "auth/register", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.register-I2YYVGZ2.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/getting-started": { id: "routes/getting-started", parentId: "root", path: "getting-started", index: void 0, caseSensitive: void 0, module: "/build/routes/getting-started-EX4JOFH3.js", imports: ["/build/_shared/chunk-QI47UT7V.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/library.$id": { id: "routes/library.$id", parentId: "root", path: "library/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/library.$id-Y4PANMKH.js", imports: ["/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/pages.$id": { id: "routes/pages.$id", parentId: "root", path: "pages/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/pages.$id-GLTEJLDO.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-QI47UT7V.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "b707981c", hmr: void 0, url: "/build/manifest-B707981C.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-42RXAVJ3.js", imports: ["/build/_shared/chunk-BTR25ETF.js", "/build/_shared/chunk-ADMCF34Z.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-3D6GBP6H.js", imports: ["/build/_shared/chunk-SSCGI46Q.js", "/build/_shared/chunk-VZQVWFLO.js", "/build/_shared/chunk-EJN3WSGI.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-PA3NKEXX.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.ai.chat": { id: "routes/api.ai.chat", parentId: "root", path: "api/ai/chat", index: void 0, caseSensitive: void 0, module: "/build/routes/api.ai.chat-MDMCJIAM.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.analytics": { id: "routes/api.documents.analytics", parentId: "root", path: "api/documents/analytics", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.analytics-AULYKJVM.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.archive": { id: "routes/api.documents.archive", parentId: "root", path: "api/documents/archive", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.archive-SFHWZAY7.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.create": { id: "routes/api.documents.create", parentId: "root", path: "api/documents/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.create-3AKBCRTE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.share": { id: "routes/api.documents.share", parentId: "root", path: "api/documents/share", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.share-GDZ545KH.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.update": { id: "routes/api.documents.update", parentId: "root", path: "api/documents/update", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.update-GEUH6PAG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.versions": { id: "routes/api.documents.versions", parentId: "root", path: "api/documents/versions", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.versions-DJOJAU4C.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.workspaces.create": { id: "routes/api.workspaces.create", parentId: "root", path: "api/workspaces/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.workspaces.create-2QXVU4PY.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/askai": { id: "routes/askai", parentId: "root", path: "askai", index: void 0, caseSensitive: void 0, module: "/build/routes/askai-JGLIR5EP.js", imports: ["/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.callback": { id: "routes/auth.callback", parentId: "root", path: "auth/callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.callback-DVJNLOQV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.login": { id: "routes/auth.login", parentId: "root", path: "auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.login-ZDNOBTIC.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.logout": { id: "routes/auth.logout", parentId: "root", path: "auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.logout-WEDPT6S2.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.register": { id: "routes/auth.register", parentId: "root", path: "auth/register", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.register-I2YYVGZ2.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/getting-started": { id: "routes/getting-started", parentId: "root", path: "getting-started", index: void 0, caseSensitive: void 0, module: "/build/routes/getting-started-EX4JOFH3.js", imports: ["/build/_shared/chunk-QI47UT7V.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/library.$id": { id: "routes/library.$id", parentId: "root", path: "library/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/library.$id-Y4PANMKH.js", imports: ["/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/pages.$id": { id: "routes/pages.$id", parentId: "root", path: "pages/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/pages.$id-GLTEJLDO.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-QI47UT7V.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "9e57929c", hmr: void 0, url: "/build/manifest-9E57929C.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "production", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

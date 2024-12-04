@@ -3,7 +3,7 @@ import { createServerClient } from "@supabase/auth-helpers-remix"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const response = new Response()
-  const url = new URL('https://studr-gilt.vercel.app/')
+  const url = new URL(request.url)
   const code = url.searchParams.get("code")
 
   if (code) {
@@ -16,7 +16,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
     await supabase.auth.exchangeCodeForSession(code)
   }
 
-  return redirect("https://studr-gilt.vercel.app/", {
+  return redirect("/", {
     headers: response.headers,
   })
 }

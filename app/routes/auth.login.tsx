@@ -22,7 +22,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   } = await supabase.auth.getSession()
 
   if (session) {
-    return redirect("https://studr-gilt.vercel.app/")
+    return redirect("/")
   }
 
   return json(null, {
@@ -69,7 +69,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ error: error.message }, { status: 400 })
   }
 
-  return redirect("https://studr-gilt.vercel.app/", {
+  return redirect("/", {
     headers: response.headers,
   })
 }
@@ -80,7 +80,7 @@ export default function LoginPage() {
   const isSubmitting = navigation.state === "submitting"
 
   return (
-    <div className="flex flex-col justify-center min-h-screen bg-muted/40">
+    <div className="flex min-h-screen flex-col justify-center bg-muted/40">
       <div className="mx-auto w-full max-w-[350px] space-y-6">
         <div className="flex flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">Welcome back</h1>
@@ -98,7 +98,7 @@ export default function LoginPage() {
               className="w-full bg-background"
               disabled={isSubmitting}
             >
-              <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
+              <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
                   fill="#4285F4"
@@ -125,7 +125,7 @@ export default function LoginPage() {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="px-2 bg-background text-muted-foreground">
+              <span className="bg-background px-2 text-muted-foreground">
                 Or continue with
               </span>
             </div>
@@ -166,7 +166,7 @@ export default function LoginPage() {
           </Form>
         </div>
 
-        <div className="text-sm text-center">
+        <div className="text-center text-sm">
           Don't have an account?{" "}
           <Link
             to="/auth/register"

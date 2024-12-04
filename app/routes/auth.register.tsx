@@ -21,7 +21,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   } = await supabase.auth.getSession()
 
   if (session) {
-    return redirect("https://studr-gilt.vercel.app/")
+    return redirect("/")
   }
 
   return json(null, {
@@ -86,7 +86,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ error: profileError.message }, { status: 400 })
   }
 
-  return redirect("https://studr-gilt.vercel.app/", {
+  return redirect("/", {
     headers: response.headers,
   })
 }
