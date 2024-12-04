@@ -30,12 +30,12 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 }
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  const response = new Response()
+  const response = new Response();
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     { request, response }
-  )
+  );
 
   const formData = await request.formData()
   const email = formData.get("email") as string
@@ -47,7 +47,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${new URL(request.url).origin}/`,
+        redirectTo: `${new URL(request.url).origin}/auth/callback`,
       },
     })
 
@@ -63,33 +63,22 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const { error: signUpError, data: signUpData } = await supabase.auth.signUp({
     email,
     password,
-  })
+  });
 
   if (signUpError) {
-    return json({ error: signUpError.message }, { status: 400 })
+    return json({ error: signUpError.message }, { status: 400 });
   }
 
-  // Create user profile
-  const { error: profileError } = await supabase
-    .from("users")
-    .insert([
-      {
-        id: signUpData.user?.id,
-        email,
-        name,
-        subscription_tier: "free",
-        token_usage: 0,
-      },
-    ])
+  // Ensure session is created
+  const { data: { session }, error: sessionError } = await supabase.auth.getSession();
 
-  if (profileError) {
-    return json({ error: profileError.message }, { status: 400 })
+  if (sessionError || !session) {
+    return json({ error: "Session not created." }, { status: 400 });
   }
 
-  return redirect("/", {
-    headers: response.headers,
-  })
-}
+  // Successfully sign-up and redirect
+  return redirect("/", { headers: response.headers });
+};
 
 export default function RegisterPage() {
   const actionData = useActionData<typeof action>()

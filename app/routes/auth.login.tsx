@@ -14,16 +14,28 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { request, response }
+    { 
+      request, 
+      response,
+      cookieOptions: {
+        name: 'sb-auth-token',  // Ensure it's consistent with what Supabase expects
+        sameSite: 'Lax',         // Adjust as needed, 'Strict' if high security
+        secure: true,            // Ensure true for production with HTTPS
+        path: '/', 
+        httpOnly: true
+      }
+    }
   )
-
   const {
     data: { session },
   } = await supabase.auth.getSession()
 
+  console.log("Session:", session);
   if (session) {
-    return redirect("/")
+    console.log("Redirecting to /");
+    return redirect("/");
   }
+  console.log("No session found");
 
   return json(null, {
     headers: response.headers,
@@ -47,7 +59,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${new URL(request.url).origin}/`,
+        redirectTo: `${new URL(request.url).origin}/auth/callback`,
       },
     })
 
