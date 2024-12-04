@@ -1,29 +1,32 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",  // Use modern JavaScript (ESNext)
-    "module": "ESNext",  // Use ESNext module system
-    "moduleResolution": "Node",  // Use Node.js resolution strategy for modules
-    "strict": true,  // Enable strict mode for better type-checking
-    "esModuleInterop": true,  // Allow default imports from CommonJS modules
-    "skipLibCheck": true,  // Skip type checking of declaration files for better performance
-    "jsx": "react-jsx",  // Use the new JSX transform from React 17+ (ensure you're on the latest React)
-    "baseUrl": ".",  // Set the base directory for module resolution
-    "paths": {
-      "~/*": ["./app/*"]  // Path alias for easy imports
-    },
-    "resolveJsonModule": true,  // Allows you to import JSON files as modules
-    "noEmit": true,  // Prevent TypeScript from emitting files (since Vite takes care of that)
-    "allowJs": true  // Allow JavaScript files alongside TypeScript files
-  },
   "include": [
-    "**/*.ts",  // Include all TypeScript files
-    "**/*.tsx",  // Include all TypeScript JSX files
-    "**/.server/**/*.ts",  // Include .server directory files (if you're using this structure)
-    "**/.server/**/*.tsx",  // Include .server directory JSX files
-    "**/.client/**/*.ts",  // Include .client directory files (if you're using this structure)
-    "**/.client/**/*.tsx"  // Include .client directory JSX files
+    "**/*.ts",
+    "**/*.tsx",
+    "**/.server/**/*.ts",
+    "**/.server/**/*.tsx",
+    "**/.client/**/*.ts",
+    "**/.client/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules"  // Exclude node_modules from being checked
-  ]
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "types": ["@remix-run/node", "vite/client"],
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "target": "ES2022",
+    "strict": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+
+    // Vite takes care of building everything, not tsc.
+    "noEmit": true
+  }
 }
