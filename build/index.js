@@ -437,7 +437,7 @@ async function requireAuth(request) {
     data: { session }
   } = await supabase.auth.getSession();
   if (!session)
-    throw redirect("https://studr-ai-six.vercel.app/auth/login", {
+    throw redirect("/auth/login", {
       headers: response.headers
     });
   return { session, response, supabase };
