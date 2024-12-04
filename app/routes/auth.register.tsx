@@ -42,13 +42,12 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const password = formData.get("password") as string
   const name = formData.get("name") as string
   const provider = formData.get("provider") as string
-  
 
   if (provider === "google") {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `https://studr-ai-six.vercel.app/auth/callback`,
+        redirectTo: `${new URL(request.url).origin}/auth/callback`,
       },
     })
 
