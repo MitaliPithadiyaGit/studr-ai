@@ -8,38 +8,26 @@ import { Button } from "~/components/ui/button"
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
 import { Separator } from "~/components/ui/separator"
-
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const response = new Response()
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { 
-      request, 
-      response,
-      cookieOptions: {
-        name: 'sb-auth-token',  // Ensure it's consistent with what Supabase expects
-        sameSite: 'Lax',         // Adjust as needed, 'Strict' if high security
-        secure: true,            // Ensure true for production with HTTPS
-        path: '/', 
-        httpOnly: true
-      }
-    }
+    { request, response }
   )
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
 
-  console.log("Session:", session);
+  const { data: { session }, error } = await supabase.auth.getSession()
+
+  console.log("Session Data:", session)  // Check session details in logs
+  console.log("Session Error:", error)   // Log if any errors are returned
+
   if (session) {
-    console.log("Redirecting to /");
-    return redirect("/");
+    console.log("Redirecting to Home Page...")
+    return redirect("/", { headers: response.headers })
   }
-  console.log("No session found");
 
-  return json(null, {
-    headers: response.headers,
-  })
+  console.log("No session found, staying on login page.")
+  return json(null, { headers: response.headers })
 }
 
 export const action = async ({ request }: ActionFunctionArgs) => {
