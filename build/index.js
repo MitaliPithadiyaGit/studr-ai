@@ -437,7 +437,7 @@ async function requireAuth(request) {
     data: { session }
   } = await supabase.auth.getSession();
   if (!session)
-    throw redirect("https://studr-ai-six.vercel.app/auth/login", {
+    throw redirect("https://studr-gilt.vercel.app/auth/login", {
       headers: response.headers
     });
   return { session, response, supabase };
@@ -4989,12 +4989,12 @@ __export(auth_callback_exports, {
 import { redirect as redirect2 } from "@remix-run/node";
 import { createServerClient as createServerClient2 } from "@supabase/auth-helpers-remix";
 var loader6 = async ({ request }) => {
-  let response = new Response(), code = new URL("https://studr-ai-six.vercel.app/").searchParams.get("code");
+  let response = new Response(), code = new URL("https://studr-gilt.vercel.app/").searchParams.get("code");
   return code && await createServerClient2(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     { request, response }
-  ).auth.exchangeCodeForSession(code), redirect2("https://studr-ai-six.vercel.app/", {
+  ).auth.exchangeCodeForSession(code), redirect2("https://studr-gilt.vercel.app/", {
     headers: response.headers
   });
 };
@@ -5018,7 +5018,7 @@ var loader7 = async ({ request }) => {
   ), {
     data: { session }
   } = await supabase.auth.getSession();
-  return session ? redirect3("https://studr-ai-six.vercel.app/") : json10(null, {
+  return session ? redirect3("https://studr-gilt.vercel.app/") : json10(null, {
     headers: response.headers
   });
 }, action8 = async ({ request }) => {
@@ -5053,7 +5053,7 @@ var loader7 = async ({ request }) => {
       token_usage: 0
     }
   ]);
-  return profileError ? json10({ error: profileError.message }, { status: 400 }) : redirect3("https://studr-ai-six.vercel.app/", {
+  return profileError ? json10({ error: profileError.message }, { status: 400 }) : redirect3("https://studr-gilt.vercel.app/", {
     headers: response.headers
   });
 };
@@ -5242,10 +5242,10 @@ var action10 = async ({ request }) => {
     process.env.NEXT_PUBLIC_SUPABASE_URL,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     { request, response }
-  ).auth.signOut(), redirect4("https://studr-ai-six.vercel.app/auth/login", {
+  ).auth.signOut(), redirect4("https://studr-gilt.vercel.app/auth/login", {
     headers: response.headers
   });
-}, loader8 = async () => redirect4("https://studr-ai-six.vercel.app/");
+}, loader8 = async () => redirect4("https://studr-gilt.vercel.app/");
 
 // app/routes/library.$id.tsx
 var library_id_exports = {};
@@ -5366,7 +5366,7 @@ var loader9 = async ({ request }) => {
   ), {
     data: { session }
   } = await supabase.auth.getSession();
-  return session ? redirect5("https://studr-ai-six.vercel.app/") : json12(null, {
+  return session ? redirect5("https://studr-gilt.vercel.app/") : json12(null, {
     headers: response.headers
   });
 }, action11 = async ({ request }) => {
@@ -5390,7 +5390,7 @@ var loader9 = async ({ request }) => {
     email,
     password
   });
-  return error ? json12({ error: error.message }, { status: 400 }) : redirect5("https://studr-ai-six.vercel.app/", {
+  return error ? json12({ error: error.message }, { status: 400 }) : redirect5("https://studr-gilt.vercel.app/", {
     headers: response.headers
   });
 };

@@ -22,7 +22,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   } = await supabase.auth.getSession()
 
   if (session) {
-    return redirect("https://studr-ai-six.vercel.app/")
+    return redirect("https://studr-gilt.vercel.app/")
   }
 
   return json(null, {
@@ -69,7 +69,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     return json({ error: error.message }, { status: 400 })
   }
 
-  return redirect("https://studr-ai-six.vercel.app/", {
+  return redirect("https://studr-gilt.vercel.app/", {
     headers: response.headers,
   })
 }
