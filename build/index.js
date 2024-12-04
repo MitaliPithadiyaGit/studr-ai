@@ -5525,8 +5525,6 @@ __export(index_exports, {
 });
 import { json as json14 } from "@remix-run/node";
 import { useLoaderData as useLoaderData3 } from "@remix-run/react";
-
-// app/components/pages/home.tsx
 import {
   ArrowRight,
   Clock as Clock3,
@@ -5538,7 +5536,15 @@ import {
 } from "lucide-react";
 import { Link as Link7 } from "@remix-run/react";
 import { jsx as jsx56, jsxs as jsxs43 } from "react/jsx-runtime";
-function HomePage({ recentDocuments, starredDocuments }) {
+var loader11 = async ({ request }) => {
+  let { supabase, response } = await requireAuth(request), { data: recentDocuments } = await supabase.from("documents").select("*").order("updated_at", { ascending: !1 }).limit(5), { data: starredDocuments } = await supabase.from("documents").select("*").eq("is_starred", !0).limit(5);
+  return json14(
+    { recentDocuments, starredDocuments },
+    { headers: response.headers }
+  );
+};
+function Index() {
+  let { recentDocuments, starredDocuments } = useLoaderData3();
   return /* @__PURE__ */ jsx56(Layout, { minimal: !0, children: /* @__PURE__ */ jsxs43("div", { className: "grid gap-6", children: [
     /* @__PURE__ */ jsxs43("div", { children: [
       /* @__PURE__ */ jsx56("h1", { className: "text-3xl font-bold", children: "Welcome back!" }),
@@ -5546,7 +5552,7 @@ function HomePage({ recentDocuments, starredDocuments }) {
     ] }),
     /* @__PURE__ */ jsxs43("div", { children: [
       /* @__PURE__ */ jsx56("h2", { className: "text-lg font-semibold", children: "Quick Actions" }),
-      /* @__PURE__ */ jsx56("div", { className: "mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3", children: [
+      /* @__PURE__ */ jsx56("div", { className: "grid gap-4 mt-4 sm:grid-cols-2 lg:grid-cols-3", children: [
         {
           name: "New Page",
           description: "Create a blank page",
@@ -5569,15 +5575,15 @@ function HomePage({ recentDocuments, starredDocuments }) {
         Button,
         {
           variant: "outline",
-          className: "h-auto flex-col items-start gap-2 p-4 hover:bg-muted",
+          className: "flex-col items-start h-auto gap-2 p-4 hover:bg-muted",
           asChild: !0,
           children: /* @__PURE__ */ jsxs43(Link7, { to: action12.href, children: [
-            /* @__PURE__ */ jsxs43("div", { className: "flex w-full items-center gap-2", children: [
-              /* @__PURE__ */ jsx56(action12.icon, { className: "h-5 w-5" }),
+            /* @__PURE__ */ jsxs43("div", { className: "flex items-center w-full gap-2", children: [
+              /* @__PURE__ */ jsx56(action12.icon, { className: "w-5 h-5" }),
               /* @__PURE__ */ jsx56("span", { className: "font-medium", children: action12.name }),
-              /* @__PURE__ */ jsx56(ArrowRight, { className: "ml-auto h-4 w-4" })
+              /* @__PURE__ */ jsx56(ArrowRight, { className: "w-4 h-4 ml-auto" })
             ] }),
-            /* @__PURE__ */ jsx56("p", { className: "line-clamp-1 text-sm text-muted-foreground", children: action12.description })
+            /* @__PURE__ */ jsx56("p", { className: "text-sm line-clamp-1 text-muted-foreground", children: action12.description })
           ] })
         },
         action12.name
@@ -5587,20 +5593,20 @@ function HomePage({ recentDocuments, starredDocuments }) {
       /* @__PURE__ */ jsxs43("div", { className: "space-y-4", children: [
         /* @__PURE__ */ jsxs43("div", { className: "flex items-center justify-between", children: [
           /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsx56(Clock3, { className: "h-5 w-5" }),
+            /* @__PURE__ */ jsx56(Clock3, { className: "w-5 h-5" }),
             /* @__PURE__ */ jsx56("h2", { className: "text-lg font-semibold", children: "Recent Pages" })
           ] }),
           /* @__PURE__ */ jsxs43(Button, { variant: "ghost", size: "sm", children: [
             "View All",
-            /* @__PURE__ */ jsx56(ArrowRight, { className: "ml-2 h-4 w-4" })
+            /* @__PURE__ */ jsx56(ArrowRight, { className: "w-4 h-4 ml-2" })
           ] })
         ] }),
-        /* @__PURE__ */ jsx56(ScrollArea, { className: "h-[280px] rounded-lg border", children: /* @__PURE__ */ jsxs43("div", { className: "space-y-4 p-4", children: [
+        /* @__PURE__ */ jsx56(ScrollArea, { className: "h-[280px] rounded-lg border", children: /* @__PURE__ */ jsxs43("div", { className: "p-4 space-y-4", children: [
           recentDocuments.map((doc) => /* @__PURE__ */ jsxs43(
             Link7,
             {
               to: `/pages/${doc.id}`,
-              className: "block space-y-1 rounded-lg p-2 hover:bg-muted",
+              className: "block p-2 space-y-1 rounded-lg hover:bg-muted",
               children: [
                 /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-2", children: [
                   /* @__PURE__ */ jsx56("span", { className: "text-xl", children: doc.emoji }),
@@ -5614,26 +5620,26 @@ function HomePage({ recentDocuments, starredDocuments }) {
             },
             doc.id
           )),
-          recentDocuments.length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-center text-sm text-muted-foreground", children: "No recent pages" })
+          recentDocuments.length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-sm text-center text-muted-foreground", children: "No recent pages" })
         ] }) })
       ] }),
       /* @__PURE__ */ jsxs43("div", { className: "space-y-4", children: [
         /* @__PURE__ */ jsxs43("div", { className: "flex items-center justify-between", children: [
           /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsx56(Star2, { className: "h-5 w-5" }),
+            /* @__PURE__ */ jsx56(Star2, { className: "w-5 h-5" }),
             /* @__PURE__ */ jsx56("h2", { className: "text-lg font-semibold", children: "Starred Pages" })
           ] }),
           /* @__PURE__ */ jsxs43(Button, { variant: "ghost", size: "sm", children: [
             "View All",
-            /* @__PURE__ */ jsx56(ArrowRight, { className: "ml-2 h-4 w-4" })
+            /* @__PURE__ */ jsx56(ArrowRight, { className: "w-4 h-4 ml-2" })
           ] })
         ] }),
-        /* @__PURE__ */ jsx56(ScrollArea, { className: "h-[280px] rounded-lg border", children: /* @__PURE__ */ jsxs43("div", { className: "space-y-4 p-4", children: [
+        /* @__PURE__ */ jsx56(ScrollArea, { className: "h-[280px] rounded-lg border", children: /* @__PURE__ */ jsxs43("div", { className: "p-4 space-y-4", children: [
           (starredDocuments || []).map((doc) => /* @__PURE__ */ jsx56(
             Link7,
             {
               to: `/pages/${doc.id}`,
-              className: "block space-y-1 rounded-lg p-2 hover:bg-muted",
+              className: "block p-2 space-y-1 rounded-lg hover:bg-muted",
               children: /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-2", children: [
                 /* @__PURE__ */ jsx56("span", { className: "text-xl", children: doc.emoji }),
                 /* @__PURE__ */ jsx56("span", { className: "font-medium", children: doc.title })
@@ -5641,15 +5647,15 @@ function HomePage({ recentDocuments, starredDocuments }) {
             },
             doc.id
           )),
-          (starredDocuments || []).length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-center text-sm text-muted-foreground", children: "No starred pages" }),
+          (starredDocuments || []).length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-sm text-center text-muted-foreground", children: "No starred pages" }),
           /* @__PURE__ */ jsxs43(
             Button,
             {
               variant: "outline",
-              className: "w-full justify-start gap-2",
+              className: "justify-start w-full gap-2",
               size: "sm",
               children: [
-                /* @__PURE__ */ jsx56(Plus4, { className: "h-4 w-4" }),
+                /* @__PURE__ */ jsx56(Plus4, { className: "w-4 h-4" }),
                 "Add to starred"
               ]
             }
@@ -5662,13 +5668,13 @@ function HomePage({ recentDocuments, starredDocuments }) {
         /* @__PURE__ */ jsx56("h2", { className: "text-lg font-semibold", children: "Recent Activity" }),
         /* @__PURE__ */ jsxs43(Button, { variant: "ghost", size: "sm", children: [
           "View All",
-          /* @__PURE__ */ jsx56(ArrowRight, { className: "ml-2 h-4 w-4" })
+          /* @__PURE__ */ jsx56(ArrowRight, { className: "w-4 h-4 ml-2" })
         ] })
       ] }),
-      /* @__PURE__ */ jsx56("div", { className: "rounded-lg border", children: /* @__PURE__ */ jsx56("div", { className: "p-4", children: /* @__PURE__ */ jsxs43("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsx56("div", { className: "border rounded-lg", children: /* @__PURE__ */ jsx56("div", { className: "p-4", children: /* @__PURE__ */ jsxs43("div", { className: "space-y-4", children: [
         recentDocuments.slice(0, 2).map((doc, i) => /* @__PURE__ */ jsxs43("div", { children: [
           /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-4", children: [
-            /* @__PURE__ */ jsx56("div", { className: "flex h-8 w-8 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsx56(FileText6, { className: "h-4 w-4" }) }),
+            /* @__PURE__ */ jsx56("div", { className: "flex items-center justify-center w-8 h-8 rounded-full bg-primary/10", children: /* @__PURE__ */ jsx56(FileText6, { className: "w-4 h-4" }) }),
             /* @__PURE__ */ jsxs43("div", { className: "flex-1 space-y-1", children: [
               /* @__PURE__ */ jsxs43("p", { className: "text-sm", children: [
                 "You updated",
@@ -5687,24 +5693,10 @@ function HomePage({ recentDocuments, starredDocuments }) {
           ] }),
           i < recentDocuments.length - 1 && /* @__PURE__ */ jsx56(Separator2, { className: "my-4" })
         ] }, doc.id)),
-        recentDocuments.length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-center text-sm text-muted-foreground", children: "No recent activity" })
+        recentDocuments.length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-sm text-center text-muted-foreground", children: "No recent activity" })
       ] }) }) })
     ] })
   ] }) });
-}
-
-// app/routes/_index.tsx
-import { jsx as jsx57 } from "react/jsx-runtime";
-var loader11 = async ({ request }) => {
-  let { supabase, response } = await requireAuth(request), { data: recentDocuments } = await supabase.from("documents").select("*").order("updated_at", { ascending: !1 }).limit(5), { data: starredDocuments } = await supabase.from("documents").select("*").eq("is_starred", !0).limit(5);
-  return json14(
-    { recentDocuments, starredDocuments },
-    { headers: response.headers }
-  );
-};
-function Index() {
-  let { recentDocuments, starredDocuments } = useLoaderData3();
-  return /* @__PURE__ */ jsx57(HomePage, { recentDocuments, starredDocuments });
 }
 
 // app/routes/askai.tsx
@@ -5717,7 +5709,7 @@ __export(askai_exports, {
 import * as React43 from "react";
 import { Bot as Bot3, Send as Send2, Sparkles as Sparkles6, User as User3 } from "lucide-react";
 import { motion as motion3, AnimatePresence as AnimatePresence3 } from "framer-motion";
-import { jsx as jsx58, jsxs as jsxs44 } from "react/jsx-runtime";
+import { jsx as jsx57, jsxs as jsxs44 } from "react/jsx-runtime";
 function AiChat() {
   let [messages, setMessages] = React43.useState([]), [input, setInput] = React43.useState(""), [isExpanded, setIsExpanded] = React43.useState(!1), scrollAreaRef = React43.useRef(null), inputRef = React43.useRef(null), formRef = React43.useRef(null), handleSend = () => {
     if (!input.trim())
@@ -5741,7 +5733,7 @@ function AiChat() {
   return React43.useEffect(() => {
     scrollAreaRef.current && (scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight), !isExpanded && inputRef.current && inputRef.current.focus();
   }, [messages, isExpanded]), /* @__PURE__ */ jsxs44("div", { className: "flex h-[calc(100vh-3.5rem)] flex-col overflow-hidden", children: [
-    /* @__PURE__ */ jsx58(AnimatePresence3, { mode: "wait", children: isExpanded ? /* @__PURE__ */ jsx58(
+    /* @__PURE__ */ jsx57(AnimatePresence3, { mode: "wait", children: isExpanded ? /* @__PURE__ */ jsx57(
       motion3.div,
       {
         className: "flex-1 overflow-hidden",
@@ -5749,7 +5741,7 @@ function AiChat() {
         animate: { opacity: 1, y: 0 },
         exit: { opacity: 0, y: -20 },
         transition: { duration: 0.3 },
-        children: /* @__PURE__ */ jsx58(ScrollArea, { ref: scrollAreaRef, className: "h-full px-4 py-8", children: /* @__PURE__ */ jsx58("div", { className: "mx-auto max-w-2xl space-y-4", children: messages.map((message) => /* @__PURE__ */ jsxs44(
+        children: /* @__PURE__ */ jsx57(ScrollArea, { ref: scrollAreaRef, className: "h-full px-4 py-8", children: /* @__PURE__ */ jsx57("div", { className: "mx-auto max-w-2xl space-y-4", children: messages.map((message) => /* @__PURE__ */ jsxs44(
           motion3.div,
           {
             className: `flex gap-3 ${message.role === "assistant" ? "justify-start" : "justify-end"}`,
@@ -5757,14 +5749,14 @@ function AiChat() {
             animate: { opacity: 1, y: 0 },
             transition: { duration: 0.2 },
             children: [
-              message.role === "assistant" && /* @__PURE__ */ jsx58("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsx58(Bot3, { className: "h-4 w-4" }) }),
+              message.role === "assistant" && /* @__PURE__ */ jsx57("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsx57(Bot3, { className: "h-4 w-4" }) }),
               /* @__PURE__ */ jsxs44(
                 "div",
                 {
                   className: `group relative flex max-w-xl rounded-lg px-3 py-2 text-sm ${message.role === "assistant" ? "bg-muted" : "bg-primary text-primary-foreground"}`,
                   children: [
-                    /* @__PURE__ */ jsx58("div", { className: "prose prose-sm dark:prose-invert", children: message.content }),
-                    /* @__PURE__ */ jsx58(
+                    /* @__PURE__ */ jsx57("div", { className: "prose prose-sm dark:prose-invert", children: message.content }),
+                    /* @__PURE__ */ jsx57(
                       "div",
                       {
                         className: "absolute -top-5 right-0 hidden whitespace-nowrap text-xs text-muted-foreground group-hover:block",
@@ -5774,14 +5766,14 @@ function AiChat() {
                   ]
                 }
               ),
-              message.role === "user" && /* @__PURE__ */ jsx58("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsx58(User3, { className: "h-4 w-4" }) })
+              message.role === "user" && /* @__PURE__ */ jsx57("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsx57(User3, { className: "h-4 w-4" }) })
             ]
           },
           message.id
         )) }) })
       },
       "chat"
-    ) : /* @__PURE__ */ jsx58(
+    ) : /* @__PURE__ */ jsx57(
       motion3.div,
       {
         className: "flex flex-1 items-center justify-center p-4",
@@ -5791,12 +5783,12 @@ function AiChat() {
         transition: { duration: 0.3 },
         children: /* @__PURE__ */ jsxs44("div", { className: "w-full max-w-2xl px-4", children: [
           /* @__PURE__ */ jsxs44("div", { className: "text-center mb-8", children: [
-            /* @__PURE__ */ jsx58("div", { className: "inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 mb-4", children: /* @__PURE__ */ jsx58(Sparkles6, { className: "h-6 w-6 text-primary" }) }),
-            /* @__PURE__ */ jsx58("h1", { className: "text-3xl font-bold tracking-tight mb-2", children: "How can I help you today?" }),
-            /* @__PURE__ */ jsx58("p", { className: "text-lg text-muted-foreground", children: "Ask me anything - I'm here to assist with your questions" })
+            /* @__PURE__ */ jsx57("div", { className: "inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 mb-4", children: /* @__PURE__ */ jsx57(Sparkles6, { className: "h-6 w-6 text-primary" }) }),
+            /* @__PURE__ */ jsx57("h1", { className: "text-3xl font-bold tracking-tight mb-2", children: "How can I help you today?" }),
+            /* @__PURE__ */ jsx57("p", { className: "text-lg text-muted-foreground", children: "Ask me anything - I'm here to assist with your questions" })
           ] }),
           /* @__PURE__ */ jsxs44("div", { className: "relative", children: [
-            /* @__PURE__ */ jsx58("div", { className: "absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 blur-3xl -z-10" }),
+            /* @__PURE__ */ jsx57("div", { className: "absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 blur-3xl -z-10" }),
             /* @__PURE__ */ jsxs44(
               "form",
               {
@@ -5806,7 +5798,7 @@ function AiChat() {
                 },
                 className: "relative flex gap-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-1 rounded-lg border shadow-lg",
                 children: [
-                  /* @__PURE__ */ jsx58(
+                  /* @__PURE__ */ jsx57(
                     Input,
                     {
                       ref: inputRef,
@@ -5817,7 +5809,7 @@ function AiChat() {
                     }
                   ),
                   /* @__PURE__ */ jsxs44(Button, { type: "submit", size: "sm", children: [
-                    /* @__PURE__ */ jsx58(Send2, { className: "h-4 w-4 mr-2" }),
+                    /* @__PURE__ */ jsx57(Send2, { className: "h-4 w-4 mr-2" }),
                     "Send"
                   ] })
                 ]
@@ -5828,7 +5820,7 @@ function AiChat() {
       },
       "input"
     ) }),
-    /* @__PURE__ */ jsx58(AnimatePresence3, { children: isExpanded && /* @__PURE__ */ jsx58(
+    /* @__PURE__ */ jsx57(AnimatePresence3, { children: isExpanded && /* @__PURE__ */ jsx57(
       motion3.div,
       {
         initial: { opacity: 0, y: 20 },
@@ -5836,7 +5828,7 @@ function AiChat() {
         exit: { opacity: 0, y: 20 },
         transition: { duration: 0.3 },
         className: "border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
-        children: /* @__PURE__ */ jsx58("div", { className: "mx-auto max-w-2xl p-4", children: /* @__PURE__ */ jsxs44(
+        children: /* @__PURE__ */ jsx57("div", { className: "mx-auto max-w-2xl p-4", children: /* @__PURE__ */ jsxs44(
           "form",
           {
             onSubmit: (e) => {
@@ -5844,7 +5836,7 @@ function AiChat() {
             },
             className: "flex gap-2",
             children: [
-              /* @__PURE__ */ jsx58(
+              /* @__PURE__ */ jsx57(
                 Input,
                 {
                   ref: inputRef,
@@ -5855,8 +5847,8 @@ function AiChat() {
                 }
               ),
               /* @__PURE__ */ jsxs44(Button, { type: "submit", children: [
-                /* @__PURE__ */ jsx58(Send2, { className: "h-4 w-4" }),
-                /* @__PURE__ */ jsx58("span", { className: "sr-only", children: "Send message" })
+                /* @__PURE__ */ jsx57(Send2, { className: "h-4 w-4" }),
+                /* @__PURE__ */ jsx57("span", { className: "sr-only", children: "Send message" })
               ] })
             ]
           }
@@ -5867,13 +5859,13 @@ function AiChat() {
 }
 
 // app/routes/askai.tsx
-import { jsx as jsx59 } from "react/jsx-runtime";
+import { jsx as jsx58 } from "react/jsx-runtime";
 function AskAiPage() {
-  return /* @__PURE__ */ jsx59(Layout, { minimal: !0, children: /* @__PURE__ */ jsx59("div", { className: "h-[calc(100vh-3.5rem)] overflow-hidden", children: /* @__PURE__ */ jsx59(AiChat, {}) }) });
+  return /* @__PURE__ */ jsx58(Layout, { minimal: !0, children: /* @__PURE__ */ jsx58("div", { className: "h-[calc(100vh-3.5rem)] overflow-hidden", children: /* @__PURE__ */ jsx58(AiChat, {}) }) });
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-42RXAVJ3.js", imports: ["/build/_shared/chunk-BTR25ETF.js", "/build/_shared/chunk-ADMCF34Z.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-3D6GBP6H.js", imports: ["/build/_shared/chunk-SSCGI46Q.js", "/build/_shared/chunk-VZQVWFLO.js", "/build/_shared/chunk-EJN3WSGI.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-PA3NKEXX.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.ai.chat": { id: "routes/api.ai.chat", parentId: "root", path: "api/ai/chat", index: void 0, caseSensitive: void 0, module: "/build/routes/api.ai.chat-MDMCJIAM.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.analytics": { id: "routes/api.documents.analytics", parentId: "root", path: "api/documents/analytics", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.analytics-AULYKJVM.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.archive": { id: "routes/api.documents.archive", parentId: "root", path: "api/documents/archive", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.archive-SFHWZAY7.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.create": { id: "routes/api.documents.create", parentId: "root", path: "api/documents/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.create-3AKBCRTE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.share": { id: "routes/api.documents.share", parentId: "root", path: "api/documents/share", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.share-GDZ545KH.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.update": { id: "routes/api.documents.update", parentId: "root", path: "api/documents/update", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.update-GEUH6PAG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.versions": { id: "routes/api.documents.versions", parentId: "root", path: "api/documents/versions", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.versions-DJOJAU4C.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.workspaces.create": { id: "routes/api.workspaces.create", parentId: "root", path: "api/workspaces/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.workspaces.create-2QXVU4PY.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/askai": { id: "routes/askai", parentId: "root", path: "askai", index: void 0, caseSensitive: void 0, module: "/build/routes/askai-JGLIR5EP.js", imports: ["/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.callback": { id: "routes/auth.callback", parentId: "root", path: "auth/callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.callback-DVJNLOQV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.login": { id: "routes/auth.login", parentId: "root", path: "auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.login-324U47GS.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.logout": { id: "routes/auth.logout", parentId: "root", path: "auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.logout-WEDPT6S2.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.register": { id: "routes/auth.register", parentId: "root", path: "auth/register", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.register-4URQEI6F.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/getting-started": { id: "routes/getting-started", parentId: "root", path: "getting-started", index: void 0, caseSensitive: void 0, module: "/build/routes/getting-started-EX4JOFH3.js", imports: ["/build/_shared/chunk-QI47UT7V.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/library.$id": { id: "routes/library.$id", parentId: "root", path: "library/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/library.$id-Y4PANMKH.js", imports: ["/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/pages.$id": { id: "routes/pages.$id", parentId: "root", path: "pages/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/pages.$id-GLTEJLDO.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-QI47UT7V.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "0e535a6e", hmr: void 0, url: "/build/manifest-0E535A6E.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-42RXAVJ3.js", imports: ["/build/_shared/chunk-BTR25ETF.js", "/build/_shared/chunk-ADMCF34Z.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-UQB5I4T2.js", imports: ["/build/_shared/chunk-WG3YIYUO.js", "/build/_shared/chunk-VZQVWFLO.js", "/build/_shared/chunk-EJN3WSGI.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-QJBAXZNA.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-R6JOD2DB.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.ai.chat": { id: "routes/api.ai.chat", parentId: "root", path: "api/ai/chat", index: void 0, caseSensitive: void 0, module: "/build/routes/api.ai.chat-MDMCJIAM.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.analytics": { id: "routes/api.documents.analytics", parentId: "root", path: "api/documents/analytics", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.analytics-AULYKJVM.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.archive": { id: "routes/api.documents.archive", parentId: "root", path: "api/documents/archive", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.archive-SFHWZAY7.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.create": { id: "routes/api.documents.create", parentId: "root", path: "api/documents/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.create-3AKBCRTE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.share": { id: "routes/api.documents.share", parentId: "root", path: "api/documents/share", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.share-GDZ545KH.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.update": { id: "routes/api.documents.update", parentId: "root", path: "api/documents/update", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.update-GEUH6PAG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.versions": { id: "routes/api.documents.versions", parentId: "root", path: "api/documents/versions", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.versions-DJOJAU4C.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.workspaces.create": { id: "routes/api.workspaces.create", parentId: "root", path: "api/workspaces/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.workspaces.create-2QXVU4PY.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/askai": { id: "routes/askai", parentId: "root", path: "askai", index: void 0, caseSensitive: void 0, module: "/build/routes/askai-WC63G24W.js", imports: ["/build/_shared/chunk-R6JOD2DB.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.callback": { id: "routes/auth.callback", parentId: "root", path: "auth/callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.callback-DVJNLOQV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.login": { id: "routes/auth.login", parentId: "root", path: "auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.login-324U47GS.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.logout": { id: "routes/auth.logout", parentId: "root", path: "auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.logout-WEDPT6S2.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.register": { id: "routes/auth.register", parentId: "root", path: "auth/register", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.register-4URQEI6F.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/getting-started": { id: "routes/getting-started", parentId: "root", path: "getting-started", index: void 0, caseSensitive: void 0, module: "/build/routes/getting-started-BEISGAVW.js", imports: ["/build/_shared/chunk-QODD6FRS.js", "/build/_shared/chunk-R6JOD2DB.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/library.$id": { id: "routes/library.$id", parentId: "root", path: "library/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/library.$id-6KJVL2IW.js", imports: ["/build/_shared/chunk-R6JOD2DB.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/pages.$id": { id: "routes/pages.$id", parentId: "root", path: "pages/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/pages.$id-33AIO4B5.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-QODD6FRS.js", "/build/_shared/chunk-R6JOD2DB.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "83e31a8b", hmr: void 0, url: "/build/manifest-83E31A8B.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "production", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
