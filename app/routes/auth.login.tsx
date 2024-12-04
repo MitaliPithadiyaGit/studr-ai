@@ -30,19 +30,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   })
 }
 
-export function getDomainUrl(request: { headers: { get: (arg0: string) => any } }) {
-  const protocol =
-    process.env.NODE_ENV === 'production'
-      ? request.headers.get('x-forwarded-proto') || 'https'
-      : 'http';
-
-  const host =
-    process.env.NODE_ENV === 'production'
-      ? request.headers.get('x-forwarded-host') || request.headers.get('host')
-      : 'localhost:3000';
-
-  return `${protocol}://${host}`;
-}
 export const action = async ({ request }: ActionFunctionArgs) => {
   const response = new Response()
   const supabase = createServerClient(
@@ -60,7 +47,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${getDomainUrl(request)}/auth/callback`,
+        redirectTo: `${new URL(request.url).origin}/auth/callback`,
       },
     })
 

@@ -3,7 +3,7 @@ import { createServerClient } from "@supabase/auth-helpers-remix"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const response = new Response()
-  const url = new URL(request.url)
+  const url = new URL('https://studr-ai-six.vercel.app/')
   const code = url.searchParams.get("code")
 
   if (code) {
