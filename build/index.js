@@ -14,7 +14,7 @@ import { createReadableStreamFromReadable } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { isbot } from "isbot";
 import { renderToPipeableStream } from "react-dom/server";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
 var ABORT_DELAY = 5e3;
 function handleRequest(request, responseStatusCode, responseHeaders, remixContext, loadContext) {
   return isbot(request.headers.get("user-agent") || "") ? handleBotRequest(
@@ -32,21 +32,13 @@ function handleRequest(request, responseStatusCode, responseHeaders, remixContex
 function handleBotRequest(request, responseStatusCode, responseHeaders, remixContext) {
   return new Promise((resolve, reject) => {
     let shellRendered = !1, { pipe, abort } = renderToPipeableStream(
-      /* @__PURE__ */ jsxDEV(
+      /* @__PURE__ */ jsx(
         RemixServer,
         {
           context: remixContext,
           url: request.url,
           abortDelay: ABORT_DELAY
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/entry.server.tsx",
-          lineNumber: 51,
-          columnNumber: 7
-        },
-        this
+        }
       ),
       {
         onAllReady() {
@@ -73,21 +65,13 @@ function handleBotRequest(request, responseStatusCode, responseHeaders, remixCon
 function handleBrowserRequest(request, responseStatusCode, responseHeaders, remixContext) {
   return new Promise((resolve, reject) => {
     let shellRendered = !1, { pipe, abort } = renderToPipeableStream(
-      /* @__PURE__ */ jsxDEV(
+      /* @__PURE__ */ jsx(
         RemixServer,
         {
           context: remixContext,
           url: request.url,
           abortDelay: ABORT_DELAY
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/entry.server.tsx",
-          lineNumber: 101,
-          columnNumber: 7
-        },
-        this
+        }
       ),
       {
         onShellReady() {
@@ -179,8 +163,8 @@ function cn(...inputs) {
 }
 
 // app/components/ui/toast.tsx
-import { jsxDEV as jsxDEV2 } from "react/jsx-dev-runtime";
-var ToastProvider = ToastPrimitives.Provider, ToastViewport = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV2(
+import { jsx as jsx2 } from "react/jsx-runtime";
+var ToastProvider = ToastPrimitives.Provider, ToastViewport = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx2(
   ToastPrimitives.Viewport,
   {
     ref,
@@ -189,15 +173,7 @@ var ToastProvider = ToastPrimitives.Provider, ToastViewport = React.forwardRef((
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/toast.tsx",
-    lineNumber: 14,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 var toastVariants = cva(
@@ -213,24 +189,16 @@ var toastVariants = cva(
       variant: "default"
     }
   }
-), Toast = React.forwardRef(({ className, variant, ...props }, ref) => /* @__PURE__ */ jsxDEV2(
+), Toast = React.forwardRef(({ className, variant, ...props }, ref) => /* @__PURE__ */ jsx2(
   ToastPrimitives.Root,
   {
     ref,
     className: cn(toastVariants({ variant }), className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/toast.tsx",
-    lineNumber: 47,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 Toast.displayName = ToastPrimitives.Root.displayName;
-var ToastAction = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV2(
+var ToastAction = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx2(
   ToastPrimitives.Action,
   {
     ref,
@@ -239,18 +207,10 @@ var ToastAction = React.forwardRef(({ className, ...props }, ref) => /* @__PURE_
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/toast.tsx",
-    lineNumber: 60,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 ToastAction.displayName = ToastPrimitives.Action.displayName;
-var ToastClose = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV2(
+var ToastClose = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx2(
   ToastPrimitives.Close,
   {
     ref,
@@ -260,54 +220,26 @@ var ToastClose = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__
     ),
     "toast-close": "",
     ...props,
-    children: /* @__PURE__ */ jsxDEV2(X, { className: "h-4 w-4" }, void 0, !1, {
-      fileName: "app/components/ui/toast.tsx",
-      lineNumber: 84,
-      columnNumber: 5
-    }, this)
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/toast.tsx",
-    lineNumber: 75,
-    columnNumber: 3
-  },
-  this
+    children: /* @__PURE__ */ jsx2(X, { className: "h-4 w-4" })
+  }
 ));
 ToastClose.displayName = ToastPrimitives.Close.displayName;
-var ToastTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV2(
+var ToastTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx2(
   ToastPrimitives.Title,
   {
     ref,
     className: cn("text-sm font-semibold", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/toast.tsx",
-    lineNumber: 93,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 ToastTitle.displayName = ToastPrimitives.Title.displayName;
-var ToastDescription = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV2(
+var ToastDescription = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx2(
   ToastPrimitives.Description,
   {
     ref,
     className: cn("text-sm opacity-90", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/toast.tsx",
-    lineNumber: 105,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 ToastDescription.displayName = ToastPrimitives.Description.displayName;
 
@@ -405,57 +337,29 @@ function useToast() {
 }
 
 // app/components/ui/toaster.tsx
-import { jsxDEV as jsxDEV3 } from "react/jsx-dev-runtime";
+import { jsx as jsx3, jsxs } from "react/jsx-runtime";
 function Toaster() {
   let { toasts } = useToast();
-  return /* @__PURE__ */ jsxDEV3(ToastProvider, { children: [
+  return /* @__PURE__ */ jsxs(ToastProvider, { children: [
     toasts.map(function({ id, title, description, action: action12, ...props }) {
-      return /* @__PURE__ */ jsxDEV3(Toast, { ...props, children: [
-        /* @__PURE__ */ jsxDEV3("div", { className: "grid gap-1", children: [
-          title && /* @__PURE__ */ jsxDEV3(ToastTitle, { children: title }, void 0, !1, {
-            fileName: "app/components/ui/toaster.tsx",
-            lineNumber: 21,
-            columnNumber: 25
-          }, this),
-          description && /* @__PURE__ */ jsxDEV3(ToastDescription, { children: description }, void 0, !1, {
-            fileName: "app/components/ui/toaster.tsx",
-            lineNumber: 23,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/ui/toaster.tsx",
-          lineNumber: 20,
-          columnNumber: 13
-        }, this),
+      return /* @__PURE__ */ jsxs(Toast, { ...props, children: [
+        /* @__PURE__ */ jsxs("div", { className: "grid gap-1", children: [
+          title && /* @__PURE__ */ jsx3(ToastTitle, { children: title }),
+          description && /* @__PURE__ */ jsx3(ToastDescription, { children: description })
+        ] }),
         action12,
-        /* @__PURE__ */ jsxDEV3(ToastClose, {}, void 0, !1, {
-          fileName: "app/components/ui/toaster.tsx",
-          lineNumber: 27,
-          columnNumber: 13
-        }, this)
-      ] }, id, !0, {
-        fileName: "app/components/ui/toaster.tsx",
-        lineNumber: 19,
-        columnNumber: 11
-      }, this);
+        /* @__PURE__ */ jsx3(ToastClose, {})
+      ] }, id);
     }),
-    /* @__PURE__ */ jsxDEV3(ToastViewport, {}, void 0, !1, {
-      fileName: "app/components/ui/toaster.tsx",
-      lineNumber: 31,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/ui/toaster.tsx",
-    lineNumber: 16,
-    columnNumber: 5
-  }, this);
+    /* @__PURE__ */ jsx3(ToastViewport, {})
+  ] });
 }
 
 // app/styles/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-47AE2MU2.css";
+var tailwind_default = "/build/_assets/tailwind-FOUZUSUO.css";
 
 // app/root.tsx
-import { jsxDEV as jsxDEV4 } from "react/jsx-dev-runtime";
+import { jsx as jsx4, jsxs as jsxs2 } from "react/jsx-runtime";
 var links = () => [
   {
     rel: "preconnect",
@@ -493,89 +397,29 @@ var links = () => [
 };
 function App() {
   let { env } = useLoaderData();
-  return /* @__PURE__ */ jsxDEV4("html", { lang: "en", suppressHydrationWarning: !0, children: [
-    /* @__PURE__ */ jsxDEV4("head", { children: [
-      /* @__PURE__ */ jsxDEV4("meta", { charSet: "utf-8" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 67,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV4("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 68,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV4(Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 70,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV4(Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 72,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 66,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV4("body", { children: [
-      /* @__PURE__ */ jsxDEV4(Outlet, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 75,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV4("div", { id: "toast-root", children: /* @__PURE__ */ jsxDEV4(Toaster, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 77,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 76,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV4(
+  return /* @__PURE__ */ jsxs2("html", { lang: "en", suppressHydrationWarning: !0, children: [
+    /* @__PURE__ */ jsxs2("head", { children: [
+      /* @__PURE__ */ jsx4("meta", { charSet: "utf-8" }),
+      /* @__PURE__ */ jsx4("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }),
+      /* @__PURE__ */ jsx4(Meta, {}),
+      /* @__PURE__ */ jsx4(Links, {})
+    ] }),
+    /* @__PURE__ */ jsxs2("body", { children: [
+      /* @__PURE__ */ jsx4(Outlet, {}),
+      /* @__PURE__ */ jsx4("div", { id: "toast-root", children: /* @__PURE__ */ jsx4(Toaster, {}) }),
+      /* @__PURE__ */ jsx4(
         "script",
         {
           dangerouslySetInnerHTML: {
             __html: `window.env = ${JSON.stringify(env)}`
           }
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/root.tsx",
-          lineNumber: 79,
-          columnNumber: 9
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ jsxDEV4(ScrollRestoration, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 84,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV4(Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 85,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV4(LiveReload, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 86,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 74,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 65,
-    columnNumber: 5
-  }, this);
+      /* @__PURE__ */ jsx4(ScrollRestoration, {}),
+      /* @__PURE__ */ jsx4(Scripts, {}),
+      /* @__PURE__ */ jsx4(LiveReload, {})
+    ] })
+  ] });
 }
 
 // app/routes/api.documents.analytics.tsx
@@ -819,9 +663,9 @@ import { Link as RemixLink } from "@remix-run/react";
 import * as React5 from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
-import { jsxDEV as jsxDEV5 } from "react/jsx-dev-runtime";
+import { jsx as jsx5, jsxs as jsxs3 } from "react/jsx-runtime";
 var DropdownMenu = DropdownMenuPrimitive.Root, DropdownMenuTrigger = DropdownMenuPrimitive.Trigger, DropdownMenuGroup = DropdownMenuPrimitive.Group;
-var DropdownMenuSubTrigger = React5.forwardRef(({ className, inset, children, ...props }, ref) => /* @__PURE__ */ jsxDEV5(
+var DropdownMenuSubTrigger = React5.forwardRef(({ className, inset, children, ...props }, ref) => /* @__PURE__ */ jsxs3(
   DropdownMenuPrimitive.SubTrigger,
   {
     ref,
@@ -833,24 +677,12 @@ var DropdownMenuSubTrigger = React5.forwardRef(({ className, inset, children, ..
     ...props,
     children: [
       children,
-      /* @__PURE__ */ jsxDEV5(ChevronRight, { className: "ml-auto" }, void 0, !1, {
-        fileName: "app/components/ui/dropdown-menu.tsx",
-        lineNumber: 35,
-        columnNumber: 5
-      }, this)
+      /* @__PURE__ */ jsx5(ChevronRight, { className: "ml-auto" })
     ]
-  },
-  void 0,
-  !0,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 25,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName;
-var DropdownMenuSubContent = React5.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV5(
+var DropdownMenuSubContent = React5.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx5(
   DropdownMenuPrimitive.SubContent,
   {
     ref,
@@ -859,18 +691,10 @@ var DropdownMenuSubContent = React5.forwardRef(({ className, ...props }, ref) =>
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 45,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName;
-var DropdownMenuContent = React5.forwardRef(({ className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsxDEV5(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ jsxDEV5(
+var DropdownMenuContent = React5.forwardRef(({ className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx5(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ jsx5(
   DropdownMenuPrimitive.Content,
   {
     ref,
@@ -881,22 +705,10 @@ var DropdownMenuContent = React5.forwardRef(({ className, sideOffset = 4, ...pro
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 62,
-    columnNumber: 5
-  },
-  this
-) }, void 0, !1, {
-  fileName: "app/components/ui/dropdown-menu.tsx",
-  lineNumber: 61,
-  columnNumber: 3
-}, this));
+  }
+) }));
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
-var DropdownMenuItem = React5.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ jsxDEV5(
+var DropdownMenuItem = React5.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ jsx5(
   DropdownMenuPrimitive.Item,
   {
     ref,
@@ -906,18 +718,10 @@ var DropdownMenuItem = React5.forwardRef(({ className, inset, ...props }, ref) =
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 82,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
-var DropdownMenuCheckboxItem = React5.forwardRef(({ className, children, checked, ...props }, ref) => /* @__PURE__ */ jsxDEV5(
+var DropdownMenuCheckboxItem = React5.forwardRef(({ className, children, checked, ...props }, ref) => /* @__PURE__ */ jsxs3(
   DropdownMenuPrimitive.CheckboxItem,
   {
     ref,
@@ -928,33 +732,13 @@ var DropdownMenuCheckboxItem = React5.forwardRef(({ className, children, checked
     checked,
     ...props,
     children: [
-      /* @__PURE__ */ jsxDEV5("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ jsxDEV5(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ jsxDEV5(Check, { className: "h-4 w-4" }, void 0, !1, {
-        fileName: "app/components/ui/dropdown-menu.tsx",
-        lineNumber: 109,
-        columnNumber: 9
-      }, this) }, void 0, !1, {
-        fileName: "app/components/ui/dropdown-menu.tsx",
-        lineNumber: 108,
-        columnNumber: 7
-      }, this) }, void 0, !1, {
-        fileName: "app/components/ui/dropdown-menu.tsx",
-        lineNumber: 107,
-        columnNumber: 5
-      }, this),
+      /* @__PURE__ */ jsx5("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ jsx5(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ jsx5(Check, { className: "h-4 w-4" }) }) }),
       children
     ]
-  },
-  void 0,
-  !0,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 98,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName;
-var DropdownMenuRadioItem = React5.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxDEV5(
+var DropdownMenuRadioItem = React5.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxs3(
   DropdownMenuPrimitive.RadioItem,
   {
     ref,
@@ -964,33 +748,13 @@ var DropdownMenuRadioItem = React5.forwardRef(({ className, children, ...props }
     ),
     ...props,
     children: [
-      /* @__PURE__ */ jsxDEV5("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ jsxDEV5(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ jsxDEV5(Circle, { className: "h-2 w-2 fill-current" }, void 0, !1, {
-        fileName: "app/components/ui/dropdown-menu.tsx",
-        lineNumber: 132,
-        columnNumber: 9
-      }, this) }, void 0, !1, {
-        fileName: "app/components/ui/dropdown-menu.tsx",
-        lineNumber: 131,
-        columnNumber: 7
-      }, this) }, void 0, !1, {
-        fileName: "app/components/ui/dropdown-menu.tsx",
-        lineNumber: 130,
-        columnNumber: 5
-      }, this),
+      /* @__PURE__ */ jsx5("span", { className: "absolute left-2 flex h-3.5 w-3.5 items-center justify-center", children: /* @__PURE__ */ jsx5(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ jsx5(Circle, { className: "h-2 w-2 fill-current" }) }) }),
       children
     ]
-  },
-  void 0,
-  !0,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 122,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
-var DropdownMenuLabel = React5.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ jsxDEV5(
+var DropdownMenuLabel = React5.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ jsx5(
   DropdownMenuPrimitive.Label,
   {
     ref,
@@ -1000,51 +764,27 @@ var DropdownMenuLabel = React5.forwardRef(({ className, inset, ...props }, ref) 
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 146,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName;
-var DropdownMenuSeparator = React5.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV5(
+var DropdownMenuSeparator = React5.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx5(
   DropdownMenuPrimitive.Separator,
   {
     ref,
     className: cn("-mx-1 my-1 h-px bg-muted", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 162,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 var DropdownMenuShortcut = ({
   className,
   ...props
-}) => /* @__PURE__ */ jsxDEV5(
+}) => /* @__PURE__ */ jsx5(
   "span",
   {
     className: cn("ml-auto text-xs tracking-widest opacity-60", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dropdown-menu.tsx",
-    lineNumber: 175,
-    columnNumber: 5
-  },
-  this
+  }
 );
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut";
 
@@ -1071,7 +811,7 @@ function useIsMobile() {
 import * as React7 from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva as cva2 } from "class-variance-authority";
-import { jsxDEV as jsxDEV6 } from "react/jsx-dev-runtime";
+import { jsx as jsx6 } from "react/jsx-runtime";
 var buttonVariants = cva2(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
@@ -1097,30 +837,22 @@ var buttonVariants = cva2(
     }
   }
 ), Button = React7.forwardRef(
-  ({ className, variant, size, asChild = !1, ...props }, ref) => /* @__PURE__ */ jsxDEV6(
+  ({ className, variant, size, asChild = !1, ...props }, ref) => /* @__PURE__ */ jsx6(
     asChild ? Slot : "button",
     {
       className: cn(buttonVariants({ variant, size, className })),
       ref,
       ...props
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/ui/button.tsx",
-      lineNumber: 47,
-      columnNumber: 7
-    },
-    this
+    }
   )
 );
 Button.displayName = "Button";
 
 // app/components/ui/input.tsx
 import * as React8 from "react";
-import { jsxDEV as jsxDEV7 } from "react/jsx-dev-runtime";
+import { jsx as jsx7 } from "react/jsx-runtime";
 var Input = React8.forwardRef(
-  ({ className, type, ...props }, ref) => /* @__PURE__ */ jsxDEV7(
+  ({ className, type, ...props }, ref) => /* @__PURE__ */ jsx7(
     "input",
     {
       type,
@@ -1130,15 +862,7 @@ var Input = React8.forwardRef(
       ),
       ref,
       ...props
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/ui/input.tsx",
-      lineNumber: 8,
-      columnNumber: 7
-    },
-    this
+    }
   )
 );
 Input.displayName = "Input";
@@ -1146,9 +870,9 @@ Input.displayName = "Input";
 // app/components/ui/separator.tsx
 import * as React9 from "react";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
-import { jsxDEV as jsxDEV8 } from "react/jsx-dev-runtime";
+import { jsx as jsx8 } from "react/jsx-runtime";
 var Separator2 = React9.forwardRef(
-  ({ className, orientation = "horizontal", decorative = !0, ...props }, ref) => /* @__PURE__ */ jsxDEV8(
+  ({ className, orientation = "horizontal", decorative = !0, ...props }, ref) => /* @__PURE__ */ jsx8(
     SeparatorPrimitive.Root,
     {
       ref,
@@ -1160,15 +884,7 @@ var Separator2 = React9.forwardRef(
         className
       ),
       ...props
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/ui/separator.tsx",
-      lineNumber: 14,
-      columnNumber: 5
-    },
-    this
+    }
   )
 );
 Separator2.displayName = SeparatorPrimitive.Root.displayName;
@@ -1178,9 +894,9 @@ import * as React10 from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { cva as cva3 } from "class-variance-authority";
 import { X as X2 } from "lucide-react";
-import { jsxDEV as jsxDEV9 } from "react/jsx-dev-runtime";
+import { jsx as jsx9, jsxs as jsxs4 } from "react/jsx-runtime";
 var Sheet = SheetPrimitive.Root;
-var SheetPortal = SheetPrimitive.Portal, SheetOverlay = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV9(
+var SheetPortal = SheetPrimitive.Portal, SheetOverlay = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx9(
   SheetPrimitive.Overlay,
   {
     className: cn(
@@ -1189,15 +905,7 @@ var SheetPortal = SheetPrimitive.Portal, SheetOverlay = React10.forwardRef(({ cl
     ),
     ...props,
     ref
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sheet.tsx",
-    lineNumber: 22,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 var sheetVariants = cva3(
@@ -1215,57 +923,29 @@ var sheetVariants = cva3(
       side: "right"
     }
   }
-), SheetContent = React10.forwardRef(({ side = "right", className, children, ...props }, ref) => /* @__PURE__ */ jsxDEV9(SheetPortal, { children: [
-  /* @__PURE__ */ jsxDEV9(SheetOverlay, {}, void 0, !1, {
-    fileName: "app/components/ui/sheet.tsx",
-    lineNumber: 61,
-    columnNumber: 5
-  }, this),
-  /* @__PURE__ */ jsxDEV9(
+), SheetContent = React10.forwardRef(({ side = "right", className, children, ...props }, ref) => /* @__PURE__ */ jsxs4(SheetPortal, { children: [
+  /* @__PURE__ */ jsx9(SheetOverlay, {}),
+  /* @__PURE__ */ jsxs4(
     SheetPrimitive.Content,
     {
       ref,
       className: cn(sheetVariants({ side }), className),
       ...props,
       children: [
-        /* @__PURE__ */ jsxDEV9(SheetPrimitive.Close, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary", children: [
-          /* @__PURE__ */ jsxDEV9(X2, { className: "h-4 w-4" }, void 0, !1, {
-            fileName: "app/components/ui/sheet.tsx",
-            lineNumber: 68,
-            columnNumber: 9
-          }, this),
-          /* @__PURE__ */ jsxDEV9("span", { className: "sr-only", children: "Close" }, void 0, !1, {
-            fileName: "app/components/ui/sheet.tsx",
-            lineNumber: 69,
-            columnNumber: 9
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/ui/sheet.tsx",
-          lineNumber: 67,
-          columnNumber: 7
-        }, this),
+        /* @__PURE__ */ jsxs4(SheetPrimitive.Close, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary", children: [
+          /* @__PURE__ */ jsx9(X2, { className: "h-4 w-4" }),
+          /* @__PURE__ */ jsx9("span", { className: "sr-only", children: "Close" })
+        ] }),
         children
       ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/ui/sheet.tsx",
-      lineNumber: 62,
-      columnNumber: 5
-    },
-    this
+    }
   )
-] }, void 0, !0, {
-  fileName: "app/components/ui/sheet.tsx",
-  lineNumber: 60,
-  columnNumber: 3
-}, this));
+] }));
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 var SheetHeader = ({
   className,
   ...props
-}) => /* @__PURE__ */ jsxDEV9(
+}) => /* @__PURE__ */ jsx9(
   "div",
   {
     className: cn(
@@ -1273,21 +953,13 @@ var SheetHeader = ({
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sheet.tsx",
-    lineNumber: 81,
-    columnNumber: 3
-  },
-  this
+  }
 );
 SheetHeader.displayName = "SheetHeader";
 var SheetFooter = ({
   className,
   ...props
-}) => /* @__PURE__ */ jsxDEV9(
+}) => /* @__PURE__ */ jsx9(
   "div",
   {
     className: cn(
@@ -1295,80 +967,48 @@ var SheetFooter = ({
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sheet.tsx",
-    lineNumber: 95,
-    columnNumber: 3
-  },
-  this
+  }
 );
 SheetFooter.displayName = "SheetFooter";
-var SheetTitle = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV9(
+var SheetTitle = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx9(
   SheetPrimitive.Title,
   {
     ref,
     className: cn("text-lg font-semibold text-foreground", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sheet.tsx",
-    lineNumber: 109,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 SheetTitle.displayName = SheetPrimitive.Title.displayName;
-var SheetDescription = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV9(
+var SheetDescription = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx9(
   SheetPrimitive.Description,
   {
     ref,
     className: cn("text-sm text-muted-foreground", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sheet.tsx",
-    lineNumber: 121,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 SheetDescription.displayName = SheetPrimitive.Description.displayName;
 
 // app/components/ui/skeleton.tsx
-import { jsxDEV as jsxDEV10 } from "react/jsx-dev-runtime";
+import { jsx as jsx10 } from "react/jsx-runtime";
 function Skeleton({
   className,
   ...props
 }) {
-  return /* @__PURE__ */ jsxDEV10(
+  return /* @__PURE__ */ jsx10(
     "div",
     {
       className: cn("animate-pulse rounded-md bg-primary/10", className),
       ...props
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/ui/skeleton.tsx",
-      lineNumber: 8,
-      columnNumber: 5
-    },
-    this
+    }
   );
 }
 
 // app/components/ui/tooltip.tsx
 import * as React11 from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
-import { jsxDEV as jsxDEV11 } from "react/jsx-dev-runtime";
-var TooltipProvider = TooltipPrimitive.Provider, Tooltip = TooltipPrimitive.Root, TooltipTrigger = TooltipPrimitive.Trigger, TooltipContent = React11.forwardRef(({ className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsxDEV11(TooltipPrimitive.Portal, { children: /* @__PURE__ */ jsxDEV11(
+import { jsx as jsx11 } from "react/jsx-runtime";
+var TooltipProvider = TooltipPrimitive.Provider, Tooltip = TooltipPrimitive.Root, TooltipTrigger = TooltipPrimitive.Trigger, TooltipContent = React11.forwardRef(({ className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx11(TooltipPrimitive.Portal, { children: /* @__PURE__ */ jsx11(
   TooltipPrimitive.Content,
   {
     ref,
@@ -1378,24 +1018,12 @@ var TooltipProvider = TooltipPrimitive.Provider, Tooltip = TooltipPrimitive.Root
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/tooltip.tsx",
-    lineNumber: 17,
-    columnNumber: 5
-  },
-  this
-) }, void 0, !1, {
-  fileName: "app/components/ui/tooltip.tsx",
-  lineNumber: 16,
-  columnNumber: 3
-}, this));
+  }
+) }));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
 // app/components/ui/sidebar.tsx
-import { jsxDEV as jsxDEV12 } from "react/jsx-dev-runtime";
+import { jsx as jsx12, jsxs as jsxs5 } from "react/jsx-runtime";
 var SIDEBAR_COOKIE_NAME = "sidebar:state", SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7, SIDEBAR_WIDTH = "16rem", SIDEBAR_WIDTH_MOBILE = "18rem", SIDEBAR_WIDTH_ICON = "3rem", SIDEBAR_KEYBOARD_SHORTCUT = "b", SidebarContext = React12.createContext(null);
 function useSidebar() {
   let context = React12.useContext(SidebarContext);
@@ -1438,7 +1066,7 @@ var SidebarProvider = React12.forwardRef(
       }),
       [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
     );
-    return /* @__PURE__ */ jsxDEV12(SidebarContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsxDEV12(TooltipProvider, { delayDuration: 0, children: /* @__PURE__ */ jsxDEV12(
+    return /* @__PURE__ */ jsx12(SidebarContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx12(TooltipProvider, { delayDuration: 0, children: /* @__PURE__ */ jsx12(
       "div",
       {
         style: {
@@ -1453,24 +1081,8 @@ var SidebarProvider = React12.forwardRef(
         ref,
         ...props,
         children
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/ui/sidebar.tsx",
-        lineNumber: 135,
-        columnNumber: 11
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/ui/sidebar.tsx",
-      lineNumber: 134,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/components/ui/sidebar.tsx",
-      lineNumber: 133,
-      columnNumber: 7
-    }, this);
+      }
+    ) }) });
   }
 );
 SidebarProvider.displayName = "SidebarProvider";
@@ -1484,7 +1096,7 @@ var Sidebar = React12.forwardRef(
     ...props
   }, ref) => {
     let { isMobile, state, openMobile, setOpenMobile } = useSidebar();
-    return collapsible === "none" ? /* @__PURE__ */ jsxDEV12(
+    return collapsible === "none" ? /* @__PURE__ */ jsx12(
       "div",
       {
         className: cn(
@@ -1494,16 +1106,8 @@ var Sidebar = React12.forwardRef(
         ref,
         ...props,
         children
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/ui/sidebar.tsx",
-        lineNumber: 182,
-        columnNumber: 9
-      },
-      this
-    ) : isMobile ? /* @__PURE__ */ jsxDEV12(Sheet, { open: openMobile, onOpenChange: setOpenMobile, ...props, children: /* @__PURE__ */ jsxDEV12(
+      }
+    ) : isMobile ? /* @__PURE__ */ jsx12(Sheet, { open: openMobile, onOpenChange: setOpenMobile, ...props, children: /* @__PURE__ */ jsx12(
       SheetContent,
       {
         "data-sidebar": "sidebar",
@@ -1513,25 +1117,9 @@ var Sidebar = React12.forwardRef(
           "--sidebar-width": SIDEBAR_WIDTH_MOBILE
         },
         side,
-        children: /* @__PURE__ */ jsxDEV12("div", { className: "flex h-full w-full flex-col", children }, void 0, !1, {
-          fileName: "app/components/ui/sidebar.tsx",
-          lineNumber: 209,
-          columnNumber: 13
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/ui/sidebar.tsx",
-        lineNumber: 198,
-        columnNumber: 11
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/ui/sidebar.tsx",
-      lineNumber: 197,
-      columnNumber: 9
-    }, this) : /* @__PURE__ */ jsxDEV12(
+        children: /* @__PURE__ */ jsx12("div", { className: "flex h-full w-full flex-col", children })
+      }
+    ) }) : /* @__PURE__ */ jsxs5(
       "div",
       {
         ref,
@@ -1541,7 +1129,7 @@ var Sidebar = React12.forwardRef(
         "data-variant": variant,
         "data-side": side,
         children: [
-          /* @__PURE__ */ jsxDEV12(
+          /* @__PURE__ */ jsx12(
             "div",
             {
               className: cn(
@@ -1550,17 +1138,9 @@ var Sidebar = React12.forwardRef(
                 "group-data-[side=right]:rotate-180",
                 variant === "floating" || variant === "inset" ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]" : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]"
               )
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/ui/sidebar.tsx",
-              lineNumber: 225,
-              columnNumber: 9
-            },
-            this
+            }
           ),
-          /* @__PURE__ */ jsxDEV12(
+          /* @__PURE__ */ jsx12(
             "div",
             {
               className: cn(
@@ -1571,49 +1151,25 @@ var Sidebar = React12.forwardRef(
                 className
               ),
               ...props,
-              children: /* @__PURE__ */ jsxDEV12(
+              children: /* @__PURE__ */ jsx12(
                 "div",
                 {
                   "data-sidebar": "sidebar",
                   className: "flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow",
                   children
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/ui/sidebar.tsx",
-                  lineNumber: 249,
-                  columnNumber: 11
-                },
-                this
+                }
               )
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/ui/sidebar.tsx",
-              lineNumber: 235,
-              columnNumber: 9
-            },
-            this
+            }
           )
         ]
-      },
-      void 0,
-      !0,
-      {
-        fileName: "app/components/ui/sidebar.tsx",
-        lineNumber: 216,
-        columnNumber: 7
-      },
-      this
+      }
     );
   }
 );
 Sidebar.displayName = "Sidebar";
 var SidebarTrigger = React12.forwardRef(({ className, onClick, ...props }, ref) => {
   let { toggleSidebar } = useSidebar();
-  return /* @__PURE__ */ jsxDEV12(
+  return /* @__PURE__ */ jsxs5(
     Button,
     {
       ref,
@@ -1626,32 +1182,16 @@ var SidebarTrigger = React12.forwardRef(({ className, onClick, ...props }, ref) 
       },
       ...props,
       children: [
-        /* @__PURE__ */ jsxDEV12(PanelLeft, {}, void 0, !1, {
-          fileName: "app/components/ui/sidebar.tsx",
-          lineNumber: 281,
-          columnNumber: 7
-        }, this),
-        /* @__PURE__ */ jsxDEV12("span", { className: "sr-only", children: "Toggle Sidebar" }, void 0, !1, {
-          fileName: "app/components/ui/sidebar.tsx",
-          lineNumber: 282,
-          columnNumber: 7
-        }, this)
+        /* @__PURE__ */ jsx12(PanelLeft, {}),
+        /* @__PURE__ */ jsx12("span", { className: "sr-only", children: "Toggle Sidebar" })
       ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/ui/sidebar.tsx",
-      lineNumber: 269,
-      columnNumber: 5
-    },
-    this
+    }
   );
 });
 SidebarTrigger.displayName = "SidebarTrigger";
 var SidebarRail = React12.forwardRef(({ className, ...props }, ref) => {
   let { toggleSidebar } = useSidebar();
-  return /* @__PURE__ */ jsxDEV12(
+  return /* @__PURE__ */ jsx12(
     "button",
     {
       ref,
@@ -1670,19 +1210,11 @@ var SidebarRail = React12.forwardRef(({ className, ...props }, ref) => {
         className
       ),
       ...props
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/ui/sidebar.tsx",
-      lineNumber: 295,
-      columnNumber: 5
-    },
-    this
+    }
   );
 });
 SidebarRail.displayName = "SidebarRail";
-var SidebarInset = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarInset = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "main",
   {
     ref,
@@ -1692,18 +1224,10 @@ var SidebarInset = React12.forwardRef(({ className, ...props }, ref) => /* @__PU
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 322,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarInset.displayName = "SidebarInset";
-var SidebarInput = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarInput = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   Input,
   {
     ref,
@@ -1713,72 +1237,40 @@ var SidebarInput = React12.forwardRef(({ className, ...props }, ref) => /* @__PU
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 340,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarInput.displayName = "SidebarInput";
-var SidebarHeader = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarHeader = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "div",
   {
     ref,
     "data-sidebar": "header",
     className: cn("flex flex-col gap-2 p-2", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 358,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarHeader.displayName = "SidebarHeader";
-var SidebarFooter = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarFooter = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "div",
   {
     ref,
     "data-sidebar": "footer",
     className: cn("flex flex-col gap-2 p-2", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 373,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarFooter.displayName = "SidebarFooter";
-var SidebarSeparator = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarSeparator = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   Separator2,
   {
     ref,
     "data-sidebar": "separator",
     className: cn("mx-2 w-auto bg-sidebar-border", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 388,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarSeparator.displayName = "SidebarSeparator";
-var SidebarContent = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarContent = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "div",
   {
     ref,
@@ -1788,36 +1280,20 @@ var SidebarContent = React12.forwardRef(({ className, ...props }, ref) => /* @__
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 403,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarContent.displayName = "SidebarContent";
-var SidebarGroup = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarGroup = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "div",
   {
     ref,
     "data-sidebar": "group",
     className: cn("relative flex w-full min-w-0 flex-col p-2", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 421,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarGroup.displayName = "SidebarGroup";
-var SidebarGroupLabel = React12.forwardRef(({ className, asChild = !1, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarGroupLabel = React12.forwardRef(({ className, asChild = !1, ...props }, ref) => /* @__PURE__ */ jsx12(
   asChild ? Slot2 : "div",
   {
     ref,
@@ -1828,18 +1304,10 @@ var SidebarGroupLabel = React12.forwardRef(({ className, asChild = !1, ...props 
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 438,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarGroupLabel.displayName = "SidebarGroupLabel";
-var SidebarGroupAction = React12.forwardRef(({ className, asChild = !1, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarGroupAction = React12.forwardRef(({ className, asChild = !1, ...props }, ref) => /* @__PURE__ */ jsx12(
   asChild ? Slot2 : "button",
   {
     ref,
@@ -1852,69 +1320,37 @@ var SidebarGroupAction = React12.forwardRef(({ className, asChild = !1, ...props
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 459,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarGroupAction.displayName = "SidebarGroupAction";
-var SidebarGroupContent = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarGroupContent = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "div",
   {
     ref,
     "data-sidebar": "group-content",
     className: cn("w-full text-sm", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 479,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 SidebarGroupContent.displayName = "SidebarGroupContent";
-var SidebarMenu = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarMenu = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "ul",
   {
     ref,
     "data-sidebar": "menu",
     className: cn("flex w-full min-w-0 flex-col gap-1", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 492,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 SidebarMenu.displayName = "SidebarMenu";
-var SidebarMenuItem = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarMenuItem = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "li",
   {
     ref,
     "data-sidebar": "menu-item",
     className: cn("group/menu-item relative", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 505,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 SidebarMenuItem.displayName = "SidebarMenuItem";
 var sidebarMenuButtonVariants = cva4(
@@ -1946,7 +1382,7 @@ var sidebarMenuButtonVariants = cva4(
     className,
     ...props
   }, ref) => {
-    let Comp = asChild ? Slot2 : "button", { isMobile, state } = useSidebar(), button = /* @__PURE__ */ jsxDEV12(
+    let Comp = asChild ? Slot2 : "button", { isMobile, state } = useSidebar(), button = /* @__PURE__ */ jsx12(
       Comp,
       {
         ref,
@@ -1955,50 +1391,26 @@ var sidebarMenuButtonVariants = cva4(
         "data-active": isActive,
         className: cn(sidebarMenuButtonVariants({ variant, size }), className),
         ...props
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/ui/sidebar.tsx",
-        lineNumber: 560,
-        columnNumber: 7
-      },
-      this
+      }
     );
     return tooltip ? (typeof tooltip == "string" && (tooltip = {
       children: tooltip
-    }), /* @__PURE__ */ jsxDEV12(Tooltip, { children: [
-      /* @__PURE__ */ jsxDEV12(TooltipTrigger, { asChild: !0, children: button }, void 0, !1, {
-        fileName: "app/components/ui/sidebar.tsx",
-        lineNumber: 582,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV12(
+    }), /* @__PURE__ */ jsxs5(Tooltip, { children: [
+      /* @__PURE__ */ jsx12(TooltipTrigger, { asChild: !0, children: button }),
+      /* @__PURE__ */ jsx12(
         TooltipContent,
         {
           side: "right",
           align: "center",
           hidden: state !== "collapsed" || isMobile,
           ...tooltip
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/ui/sidebar.tsx",
-          lineNumber: 583,
-          columnNumber: 9
-        },
-        this
+        }
       )
-    ] }, void 0, !0, {
-      fileName: "app/components/ui/sidebar.tsx",
-      lineNumber: 581,
-      columnNumber: 7
-    }, this)) : button;
+    ] })) : button;
   }
 );
 SidebarMenuButton.displayName = "SidebarMenuButton";
-var SidebarMenuAction = React12.forwardRef(({ className, asChild = !1, showOnHover = !1, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarMenuAction = React12.forwardRef(({ className, asChild = !1, showOnHover = !1, ...props }, ref) => /* @__PURE__ */ jsx12(
   asChild ? Slot2 : "button",
   {
     ref,
@@ -2015,18 +1427,10 @@ var SidebarMenuAction = React12.forwardRef(({ className, asChild = !1, showOnHov
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 605,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarMenuAction.displayName = "SidebarMenuAction";
-var SidebarMenuBadge = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarMenuBadge = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "div",
   {
     ref,
@@ -2041,20 +1445,12 @@ var SidebarMenuBadge = React12.forwardRef(({ className, ...props }, ref) => /* @
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 630,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 SidebarMenuBadge.displayName = "SidebarMenuBadge";
 var SidebarMenuSkeleton = React12.forwardRef(({ className, showIcon = !1, ...props }, ref) => {
   let width = React12.useMemo(() => `${Math.floor(Math.random() * 40) + 50}%`, []);
-  return /* @__PURE__ */ jsxDEV12(
+  return /* @__PURE__ */ jsxs5(
     "div",
     {
       ref,
@@ -2062,22 +1458,14 @@ var SidebarMenuSkeleton = React12.forwardRef(({ className, showIcon = !1, ...pro
       className: cn("rounded-md h-8 flex gap-2 px-2 items-center", className),
       ...props,
       children: [
-        showIcon && /* @__PURE__ */ jsxDEV12(
+        showIcon && /* @__PURE__ */ jsx12(
           Skeleton,
           {
             className: "size-4 rounded-md",
             "data-sidebar": "menu-skeleton-icon"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/ui/sidebar.tsx",
-            lineNumber: 666,
-            columnNumber: 9
-          },
-          this
+          }
         ),
-        /* @__PURE__ */ jsxDEV12(
+        /* @__PURE__ */ jsx12(
           Skeleton,
           {
             className: "h-4 flex-1 max-w-[--skeleton-width]",
@@ -2085,30 +1473,14 @@ var SidebarMenuSkeleton = React12.forwardRef(({ className, showIcon = !1, ...pro
             style: {
               "--skeleton-width": width
             }
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/ui/sidebar.tsx",
-            lineNumber: 671,
-            columnNumber: 7
-          },
-          this
+          }
         )
       ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/ui/sidebar.tsx",
-      lineNumber: 659,
-      columnNumber: 5
-    },
-    this
+    }
   );
 });
 SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton";
-var SidebarMenuSub = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarMenuSub = React12.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx12(
   "ul",
   {
     ref,
@@ -2119,24 +1491,12 @@ var SidebarMenuSub = React12.forwardRef(({ className, ...props }, ref) => /* @__
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 689,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 SidebarMenuSub.displayName = "SidebarMenuSub";
-var SidebarMenuSubItem = React12.forwardRef(({ ...props }, ref) => /* @__PURE__ */ jsxDEV12("li", { ref, ...props }, void 0, !1, {
-  fileName: "app/components/ui/sidebar.tsx",
-  lineNumber: 705,
-  columnNumber: 26
-}, this));
+var SidebarMenuSubItem = React12.forwardRef(({ ...props }, ref) => /* @__PURE__ */ jsx12("li", { ref, ...props }));
 SidebarMenuSubItem.displayName = "SidebarMenuSubItem";
-var SidebarMenuSubButton = React12.forwardRef(({ asChild = !1, size = "md", isActive, className, ...props }, ref) => /* @__PURE__ */ jsxDEV12(
+var SidebarMenuSubButton = React12.forwardRef(({ asChild = !1, size = "md", isActive, className, ...props }, ref) => /* @__PURE__ */ jsx12(
   asChild ? Slot2 : "a",
   {
     ref,
@@ -2152,15 +1512,7 @@ var SidebarMenuSubButton = React12.forwardRef(({ asChild = !1, size = "md", isAc
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/sidebar.tsx",
-    lineNumber: 719,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";
 
@@ -2200,181 +1552,53 @@ function useBookmarks() {
 }
 
 // app/components/nav-favorites.tsx
-import { jsxDEV as jsxDEV13 } from "react/jsx-dev-runtime";
+import { jsx as jsx13, jsxs as jsxs6 } from "react/jsx-runtime";
 function NavFavorites() {
   let { isMobile } = useSidebar(), { bookmarks: bookmarks2, removeBookmark } = useBookmarks(), { getEmoji } = usePageEmoji(""), sortedBookmarks = [...bookmarks2].sort(
     (a, b) => a.name.localeCompare(b.name)
   );
-  return /* @__PURE__ */ jsxDEV13(SidebarGroup, { className: "group-data-[collapsible=icon]:hidden", children: [
-    /* @__PURE__ */ jsxDEV13(SidebarGroupLabel, { children: "Bookmarks" }, void 0, !1, {
-      fileName: "app/components/nav-favorites.tsx",
-      lineNumber: 43,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV13(SidebarGroupContent, { children: /* @__PURE__ */ jsxDEV13(SidebarMenu, { children: sortedBookmarks.map((item) => /* @__PURE__ */ jsxDEV13(SidebarMenuItem, { children: [
-      /* @__PURE__ */ jsxDEV13(SidebarMenuButton, { asChild: !0, children: /* @__PURE__ */ jsxDEV13(RemixLink, { to: item.url, children: [
-        /* @__PURE__ */ jsxDEV13("span", { children: getEmoji(item.id) }, void 0, !1, {
-          fileName: "app/components/nav-favorites.tsx",
-          lineNumber: 50,
-          columnNumber: 19
-        }, this),
-        /* @__PURE__ */ jsxDEV13("span", { children: item.name }, void 0, !1, {
-          fileName: "app/components/nav-favorites.tsx",
-          lineNumber: 51,
-          columnNumber: 19
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/nav-favorites.tsx",
-        lineNumber: 49,
-        columnNumber: 17
-      }, this) }, void 0, !1, {
-        fileName: "app/components/nav-favorites.tsx",
-        lineNumber: 48,
-        columnNumber: 15
-      }, this),
-      /* @__PURE__ */ jsxDEV13(DropdownMenu, { children: [
-        /* @__PURE__ */ jsxDEV13(DropdownMenuTrigger, { asChild: !0, children: /* @__PURE__ */ jsxDEV13(SidebarMenuAction, { showOnHover: !0, children: [
-          /* @__PURE__ */ jsxDEV13(MoreHorizontal, {}, void 0, !1, {
-            fileName: "app/components/nav-favorites.tsx",
-            lineNumber: 57,
-            columnNumber: 21
-          }, this),
-          /* @__PURE__ */ jsxDEV13("span", { className: "sr-only", children: "More" }, void 0, !1, {
-            fileName: "app/components/nav-favorites.tsx",
-            lineNumber: 58,
-            columnNumber: 21
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/nav-favorites.tsx",
-          lineNumber: 56,
-          columnNumber: 19
-        }, this) }, void 0, !1, {
-          fileName: "app/components/nav-favorites.tsx",
-          lineNumber: 55,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ jsxDEV13(
+  return /* @__PURE__ */ jsxs6(SidebarGroup, { className: "group-data-[collapsible=icon]:hidden", children: [
+    /* @__PURE__ */ jsx13(SidebarGroupLabel, { children: "Bookmarks" }),
+    /* @__PURE__ */ jsx13(SidebarGroupContent, { children: /* @__PURE__ */ jsx13(SidebarMenu, { children: sortedBookmarks.map((item) => /* @__PURE__ */ jsxs6(SidebarMenuItem, { children: [
+      /* @__PURE__ */ jsx13(SidebarMenuButton, { asChild: !0, children: /* @__PURE__ */ jsxs6(RemixLink, { to: item.url, children: [
+        /* @__PURE__ */ jsx13("span", { children: getEmoji(item.id) }),
+        /* @__PURE__ */ jsx13("span", { children: item.name })
+      ] }) }),
+      /* @__PURE__ */ jsxs6(DropdownMenu, { children: [
+        /* @__PURE__ */ jsx13(DropdownMenuTrigger, { asChild: !0, children: /* @__PURE__ */ jsxs6(SidebarMenuAction, { showOnHover: !0, children: [
+          /* @__PURE__ */ jsx13(MoreHorizontal, {}),
+          /* @__PURE__ */ jsx13("span", { className: "sr-only", children: "More" })
+        ] }) }),
+        /* @__PURE__ */ jsxs6(
           DropdownMenuContent,
           {
             align: isMobile ? "center" : "start",
             className: "w-48",
             children: [
-              /* @__PURE__ */ jsxDEV13(DropdownMenuItem, { onClick: () => removeBookmark(item.id), children: [
-                /* @__PURE__ */ jsxDEV13(BookmarkX, { className: "text-muted-foreground" }, void 0, !1, {
-                  fileName: "app/components/nav-favorites.tsx",
-                  lineNumber: 66,
-                  columnNumber: 21
-                }, this),
-                /* @__PURE__ */ jsxDEV13("span", { children: "Remove from Bookmarks" }, void 0, !1, {
-                  fileName: "app/components/nav-favorites.tsx",
-                  lineNumber: 67,
-                  columnNumber: 21
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/nav-favorites.tsx",
-                lineNumber: 65,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV13(DropdownMenuSeparator, {}, void 0, !1, {
-                fileName: "app/components/nav-favorites.tsx",
-                lineNumber: 69,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV13(DropdownMenuItem, { asChild: !0, children: /* @__PURE__ */ jsxDEV13(RemixLink, { to: item.url, children: [
-                /* @__PURE__ */ jsxDEV13(Link, { className: "text-muted-foreground" }, void 0, !1, {
-                  fileName: "app/components/nav-favorites.tsx",
-                  lineNumber: 72,
-                  columnNumber: 23
-                }, this),
-                /* @__PURE__ */ jsxDEV13("span", { children: "Copy Link" }, void 0, !1, {
-                  fileName: "app/components/nav-favorites.tsx",
-                  lineNumber: 73,
-                  columnNumber: 23
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/nav-favorites.tsx",
-                lineNumber: 71,
-                columnNumber: 21
-              }, this) }, void 0, !1, {
-                fileName: "app/components/nav-favorites.tsx",
-                lineNumber: 70,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV13(DropdownMenuItem, { asChild: !0, children: /* @__PURE__ */ jsxDEV13("a", { href: item.url, target: "_blank", rel: "noopener noreferrer", children: [
-                /* @__PURE__ */ jsxDEV13(ArrowUpRight, { className: "text-muted-foreground" }, void 0, !1, {
-                  fileName: "app/components/nav-favorites.tsx",
-                  lineNumber: 78,
-                  columnNumber: 23
-                }, this),
-                /* @__PURE__ */ jsxDEV13("span", { children: "Open in New Tab" }, void 0, !1, {
-                  fileName: "app/components/nav-favorites.tsx",
-                  lineNumber: 79,
-                  columnNumber: 23
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/nav-favorites.tsx",
-                lineNumber: 77,
-                columnNumber: 21
-              }, this) }, void 0, !1, {
-                fileName: "app/components/nav-favorites.tsx",
-                lineNumber: 76,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV13(DropdownMenuSeparator, {}, void 0, !1, {
-                fileName: "app/components/nav-favorites.tsx",
-                lineNumber: 82,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV13(DropdownMenuItem, { className: "text-destructive focus:text-destructive", children: [
-                /* @__PURE__ */ jsxDEV13(Trash2, { className: "text-muted-foreground" }, void 0, !1, {
-                  fileName: "app/components/nav-favorites.tsx",
-                  lineNumber: 84,
-                  columnNumber: 21
-                }, this),
-                /* @__PURE__ */ jsxDEV13("span", { children: "Delete" }, void 0, !1, {
-                  fileName: "app/components/nav-favorites.tsx",
-                  lineNumber: 85,
-                  columnNumber: 21
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/nav-favorites.tsx",
-                lineNumber: 83,
-                columnNumber: 19
-              }, this)
+              /* @__PURE__ */ jsxs6(DropdownMenuItem, { onClick: () => removeBookmark(item.id), children: [
+                /* @__PURE__ */ jsx13(BookmarkX, { className: "text-muted-foreground" }),
+                /* @__PURE__ */ jsx13("span", { children: "Remove from Bookmarks" })
+              ] }),
+              /* @__PURE__ */ jsx13(DropdownMenuSeparator, {}),
+              /* @__PURE__ */ jsx13(DropdownMenuItem, { asChild: !0, children: /* @__PURE__ */ jsxs6(RemixLink, { to: item.url, children: [
+                /* @__PURE__ */ jsx13(Link, { className: "text-muted-foreground" }),
+                /* @__PURE__ */ jsx13("span", { children: "Copy Link" })
+              ] }) }),
+              /* @__PURE__ */ jsx13(DropdownMenuItem, { asChild: !0, children: /* @__PURE__ */ jsxs6("a", { href: item.url, target: "_blank", rel: "noopener noreferrer", children: [
+                /* @__PURE__ */ jsx13(ArrowUpRight, { className: "text-muted-foreground" }),
+                /* @__PURE__ */ jsx13("span", { children: "Open in New Tab" })
+              ] }) }),
+              /* @__PURE__ */ jsx13(DropdownMenuSeparator, {}),
+              /* @__PURE__ */ jsxs6(DropdownMenuItem, { className: "text-destructive focus:text-destructive", children: [
+                /* @__PURE__ */ jsx13(Trash2, { className: "text-muted-foreground" }),
+                /* @__PURE__ */ jsx13("span", { children: "Delete" })
+              ] })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-favorites.tsx",
-            lineNumber: 61,
-            columnNumber: 17
-          },
-          this
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/components/nav-favorites.tsx",
-        lineNumber: 54,
-        columnNumber: 15
-      }, this)
-    ] }, item.id, !0, {
-      fileName: "app/components/nav-favorites.tsx",
-      lineNumber: 47,
-      columnNumber: 13
-    }, this)) }, void 0, !1, {
-      fileName: "app/components/nav-favorites.tsx",
-      lineNumber: 45,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/components/nav-favorites.tsx",
-      lineNumber: 44,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/nav-favorites.tsx",
-    lineNumber: 42,
-    columnNumber: 5
-  }, this);
+      ] })
+    ] }, item.id)) }) })
+  ] });
 }
 
 // app/components/nav-main.tsx
@@ -2401,10 +1625,10 @@ import {
 import * as React14 from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X as X3 } from "lucide-react";
-import { jsxDEV as jsxDEV14 } from "react/jsx-dev-runtime";
+import { jsx as jsx14, jsxs as jsxs7 } from "react/jsx-runtime";
 var Dialog = DialogPrimitive.Root;
 var DialogPortal = DialogPrimitive.Portal;
-var DialogOverlay = React14.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV14(
+var DialogOverlay = React14.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx14(
   DialogPrimitive.Overlay,
   {
     ref,
@@ -2413,24 +1637,12 @@ var DialogOverlay = React14.forwardRef(({ className, ...props }, ref) => /* @__P
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dialog.tsx",
-    lineNumber: 19,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
-var DialogContent = React14.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxDEV14(DialogPortal, { children: [
-  /* @__PURE__ */ jsxDEV14(DialogOverlay, {}, void 0, !1, {
-    fileName: "app/components/ui/dialog.tsx",
-    lineNumber: 35,
-    columnNumber: 5
-  }, this),
-  /* @__PURE__ */ jsxDEV14(
+var DialogContent = React14.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxs7(DialogPortal, { children: [
+  /* @__PURE__ */ jsx14(DialogOverlay, {}),
+  /* @__PURE__ */ jsxs7(
     DialogPrimitive.Content,
     {
       ref,
@@ -2441,43 +1653,19 @@ var DialogContent = React14.forwardRef(({ className, children, ...props }, ref) 
       ...props,
       children: [
         children,
-        /* @__PURE__ */ jsxDEV14(DialogPrimitive.Close, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground", children: [
-          /* @__PURE__ */ jsxDEV14(X3, { className: "h-4 w-4" }, void 0, !1, {
-            fileName: "app/components/ui/dialog.tsx",
-            lineNumber: 46,
-            columnNumber: 9
-          }, this),
-          /* @__PURE__ */ jsxDEV14("span", { className: "sr-only", children: "Close" }, void 0, !1, {
-            fileName: "app/components/ui/dialog.tsx",
-            lineNumber: 47,
-            columnNumber: 9
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/ui/dialog.tsx",
-          lineNumber: 45,
-          columnNumber: 7
-        }, this)
+        /* @__PURE__ */ jsxs7(DialogPrimitive.Close, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground", children: [
+          /* @__PURE__ */ jsx14(X3, { className: "h-4 w-4" }),
+          /* @__PURE__ */ jsx14("span", { className: "sr-only", children: "Close" })
+        ] })
       ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/ui/dialog.tsx",
-      lineNumber: 36,
-      columnNumber: 5
-    },
-    this
+    }
   )
-] }, void 0, !0, {
-  fileName: "app/components/ui/dialog.tsx",
-  lineNumber: 34,
-  columnNumber: 3
-}, this));
+] }));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 var DialogHeader = ({
   className,
   ...props
-}) => /* @__PURE__ */ jsxDEV14(
+}) => /* @__PURE__ */ jsx14(
   "div",
   {
     className: cn(
@@ -2485,21 +1673,13 @@ var DialogHeader = ({
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dialog.tsx",
-    lineNumber: 58,
-    columnNumber: 3
-  },
-  this
+  }
 );
 DialogHeader.displayName = "DialogHeader";
 var DialogFooter = ({
   className,
   ...props
-}) => /* @__PURE__ */ jsxDEV14(
+}) => /* @__PURE__ */ jsx14(
   "div",
   {
     className: cn(
@@ -2507,18 +1687,10 @@ var DialogFooter = ({
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dialog.tsx",
-    lineNumber: 72,
-    columnNumber: 3
-  },
-  this
+  }
 );
 DialogFooter.displayName = "DialogFooter";
-var DialogTitle = React14.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV14(
+var DialogTitle = React14.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx14(
   DialogPrimitive.Title,
   {
     ref,
@@ -2527,37 +1699,21 @@ var DialogTitle = React14.forwardRef(({ className, ...props }, ref) => /* @__PUR
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dialog.tsx",
-    lineNumber: 86,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
-var DialogDescription = React14.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV14(
+var DialogDescription = React14.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx14(
   DialogPrimitive.Description,
   {
     ref,
     className: cn("text-sm text-muted-foreground", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/dialog.tsx",
-    lineNumber: 101,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
 // app/components/archive-command.tsx
-import { jsxDEV as jsxDEV15 } from "react/jsx-dev-runtime";
+import { jsx as jsx15, jsxs as jsxs8 } from "react/jsx-runtime";
 var archivedItems = [
   {
     id: 1,
@@ -2616,332 +1772,111 @@ function ArchiveCommand({ open, onOpenChange }) {
   let filteredItems = archivedItems.filter(
     (item) => item.name.toLowerCase().includes(searchQuery.toLowerCase())
   ), activeTitle = filters.find((f) => f.id === activeFilter)?.name || "Archive";
-  return /* @__PURE__ */ jsxDEV15(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV15(DialogContent, { className: "max-w-4xl h-[85vh] p-0", children: [
-    /* @__PURE__ */ jsxDEV15(DialogHeader, { className: "sr-only", children: /* @__PURE__ */ jsxDEV15(DialogTitle, { children: activeTitle }, void 0, !1, {
-      fileName: "app/components/archive-command.tsx",
-      lineNumber: 112,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/archive-command.tsx",
-      lineNumber: 111,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV15("div", { className: "flex h-full", children: [
-      /* @__PURE__ */ jsxDEV15("div", { className: "w-64 border-r p-4 flex flex-col gap-4", children: [
-        /* @__PURE__ */ jsxDEV15("div", { className: "space-y-4", children: [
-          /* @__PURE__ */ jsxDEV15("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxDEV15(Archive, { className: "h-5 w-5" }, void 0, !1, {
-              fileName: "app/components/archive-command.tsx",
-              lineNumber: 119,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV15("h2", { className: "text-lg font-semibold", children: "Archive" }, void 0, !1, {
-              fileName: "app/components/archive-command.tsx",
-              lineNumber: 120,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/archive-command.tsx",
-            lineNumber: 118,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV15("div", { className: "relative", children: [
-            /* @__PURE__ */ jsxDEV15(Search, { className: "absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" }, void 0, !1, {
-              fileName: "app/components/archive-command.tsx",
-              lineNumber: 123,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV15(
+  return /* @__PURE__ */ jsx15(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs8(DialogContent, { className: "max-w-4xl h-[85vh] p-0", children: [
+    /* @__PURE__ */ jsx15(DialogHeader, { className: "sr-only", children: /* @__PURE__ */ jsx15(DialogTitle, { children: activeTitle }) }),
+    /* @__PURE__ */ jsxs8("div", { className: "flex h-full", children: [
+      /* @__PURE__ */ jsxs8("div", { className: "w-64 border-r p-4 flex flex-col gap-4", children: [
+        /* @__PURE__ */ jsxs8("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ jsxs8("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsx15(Archive, { className: "h-5 w-5" }),
+            /* @__PURE__ */ jsx15("h2", { className: "text-lg font-semibold", children: "Archive" })
+          ] }),
+          /* @__PURE__ */ jsxs8("div", { className: "relative", children: [
+            /* @__PURE__ */ jsx15(Search, { className: "absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsx15(
               Input,
               {
                 placeholder: "Search archives...",
                 className: "pl-8",
                 value: searchQuery,
                 onChange: (e) => setSearchQuery(e.target.value)
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/components/archive-command.tsx",
-                lineNumber: 124,
-                columnNumber: 17
-              },
-              this
+              }
             )
-          ] }, void 0, !0, {
-            fileName: "app/components/archive-command.tsx",
-            lineNumber: 122,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/archive-command.tsx",
-          lineNumber: 117,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV15(Separator2, {}, void 0, !1, {
-          fileName: "app/components/archive-command.tsx",
-          lineNumber: 132,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV15("nav", { className: "space-y-1", children: filters.map((filter) => {
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx15(Separator2, {}),
+        /* @__PURE__ */ jsx15("nav", { className: "space-y-1", children: filters.map((filter) => {
           let Icon = filter.icon;
-          return /* @__PURE__ */ jsxDEV15(
+          return /* @__PURE__ */ jsxs8(
             "button",
             {
               onClick: () => setActiveFilter(filter.id),
               className: `w-full flex items-center gap-2 px-2 py-1.5 text-sm rounded-lg transition-colors ${activeFilter === filter.id ? "bg-secondary text-secondary-foreground" : "text-muted-foreground hover:bg-secondary/50"}`,
               children: [
-                /* @__PURE__ */ jsxDEV15(Icon, { className: "h-4 w-4" }, void 0, !1, {
-                  fileName: "app/components/archive-command.tsx",
-                  lineNumber: 146,
-                  columnNumber: 21
-                }, this),
+                /* @__PURE__ */ jsx15(Icon, { className: "h-4 w-4" }),
                 filter.name
               ]
             },
-            filter.id,
-            !0,
-            {
-              fileName: "app/components/archive-command.tsx",
-              lineNumber: 137,
-              columnNumber: 19
-            },
-            this
+            filter.id
           );
-        }) }, void 0, !1, {
-          fileName: "app/components/archive-command.tsx",
-          lineNumber: 133,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/archive-command.tsx",
-        lineNumber: 116,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV15("div", { className: "flex-1 flex flex-col min-h-0", children: [
-        /* @__PURE__ */ jsxDEV15("div", { className: "border-b p-4", children: /* @__PURE__ */ jsxDEV15("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ jsxDEV15("h3", { className: "text-sm font-medium", children: activeFilter === "all" ? "All Archives" : filters.find((f) => f.id === activeFilter)?.name }, void 0, !1, {
-            fileName: "app/components/archive-command.tsx",
-            lineNumber: 158,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV15(Button, { variant: "outline", size: "sm", children: [
-            /* @__PURE__ */ jsxDEV15(Tags, { className: "h-4 w-4 mr-2" }, void 0, !1, {
-              fileName: "app/components/archive-command.tsx",
-              lineNumber: 164,
-              columnNumber: 19
-            }, this),
+        }) })
+      ] }),
+      /* @__PURE__ */ jsxs8("div", { className: "flex-1 flex flex-col min-h-0", children: [
+        /* @__PURE__ */ jsx15("div", { className: "border-b p-4", children: /* @__PURE__ */ jsxs8("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ jsx15("h3", { className: "text-sm font-medium", children: activeFilter === "all" ? "All Archives" : filters.find((f) => f.id === activeFilter)?.name }),
+          /* @__PURE__ */ jsxs8(Button, { variant: "outline", size: "sm", children: [
+            /* @__PURE__ */ jsx15(Tags, { className: "h-4 w-4 mr-2" }),
             "Manage Tags"
-          ] }, void 0, !0, {
-            fileName: "app/components/archive-command.tsx",
-            lineNumber: 163,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/archive-command.tsx",
-          lineNumber: 157,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/archive-command.tsx",
-          lineNumber: 156,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV15("div", { className: "p-4 overflow-auto flex-1", children: /* @__PURE__ */ jsxDEV15("div", { className: "grid gap-2", children: filteredItems.length === 0 ? /* @__PURE__ */ jsxDEV15("div", { className: "text-center py-12", children: [
-          /* @__PURE__ */ jsxDEV15(Archive, { className: "h-12 w-12 mx-auto text-muted-foreground" }, void 0, !1, {
-            fileName: "app/components/archive-command.tsx",
-            lineNumber: 173,
-            columnNumber: 21
-          }, this),
-          /* @__PURE__ */ jsxDEV15("h3", { className: "mt-4 text-lg font-medium", children: "No items found" }, void 0, !1, {
-            fileName: "app/components/archive-command.tsx",
-            lineNumber: 174,
-            columnNumber: 21
-          }, this),
-          /* @__PURE__ */ jsxDEV15("p", { className: "text-sm text-muted-foreground", children: "Try adjusting your search or filters" }, void 0, !1, {
-            fileName: "app/components/archive-command.tsx",
-            lineNumber: 175,
-            columnNumber: 21
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/archive-command.tsx",
-          lineNumber: 172,
-          columnNumber: 19
-        }, this) : filteredItems.map((item) => {
+          ] })
+        ] }) }),
+        /* @__PURE__ */ jsx15("div", { className: "p-4 overflow-auto flex-1", children: /* @__PURE__ */ jsx15("div", { className: "grid gap-2", children: filteredItems.length === 0 ? /* @__PURE__ */ jsxs8("div", { className: "text-center py-12", children: [
+          /* @__PURE__ */ jsx15(Archive, { className: "h-12 w-12 mx-auto text-muted-foreground" }),
+          /* @__PURE__ */ jsx15("h3", { className: "mt-4 text-lg font-medium", children: "No items found" }),
+          /* @__PURE__ */ jsx15("p", { className: "text-sm text-muted-foreground", children: "Try adjusting your search or filters" })
+        ] }) : filteredItems.map((item) => {
           let Icon = item.icon;
-          return /* @__PURE__ */ jsxDEV15(
+          return /* @__PURE__ */ jsxs8(
             "div",
             {
               className: "flex items-center justify-between p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors",
               children: [
-                /* @__PURE__ */ jsxDEV15("div", { className: "flex items-center gap-3", children: [
-                  /* @__PURE__ */ jsxDEV15(Icon, { className: "h-5 w-5 text-muted-foreground" }, void 0, !1, {
-                    fileName: "app/components/archive-command.tsx",
-                    lineNumber: 188,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ jsxDEV15("div", { children: [
-                    /* @__PURE__ */ jsxDEV15("h4", { className: "text-sm font-medium", children: item.name }, void 0, !1, {
-                      fileName: "app/components/archive-command.tsx",
-                      lineNumber: 190,
-                      columnNumber: 29
-                    }, this),
-                    /* @__PURE__ */ jsxDEV15("div", { className: "flex items-center gap-2 mt-1", children: [
-                      /* @__PURE__ */ jsxDEV15("span", { className: "text-xs text-muted-foreground", children: item.date }, void 0, !1, {
-                        fileName: "app/components/archive-command.tsx",
-                        lineNumber: 192,
-                        columnNumber: 31
-                      }, this),
-                      /* @__PURE__ */ jsxDEV15("span", { className: "text-xs text-muted-foreground", children: "\u2022" }, void 0, !1, {
-                        fileName: "app/components/archive-command.tsx",
-                        lineNumber: 195,
-                        columnNumber: 31
-                      }, this),
-                      /* @__PURE__ */ jsxDEV15("div", { className: "flex items-center gap-1", children: item.tags.map((tag) => /* @__PURE__ */ jsxDEV15(
+                /* @__PURE__ */ jsxs8("div", { className: "flex items-center gap-3", children: [
+                  /* @__PURE__ */ jsx15(Icon, { className: "h-5 w-5 text-muted-foreground" }),
+                  /* @__PURE__ */ jsxs8("div", { children: [
+                    /* @__PURE__ */ jsx15("h4", { className: "text-sm font-medium", children: item.name }),
+                    /* @__PURE__ */ jsxs8("div", { className: "flex items-center gap-2 mt-1", children: [
+                      /* @__PURE__ */ jsx15("span", { className: "text-xs text-muted-foreground", children: item.date }),
+                      /* @__PURE__ */ jsx15("span", { className: "text-xs text-muted-foreground", children: "\u2022" }),
+                      /* @__PURE__ */ jsx15("div", { className: "flex items-center gap-1", children: item.tags.map((tag) => /* @__PURE__ */ jsx15(
                         "span",
                         {
                           className: "inline-flex items-center px-1.5 py-0.5 rounded-md text-xs font-medium bg-secondary",
                           children: tag
                         },
-                        tag,
-                        !1,
-                        {
-                          fileName: "app/components/archive-command.tsx",
-                          lineNumber: 198,
-                          columnNumber: 35
-                        },
-                        this
-                      )) }, void 0, !1, {
-                        fileName: "app/components/archive-command.tsx",
-                        lineNumber: 196,
-                        columnNumber: 31
-                      }, this)
-                    ] }, void 0, !0, {
-                      fileName: "app/components/archive-command.tsx",
-                      lineNumber: 191,
-                      columnNumber: 29
-                    }, this)
-                  ] }, void 0, !0, {
-                    fileName: "app/components/archive-command.tsx",
-                    lineNumber: 189,
-                    columnNumber: 27
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/components/archive-command.tsx",
-                  lineNumber: 187,
-                  columnNumber: 25
-                }, this),
-                /* @__PURE__ */ jsxDEV15(DropdownMenu, { children: [
-                  /* @__PURE__ */ jsxDEV15(DropdownMenuTrigger, { asChild: !0, children: /* @__PURE__ */ jsxDEV15(Button, { variant: "ghost", size: "icon", className: "h-8 w-8", children: [
-                    /* @__PURE__ */ jsxDEV15(MoreHorizontal2, { className: "h-4 w-4" }, void 0, !1, {
-                      fileName: "app/components/archive-command.tsx",
-                      lineNumber: 212,
-                      columnNumber: 31
-                    }, this),
-                    /* @__PURE__ */ jsxDEV15("span", { className: "sr-only", children: "Open menu" }, void 0, !1, {
-                      fileName: "app/components/archive-command.tsx",
-                      lineNumber: 213,
-                      columnNumber: 31
-                    }, this)
-                  ] }, void 0, !0, {
-                    fileName: "app/components/archive-command.tsx",
-                    lineNumber: 211,
-                    columnNumber: 29
-                  }, this) }, void 0, !1, {
-                    fileName: "app/components/archive-command.tsx",
-                    lineNumber: 210,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ jsxDEV15(DropdownMenuContent, { align: "end", children: [
-                    /* @__PURE__ */ jsxDEV15(DropdownMenuItem, { children: [
-                      /* @__PURE__ */ jsxDEV15(ArrowUpRight2, { className: "h-4 w-4 mr-2" }, void 0, !1, {
-                        fileName: "app/components/archive-command.tsx",
-                        lineNumber: 218,
-                        columnNumber: 31
-                      }, this),
+                        tag
+                      )) })
+                    ] })
+                  ] })
+                ] }),
+                /* @__PURE__ */ jsxs8(DropdownMenu, { children: [
+                  /* @__PURE__ */ jsx15(DropdownMenuTrigger, { asChild: !0, children: /* @__PURE__ */ jsxs8(Button, { variant: "ghost", size: "icon", className: "h-8 w-8", children: [
+                    /* @__PURE__ */ jsx15(MoreHorizontal2, { className: "h-4 w-4" }),
+                    /* @__PURE__ */ jsx15("span", { className: "sr-only", children: "Open menu" })
+                  ] }) }),
+                  /* @__PURE__ */ jsxs8(DropdownMenuContent, { align: "end", children: [
+                    /* @__PURE__ */ jsxs8(DropdownMenuItem, { children: [
+                      /* @__PURE__ */ jsx15(ArrowUpRight2, { className: "h-4 w-4 mr-2" }),
                       "Open"
-                    ] }, void 0, !0, {
-                      fileName: "app/components/archive-command.tsx",
-                      lineNumber: 217,
-                      columnNumber: 29
-                    }, this),
-                    /* @__PURE__ */ jsxDEV15(DropdownMenuItem, { children: [
-                      /* @__PURE__ */ jsxDEV15(Star, { className: "h-4 w-4 mr-2" }, void 0, !1, {
-                        fileName: "app/components/archive-command.tsx",
-                        lineNumber: 222,
-                        columnNumber: 31
-                      }, this),
+                    ] }),
+                    /* @__PURE__ */ jsxs8(DropdownMenuItem, { children: [
+                      /* @__PURE__ */ jsx15(Star, { className: "h-4 w-4 mr-2" }),
                       "Star"
-                    ] }, void 0, !0, {
-                      fileName: "app/components/archive-command.tsx",
-                      lineNumber: 221,
-                      columnNumber: 29
-                    }, this),
-                    /* @__PURE__ */ jsxDEV15(DropdownMenuSeparator, {}, void 0, !1, {
-                      fileName: "app/components/archive-command.tsx",
-                      lineNumber: 225,
-                      columnNumber: 29
-                    }, this),
-                    /* @__PURE__ */ jsxDEV15(DropdownMenuItem, { className: "text-destructive focus:text-destructive", children: [
-                      /* @__PURE__ */ jsxDEV15(Trash22, { className: "h-4 w-4 mr-2" }, void 0, !1, {
-                        fileName: "app/components/archive-command.tsx",
-                        lineNumber: 227,
-                        columnNumber: 31
-                      }, this),
+                    ] }),
+                    /* @__PURE__ */ jsx15(DropdownMenuSeparator, {}),
+                    /* @__PURE__ */ jsxs8(DropdownMenuItem, { className: "text-destructive focus:text-destructive", children: [
+                      /* @__PURE__ */ jsx15(Trash22, { className: "h-4 w-4 mr-2" }),
                       "Delete"
-                    ] }, void 0, !0, {
-                      fileName: "app/components/archive-command.tsx",
-                      lineNumber: 226,
-                      columnNumber: 29
-                    }, this)
-                  ] }, void 0, !0, {
-                    fileName: "app/components/archive-command.tsx",
-                    lineNumber: 216,
-                    columnNumber: 27
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/components/archive-command.tsx",
-                  lineNumber: 209,
-                  columnNumber: 25
-                }, this)
+                    ] })
+                  ] })
+                ] })
               ]
             },
-            item.id,
-            !0,
-            {
-              fileName: "app/components/archive-command.tsx",
-              lineNumber: 183,
-              columnNumber: 23
-            },
-            this
+            item.id
           );
-        }) }, void 0, !1, {
-          fileName: "app/components/archive-command.tsx",
-          lineNumber: 170,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/archive-command.tsx",
-          lineNumber: 169,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/archive-command.tsx",
-        lineNumber: 155,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/archive-command.tsx",
-      lineNumber: 114,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/archive-command.tsx",
-    lineNumber: 110,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/archive-command.tsx",
-    lineNumber: 109,
-    columnNumber: 5
-  }, this);
+        }) }) })
+      ] })
+    ] })
+  ] }) });
 }
 
 // app/components/search-command.tsx
@@ -2961,8 +1896,8 @@ import {
 import * as React16 from "react";
 import { Command as CommandPrimitive } from "cmdk";
 import { Search as Search2 } from "lucide-react";
-import { jsxDEV as jsxDEV16 } from "react/jsx-dev-runtime";
-var Command = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV16(
+import { jsx as jsx16, jsxs as jsxs9 } from "react/jsx-runtime";
+var Command = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx16(
   CommandPrimitive,
   {
     ref,
@@ -2971,36 +1906,12 @@ var Command = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ 
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/command.tsx",
-    lineNumber: 13,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 Command.displayName = CommandPrimitive.displayName;
-var CommandDialog = ({ children, ...props }) => /* @__PURE__ */ jsxDEV16(Dialog, { ...props, children: /* @__PURE__ */ jsxDEV16(DialogContent, { className: "overflow-hidden p-0 shadow-lg", children: /* @__PURE__ */ jsxDEV16(Command, { className: "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5", children }, void 0, !1, {
-  fileName: "app/components/ui/command.tsx",
-  lineNumber: 30,
-  columnNumber: 9
-}, this) }, void 0, !1, {
-  fileName: "app/components/ui/command.tsx",
-  lineNumber: 29,
-  columnNumber: 7
-}, this) }, void 0, !1, {
-  fileName: "app/components/ui/command.tsx",
-  lineNumber: 28,
-  columnNumber: 5
-}, this), CommandInput = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV16("div", { className: "flex items-center border-b px-3", "cmdk-input-wrapper": "", children: [
-  /* @__PURE__ */ jsxDEV16(Search2, { className: "mr-2 h-4 w-4 shrink-0 opacity-50" }, void 0, !1, {
-    fileName: "app/components/ui/command.tsx",
-    lineNumber: 43,
-    columnNumber: 5
-  }, this),
-  /* @__PURE__ */ jsxDEV16(
+var CommandDialog = ({ children, ...props }) => /* @__PURE__ */ jsx16(Dialog, { ...props, children: /* @__PURE__ */ jsx16(DialogContent, { className: "overflow-hidden p-0 shadow-lg", children: /* @__PURE__ */ jsx16(Command, { className: "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5", children }) }) }), CommandInput = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxs9("div", { className: "flex items-center border-b px-3", "cmdk-input-wrapper": "", children: [
+  /* @__PURE__ */ jsx16(Search2, { className: "mr-2 h-4 w-4 shrink-0 opacity-50" }),
+  /* @__PURE__ */ jsx16(
     CommandPrimitive.Input,
     {
       ref,
@@ -3009,57 +1920,29 @@ var CommandDialog = ({ children, ...props }) => /* @__PURE__ */ jsxDEV16(Dialog,
         className
       ),
       ...props
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/ui/command.tsx",
-      lineNumber: 44,
-      columnNumber: 5
-    },
-    this
+    }
   )
-] }, void 0, !0, {
-  fileName: "app/components/ui/command.tsx",
-  lineNumber: 42,
-  columnNumber: 3
-}, this));
+] }));
 CommandInput.displayName = CommandPrimitive.Input.displayName;
-var CommandList = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV16(
+var CommandList = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx16(
   CommandPrimitive.List,
   {
     ref,
     className: cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/command.tsx",
-    lineNumber: 61,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 CommandList.displayName = CommandPrimitive.List.displayName;
-var CommandEmpty = React16.forwardRef((props, ref) => /* @__PURE__ */ jsxDEV16(
+var CommandEmpty = React16.forwardRef((props, ref) => /* @__PURE__ */ jsx16(
   CommandPrimitive.Empty,
   {
     ref,
     className: "py-6 text-center text-sm",
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/command.tsx",
-    lineNumber: 74,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName;
-var CommandGroup = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV16(
+var CommandGroup = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx16(
   CommandPrimitive.Group,
   {
     ref,
@@ -3068,35 +1951,19 @@ var CommandGroup = React16.forwardRef(({ className, ...props }, ref) => /* @__PU
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/command.tsx",
-    lineNumber: 87,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 CommandGroup.displayName = CommandPrimitive.Group.displayName;
-var CommandSeparator = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV16(
+var CommandSeparator = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx16(
   CommandPrimitive.Separator,
   {
     ref,
     className: cn("-mx-1 h-px bg-border", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/command.tsx",
-    lineNumber: 103,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName;
-var CommandItem = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV16(
+var CommandItem = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx16(
   CommandPrimitive.Item,
   {
     ref,
@@ -3105,21 +1972,13 @@ var CommandItem = React16.forwardRef(({ className, ...props }, ref) => /* @__PUR
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/command.tsx",
-    lineNumber: 115,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 CommandItem.displayName = CommandPrimitive.Item.displayName;
 var CommandShortcut = ({
   className,
   ...props
-}) => /* @__PURE__ */ jsxDEV16(
+}) => /* @__PURE__ */ jsx16(
   "span",
   {
     className: cn(
@@ -3127,20 +1986,12 @@ var CommandShortcut = ({
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/command.tsx",
-    lineNumber: 132,
-    columnNumber: 5
-  },
-  this
+  }
 );
 CommandShortcut.displayName = "CommandShortcut";
 
 // app/components/search-command.tsx
-import { jsxDEV as jsxDEV17 } from "react/jsx-dev-runtime";
+import { jsx as jsx17, jsxs as jsxs10 } from "react/jsx-runtime";
 function SearchCommand() {
   let [open, setOpen] = React17.useState(!1);
   return React17.useEffect(() => {
@@ -3148,230 +1999,62 @@ function SearchCommand() {
       e.key === "k" && (e.metaKey || e.ctrlKey) && (e.preventDefault(), setOpen((open2) => !open2));
     };
     return document.addEventListener("keydown", down), () => document.removeEventListener("keydown", down);
-  }, []), /* @__PURE__ */ jsxDEV17(CommandDialog, { open, onOpenChange: setOpen, children: [
-    /* @__PURE__ */ jsxDEV17(DialogTitle, { className: "sr-only", children: "Search Commands" }, void 0, !1, {
-      fileName: "app/components/search-command.tsx",
-      lineNumber: 44,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV17(Command, { className: "rounded-lg border shadow-md", children: [
-      /* @__PURE__ */ jsxDEV17(CommandInput, { placeholder: "Type a command or search..." }, void 0, !1, {
-        fileName: "app/components/search-command.tsx",
-        lineNumber: 46,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV17(CommandList, { children: [
-        /* @__PURE__ */ jsxDEV17(CommandEmpty, { children: "No results found." }, void 0, !1, {
-          fileName: "app/components/search-command.tsx",
-          lineNumber: 48,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV17(CommandGroup, { heading: "Suggestions", children: [
-          /* @__PURE__ */ jsxDEV17(CommandItem, { children: [
-            /* @__PURE__ */ jsxDEV17(Calendar, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 51,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17("span", { children: "Calendar" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 52,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/search-command.tsx",
-            lineNumber: 50,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV17(CommandItem, { children: [
-            /* @__PURE__ */ jsxDEV17(FolderPlus, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 55,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17("span", { children: "New Project" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 56,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17(CommandShortcut, { children: "\u2318N" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 57,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/search-command.tsx",
-            lineNumber: 54,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV17(CommandItem, { children: [
-            /* @__PURE__ */ jsxDEV17(FileText2, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 60,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17("span", { children: "New Document" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 61,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17(CommandShortcut, { children: "\u2318D" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 62,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/search-command.tsx",
-            lineNumber: 59,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/search-command.tsx",
-          lineNumber: 49,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV17(CommandSeparator, {}, void 0, !1, {
-          fileName: "app/components/search-command.tsx",
-          lineNumber: 65,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV17(CommandGroup, { heading: "Settings", children: [
-          /* @__PURE__ */ jsxDEV17(CommandItem, { children: [
-            /* @__PURE__ */ jsxDEV17(User, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 68,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17("span", { children: "Profile" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 69,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17(CommandShortcut, { children: "\u2318P" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 70,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/search-command.tsx",
-            lineNumber: 67,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV17(CommandItem, { children: [
-            /* @__PURE__ */ jsxDEV17(CreditCard, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 73,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17("span", { children: "Billing" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 74,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17(CommandShortcut, { children: "\u2318B" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 75,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/search-command.tsx",
-            lineNumber: 72,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV17(CommandItem, { children: [
-            /* @__PURE__ */ jsxDEV17(Settings, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 78,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17("span", { children: "Settings" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 79,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17(CommandShortcut, { children: "\u2318S" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 80,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/search-command.tsx",
-            lineNumber: 77,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/search-command.tsx",
-          lineNumber: 66,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV17(CommandSeparator, {}, void 0, !1, {
-          fileName: "app/components/search-command.tsx",
-          lineNumber: 83,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV17(CommandGroup, { heading: "Quick Actions", children: [
-          /* @__PURE__ */ jsxDEV17(CommandItem, { children: [
-            /* @__PURE__ */ jsxDEV17(Hash, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 86,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17("span", { children: "Add Tag" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 87,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17(CommandShortcut, { children: "\u2318T" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 88,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/search-command.tsx",
-            lineNumber: 85,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV17(CommandItem, { children: [
-            /* @__PURE__ */ jsxDEV17(Tags2, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 91,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17("span", { children: "Add Label" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 92,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV17(CommandShortcut, { children: "\u2318L" }, void 0, !1, {
-              fileName: "app/components/search-command.tsx",
-              lineNumber: 93,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/search-command.tsx",
-            lineNumber: 90,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/search-command.tsx",
-          lineNumber: 84,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/search-command.tsx",
-        lineNumber: 47,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/search-command.tsx",
-      lineNumber: 45,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/search-command.tsx",
-    lineNumber: 43,
-    columnNumber: 5
-  }, this);
+  }, []), /* @__PURE__ */ jsxs10(CommandDialog, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsx17(DialogTitle, { className: "sr-only", children: "Search Commands" }),
+    /* @__PURE__ */ jsxs10(Command, { className: "rounded-lg border shadow-md", children: [
+      /* @__PURE__ */ jsx17(CommandInput, { placeholder: "Type a command or search..." }),
+      /* @__PURE__ */ jsxs10(CommandList, { children: [
+        /* @__PURE__ */ jsx17(CommandEmpty, { children: "No results found." }),
+        /* @__PURE__ */ jsxs10(CommandGroup, { heading: "Suggestions", children: [
+          /* @__PURE__ */ jsxs10(CommandItem, { children: [
+            /* @__PURE__ */ jsx17(Calendar, { className: "mr-2 h-4 w-4" }),
+            /* @__PURE__ */ jsx17("span", { children: "Calendar" })
+          ] }),
+          /* @__PURE__ */ jsxs10(CommandItem, { children: [
+            /* @__PURE__ */ jsx17(FolderPlus, { className: "mr-2 h-4 w-4" }),
+            /* @__PURE__ */ jsx17("span", { children: "New Project" }),
+            /* @__PURE__ */ jsx17(CommandShortcut, { children: "\u2318N" })
+          ] }),
+          /* @__PURE__ */ jsxs10(CommandItem, { children: [
+            /* @__PURE__ */ jsx17(FileText2, { className: "mr-2 h-4 w-4" }),
+            /* @__PURE__ */ jsx17("span", { children: "New Document" }),
+            /* @__PURE__ */ jsx17(CommandShortcut, { children: "\u2318D" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx17(CommandSeparator, {}),
+        /* @__PURE__ */ jsxs10(CommandGroup, { heading: "Settings", children: [
+          /* @__PURE__ */ jsxs10(CommandItem, { children: [
+            /* @__PURE__ */ jsx17(User, { className: "mr-2 h-4 w-4" }),
+            /* @__PURE__ */ jsx17("span", { children: "Profile" }),
+            /* @__PURE__ */ jsx17(CommandShortcut, { children: "\u2318P" })
+          ] }),
+          /* @__PURE__ */ jsxs10(CommandItem, { children: [
+            /* @__PURE__ */ jsx17(CreditCard, { className: "mr-2 h-4 w-4" }),
+            /* @__PURE__ */ jsx17("span", { children: "Billing" }),
+            /* @__PURE__ */ jsx17(CommandShortcut, { children: "\u2318B" })
+          ] }),
+          /* @__PURE__ */ jsxs10(CommandItem, { children: [
+            /* @__PURE__ */ jsx17(Settings, { className: "mr-2 h-4 w-4" }),
+            /* @__PURE__ */ jsx17("span", { children: "Settings" }),
+            /* @__PURE__ */ jsx17(CommandShortcut, { children: "\u2318S" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx17(CommandSeparator, {}),
+        /* @__PURE__ */ jsxs10(CommandGroup, { heading: "Quick Actions", children: [
+          /* @__PURE__ */ jsxs10(CommandItem, { children: [
+            /* @__PURE__ */ jsx17(Hash, { className: "mr-2 h-4 w-4" }),
+            /* @__PURE__ */ jsx17("span", { children: "Add Tag" }),
+            /* @__PURE__ */ jsx17(CommandShortcut, { children: "\u2318T" })
+          ] }),
+          /* @__PURE__ */ jsxs10(CommandItem, { children: [
+            /* @__PURE__ */ jsx17(Tags2, { className: "mr-2 h-4 w-4" }),
+            /* @__PURE__ */ jsx17("span", { children: "Add Label" }),
+            /* @__PURE__ */ jsx17(CommandShortcut, { children: "\u2318L" })
+          ] })
+        ] })
+      ] })
+    ] })
+  ] });
 }
 
 // app/components/settings-command.tsx
@@ -3384,357 +2067,113 @@ import {
 } from "lucide-react";
 
 // app/components/settings/account-settings.tsx
-import { jsxDEV as jsxDEV18 } from "react/jsx-dev-runtime";
+import { jsx as jsx18, jsxs as jsxs11 } from "react/jsx-runtime";
 function AccountSettings() {
-  return /* @__PURE__ */ jsxDEV18("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ jsxDEV18("div", { children: [
-      /* @__PURE__ */ jsxDEV18("h3", { className: "text-lg font-medium", children: "Account Settings" }, void 0, !1, {
-        fileName: "app/components/settings/account-settings.tsx",
-        lineNumber: 9,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV18("p", { className: "text-sm text-muted-foreground", children: "Manage your account settings and preferences." }, void 0, !1, {
-        fileName: "app/components/settings/account-settings.tsx",
-        lineNumber: 10,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/account-settings.tsx",
-      lineNumber: 8,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV18(Separator2, {}, void 0, !1, {
-      fileName: "app/components/settings/account-settings.tsx",
-      lineNumber: 14,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV18("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV18("div", { className: "grid gap-2", children: [
-        /* @__PURE__ */ jsxDEV18("label", { htmlFor: "name", className: "text-sm font-medium", children: "Name" }, void 0, !1, {
-          fileName: "app/components/settings/account-settings.tsx",
-          lineNumber: 17,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV18(Input, { id: "name", defaultValue: "John Doe" }, void 0, !1, {
-          fileName: "app/components/settings/account-settings.tsx",
-          lineNumber: 20,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/account-settings.tsx",
-        lineNumber: 16,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV18("div", { className: "grid gap-2", children: [
-        /* @__PURE__ */ jsxDEV18("label", { htmlFor: "email", className: "text-sm font-medium", children: "Email" }, void 0, !1, {
-          fileName: "app/components/settings/account-settings.tsx",
-          lineNumber: 23,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV18(Input, { id: "email", type: "email", defaultValue: "john@example.com" }, void 0, !1, {
-          fileName: "app/components/settings/account-settings.tsx",
-          lineNumber: 26,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/account-settings.tsx",
-        lineNumber: 22,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV18(Button, { children: "Save Changes" }, void 0, !1, {
-        fileName: "app/components/settings/account-settings.tsx",
-        lineNumber: 28,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/account-settings.tsx",
-      lineNumber: 15,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/settings/account-settings.tsx",
-    lineNumber: 7,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsxs11("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxs11("div", { children: [
+      /* @__PURE__ */ jsx18("h3", { className: "text-lg font-medium", children: "Account Settings" }),
+      /* @__PURE__ */ jsx18("p", { className: "text-sm text-muted-foreground", children: "Manage your account settings and preferences." })
+    ] }),
+    /* @__PURE__ */ jsx18(Separator2, {}),
+    /* @__PURE__ */ jsxs11("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs11("div", { className: "grid gap-2", children: [
+        /* @__PURE__ */ jsx18("label", { htmlFor: "name", className: "text-sm font-medium", children: "Name" }),
+        /* @__PURE__ */ jsx18(Input, { id: "name", defaultValue: "John Doe" })
+      ] }),
+      /* @__PURE__ */ jsxs11("div", { className: "grid gap-2", children: [
+        /* @__PURE__ */ jsx18("label", { htmlFor: "email", className: "text-sm font-medium", children: "Email" }),
+        /* @__PURE__ */ jsx18(Input, { id: "email", type: "email", defaultValue: "john@example.com" })
+      ] }),
+      /* @__PURE__ */ jsx18(Button, { children: "Save Changes" })
+    ] })
+  ] });
 }
 
 // app/components/settings/app-settings.tsx
-import { jsxDEV as jsxDEV19 } from "react/jsx-dev-runtime";
+import { jsx as jsx19, jsxs as jsxs12 } from "react/jsx-runtime";
 function AppSettings() {
-  return /* @__PURE__ */ jsxDEV19("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ jsxDEV19("div", { children: [
-      /* @__PURE__ */ jsxDEV19("h3", { className: "text-lg font-medium", children: "App Settings" }, void 0, !1, {
-        fileName: "app/components/settings/app-settings.tsx",
-        lineNumber: 8,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV19("p", { className: "text-sm text-muted-foreground", children: "Customize your app experience." }, void 0, !1, {
-        fileName: "app/components/settings/app-settings.tsx",
-        lineNumber: 9,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/app-settings.tsx",
-      lineNumber: 7,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV19(Separator2, {}, void 0, !1, {
-      fileName: "app/components/settings/app-settings.tsx",
-      lineNumber: 13,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV19("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV19("div", { className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ jsxDEV19("div", { children: [
-          /* @__PURE__ */ jsxDEV19("p", { className: "font-medium", children: "Dark Mode" }, void 0, !1, {
-            fileName: "app/components/settings/app-settings.tsx",
-            lineNumber: 17,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV19("p", { className: "text-sm text-muted-foreground", children: "Toggle dark mode on or off" }, void 0, !1, {
-            fileName: "app/components/settings/app-settings.tsx",
-            lineNumber: 18,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/settings/app-settings.tsx",
-          lineNumber: 16,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV19(Button, { variant: "outline", children: "Toggle" }, void 0, !1, {
-          fileName: "app/components/settings/app-settings.tsx",
-          lineNumber: 22,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/app-settings.tsx",
-        lineNumber: 15,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV19("div", { className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ jsxDEV19("div", { children: [
-          /* @__PURE__ */ jsxDEV19("p", { className: "font-medium", children: "Compact Mode" }, void 0, !1, {
-            fileName: "app/components/settings/app-settings.tsx",
-            lineNumber: 26,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV19("p", { className: "text-sm text-muted-foreground", children: "Make the UI more compact" }, void 0, !1, {
-            fileName: "app/components/settings/app-settings.tsx",
-            lineNumber: 27,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/settings/app-settings.tsx",
-          lineNumber: 25,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV19(Button, { variant: "outline", children: "Toggle" }, void 0, !1, {
-          fileName: "app/components/settings/app-settings.tsx",
-          lineNumber: 31,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/app-settings.tsx",
-        lineNumber: 24,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/app-settings.tsx",
-      lineNumber: 14,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/settings/app-settings.tsx",
-    lineNumber: 6,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsxs12("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxs12("div", { children: [
+      /* @__PURE__ */ jsx19("h3", { className: "text-lg font-medium", children: "App Settings" }),
+      /* @__PURE__ */ jsx19("p", { className: "text-sm text-muted-foreground", children: "Customize your app experience." })
+    ] }),
+    /* @__PURE__ */ jsx19(Separator2, {}),
+    /* @__PURE__ */ jsxs12("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs12("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxs12("div", { children: [
+          /* @__PURE__ */ jsx19("p", { className: "font-medium", children: "Dark Mode" }),
+          /* @__PURE__ */ jsx19("p", { className: "text-sm text-muted-foreground", children: "Toggle dark mode on or off" })
+        ] }),
+        /* @__PURE__ */ jsx19(Button, { variant: "outline", children: "Toggle" })
+      ] }),
+      /* @__PURE__ */ jsxs12("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxs12("div", { children: [
+          /* @__PURE__ */ jsx19("p", { className: "font-medium", children: "Compact Mode" }),
+          /* @__PURE__ */ jsx19("p", { className: "text-sm text-muted-foreground", children: "Make the UI more compact" })
+        ] }),
+        /* @__PURE__ */ jsx19(Button, { variant: "outline", children: "Toggle" })
+      ] })
+    ] })
+  ] });
 }
 
 // app/components/settings/notification-settings.tsx
-import { jsxDEV as jsxDEV20 } from "react/jsx-dev-runtime";
+import { jsx as jsx20, jsxs as jsxs13 } from "react/jsx-runtime";
 function NotificationSettings() {
-  return /* @__PURE__ */ jsxDEV20("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ jsxDEV20("div", { children: [
-      /* @__PURE__ */ jsxDEV20("h3", { className: "text-lg font-medium", children: "Notification Settings" }, void 0, !1, {
-        fileName: "app/components/settings/notification-settings.tsx",
-        lineNumber: 8,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV20("p", { className: "text-sm text-muted-foreground", children: "Manage how you receive notifications." }, void 0, !1, {
-        fileName: "app/components/settings/notification-settings.tsx",
-        lineNumber: 9,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/notification-settings.tsx",
-      lineNumber: 7,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV20(Separator2, {}, void 0, !1, {
-      fileName: "app/components/settings/notification-settings.tsx",
-      lineNumber: 13,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV20("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV20("div", { className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ jsxDEV20("div", { children: [
-          /* @__PURE__ */ jsxDEV20("p", { className: "font-medium", children: "Email Notifications" }, void 0, !1, {
-            fileName: "app/components/settings/notification-settings.tsx",
-            lineNumber: 17,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV20("p", { className: "text-sm text-muted-foreground", children: "Receive notifications via email" }, void 0, !1, {
-            fileName: "app/components/settings/notification-settings.tsx",
-            lineNumber: 18,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/settings/notification-settings.tsx",
-          lineNumber: 16,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV20(Button, { variant: "outline", children: "Enable" }, void 0, !1, {
-          fileName: "app/components/settings/notification-settings.tsx",
-          lineNumber: 22,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/notification-settings.tsx",
-        lineNumber: 15,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV20("div", { className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ jsxDEV20("div", { children: [
-          /* @__PURE__ */ jsxDEV20("p", { className: "font-medium", children: "Push Notifications" }, void 0, !1, {
-            fileName: "app/components/settings/notification-settings.tsx",
-            lineNumber: 26,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV20("p", { className: "text-sm text-muted-foreground", children: "Receive push notifications" }, void 0, !1, {
-            fileName: "app/components/settings/notification-settings.tsx",
-            lineNumber: 27,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/settings/notification-settings.tsx",
-          lineNumber: 25,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV20(Button, { variant: "outline", children: "Enable" }, void 0, !1, {
-          fileName: "app/components/settings/notification-settings.tsx",
-          lineNumber: 31,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/notification-settings.tsx",
-        lineNumber: 24,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/notification-settings.tsx",
-      lineNumber: 14,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/settings/notification-settings.tsx",
-    lineNumber: 6,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsxs13("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxs13("div", { children: [
+      /* @__PURE__ */ jsx20("h3", { className: "text-lg font-medium", children: "Notification Settings" }),
+      /* @__PURE__ */ jsx20("p", { className: "text-sm text-muted-foreground", children: "Manage how you receive notifications." })
+    ] }),
+    /* @__PURE__ */ jsx20(Separator2, {}),
+    /* @__PURE__ */ jsxs13("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs13("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxs13("div", { children: [
+          /* @__PURE__ */ jsx20("p", { className: "font-medium", children: "Email Notifications" }),
+          /* @__PURE__ */ jsx20("p", { className: "text-sm text-muted-foreground", children: "Receive notifications via email" })
+        ] }),
+        /* @__PURE__ */ jsx20(Button, { variant: "outline", children: "Enable" })
+      ] }),
+      /* @__PURE__ */ jsxs13("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxs13("div", { children: [
+          /* @__PURE__ */ jsx20("p", { className: "font-medium", children: "Push Notifications" }),
+          /* @__PURE__ */ jsx20("p", { className: "text-sm text-muted-foreground", children: "Receive push notifications" })
+        ] }),
+        /* @__PURE__ */ jsx20(Button, { variant: "outline", children: "Enable" })
+      ] })
+    ] })
+  ] });
 }
 
 // app/components/settings/security-settings.tsx
-import { jsxDEV as jsxDEV21 } from "react/jsx-dev-runtime";
+import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
 function SecuritySettings() {
-  return /* @__PURE__ */ jsxDEV21("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ jsxDEV21("div", { children: [
-      /* @__PURE__ */ jsxDEV21("h3", { className: "text-lg font-medium", children: "Security Settings" }, void 0, !1, {
-        fileName: "app/components/settings/security-settings.tsx",
-        lineNumber: 9,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV21("p", { className: "text-sm text-muted-foreground", children: "Manage your security preferences." }, void 0, !1, {
-        fileName: "app/components/settings/security-settings.tsx",
-        lineNumber: 10,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/security-settings.tsx",
-      lineNumber: 8,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV21(Separator2, {}, void 0, !1, {
-      fileName: "app/components/settings/security-settings.tsx",
-      lineNumber: 14,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV21("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV21("div", { className: "grid gap-2", children: [
-        /* @__PURE__ */ jsxDEV21("label", { htmlFor: "current-password", className: "text-sm font-medium", children: "Current Password" }, void 0, !1, {
-          fileName: "app/components/settings/security-settings.tsx",
-          lineNumber: 17,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV21(Input, { id: "current-password", type: "password" }, void 0, !1, {
-          fileName: "app/components/settings/security-settings.tsx",
-          lineNumber: 20,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/security-settings.tsx",
-        lineNumber: 16,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV21("div", { className: "grid gap-2", children: [
-        /* @__PURE__ */ jsxDEV21("label", { htmlFor: "new-password", className: "text-sm font-medium", children: "New Password" }, void 0, !1, {
-          fileName: "app/components/settings/security-settings.tsx",
-          lineNumber: 23,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV21(Input, { id: "new-password", type: "password" }, void 0, !1, {
-          fileName: "app/components/settings/security-settings.tsx",
-          lineNumber: 26,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/security-settings.tsx",
-        lineNumber: 22,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV21("div", { className: "grid gap-2", children: [
-        /* @__PURE__ */ jsxDEV21("label", { htmlFor: "confirm-password", className: "text-sm font-medium", children: "Confirm New Password" }, void 0, !1, {
-          fileName: "app/components/settings/security-settings.tsx",
-          lineNumber: 29,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV21(Input, { id: "confirm-password", type: "password" }, void 0, !1, {
-          fileName: "app/components/settings/security-settings.tsx",
-          lineNumber: 32,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/security-settings.tsx",
-        lineNumber: 28,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV21(Button, { children: "Update Password" }, void 0, !1, {
-        fileName: "app/components/settings/security-settings.tsx",
-        lineNumber: 34,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/security-settings.tsx",
-      lineNumber: 15,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/settings/security-settings.tsx",
-    lineNumber: 7,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsxs14("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxs14("div", { children: [
+      /* @__PURE__ */ jsx21("h3", { className: "text-lg font-medium", children: "Security Settings" }),
+      /* @__PURE__ */ jsx21("p", { className: "text-sm text-muted-foreground", children: "Manage your security preferences." })
+    ] }),
+    /* @__PURE__ */ jsx21(Separator2, {}),
+    /* @__PURE__ */ jsxs14("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs14("div", { className: "grid gap-2", children: [
+        /* @__PURE__ */ jsx21("label", { htmlFor: "current-password", className: "text-sm font-medium", children: "Current Password" }),
+        /* @__PURE__ */ jsx21(Input, { id: "current-password", type: "password" })
+      ] }),
+      /* @__PURE__ */ jsxs14("div", { className: "grid gap-2", children: [
+        /* @__PURE__ */ jsx21("label", { htmlFor: "new-password", className: "text-sm font-medium", children: "New Password" }),
+        /* @__PURE__ */ jsx21(Input, { id: "new-password", type: "password" })
+      ] }),
+      /* @__PURE__ */ jsxs14("div", { className: "grid gap-2", children: [
+        /* @__PURE__ */ jsx21("label", { htmlFor: "confirm-password", className: "text-sm font-medium", children: "Confirm New Password" }),
+        /* @__PURE__ */ jsx21(Input, { id: "confirm-password", type: "password" })
+      ] }),
+      /* @__PURE__ */ jsx21(Button, { children: "Update Password" })
+    ] })
+  ] });
 }
 
 // app/components/settings-command.tsx
-import { jsxDEV as jsxDEV22 } from "react/jsx-dev-runtime";
+import { jsx as jsx22, jsxs as jsxs15 } from "react/jsx-runtime";
 var personalSections = [
   {
     id: "account",
@@ -3770,101 +2209,34 @@ function SettingsCommand({ open, onOpenChange }) {
     return document.addEventListener("keydown", down), () => document.removeEventListener("keydown", down);
   }, [open, onOpenChange]);
   let ActiveComponent = personalSections.find((s) => s.id === activeSection)?.component || AccountSettings, activeTitle = personalSections.find((s) => s.id === activeSection)?.label || "Settings";
-  return /* @__PURE__ */ jsxDEV22(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV22(DialogContent, { className: "max-w-[1200px] h-[85vh] p-0 gap-0", children: [
-    /* @__PURE__ */ jsxDEV22(DialogHeader, { className: "sr-only", children: /* @__PURE__ */ jsxDEV22(DialogTitle, { children: activeTitle }, void 0, !1, {
-      fileName: "app/components/settings-command.tsx",
-      lineNumber: 77,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/settings-command.tsx",
-      lineNumber: 76,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV22("div", { className: "flex h-full overflow-hidden rounded-xl", children: [
-      /* @__PURE__ */ jsxDEV22("div", { className: "w-60 bg-muted/50 overflow-y-auto flex-shrink-0 rounded-l-xl border-r", children: /* @__PURE__ */ jsxDEV22("div", { className: "px-2 pt-4 pb-4", children: /* @__PURE__ */ jsxDEV22("div", { className: "px-2", children: [
-        /* @__PURE__ */ jsxDEV22("div", { className: "text-[11px] font-semibold text-muted-foreground mb-1.5", children: "SETTINGS" }, void 0, !1, {
-          fileName: "app/components/settings-command.tsx",
-          lineNumber: 84,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ jsxDEV22("nav", { className: "mt-4 space-y-0.5 px-1", children: personalSections.map((section) => {
+  return /* @__PURE__ */ jsx22(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs15(DialogContent, { className: "max-w-[1200px] h-[85vh] p-0 gap-0", children: [
+    /* @__PURE__ */ jsx22(DialogHeader, { className: "sr-only", children: /* @__PURE__ */ jsx22(DialogTitle, { children: activeTitle }) }),
+    /* @__PURE__ */ jsxs15("div", { className: "flex h-full overflow-hidden rounded-xl", children: [
+      /* @__PURE__ */ jsx22("div", { className: "w-60 bg-muted/50 overflow-y-auto flex-shrink-0 rounded-l-xl border-r", children: /* @__PURE__ */ jsx22("div", { className: "px-2 pt-4 pb-4", children: /* @__PURE__ */ jsxs15("div", { className: "px-2", children: [
+        /* @__PURE__ */ jsx22("div", { className: "text-[11px] font-semibold text-muted-foreground mb-1.5", children: "SETTINGS" }),
+        /* @__PURE__ */ jsx22("nav", { className: "mt-4 space-y-0.5 px-1", children: personalSections.map((section) => {
           let Icon = section.icon;
-          return /* @__PURE__ */ jsxDEV22(
+          return /* @__PURE__ */ jsxs15(
             "button",
             {
               className: `w-full flex items-center px-2 py-1.5 h-8 text-sm font-medium rounded-lg transition-colors ${activeSection === section.id ? "bg-background text-foreground hover:bg-background" : "text-muted-foreground hover:bg-background/50 hover:text-foreground"}`,
               onClick: () => setActiveSection(section.id),
               children: [
-                /* @__PURE__ */ jsxDEV22(Icon, { className: "h-4 w-4 mr-2 shrink-0" }, void 0, !1, {
-                  fileName: "app/components/settings-command.tsx",
-                  lineNumber: 100,
-                  columnNumber: 25
-                }, this),
+                /* @__PURE__ */ jsx22(Icon, { className: "h-4 w-4 mr-2 shrink-0" }),
                 section.label
               ]
             },
-            section.id,
-            !0,
-            {
-              fileName: "app/components/settings-command.tsx",
-              lineNumber: 91,
-              columnNumber: 23
-            },
-            this
+            section.id
           );
-        }) }, void 0, !1, {
-          fileName: "app/components/settings-command.tsx",
-          lineNumber: 87,
-          columnNumber: 17
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings-command.tsx",
-        lineNumber: 83,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-command.tsx",
-        lineNumber: 82,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-command.tsx",
-        lineNumber: 81,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV22("div", { className: "flex-1 min-h-0 bg-background rounded-r-xl", children: /* @__PURE__ */ jsxDEV22("div", { className: "h-full overflow-y-auto", children: /* @__PURE__ */ jsxDEV22("div", { className: "max-w-3xl mx-auto p-8", children: /* @__PURE__ */ jsxDEV22(ActiveComponent, {}, void 0, !1, {
-        fileName: "app/components/settings-command.tsx",
-        lineNumber: 114,
-        columnNumber: 17
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-command.tsx",
-        lineNumber: 113,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-command.tsx",
-        lineNumber: 112,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-command.tsx",
-        lineNumber: 111,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings-command.tsx",
-      lineNumber: 79,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/settings-command.tsx",
-    lineNumber: 75,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/settings-command.tsx",
-    lineNumber: 74,
-    columnNumber: 5
-  }, this);
+        }) })
+      ] }) }) }),
+      /* @__PURE__ */ jsx22("div", { className: "flex-1 min-h-0 bg-background rounded-r-xl", children: /* @__PURE__ */ jsx22("div", { className: "h-full overflow-y-auto", children: /* @__PURE__ */ jsx22("div", { className: "max-w-3xl mx-auto p-8", children: /* @__PURE__ */ jsx22(ActiveComponent, {}) }) }) })
+    ] })
+  ] }) });
 }
 
 // app/components/nav-main.tsx
-import { Fragment, jsxDEV as jsxDEV23 } from "react/jsx-dev-runtime";
+import { Fragment, jsx as jsx23, jsxs as jsxs16 } from "react/jsx-runtime";
 var items = [
   {
     title: "Search",
@@ -3897,23 +2269,11 @@ var items = [
 ];
 function NavMain() {
   let location = useLocation(), [settingsOpen, setSettingsOpen] = React19.useState(!1), [archiveOpen, setArchiveOpen] = React19.useState(!1);
-  return /* @__PURE__ */ jsxDEV23(Fragment, { children: [
-    /* @__PURE__ */ jsxDEV23(SearchCommand, {}, void 0, !1, {
-      fileName: "app/components/nav-main.tsx",
-      lineNumber: 52,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV23(ArchiveCommand, { open: archiveOpen, onOpenChange: setArchiveOpen }, void 0, !1, {
-      fileName: "app/components/nav-main.tsx",
-      lineNumber: 53,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV23(SettingsCommand, { open: settingsOpen, onOpenChange: setSettingsOpen }, void 0, !1, {
-      fileName: "app/components/nav-main.tsx",
-      lineNumber: 54,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV23(SidebarMenu, { children: items.map((item) => /* @__PURE__ */ jsxDEV23(SidebarMenuItem, { children: item.isSearch ? /* @__PURE__ */ jsxDEV23(
+  return /* @__PURE__ */ jsxs16(Fragment, { children: [
+    /* @__PURE__ */ jsx23(SearchCommand, {}),
+    /* @__PURE__ */ jsx23(ArchiveCommand, { open: archiveOpen, onOpenChange: setArchiveOpen }),
+    /* @__PURE__ */ jsx23(SettingsCommand, { open: settingsOpen, onOpenChange: setSettingsOpen }),
+    /* @__PURE__ */ jsx23(SidebarMenu, { children: items.map((item) => /* @__PURE__ */ jsx23(SidebarMenuItem, { children: item.isSearch ? /* @__PURE__ */ jsxs16(
       SidebarMenuButton,
       {
         onClick: () => {
@@ -3924,100 +2284,28 @@ function NavMain() {
           document.dispatchEvent(event);
         },
         children: [
-          /* @__PURE__ */ jsxDEV23(item.icon, {}, void 0, !1, {
-            fileName: "app/components/nav-main.tsx",
-            lineNumber: 68,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV23("span", { children: item.title }, void 0, !1, {
-            fileName: "app/components/nav-main.tsx",
-            lineNumber: 69,
-            columnNumber: 17
-          }, this)
+          /* @__PURE__ */ jsx23(item.icon, {}),
+          /* @__PURE__ */ jsx23("span", { children: item.title })
         ]
-      },
-      void 0,
-      !0,
-      {
-        fileName: "app/components/nav-main.tsx",
-        lineNumber: 59,
-        columnNumber: 15
-      },
-      this
-    ) : item.isArchive ? /* @__PURE__ */ jsxDEV23(SidebarMenuButton, { onClick: () => setArchiveOpen(!0), children: [
-      /* @__PURE__ */ jsxDEV23(item.icon, {}, void 0, !1, {
-        fileName: "app/components/nav-main.tsx",
-        lineNumber: 73,
-        columnNumber: 17
-      }, this),
-      /* @__PURE__ */ jsxDEV23("span", { children: item.title }, void 0, !1, {
-        fileName: "app/components/nav-main.tsx",
-        lineNumber: 74,
-        columnNumber: 17
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/nav-main.tsx",
-      lineNumber: 72,
-      columnNumber: 15
-    }, this) : item.isSettings ? /* @__PURE__ */ jsxDEV23(SidebarMenuButton, { onClick: () => setSettingsOpen(!0), children: [
-      /* @__PURE__ */ jsxDEV23(item.icon, {}, void 0, !1, {
-        fileName: "app/components/nav-main.tsx",
-        lineNumber: 78,
-        columnNumber: 17
-      }, this),
-      /* @__PURE__ */ jsxDEV23("span", { children: item.title }, void 0, !1, {
-        fileName: "app/components/nav-main.tsx",
-        lineNumber: 79,
-        columnNumber: 17
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/nav-main.tsx",
-      lineNumber: 77,
-      columnNumber: 15
-    }, this) : /* @__PURE__ */ jsxDEV23(SidebarMenuButton, { asChild: !0, children: /* @__PURE__ */ jsxDEV23(
+      }
+    ) : item.isArchive ? /* @__PURE__ */ jsxs16(SidebarMenuButton, { onClick: () => setArchiveOpen(!0), children: [
+      /* @__PURE__ */ jsx23(item.icon, {}),
+      /* @__PURE__ */ jsx23("span", { children: item.title })
+    ] }) : item.isSettings ? /* @__PURE__ */ jsxs16(SidebarMenuButton, { onClick: () => setSettingsOpen(!0), children: [
+      /* @__PURE__ */ jsx23(item.icon, {}),
+      /* @__PURE__ */ jsx23("span", { children: item.title })
+    ] }) : /* @__PURE__ */ jsx23(SidebarMenuButton, { asChild: !0, children: /* @__PURE__ */ jsxs16(
       Link2,
       {
         to: item.url,
         className: location.pathname === item.url ? "data-[active=true]" : "",
         children: [
-          /* @__PURE__ */ jsxDEV23(item.icon, {}, void 0, !1, {
-            fileName: "app/components/nav-main.tsx",
-            lineNumber: 87,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ jsxDEV23("span", { children: item.title }, void 0, !1, {
-            fileName: "app/components/nav-main.tsx",
-            lineNumber: 88,
-            columnNumber: 19
-          }, this)
+          /* @__PURE__ */ jsx23(item.icon, {}),
+          /* @__PURE__ */ jsx23("span", { children: item.title })
         ]
-      },
-      void 0,
-      !0,
-      {
-        fileName: "app/components/nav-main.tsx",
-        lineNumber: 83,
-        columnNumber: 17
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/nav-main.tsx",
-      lineNumber: 82,
-      columnNumber: 15
-    }, this) }, item.title, !1, {
-      fileName: "app/components/nav-main.tsx",
-      lineNumber: 57,
-      columnNumber: 11
-    }, this)) }, void 0, !1, {
-      fileName: "app/components/nav-main.tsx",
-      lineNumber: 55,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/nav-main.tsx",
-    lineNumber: 51,
-    columnNumber: 5
-  }, this);
+      }
+    ) }) }, item.title)) })
+  ] });
 }
 
 // app/components/nav-workspaces.tsx
@@ -4033,32 +2321,24 @@ import { FileUp, Globe, Upload } from "lucide-react";
 import * as React20 from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { cva as cva5 } from "class-variance-authority";
-import { jsxDEV as jsxDEV24 } from "react/jsx-dev-runtime";
+import { jsx as jsx24 } from "react/jsx-runtime";
 var labelVariants = cva5(
   "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-), Label2 = React20.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV24(
+), Label2 = React20.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx24(
   LabelPrimitive.Root,
   {
     ref,
     className: cn(labelVariants(), className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/label.tsx",
-    lineNumber: 16,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 Label2.displayName = LabelPrimitive.Root.displayName;
 
 // app/components/ui/tabs.tsx
 import * as React21 from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
-import { jsxDEV as jsxDEV25 } from "react/jsx-dev-runtime";
-var Tabs = TabsPrimitive.Root, TabsList = React21.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV25(
+import { jsx as jsx25 } from "react/jsx-runtime";
+var Tabs = TabsPrimitive.Root, TabsList = React21.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx25(
   TabsPrimitive.List,
   {
     ref,
@@ -4067,18 +2347,10 @@ var Tabs = TabsPrimitive.Root, TabsList = React21.forwardRef(({ className, ...pr
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/tabs.tsx",
-    lineNumber: 12,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 TabsList.displayName = TabsPrimitive.List.displayName;
-var TabsTrigger = React21.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV25(
+var TabsTrigger = React21.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx25(
   TabsPrimitive.Trigger,
   {
     ref,
@@ -4087,18 +2359,10 @@ var TabsTrigger = React21.forwardRef(({ className, ...props }, ref) => /* @__PUR
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/tabs.tsx",
-    lineNumber: 27,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
-var TabsContent = React21.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV25(
+var TabsContent = React21.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx25(
   TabsPrimitive.Content,
   {
     ref,
@@ -4107,20 +2371,12 @@ var TabsContent = React21.forwardRef(({ className, ...props }, ref) => /* @__PUR
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/tabs.tsx",
-    lineNumber: 42,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 TabsContent.displayName = TabsPrimitive.Content.displayName;
 
 // app/components/add-library-item.tsx
-import { jsxDEV as jsxDEV26 } from "react/jsx-dev-runtime";
+import { jsx as jsx26, jsxs as jsxs17 } from "react/jsx-runtime";
 function AddLibraryItem({ open, onOpenChange, onAdd }) {
   let [url, setUrl] = React22.useState(""), [dragActive, setDragActive] = React22.useState(!1), inputFileRef = React22.useRef(null), handleDrag = (e) => {
     e.preventDefault(), e.stopPropagation(), e.type === "dragenter" || e.type === "dragover" ? setDragActive(!0) : e.type === "dragleave" && setDragActive(!1);
@@ -4131,41 +2387,17 @@ function AddLibraryItem({ open, onOpenChange, onAdd }) {
   }, handleFile = (file) => {
     onAdd?.({ type: "file", data: file }), onOpenChange(!1);
   };
-  return /* @__PURE__ */ jsxDEV26(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV26(DialogContent, { children: [
-    /* @__PURE__ */ jsxDEV26(DialogHeader, { children: [
-      /* @__PURE__ */ jsxDEV26(DialogTitle, { children: "Add to Library" }, void 0, !1, {
-        fileName: "app/components/add-library-item.tsx",
-        lineNumber: 73,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV26(DialogDescription, { children: "Add files or URLs to your library for easy access." }, void 0, !1, {
-        fileName: "app/components/add-library-item.tsx",
-        lineNumber: 74,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/add-library-item.tsx",
-      lineNumber: 72,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV26(Tabs, { defaultValue: "file", className: "w-full", children: [
-      /* @__PURE__ */ jsxDEV26(TabsList, { className: "grid w-full grid-cols-2", children: [
-        /* @__PURE__ */ jsxDEV26(TabsTrigger, { value: "file", children: "File Upload" }, void 0, !1, {
-          fileName: "app/components/add-library-item.tsx",
-          lineNumber: 80,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV26(TabsTrigger, { value: "url", children: "URL" }, void 0, !1, {
-          fileName: "app/components/add-library-item.tsx",
-          lineNumber: 81,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/add-library-item.tsx",
-        lineNumber: 79,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV26(TabsContent, { value: "file", className: "mt-4", children: /* @__PURE__ */ jsxDEV26(
+  return /* @__PURE__ */ jsx26(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs17(DialogContent, { children: [
+    /* @__PURE__ */ jsxs17(DialogHeader, { children: [
+      /* @__PURE__ */ jsx26(DialogTitle, { children: "Add to Library" }),
+      /* @__PURE__ */ jsx26(DialogDescription, { children: "Add files or URLs to your library for easy access." })
+    ] }),
+    /* @__PURE__ */ jsxs17(Tabs, { defaultValue: "file", className: "w-full", children: [
+      /* @__PURE__ */ jsxs17(TabsList, { className: "grid w-full grid-cols-2", children: [
+        /* @__PURE__ */ jsx26(TabsTrigger, { value: "file", children: "File Upload" }),
+        /* @__PURE__ */ jsx26(TabsTrigger, { value: "url", children: "URL" })
+      ] }),
+      /* @__PURE__ */ jsx26(TabsContent, { value: "file", className: "mt-4", children: /* @__PURE__ */ jsx26(
         "div",
         {
           className: `relative grid gap-4 ${dragActive ? "cursor-copy" : "cursor-pointer"}`,
@@ -4174,27 +2406,15 @@ function AddLibraryItem({ open, onOpenChange, onAdd }) {
           onDragLeave: handleDrag,
           onDragOver: handleDrag,
           onDrop: handleDrop,
-          children: /* @__PURE__ */ jsxDEV26(
+          children: /* @__PURE__ */ jsxs17(
             "div",
             {
               className: `flex min-h-[150px] flex-col items-center justify-center rounded-lg border-2 border-dashed transition-colors ${dragActive ? "border-primary/50 bg-primary/5" : "border-muted-foreground/25"}`,
               children: [
-                /* @__PURE__ */ jsxDEV26(FileUp, { className: "mb-4 h-8 w-8 text-muted-foreground" }, void 0, !1, {
-                  fileName: "app/components/add-library-item.tsx",
-                  lineNumber: 101,
-                  columnNumber: 17
-                }, this),
-                /* @__PURE__ */ jsxDEV26("p", { className: "mb-2 text-sm font-medium", children: "Drag & drop files here or click to browse" }, void 0, !1, {
-                  fileName: "app/components/add-library-item.tsx",
-                  lineNumber: 102,
-                  columnNumber: 17
-                }, this),
-                /* @__PURE__ */ jsxDEV26("p", { className: "text-xs text-muted-foreground", children: "Supported file types: PDF, DOC, DOCX, TXT" }, void 0, !1, {
-                  fileName: "app/components/add-library-item.tsx",
-                  lineNumber: 105,
-                  columnNumber: 17
-                }, this),
-                /* @__PURE__ */ jsxDEV26(
+                /* @__PURE__ */ jsx26(FileUp, { className: "mb-4 h-8 w-8 text-muted-foreground" }),
+                /* @__PURE__ */ jsx26("p", { className: "mb-2 text-sm font-medium", children: "Drag & drop files here or click to browse" }),
+                /* @__PURE__ */ jsx26("p", { className: "text-xs text-muted-foreground", children: "Supported file types: PDF, DOC, DOCX, TXT" }),
+                /* @__PURE__ */ jsx26(
                   "input",
                   {
                     ref: inputFileRef,
@@ -4202,57 +2422,21 @@ function AddLibraryItem({ open, onOpenChange, onAdd }) {
                     className: "hidden",
                     accept: ".pdf,.doc,.docx,.txt",
                     onChange: handleChange
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/add-library-item.tsx",
-                    lineNumber: 108,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 )
               ]
-            },
-            void 0,
-            !0,
-            {
-              fileName: "app/components/add-library-item.tsx",
-              lineNumber: 94,
-              columnNumber: 15
-            },
-            this
+            }
           )
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/add-library-item.tsx",
-          lineNumber: 84,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/components/add-library-item.tsx",
-        lineNumber: 83,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV26(TabsContent, { value: "url", className: "mt-4", children: /* @__PURE__ */ jsxDEV26("form", { onSubmit: (e) => {
+        }
+      ) }),
+      /* @__PURE__ */ jsx26(TabsContent, { value: "url", className: "mt-4", children: /* @__PURE__ */ jsx26("form", { onSubmit: (e) => {
         e.preventDefault(), url && (onAdd?.({ type: "url", data: url }), setUrl(""), onOpenChange(!1));
-      }, className: "grid gap-4", children: /* @__PURE__ */ jsxDEV26("div", { className: "grid gap-2", children: [
-        /* @__PURE__ */ jsxDEV26(Label2, { htmlFor: "url", children: "URL" }, void 0, !1, {
-          fileName: "app/components/add-library-item.tsx",
-          lineNumber: 121,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ jsxDEV26("div", { className: "flex gap-2", children: [
-          /* @__PURE__ */ jsxDEV26("div", { className: "relative flex-1", children: [
-            /* @__PURE__ */ jsxDEV26(Globe, { className: "absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" }, void 0, !1, {
-              fileName: "app/components/add-library-item.tsx",
-              lineNumber: 124,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV26(
+      }, className: "grid gap-4", children: /* @__PURE__ */ jsxs17("div", { className: "grid gap-2", children: [
+        /* @__PURE__ */ jsx26(Label2, { htmlFor: "url", children: "URL" }),
+        /* @__PURE__ */ jsxs17("div", { className: "flex gap-2", children: [
+          /* @__PURE__ */ jsxs17("div", { className: "relative flex-1", children: [
+            /* @__PURE__ */ jsx26(Globe, { className: "absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsx26(
               Input,
               {
                 id: "url",
@@ -4261,83 +2445,19 @@ function AddLibraryItem({ open, onOpenChange, onAdd }) {
                 className: "pl-8",
                 value: url,
                 onChange: (e) => setUrl(e.target.value)
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/components/add-library-item.tsx",
-                lineNumber: 125,
-                columnNumber: 21
-              },
-              this
+              }
             )
-          ] }, void 0, !0, {
-            fileName: "app/components/add-library-item.tsx",
-            lineNumber: 123,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ jsxDEV26(Button, { type: "submit", children: [
-            /* @__PURE__ */ jsxDEV26(Upload, { className: "h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/add-library-item.tsx",
-              lineNumber: 135,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV26("span", { className: "sr-only", children: "Add URL" }, void 0, !1, {
-              fileName: "app/components/add-library-item.tsx",
-              lineNumber: 136,
-              columnNumber: 21
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/add-library-item.tsx",
-            lineNumber: 134,
-            columnNumber: 19
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/add-library-item.tsx",
-          lineNumber: 122,
-          columnNumber: 17
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/add-library-item.tsx",
-        lineNumber: 120,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/add-library-item.tsx",
-        lineNumber: 119,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/components/add-library-item.tsx",
-        lineNumber: 118,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/add-library-item.tsx",
-      lineNumber: 78,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV26(Separator2, {}, void 0, !1, {
-      fileName: "app/components/add-library-item.tsx",
-      lineNumber: 143,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV26("div", { className: "text-xs text-muted-foreground", children: /* @__PURE__ */ jsxDEV26("p", { children: "By adding items to the library, you agree to our terms of service." }, void 0, !1, {
-      fileName: "app/components/add-library-item.tsx",
-      lineNumber: 145,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/add-library-item.tsx",
-      lineNumber: 144,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/add-library-item.tsx",
-    lineNumber: 71,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/add-library-item.tsx",
-    lineNumber: 70,
-    columnNumber: 5
-  }, this);
+          ] }),
+          /* @__PURE__ */ jsxs17(Button, { type: "submit", children: [
+            /* @__PURE__ */ jsx26(Upload, { className: "h-4 w-4" }),
+            /* @__PURE__ */ jsx26("span", { className: "sr-only", children: "Add URL" })
+          ] })
+        ] })
+      ] }) }) })
+    ] }),
+    /* @__PURE__ */ jsx26(Separator2, {}),
+    /* @__PURE__ */ jsx26("div", { className: "text-xs text-muted-foreground", children: /* @__PURE__ */ jsx26("p", { children: "By adding items to the library, you agree to our terms of service." }) })
+  ] }) });
 }
 
 // app/hooks/use-workspaces.tsx
@@ -4459,7 +2579,7 @@ import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 var Collapsible = CollapsiblePrimitive.Root, CollapsibleTrigger2 = CollapsiblePrimitive.CollapsibleTrigger, CollapsibleContent2 = CollapsiblePrimitive.CollapsibleContent;
 
 // app/components/nav-workspaces.tsx
-import { Fragment as Fragment2, jsxDEV as jsxDEV27 } from "react/jsx-dev-runtime";
+import { Fragment as Fragment2, jsx as jsx27, jsxs as jsxs18 } from "react/jsx-runtime";
 var ITEMS_PER_PAGE = 5;
 function PageItem({ page, onPageTitleChange, basePath = "/pages" }) {
   let navigate = useNavigate(), { getPageTitle } = usePageTitles(), { getEmoji } = usePageEmoji(page.id), { addPage } = useWorkspaces(), [isPending, startTransition] = React24.useTransition(), [isOpen, setIsOpen] = React24.useState(!1), hasChildren = page.pages && page.pages.length > 0, title = getPageTitle(page.id, page.name), emoji = getEmoji(page.id) || page.emoji, handleAddPage = (e) => {
@@ -4468,128 +2588,41 @@ function PageItem({ page, onPageTitleChange, basePath = "/pages" }) {
       setIsOpen(!0), navigate(`${basePath}/${newPage.id}`);
     });
   };
-  return hasChildren ? /* @__PURE__ */ jsxDEV27(Collapsible, { open: isOpen, onOpenChange: setIsOpen, children: /* @__PURE__ */ jsxDEV27(SidebarMenuItem, { className: "pl-3", children: [
-    /* @__PURE__ */ jsxDEV27(Link3, { to: `${basePath}/${page.id}`, className: "w-full", children: /* @__PURE__ */ jsxDEV27(SidebarMenuButton, { children: [
-      /* @__PURE__ */ jsxDEV27("span", { children: emoji }, void 0, !1, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 87,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV27("span", { children: title }, void 0, !1, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 88,
-        columnNumber: 13
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 86,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 85,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV27(CollapsibleTrigger2, { asChild: !0, children: /* @__PURE__ */ jsxDEV27(
+  return hasChildren ? /* @__PURE__ */ jsx27(Collapsible, { open: isOpen, onOpenChange: setIsOpen, children: /* @__PURE__ */ jsxs18(SidebarMenuItem, { className: "pl-3", children: [
+    /* @__PURE__ */ jsx27(Link3, { to: `${basePath}/${page.id}`, className: "w-full", children: /* @__PURE__ */ jsxs18(SidebarMenuButton, { children: [
+      /* @__PURE__ */ jsx27("span", { children: emoji }),
+      /* @__PURE__ */ jsx27("span", { children: title })
+    ] }) }),
+    /* @__PURE__ */ jsx27(CollapsibleTrigger2, { asChild: !0, children: /* @__PURE__ */ jsx27(
       SidebarMenuAction,
       {
         className: "left-2 bg-sidebar-accent text-sidebar-accent-foreground data-[state=open]:rotate-90",
         showOnHover: !0,
-        children: /* @__PURE__ */ jsxDEV27(ChevronRight2, {}, void 0, !1, {
-          fileName: "app/components/nav-workspaces.tsx",
-          lineNumber: 96,
-          columnNumber: 13
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 92,
-        columnNumber: 11
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 91,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV27(
+        children: /* @__PURE__ */ jsx27(ChevronRight2, {})
+      }
+    ) }),
+    /* @__PURE__ */ jsx27(
       SidebarMenuAction,
       {
         showOnHover: !0,
         onClick: handleAddPage,
         disabled: isPending,
-        children: /* @__PURE__ */ jsxDEV27(Plus, {}, void 0, !1, {
-          fileName: "app/components/nav-workspaces.tsx",
-          lineNumber: 104,
-          columnNumber: 11
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 99,
-        columnNumber: 9
-      },
-      this
+        children: /* @__PURE__ */ jsx27(Plus, {})
+      }
     ),
-    /* @__PURE__ */ jsxDEV27(CollapsibleContent2, { children: /* @__PURE__ */ jsxDEV27(SidebarMenuSub, { children: page.pages?.map((subPage) => /* @__PURE__ */ jsxDEV27(
+    /* @__PURE__ */ jsx27(CollapsibleContent2, { children: /* @__PURE__ */ jsx27(SidebarMenuSub, { children: page.pages?.map((subPage) => /* @__PURE__ */ jsx27(
       PageItem,
       {
         page: subPage,
         onPageTitleChange,
         basePath
       },
-      subPage.id,
-      !1,
-      {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 109,
-        columnNumber: 15
-      },
-      this
-    )) }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 107,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 106,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/nav-workspaces.tsx",
-    lineNumber: 84,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/nav-workspaces.tsx",
-    lineNumber: 83,
-    columnNumber: 5
-  }, this) : /* @__PURE__ */ jsxDEV27(SidebarMenuSubItem, { children: /* @__PURE__ */ jsxDEV27(Link3, { to: `${basePath}/${page.id}`, className: "w-full", children: /* @__PURE__ */ jsxDEV27(SidebarMenuSubButton, { children: [
-    /* @__PURE__ */ jsxDEV27("span", { children: emoji }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 74,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ jsxDEV27("span", { children: title }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 75,
-      columnNumber: 13
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/nav-workspaces.tsx",
-    lineNumber: 73,
-    columnNumber: 11
-  }, this) }, void 0, !1, {
-    fileName: "app/components/nav-workspaces.tsx",
-    lineNumber: 72,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/components/nav-workspaces.tsx",
-    lineNumber: 71,
-    columnNumber: 7
-  }, this);
+      subPage.id
+    )) }) })
+  ] }) }) : /* @__PURE__ */ jsx27(SidebarMenuSubItem, { children: /* @__PURE__ */ jsx27(Link3, { to: `${basePath}/${page.id}`, className: "w-full", children: /* @__PURE__ */ jsxs18(SidebarMenuSubButton, { children: [
+    /* @__PURE__ */ jsx27("span", { children: emoji }),
+    /* @__PURE__ */ jsx27("span", { children: title })
+  ] }) }) });
 }
 function WorkspaceItem({ workspace, onPageTitleChange, basePath = "/pages", isExpanded = !1 }) {
   let navigate = useNavigate(), { getPageTitle } = usePageTitles(), { getEmoji } = usePageEmoji(workspace.id), { addPage } = useWorkspaces(), [isPending, startTransition] = React24.useTransition(), [isOpen, setIsOpen] = React24.useState(isExpanded), title = getPageTitle(workspace.id, workspace.name), emoji = getEmoji(workspace.id) || workspace.emoji;
@@ -4602,105 +2635,38 @@ function WorkspaceItem({ workspace, onPageTitleChange, basePath = "/pages", isEx
       setIsOpen(!0), navigate(`${basePath}/${newPage.id}`);
     });
   };
-  return /* @__PURE__ */ jsxDEV27(Collapsible, { open: isOpen, onOpenChange: setIsOpen, children: /* @__PURE__ */ jsxDEV27(SidebarMenuItem, { children: [
-    /* @__PURE__ */ jsxDEV27(Link3, { to: `${basePath}/${workspace.id}`, className: "w-full", children: /* @__PURE__ */ jsxDEV27(SidebarMenuButton, { children: [
-      /* @__PURE__ */ jsxDEV27("span", { children: emoji }, void 0, !1, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 164,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV27("span", { children: title }, void 0, !1, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 165,
-        columnNumber: 13
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 163,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 162,
-      columnNumber: 9
-    }, this),
-    workspace.pages.length > 0 && /* @__PURE__ */ jsxDEV27(CollapsibleTrigger2, { asChild: !0, children: /* @__PURE__ */ jsxDEV27(
+  return /* @__PURE__ */ jsx27(Collapsible, { open: isOpen, onOpenChange: setIsOpen, children: /* @__PURE__ */ jsxs18(SidebarMenuItem, { children: [
+    /* @__PURE__ */ jsx27(Link3, { to: `${basePath}/${workspace.id}`, className: "w-full", children: /* @__PURE__ */ jsxs18(SidebarMenuButton, { children: [
+      /* @__PURE__ */ jsx27("span", { children: emoji }),
+      /* @__PURE__ */ jsx27("span", { children: title })
+    ] }) }),
+    workspace.pages.length > 0 && /* @__PURE__ */ jsx27(CollapsibleTrigger2, { asChild: !0, children: /* @__PURE__ */ jsx27(
       SidebarMenuAction,
       {
         className: "left-2 bg-sidebar-accent text-sidebar-accent-foreground data-[state=open]:rotate-90",
         showOnHover: !0,
-        children: /* @__PURE__ */ jsxDEV27(ChevronRight2, {}, void 0, !1, {
-          fileName: "app/components/nav-workspaces.tsx",
-          lineNumber: 174,
-          columnNumber: 15
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 170,
-        columnNumber: 13
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 169,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ jsxDEV27(
+        children: /* @__PURE__ */ jsx27(ChevronRight2, {})
+      }
+    ) }),
+    /* @__PURE__ */ jsx27(
       SidebarMenuAction,
       {
         showOnHover: !0,
         onClick: handleAddPage,
         disabled: isPending,
-        children: /* @__PURE__ */ jsxDEV27(Plus, {}, void 0, !1, {
-          fileName: "app/components/nav-workspaces.tsx",
-          lineNumber: 183,
-          columnNumber: 11
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 178,
-        columnNumber: 9
-      },
-      this
+        children: /* @__PURE__ */ jsx27(Plus, {})
+      }
     ),
-    /* @__PURE__ */ jsxDEV27(CollapsibleContent2, { children: /* @__PURE__ */ jsxDEV27(SidebarMenuSub, { children: workspace.pages.map((page) => /* @__PURE__ */ jsxDEV27(
+    /* @__PURE__ */ jsx27(CollapsibleContent2, { children: /* @__PURE__ */ jsx27(SidebarMenuSub, { children: workspace.pages.map((page) => /* @__PURE__ */ jsx27(
       PageItem,
       {
         page,
         onPageTitleChange,
         basePath
       },
-      page.id,
-      !1,
-      {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 188,
-        columnNumber: 15
-      },
-      this
-    )) }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 186,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 185,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/nav-workspaces.tsx",
-    lineNumber: 161,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/nav-workspaces.tsx",
-    lineNumber: 160,
-    columnNumber: 5
-  }, this);
+      page.id
+    )) }) })
+  ] }) });
 }
 function NavWorkspaces({ onPageTitleChange }) {
   let { isMobile } = useSidebar(), navigate = useNavigate(), [addLibraryOpen, setAddLibraryOpen] = React24.useState(!1), { workspaces: workspaces2, addPage } = useWorkspaces(), [isPending, startTransition] = React24.useTransition(), [visibleItems, setVisibleItems] = React24.useState(ITEMS_PER_PAGE), handleAddLibraryItem = (item) => {
@@ -4713,224 +2679,94 @@ function NavWorkspaces({ onPageTitleChange }) {
   }, [addPage, navigate]), handleLoadMore = () => {
     setVisibleItems((prev) => prev + ITEMS_PER_PAGE);
   }, visibleWorkspaces = workspaces2.slice(0, visibleItems), hasMore = visibleItems < workspaces2.length;
-  return /* @__PURE__ */ jsxDEV27(Fragment2, { children: [
-    /* @__PURE__ */ jsxDEV27(
+  return /* @__PURE__ */ jsxs18(Fragment2, { children: [
+    /* @__PURE__ */ jsx27(
       AddLibraryItem,
       {
         open: addLibraryOpen,
         onOpenChange: setAddLibraryOpen,
         onAdd: handleAddLibraryItem
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 231,
-        columnNumber: 7
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ jsxDEV27(SidebarGroup, { children: [
-      /* @__PURE__ */ jsxDEV27(SidebarGroupLabel, { children: "Pages" }, void 0, !1, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 238,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV27(SidebarGroupContent, { children: /* @__PURE__ */ jsxDEV27(SidebarMenu, { children: [
-        visibleWorkspaces.map((workspace) => /* @__PURE__ */ jsxDEV27(
+    /* @__PURE__ */ jsxs18(SidebarGroup, { children: [
+      /* @__PURE__ */ jsx27(SidebarGroupLabel, { children: "Pages" }),
+      /* @__PURE__ */ jsx27(SidebarGroupContent, { children: /* @__PURE__ */ jsxs18(SidebarMenu, { children: [
+        visibleWorkspaces.map((workspace) => /* @__PURE__ */ jsx27(
           WorkspaceItem,
           {
             workspace,
             onPageTitleChange
           },
-          workspace.id,
-          !1,
-          {
-            fileName: "app/components/nav-workspaces.tsx",
-            lineNumber: 242,
-            columnNumber: 15
-          },
-          this
+          workspace.id
         )),
-        /* @__PURE__ */ jsxDEV27(SidebarMenuItem, { children: hasMore ? /* @__PURE__ */ jsxDEV27(
+        /* @__PURE__ */ jsx27(SidebarMenuItem, { children: hasMore ? /* @__PURE__ */ jsxs18(
           SidebarMenuButton,
           {
             className: "text-sidebar-foreground/70",
             onClick: handleLoadMore,
             children: [
-              /* @__PURE__ */ jsxDEV27(MoreHorizontal3, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/nav-workspaces.tsx",
-                lineNumber: 254,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV27("span", { children: [
+              /* @__PURE__ */ jsx27(MoreHorizontal3, { className: "h-4 w-4" }),
+              /* @__PURE__ */ jsxs18("span", { children: [
                 "Show More (",
                 workspaces2.length - visibleItems,
                 " remaining)"
-              ] }, void 0, !0, {
-                fileName: "app/components/nav-workspaces.tsx",
-                lineNumber: 255,
-                columnNumber: 19
-              }, this)
+              ] })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-workspaces.tsx",
-            lineNumber: 250,
-            columnNumber: 17
-          },
-          this
-        ) : /* @__PURE__ */ jsxDEV27(
+          }
+        ) : /* @__PURE__ */ jsxs18(
           SidebarMenuButton,
           {
             className: "text-sidebar-foreground/70",
             onClick: handleCreatePage,
             disabled: isPending,
             children: [
-              /* @__PURE__ */ jsxDEV27(Plus, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/nav-workspaces.tsx",
-                lineNumber: 263,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV27("span", { children: isPending ? "Creating..." : "Add Page" }, void 0, !1, {
-                fileName: "app/components/nav-workspaces.tsx",
-                lineNumber: 264,
-                columnNumber: 19
-              }, this)
+              /* @__PURE__ */ jsx27(Plus, { className: "h-4 w-4" }),
+              /* @__PURE__ */ jsx27("span", { children: isPending ? "Creating..." : "Add Page" })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-workspaces.tsx",
-            lineNumber: 258,
-            columnNumber: 17
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/nav-workspaces.tsx",
-          lineNumber: 248,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 240,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 239,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 237,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV27(SidebarGroup, { children: [
-      /* @__PURE__ */ jsxDEV27(SidebarGroupLabel, { children: "Library" }, void 0, !1, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 273,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV27(SidebarGroupContent, { children: /* @__PURE__ */ jsxDEV27(SidebarMenu, { children: [
-        visibleWorkspaces.map((workspace) => /* @__PURE__ */ jsxDEV27(
+          }
+        ) })
+      ] }) })
+    ] }),
+    /* @__PURE__ */ jsxs18(SidebarGroup, { children: [
+      /* @__PURE__ */ jsx27(SidebarGroupLabel, { children: "Library" }),
+      /* @__PURE__ */ jsx27(SidebarGroupContent, { children: /* @__PURE__ */ jsxs18(SidebarMenu, { children: [
+        visibleWorkspaces.map((workspace) => /* @__PURE__ */ jsx27(
           WorkspaceItem,
           {
             workspace,
             onPageTitleChange,
             basePath: "/library"
           },
-          workspace.id,
-          !1,
-          {
-            fileName: "app/components/nav-workspaces.tsx",
-            lineNumber: 277,
-            columnNumber: 15
-          },
-          this
+          workspace.id
         )),
-        /* @__PURE__ */ jsxDEV27(SidebarMenuItem, { children: hasMore ? /* @__PURE__ */ jsxDEV27(
+        /* @__PURE__ */ jsx27(SidebarMenuItem, { children: hasMore ? /* @__PURE__ */ jsxs18(
           SidebarMenuButton,
           {
             className: "text-sidebar-foreground/70",
             onClick: handleLoadMore,
             children: [
-              /* @__PURE__ */ jsxDEV27(MoreHorizontal3, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/nav-workspaces.tsx",
-                lineNumber: 290,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV27("span", { children: [
+              /* @__PURE__ */ jsx27(MoreHorizontal3, { className: "h-4 w-4" }),
+              /* @__PURE__ */ jsxs18("span", { children: [
                 "Show More (",
                 workspaces2.length - visibleItems,
                 " remaining)"
-              ] }, void 0, !0, {
-                fileName: "app/components/nav-workspaces.tsx",
-                lineNumber: 291,
-                columnNumber: 19
-              }, this)
+              ] })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-workspaces.tsx",
-            lineNumber: 286,
-            columnNumber: 17
-          },
-          this
-        ) : /* @__PURE__ */ jsxDEV27(
+          }
+        ) : /* @__PURE__ */ jsxs18(
           SidebarMenuButton,
           {
             className: "text-sidebar-foreground/70",
             onClick: () => setAddLibraryOpen(!0),
             children: [
-              /* @__PURE__ */ jsxDEV27(Plus, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/nav-workspaces.tsx",
-                lineNumber: 298,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV27("span", { children: "Add to Library" }, void 0, !1, {
-                fileName: "app/components/nav-workspaces.tsx",
-                lineNumber: 299,
-                columnNumber: 19
-              }, this)
+              /* @__PURE__ */ jsx27(Plus, { className: "h-4 w-4" }),
+              /* @__PURE__ */ jsx27("span", { children: "Add to Library" })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-workspaces.tsx",
-            lineNumber: 294,
-            columnNumber: 17
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/nav-workspaces.tsx",
-          lineNumber: 284,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 275,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/components/nav-workspaces.tsx",
-        lineNumber: 274,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/nav-workspaces.tsx",
-      lineNumber: 272,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/nav-workspaces.tsx",
-    lineNumber: 230,
-    columnNumber: 5
-  }, this);
+          }
+        ) })
+      ] }) })
+    ] })
+  ] });
 }
 
 // app/components/token-usage.tsx
@@ -4940,7 +2776,7 @@ import { ArrowUpCircle } from "lucide-react";
 // app/components/upgrade-dialog.tsx
 import * as React25 from "react";
 import { Check as Check2, CreditCard as CreditCard2, Infinity, Sparkles as Sparkles2 } from "lucide-react";
-import { jsxDEV as jsxDEV28 } from "react/jsx-dev-runtime";
+import { jsx as jsx28, jsxs as jsxs19 } from "react/jsx-runtime";
 var plans = [
   {
     id: "monthly",
@@ -4978,38 +2814,14 @@ var plans = [
 };
 function UpgradeDialog({ open, onOpenChange }) {
   let [selectedPlan, setSelectedPlan] = React25.useState("yearly");
-  return /* @__PURE__ */ jsxDEV28(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV28(DialogContent, { className: "max-w-3xl", children: [
-    /* @__PURE__ */ jsxDEV28(DialogHeader, { children: /* @__PURE__ */ jsxDEV28(DialogTitle, { className: "text-center", children: [
-      /* @__PURE__ */ jsxDEV28("div", { className: "mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsxDEV28(Sparkles2, { className: "h-6 w-6 text-primary" }, void 0, !1, {
-        fileName: "app/components/upgrade-dialog.tsx",
-        lineNumber: 65,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/upgrade-dialog.tsx",
-        lineNumber: 64,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV28("div", { className: "text-2xl font-bold", children: "Upgrade to Pro" }, void 0, !1, {
-        fileName: "app/components/upgrade-dialog.tsx",
-        lineNumber: 67,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV28("div", { className: "mt-2 text-base font-normal text-muted-foreground", children: "Unlock unlimited AI capabilities and take your work to the next level" }, void 0, !1, {
-        fileName: "app/components/upgrade-dialog.tsx",
-        lineNumber: 68,
-        columnNumber: 13
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/upgrade-dialog.tsx",
-      lineNumber: 63,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/upgrade-dialog.tsx",
-      lineNumber: 62,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV28("div", { className: "mt-8", children: [
-      /* @__PURE__ */ jsxDEV28("div", { className: "mb-8 flex justify-center gap-4", children: plans.map((plan) => /* @__PURE__ */ jsxDEV28(
+  return /* @__PURE__ */ jsx28(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs19(DialogContent, { className: "max-w-3xl", children: [
+    /* @__PURE__ */ jsx28(DialogHeader, { children: /* @__PURE__ */ jsxs19(DialogTitle, { className: "text-center", children: [
+      /* @__PURE__ */ jsx28("div", { className: "mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsx28(Sparkles2, { className: "h-6 w-6 text-primary" }) }),
+      /* @__PURE__ */ jsx28("div", { className: "text-2xl font-bold", children: "Upgrade to Pro" }),
+      /* @__PURE__ */ jsx28("div", { className: "mt-2 text-base font-normal text-muted-foreground", children: "Unlock unlimited AI capabilities and take your work to the next level" })
+    ] }) }),
+    /* @__PURE__ */ jsxs19("div", { className: "mt-8", children: [
+      /* @__PURE__ */ jsx28("div", { className: "mb-8 flex justify-center gap-4", children: plans.map((plan) => /* @__PURE__ */ jsxs19(
         "button",
         {
           onClick: () => setSelectedPlan(plan.id),
@@ -5019,282 +2831,95 @@ function UpgradeDialog({ open, onOpenChange }) {
             plan.featured && "border-primary"
           ),
           children: [
-            plan.featured && /* @__PURE__ */ jsxDEV28("div", { className: "absolute -top-2.5 right-4 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground", children: plan.savings }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 90,
-              columnNumber: 19
-            }, this),
-            /* @__PURE__ */ jsxDEV28("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ jsxDEV28("div", { className: "text-lg font-medium", children: plan.name }, void 0, !1, {
-                fileName: "app/components/upgrade-dialog.tsx",
-                lineNumber: 95,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV28("div", { className: "text-sm text-muted-foreground", children: [
+            plan.featured && /* @__PURE__ */ jsx28("div", { className: "absolute -top-2.5 right-4 rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground", children: plan.savings }),
+            /* @__PURE__ */ jsxs19("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ jsx28("div", { className: "text-lg font-medium", children: plan.name }),
+              /* @__PURE__ */ jsxs19("div", { className: "text-sm text-muted-foreground", children: [
                 "$",
                 plan.price,
                 "/",
                 plan.interval
-              ] }, void 0, !0, {
-                fileName: "app/components/upgrade-dialog.tsx",
-                lineNumber: 96,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 94,
-              columnNumber: 17
-            }, this)
+              ] })
+            ] })
           ]
         },
-        plan.id,
-        !0,
-        {
-          fileName: "app/components/upgrade-dialog.tsx",
-          lineNumber: 78,
-          columnNumber: 15
-        },
-        this
-      )) }, void 0, !1, {
-        fileName: "app/components/upgrade-dialog.tsx",
-        lineNumber: 76,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV28("div", { className: "mb-8 grid gap-8 md:grid-cols-2", children: [
-        /* @__PURE__ */ jsxDEV28("div", { className: "rounded-xl border border-border p-6", children: [
-          /* @__PURE__ */ jsxDEV28("div", { className: "mb-6", children: [
-            /* @__PURE__ */ jsxDEV28("div", { className: "text-lg font-medium", children: "Free" }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 109,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV28("div", { className: "mt-2 text-3xl font-bold", children: "$0" }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 110,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV28("div", { className: "mt-2 text-sm text-muted-foreground", children: "For individuals just getting started" }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 111,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 108,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV28("div", { className: "space-y-4", children: features.free.map((feature) => /* @__PURE__ */ jsxDEV28("div", { className: "flex items-start gap-2", children: [
-            /* @__PURE__ */ jsxDEV28(Check2, { className: "mt-0.5 h-4 w-4 text-muted-foreground" }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 118,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV28("span", { className: "text-sm", children: feature }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 119,
-              columnNumber: 21
-            }, this)
-          ] }, feature, !0, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 117,
-            columnNumber: 19
-          }, this)) }, void 0, !1, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 115,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/upgrade-dialog.tsx",
-          lineNumber: 107,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV28("div", { className: "relative rounded-xl border border-primary bg-primary/5 p-6", children: [
-          /* @__PURE__ */ jsxDEV28("div", { className: "absolute -top-3 left-4 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground", children: "Most Popular" }, void 0, !1, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 127,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV28("div", { className: "mb-6", children: [
-            /* @__PURE__ */ jsxDEV28("div", { className: "text-lg font-medium", children: "Pro" }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 131,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV28("div", { className: "mt-2 flex items-baseline gap-2", children: [
-              /* @__PURE__ */ jsxDEV28("div", { className: "text-3xl font-bold", children: [
+        plan.id
+      )) }),
+      /* @__PURE__ */ jsxs19("div", { className: "mb-8 grid gap-8 md:grid-cols-2", children: [
+        /* @__PURE__ */ jsxs19("div", { className: "rounded-xl border border-border p-6", children: [
+          /* @__PURE__ */ jsxs19("div", { className: "mb-6", children: [
+            /* @__PURE__ */ jsx28("div", { className: "text-lg font-medium", children: "Free" }),
+            /* @__PURE__ */ jsx28("div", { className: "mt-2 text-3xl font-bold", children: "$0" }),
+            /* @__PURE__ */ jsx28("div", { className: "mt-2 text-sm text-muted-foreground", children: "For individuals just getting started" })
+          ] }),
+          /* @__PURE__ */ jsx28("div", { className: "space-y-4", children: features.free.map((feature) => /* @__PURE__ */ jsxs19("div", { className: "flex items-start gap-2", children: [
+            /* @__PURE__ */ jsx28(Check2, { className: "mt-0.5 h-4 w-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsx28("span", { className: "text-sm", children: feature })
+          ] }, feature)) })
+        ] }),
+        /* @__PURE__ */ jsxs19("div", { className: "relative rounded-xl border border-primary bg-primary/5 p-6", children: [
+          /* @__PURE__ */ jsx28("div", { className: "absolute -top-3 left-4 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground", children: "Most Popular" }),
+          /* @__PURE__ */ jsxs19("div", { className: "mb-6", children: [
+            /* @__PURE__ */ jsx28("div", { className: "text-lg font-medium", children: "Pro" }),
+            /* @__PURE__ */ jsxs19("div", { className: "mt-2 flex items-baseline gap-2", children: [
+              /* @__PURE__ */ jsxs19("div", { className: "text-3xl font-bold", children: [
                 "$",
                 selectedPlan === "yearly" ? "17" : "21"
-              ] }, void 0, !0, {
-                fileName: "app/components/upgrade-dialog.tsx",
-                lineNumber: 133,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV28("div", { className: "text-sm text-muted-foreground", children: [
+              ] }),
+              /* @__PURE__ */ jsxs19("div", { className: "text-sm text-muted-foreground", children: [
                 "per ",
                 selectedPlan === "yearly" ? "year" : "month"
-              ] }, void 0, !0, {
-                fileName: "app/components/upgrade-dialog.tsx",
-                lineNumber: 136,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 132,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV28("div", { className: "mt-2 text-sm text-muted-foreground", children: "Everything in Free, plus..." }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 140,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 130,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV28("div", { className: "space-y-4", children: features.pro.map((feature) => /* @__PURE__ */ jsxDEV28("div", { className: "flex items-start gap-2", children: [
-            /* @__PURE__ */ jsxDEV28("div", { className: "mt-0.5 rounded-full bg-primary/10 p-0.5", children: /* @__PURE__ */ jsxDEV28(Check2, { className: "h-3 w-3 text-primary" }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 148,
-              columnNumber: 23
-            }, this) }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 147,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV28("span", { className: "text-sm font-medium", children: feature }, void 0, !1, {
-              fileName: "app/components/upgrade-dialog.tsx",
-              lineNumber: 150,
-              columnNumber: 21
-            }, this)
-          ] }, feature, !0, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 146,
-            columnNumber: 19
-          }, this)) }, void 0, !1, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 144,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/upgrade-dialog.tsx",
-          lineNumber: 126,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/upgrade-dialog.tsx",
-        lineNumber: 105,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV28("div", { className: "space-y-4", children: [
-        /* @__PURE__ */ jsxDEV28(Button, { className: "w-full", size: "lg", children: [
-          /* @__PURE__ */ jsxDEV28(CreditCard2, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 160,
-            columnNumber: 15
-          }, this),
+              ] })
+            ] }),
+            /* @__PURE__ */ jsx28("div", { className: "mt-2 text-sm text-muted-foreground", children: "Everything in Free, plus..." })
+          ] }),
+          /* @__PURE__ */ jsx28("div", { className: "space-y-4", children: features.pro.map((feature) => /* @__PURE__ */ jsxs19("div", { className: "flex items-start gap-2", children: [
+            /* @__PURE__ */ jsx28("div", { className: "mt-0.5 rounded-full bg-primary/10 p-0.5", children: /* @__PURE__ */ jsx28(Check2, { className: "h-3 w-3 text-primary" }) }),
+            /* @__PURE__ */ jsx28("span", { className: "text-sm font-medium", children: feature })
+          ] }, feature)) })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs19("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ jsxs19(Button, { className: "w-full", size: "lg", children: [
+          /* @__PURE__ */ jsx28(CreditCard2, { className: "mr-2 h-4 w-4" }),
           "Upgrade to Pro"
-        ] }, void 0, !0, {
-          fileName: "app/components/upgrade-dialog.tsx",
-          lineNumber: 159,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV28("div", { className: "flex items-center justify-center gap-2 text-center text-xs text-muted-foreground", children: [
-          /* @__PURE__ */ jsxDEV28(Infinity, { className: "h-3 w-3" }, void 0, !1, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 164,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV28("span", { children: "Unlimited AI tokens with Pro plan" }, void 0, !1, {
-            fileName: "app/components/upgrade-dialog.tsx",
-            lineNumber: 165,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/upgrade-dialog.tsx",
-          lineNumber: 163,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/upgrade-dialog.tsx",
-        lineNumber: 158,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/upgrade-dialog.tsx",
-      lineNumber: 74,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/upgrade-dialog.tsx",
-    lineNumber: 61,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/upgrade-dialog.tsx",
-    lineNumber: 60,
-    columnNumber: 5
-  }, this);
+        ] }),
+        /* @__PURE__ */ jsxs19("div", { className: "flex items-center justify-center gap-2 text-center text-xs text-muted-foreground", children: [
+          /* @__PURE__ */ jsx28(Infinity, { className: "h-3 w-3" }),
+          /* @__PURE__ */ jsx28("span", { children: "Unlimited AI tokens with Pro plan" })
+        ] })
+      ] })
+    ] })
+  ] }) });
 }
 
 // app/components/token-usage.tsx
-import { Fragment as Fragment3, jsxDEV as jsxDEV29 } from "react/jsx-dev-runtime";
+import { Fragment as Fragment3, jsx as jsx29, jsxs as jsxs20 } from "react/jsx-runtime";
 function TokenUsage({ totalTokens, usedTokens }) {
   let [upgradeOpen, setUpgradeOpen] = React26.useState(!1), percentage = Math.round(usedTokens / totalTokens * 100), remaining = totalTokens - usedTokens, isLow = percentage > 80;
-  return /* @__PURE__ */ jsxDEV29(Fragment3, { children: [
-    /* @__PURE__ */ jsxDEV29(UpgradeDialog, { open: upgradeOpen, onOpenChange: setUpgradeOpen }, void 0, !1, {
-      fileName: "app/components/token-usage.tsx",
-      lineNumber: 20,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV29("div", { className: "border-t border-sidebar-border bg-sidebar p-4", children: /* @__PURE__ */ jsxDEV29("div", { className: "space-y-2", children: [
-      /* @__PURE__ */ jsxDEV29("div", { className: "flex items-center justify-between text-[11px]", children: [
-        /* @__PURE__ */ jsxDEV29("span", { className: "font-medium uppercase tracking-wide text-sidebar-foreground/70", children: "Token Usage" }, void 0, !1, {
-          fileName: "app/components/token-usage.tsx",
-          lineNumber: 24,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV29("span", { className: `font-medium ${isLow ? "text-red-500" : "text-sidebar-foreground/70"}`, children: [
+  return /* @__PURE__ */ jsxs20(Fragment3, { children: [
+    /* @__PURE__ */ jsx29(UpgradeDialog, { open: upgradeOpen, onOpenChange: setUpgradeOpen }),
+    /* @__PURE__ */ jsx29("div", { className: "border-t border-sidebar-border bg-sidebar p-4", children: /* @__PURE__ */ jsxs20("div", { className: "space-y-2", children: [
+      /* @__PURE__ */ jsxs20("div", { className: "flex items-center justify-between text-[11px]", children: [
+        /* @__PURE__ */ jsx29("span", { className: "font-medium uppercase tracking-wide text-sidebar-foreground/70", children: "Token Usage" }),
+        /* @__PURE__ */ jsxs20("span", { className: `font-medium ${isLow ? "text-red-500" : "text-sidebar-foreground/70"}`, children: [
           percentage,
           "%"
-        ] }, void 0, !0, {
-          fileName: "app/components/token-usage.tsx",
-          lineNumber: 27,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/token-usage.tsx",
-        lineNumber: 23,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV29("div", { className: "relative h-1 overflow-hidden rounded-full bg-sidebar-accent", children: /* @__PURE__ */ jsxDEV29(
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx29("div", { className: "relative h-1 overflow-hidden rounded-full bg-sidebar-accent", children: /* @__PURE__ */ jsx29(
         "div",
         {
           className: `absolute left-0 top-0 h-full rounded-full transition-all duration-300 ${isLow ? "bg-red-500" : "bg-blue-500"}`,
           style: { width: `${percentage}%` }
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/token-usage.tsx",
-          lineNumber: 33,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/components/token-usage.tsx",
-        lineNumber: 32,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV29("div", { className: "flex items-center justify-between text-[11px]", children: [
-        /* @__PURE__ */ jsxDEV29("span", { className: "text-sidebar-foreground/70", children: [
+        }
+      ) }),
+      /* @__PURE__ */ jsxs20("div", { className: "flex items-center justify-between text-[11px]", children: [
+        /* @__PURE__ */ jsxs20("span", { className: "text-sidebar-foreground/70", children: [
           remaining.toLocaleString(),
           " tokens remaining"
-        ] }, void 0, !0, {
-          fileName: "app/components/token-usage.tsx",
-          lineNumber: 42,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV29(
+        ] }),
+        /* @__PURE__ */ jsxs20(
           Button,
           {
             variant: "ghost",
@@ -5302,42 +2927,14 @@ function TokenUsage({ totalTokens, usedTokens }) {
             className: "h-auto p-0 text-[11px] font-medium text-blue-500 hover:text-blue-600",
             onClick: () => setUpgradeOpen(!0),
             children: [
-              /* @__PURE__ */ jsxDEV29(ArrowUpCircle, { className: "mr-1 h-3 w-3" }, void 0, !1, {
-                fileName: "app/components/token-usage.tsx",
-                lineNumber: 51,
-                columnNumber: 15
-              }, this),
+              /* @__PURE__ */ jsx29(ArrowUpCircle, { className: "mr-1 h-3 w-3" }),
               "Upgrade"
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/token-usage.tsx",
-            lineNumber: 45,
-            columnNumber: 13
-          },
-          this
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/components/token-usage.tsx",
-        lineNumber: 41,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/token-usage.tsx",
-      lineNumber: 22,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/components/token-usage.tsx",
-      lineNumber: 21,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/token-usage.tsx",
-    lineNumber: 19,
-    columnNumber: 5
-  }, this);
+      ] })
+    ] }) })
+  ] });
 }
 
 // app/components/user-switcher.tsx
@@ -5363,7 +2960,7 @@ import {
 
 // app/components/settings/billing-settings.tsx
 import { CreditCard as CreditCard3, Package } from "lucide-react";
-import { jsxDEV as jsxDEV30 } from "react/jsx-dev-runtime";
+import { jsx as jsx30, jsxs as jsxs21 } from "react/jsx-runtime";
 var billingInfo = {
   plan: "Free",
   nextBilling: "No billing scheduled",
@@ -5378,186 +2975,62 @@ var billingInfo = {
   }
 };
 function BillingSettings() {
-  return /* @__PURE__ */ jsxDEV30("div", { className: "space-y-6", children: [
-    /* @__PURE__ */ jsxDEV30("div", { children: [
-      /* @__PURE__ */ jsxDEV30("h3", { className: "text-lg font-medium", children: "Billing & Subscription" }, void 0, !1, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 23,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV30("p", { className: "text-sm text-muted-foreground", children: "Manage your billing information and subscription plan" }, void 0, !1, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 24,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/billing-settings.tsx",
-      lineNumber: 22,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV30(Separator2, {}, void 0, !1, {
-      fileName: "app/components/settings/billing-settings.tsx",
-      lineNumber: 28,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV30("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV30("div", { className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ jsxDEV30("div", { className: "space-y-1", children: [
-          /* @__PURE__ */ jsxDEV30("h4", { className: "text-sm font-medium", children: "Current Plan" }, void 0, !1, {
-            fileName: "app/components/settings/billing-settings.tsx",
-            lineNumber: 34,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV30("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxDEV30(Package, { className: "h-4 w-4 text-muted-foreground" }, void 0, !1, {
-              fileName: "app/components/settings/billing-settings.tsx",
-              lineNumber: 36,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV30("p", { className: "text-sm text-muted-foreground", children: billingInfo.plan }, void 0, !1, {
-              fileName: "app/components/settings/billing-settings.tsx",
-              lineNumber: 37,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/settings/billing-settings.tsx",
-            lineNumber: 35,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/settings/billing-settings.tsx",
-          lineNumber: 33,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV30(Button, { children: "Upgrade Plan" }, void 0, !1, {
-          fileName: "app/components/settings/billing-settings.tsx",
-          lineNumber: 40,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 32,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV30("div", { className: "rounded-lg border p-4", children: [
-        /* @__PURE__ */ jsxDEV30("h4", { className: "text-sm font-medium mb-3", children: "AI Token Usage" }, void 0, !1, {
-          fileName: "app/components/settings/billing-settings.tsx",
-          lineNumber: 45,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV30("div", { className: "space-y-2", children: [
-          /* @__PURE__ */ jsxDEV30("div", { className: "text-sm text-muted-foreground", children: [
+  return /* @__PURE__ */ jsxs21("div", { className: "space-y-6", children: [
+    /* @__PURE__ */ jsxs21("div", { children: [
+      /* @__PURE__ */ jsx30("h3", { className: "text-lg font-medium", children: "Billing & Subscription" }),
+      /* @__PURE__ */ jsx30("p", { className: "text-sm text-muted-foreground", children: "Manage your billing information and subscription plan" })
+    ] }),
+    /* @__PURE__ */ jsx30(Separator2, {}),
+    /* @__PURE__ */ jsxs21("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs21("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxs21("div", { className: "space-y-1", children: [
+          /* @__PURE__ */ jsx30("h4", { className: "text-sm font-medium", children: "Current Plan" }),
+          /* @__PURE__ */ jsxs21("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsx30(Package, { className: "h-4 w-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsx30("p", { className: "text-sm text-muted-foreground", children: billingInfo.plan })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx30(Button, { children: "Upgrade Plan" })
+      ] }),
+      /* @__PURE__ */ jsxs21("div", { className: "rounded-lg border p-4", children: [
+        /* @__PURE__ */ jsx30("h4", { className: "text-sm font-medium mb-3", children: "AI Token Usage" }),
+        /* @__PURE__ */ jsxs21("div", { className: "space-y-2", children: [
+          /* @__PURE__ */ jsxs21("div", { className: "text-sm text-muted-foreground", children: [
             billingInfo.tokens.used.toLocaleString(),
             " / ",
             billingInfo.tokens.total.toLocaleString(),
             " tokens used"
-          ] }, void 0, !0, {
-            fileName: "app/components/settings/billing-settings.tsx",
-            lineNumber: 47,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV30("div", { className: "h-2 rounded-full bg-muted overflow-hidden", children: /* @__PURE__ */ jsxDEV30(
+          ] }),
+          /* @__PURE__ */ jsx30("div", { className: "h-2 rounded-full bg-muted overflow-hidden", children: /* @__PURE__ */ jsx30(
             "div",
             {
               className: "h-full bg-primary transition-all duration-500",
               style: { width: `${billingInfo.tokens.used / billingInfo.tokens.total * 100}%` }
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/settings/billing-settings.tsx",
-              lineNumber: 51,
-              columnNumber: 15
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/components/settings/billing-settings.tsx",
-            lineNumber: 50,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV30("p", { className: "text-xs text-muted-foreground", children: "Resets on the 1st of each month" }, void 0, !1, {
-            fileName: "app/components/settings/billing-settings.tsx",
-            lineNumber: 56,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/settings/billing-settings.tsx",
-          lineNumber: 46,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 44,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/billing-settings.tsx",
-      lineNumber: 31,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV30("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV30("div", { children: [
-        /* @__PURE__ */ jsxDEV30("h4", { className: "text-sm font-medium mb-1", children: "Payment Method" }, void 0, !1, {
-          fileName: "app/components/settings/billing-settings.tsx",
-          lineNumber: 66,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV30("p", { className: "text-sm text-muted-foreground", children: billingInfo.paymentMethod.type === "None" ? "No payment method added" : `${billingInfo.paymentMethod.type} ending in ${billingInfo.paymentMethod.last4}` }, void 0, !1, {
-          fileName: "app/components/settings/billing-settings.tsx",
-          lineNumber: 67,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 65,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV30(Button, { variant: "outline", className: "gap-2", children: [
-        /* @__PURE__ */ jsxDEV30(CreditCard3, { className: "h-4 w-4" }, void 0, !1, {
-          fileName: "app/components/settings/billing-settings.tsx",
-          lineNumber: 74,
-          columnNumber: 11
-        }, this),
+            }
+          ) }),
+          /* @__PURE__ */ jsx30("p", { className: "text-xs text-muted-foreground", children: "Resets on the 1st of each month" })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs21("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs21("div", { children: [
+        /* @__PURE__ */ jsx30("h4", { className: "text-sm font-medium mb-1", children: "Payment Method" }),
+        /* @__PURE__ */ jsx30("p", { className: "text-sm text-muted-foreground", children: billingInfo.paymentMethod.type === "None" ? "No payment method added" : `${billingInfo.paymentMethod.type} ending in ${billingInfo.paymentMethod.last4}` })
+      ] }),
+      /* @__PURE__ */ jsxs21(Button, { variant: "outline", className: "gap-2", children: [
+        /* @__PURE__ */ jsx30(CreditCard3, { className: "h-4 w-4" }),
         "Add Payment Method"
-      ] }, void 0, !0, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 73,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/billing-settings.tsx",
-      lineNumber: 64,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV30("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV30("h4", { className: "text-sm font-medium", children: "Billing History" }, void 0, !1, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 81,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV30("div", { className: "rounded-lg border", children: /* @__PURE__ */ jsxDEV30("div", { className: "p-4 text-center text-sm text-muted-foreground", children: "No billing history available" }, void 0, !1, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 83,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings/billing-settings.tsx",
-        lineNumber: 82,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings/billing-settings.tsx",
-      lineNumber: 80,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/settings/billing-settings.tsx",
-    lineNumber: 21,
-    columnNumber: 5
-  }, this);
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs21("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsx30("h4", { className: "text-sm font-medium", children: "Billing History" }),
+      /* @__PURE__ */ jsx30("div", { className: "rounded-lg border", children: /* @__PURE__ */ jsx30("div", { className: "p-4 text-center text-sm text-muted-foreground", children: "No billing history available" }) })
+    ] })
+  ] });
 }
 
 // app/components/settings-dialog.tsx
-import { jsxDEV as jsxDEV31 } from "react/jsx-dev-runtime";
+import { jsx as jsx31, jsxs as jsxs22 } from "react/jsx-runtime";
 var personalSections2 = [
   {
     id: "account",
@@ -5600,104 +3073,37 @@ function SettingsDialog({
     defaultSection && setActiveSection(defaultSection);
   }, [defaultSection]);
   let ActiveComponent = personalSections2.find((s) => s.id === activeSection)?.component || AccountSettings, activeTitle = personalSections2.find((s) => s.id === activeSection)?.label || "Settings";
-  return /* @__PURE__ */ jsxDEV31(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV31(DialogContent, { className: "max-w-[1200px] h-[85vh] p-0 gap-0", children: [
-    /* @__PURE__ */ jsxDEV31(DialogHeader, { className: "sr-only", children: /* @__PURE__ */ jsxDEV31(DialogTitle, { children: activeTitle }, void 0, !1, {
-      fileName: "app/components/settings-dialog.tsx",
-      lineNumber: 85,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/settings-dialog.tsx",
-      lineNumber: 84,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV31("div", { className: "flex h-full overflow-hidden rounded-xl", children: [
-      /* @__PURE__ */ jsxDEV31("div", { className: "w-60 bg-muted/50 overflow-y-auto flex-shrink-0 rounded-l-xl border-r", children: /* @__PURE__ */ jsxDEV31("div", { className: "px-2 pt-4 pb-4", children: /* @__PURE__ */ jsxDEV31("div", { className: "px-2", children: [
-        /* @__PURE__ */ jsxDEV31("div", { className: "text-[11px] font-semibold text-muted-foreground mb-1.5", children: "SETTINGS" }, void 0, !1, {
-          fileName: "app/components/settings-dialog.tsx",
-          lineNumber: 92,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ jsxDEV31("nav", { className: "mt-4 space-y-0.5 px-1", children: personalSections2.map((section) => {
+  return /* @__PURE__ */ jsx31(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs22(DialogContent, { className: "max-w-[1200px] h-[85vh] p-0 gap-0", children: [
+    /* @__PURE__ */ jsx31(DialogHeader, { className: "sr-only", children: /* @__PURE__ */ jsx31(DialogTitle, { children: activeTitle }) }),
+    /* @__PURE__ */ jsxs22("div", { className: "flex h-full overflow-hidden rounded-xl", children: [
+      /* @__PURE__ */ jsx31("div", { className: "w-60 bg-muted/50 overflow-y-auto flex-shrink-0 rounded-l-xl border-r", children: /* @__PURE__ */ jsx31("div", { className: "px-2 pt-4 pb-4", children: /* @__PURE__ */ jsxs22("div", { className: "px-2", children: [
+        /* @__PURE__ */ jsx31("div", { className: "text-[11px] font-semibold text-muted-foreground mb-1.5", children: "SETTINGS" }),
+        /* @__PURE__ */ jsx31("nav", { className: "mt-4 space-y-0.5 px-1", children: personalSections2.map((section) => {
           let Icon = section.icon;
-          return /* @__PURE__ */ jsxDEV31(
+          return /* @__PURE__ */ jsxs22(
             "button",
             {
               className: `w-full flex items-center px-2 py-1.5 h-8 text-sm font-medium rounded-lg transition-colors ${activeSection === section.id ? "bg-background text-foreground hover:bg-background" : "text-muted-foreground hover:bg-background/50 hover:text-foreground"}`,
               onClick: () => setActiveSection(section.id),
               children: [
-                /* @__PURE__ */ jsxDEV31(Icon, { className: "h-4 w-4 mr-2 shrink-0" }, void 0, !1, {
-                  fileName: "app/components/settings-dialog.tsx",
-                  lineNumber: 108,
-                  columnNumber: 25
-                }, this),
+                /* @__PURE__ */ jsx31(Icon, { className: "h-4 w-4 mr-2 shrink-0" }),
                 section.label
               ]
             },
-            section.id,
-            !0,
-            {
-              fileName: "app/components/settings-dialog.tsx",
-              lineNumber: 99,
-              columnNumber: 23
-            },
-            this
+            section.id
           );
-        }) }, void 0, !1, {
-          fileName: "app/components/settings-dialog.tsx",
-          lineNumber: 95,
-          columnNumber: 17
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/settings-dialog.tsx",
-        lineNumber: 91,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-dialog.tsx",
-        lineNumber: 90,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-dialog.tsx",
-        lineNumber: 89,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV31("div", { className: "flex-1 min-h-0 bg-background rounded-r-xl", children: /* @__PURE__ */ jsxDEV31("div", { className: "h-full overflow-y-auto", children: /* @__PURE__ */ jsxDEV31("div", { className: "max-w-3xl mx-auto p-8", children: /* @__PURE__ */ jsxDEV31(ActiveComponent, {}, void 0, !1, {
-        fileName: "app/components/settings-dialog.tsx",
-        lineNumber: 122,
-        columnNumber: 17
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-dialog.tsx",
-        lineNumber: 121,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-dialog.tsx",
-        lineNumber: 120,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/components/settings-dialog.tsx",
-        lineNumber: 119,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/settings-dialog.tsx",
-      lineNumber: 87,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/settings-dialog.tsx",
-    lineNumber: 83,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/settings-dialog.tsx",
-    lineNumber: 82,
-    columnNumber: 5
-  }, this);
+        }) })
+      ] }) }) }),
+      /* @__PURE__ */ jsx31("div", { className: "flex-1 min-h-0 bg-background rounded-r-xl", children: /* @__PURE__ */ jsx31("div", { className: "h-full overflow-y-auto", children: /* @__PURE__ */ jsx31("div", { className: "max-w-3xl mx-auto p-8", children: /* @__PURE__ */ jsx31(ActiveComponent, {}) }) }) })
+    ] })
+  ] }) });
 }
 
 // app/components/ui/avatar.tsx
 import * as React28 from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
-import { jsxDEV as jsxDEV32 } from "react/jsx-dev-runtime";
-var Avatar = React28.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV32(
+import { jsx as jsx32 } from "react/jsx-runtime";
+var Avatar = React28.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx32(
   AvatarPrimitive.Root,
   {
     ref,
@@ -5706,35 +3112,19 @@ var Avatar = React28.forwardRef(({ className, ...props }, ref) => /* @__PURE__ *
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/avatar.tsx",
-    lineNumber: 10,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 Avatar.displayName = AvatarPrimitive.Root.displayName;
-var AvatarImage = React28.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV32(
+var AvatarImage = React28.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx32(
   AvatarPrimitive.Image,
   {
     ref,
     className: cn("aspect-square h-full w-full", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/avatar.tsx",
-    lineNumber: 25,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 AvatarImage.displayName = AvatarPrimitive.Image.displayName;
-var AvatarFallback = React28.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV32(
+var AvatarFallback = React28.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx32(
   AvatarPrimitive.Fallback,
   {
     ref,
@@ -5743,20 +3133,12 @@ var AvatarFallback = React28.forwardRef(({ className, ...props }, ref) => /* @__
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/avatar.tsx",
-    lineNumber: 37,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
 
 // app/components/user-switcher.tsx
-import { Fragment as Fragment4, jsxDEV as jsxDEV33 } from "react/jsx-dev-runtime";
+import { Fragment as Fragment4, jsx as jsx33, jsxs as jsxs23 } from "react/jsx-runtime";
 function UserSwitcher({
   user = {
     name: "John Doe",
@@ -5767,88 +3149,36 @@ function UserSwitcher({
   let { isMobile } = useSidebar(), [upgradeOpen, setUpgradeOpen] = React29.useState(!1), [settingsOpen, setSettingsOpen] = React29.useState(!1), [activeSection, setActiveSection] = React29.useState("account"), openNotificationSettings = () => {
     setActiveSection("notifications"), setSettingsOpen(!0);
   };
-  return /* @__PURE__ */ jsxDEV33(Fragment4, { children: [
-    /* @__PURE__ */ jsxDEV33(UpgradeDialog, { open: upgradeOpen, onOpenChange: setUpgradeOpen }, void 0, !1, {
-      fileName: "app/components/user-switcher.tsx",
-      lineNumber: 60,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV33(
+  return /* @__PURE__ */ jsxs23(Fragment4, { children: [
+    /* @__PURE__ */ jsx33(UpgradeDialog, { open: upgradeOpen, onOpenChange: setUpgradeOpen }),
+    /* @__PURE__ */ jsx33(
       SettingsDialog,
       {
         open: settingsOpen,
         onOpenChange: setSettingsOpen,
         defaultSection: activeSection
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/user-switcher.tsx",
-        lineNumber: 61,
-        columnNumber: 7
-      },
-      this
+      }
     ),
-    /* @__PURE__ */ jsxDEV33(SidebarMenu, { children: /* @__PURE__ */ jsxDEV33(SidebarMenuItem, { children: /* @__PURE__ */ jsxDEV33(DropdownMenu, { children: [
-      /* @__PURE__ */ jsxDEV33(DropdownMenuTrigger, { asChild: !0, children: /* @__PURE__ */ jsxDEV33(
+    /* @__PURE__ */ jsx33(SidebarMenu, { children: /* @__PURE__ */ jsx33(SidebarMenuItem, { children: /* @__PURE__ */ jsxs23(DropdownMenu, { children: [
+      /* @__PURE__ */ jsx33(DropdownMenuTrigger, { asChild: !0, children: /* @__PURE__ */ jsxs23(
         SidebarMenuButton,
         {
           size: "lg",
           className: "cursor-pointer data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground",
           children: [
-            /* @__PURE__ */ jsxDEV33(Avatar, { className: "h-8 w-8 rounded-lg", children: [
-              /* @__PURE__ */ jsxDEV33(AvatarImage, { src: user.avatar, alt: user.name }, void 0, !1, {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 75,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV33(AvatarFallback, { className: "rounded-lg", children: user.name.split(" ").map((n) => n[0]).join("") }, void 0, !1, {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 76,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 74,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV33("div", { className: "grid flex-1 text-left text-sm leading-tight", children: [
-              /* @__PURE__ */ jsxDEV33("span", { className: "truncate font-semibold", children: user.name }, void 0, !1, {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 84,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV33("span", { className: "truncate text-xs", children: user.email }, void 0, !1, {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 85,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 83,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV33(ChevronsUpDown, { className: "ml-auto size-4" }, void 0, !1, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 87,
-              columnNumber: 17
-            }, this)
+            /* @__PURE__ */ jsxs23(Avatar, { className: "h-8 w-8 rounded-lg", children: [
+              /* @__PURE__ */ jsx33(AvatarImage, { src: user.avatar, alt: user.name }),
+              /* @__PURE__ */ jsx33(AvatarFallback, { className: "rounded-lg", children: user.name.split(" ").map((n) => n[0]).join("") })
+            ] }),
+            /* @__PURE__ */ jsxs23("div", { className: "grid flex-1 text-left text-sm leading-tight", children: [
+              /* @__PURE__ */ jsx33("span", { className: "truncate font-semibold", children: user.name }),
+              /* @__PURE__ */ jsx33("span", { className: "truncate text-xs", children: user.email })
+            ] }),
+            /* @__PURE__ */ jsx33(ChevronsUpDown, { className: "ml-auto size-4" })
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/user-switcher.tsx",
-          lineNumber: 70,
-          columnNumber: 15
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/components/user-switcher.tsx",
-        lineNumber: 69,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV33(
+        }
+      ) }),
+      /* @__PURE__ */ jsxs23(
         DropdownMenuContent,
         {
           className: "w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg",
@@ -5856,91 +3186,31 @@ function UserSwitcher({
           align: "start",
           sideOffset: 4,
           children: [
-            /* @__PURE__ */ jsxDEV33(DropdownMenuLabel, { className: "p-0 font-normal", children: /* @__PURE__ */ jsxDEV33("div", { className: "flex items-center gap-2 px-1 py-1.5 text-left text-sm", children: [
-              /* @__PURE__ */ jsxDEV33(Avatar, { className: "h-8 w-8 rounded-lg", children: [
-                /* @__PURE__ */ jsxDEV33(AvatarImage, { src: user.avatar, alt: user.name }, void 0, !1, {
-                  fileName: "app/components/user-switcher.tsx",
-                  lineNumber: 99,
-                  columnNumber: 21
-                }, this),
-                /* @__PURE__ */ jsxDEV33(AvatarFallback, { className: "rounded-lg", children: user.name.split(" ").map((n) => n[0]).join("") }, void 0, !1, {
-                  fileName: "app/components/user-switcher.tsx",
-                  lineNumber: 100,
-                  columnNumber: 21
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 98,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV33("div", { className: "grid flex-1 text-left text-sm leading-tight", children: [
-                /* @__PURE__ */ jsxDEV33("span", { className: "truncate font-semibold", children: user.name }, void 0, !1, {
-                  fileName: "app/components/user-switcher.tsx",
-                  lineNumber: 108,
-                  columnNumber: 21
-                }, this),
-                /* @__PURE__ */ jsxDEV33("span", { className: "truncate text-xs", children: user.email }, void 0, !1, {
-                  fileName: "app/components/user-switcher.tsx",
-                  lineNumber: 109,
-                  columnNumber: 21
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 107,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 97,
-              columnNumber: 17
-            }, this) }, void 0, !1, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 96,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV33(DropdownMenuSeparator, {}, void 0, !1, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 113,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV33(DropdownMenuGroup, { children: /* @__PURE__ */ jsxDEV33(
+            /* @__PURE__ */ jsx33(DropdownMenuLabel, { className: "p-0 font-normal", children: /* @__PURE__ */ jsxs23("div", { className: "flex items-center gap-2 px-1 py-1.5 text-left text-sm", children: [
+              /* @__PURE__ */ jsxs23(Avatar, { className: "h-8 w-8 rounded-lg", children: [
+                /* @__PURE__ */ jsx33(AvatarImage, { src: user.avatar, alt: user.name }),
+                /* @__PURE__ */ jsx33(AvatarFallback, { className: "rounded-lg", children: user.name.split(" ").map((n) => n[0]).join("") })
+              ] }),
+              /* @__PURE__ */ jsxs23("div", { className: "grid flex-1 text-left text-sm leading-tight", children: [
+                /* @__PURE__ */ jsx33("span", { className: "truncate font-semibold", children: user.name }),
+                /* @__PURE__ */ jsx33("span", { className: "truncate text-xs", children: user.email })
+              ] })
+            ] }) }),
+            /* @__PURE__ */ jsx33(DropdownMenuSeparator, {}),
+            /* @__PURE__ */ jsx33(DropdownMenuGroup, { children: /* @__PURE__ */ jsxs23(
               DropdownMenuItem,
               {
                 onClick: () => setUpgradeOpen(!0),
                 className: "text-blue-500 dark:text-blue-400 cursor-pointer",
                 children: [
-                  /* @__PURE__ */ jsxDEV33(Sparkles3, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/user-switcher.tsx",
-                    lineNumber: 119,
-                    columnNumber: 19
-                  }, this),
-                  /* @__PURE__ */ jsxDEV33("span", { children: "Upgrade to Pro" }, void 0, !1, {
-                    fileName: "app/components/user-switcher.tsx",
-                    lineNumber: 120,
-                    columnNumber: 19
-                  }, this)
+                  /* @__PURE__ */ jsx33(Sparkles3, { className: "mr-2 h-4 w-4" }),
+                  /* @__PURE__ */ jsx33("span", { children: "Upgrade to Pro" })
                 ]
-              },
-              void 0,
-              !0,
-              {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 115,
-                columnNumber: 17
-              },
-              this
-            ) }, void 0, !1, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 114,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV33(DropdownMenuSeparator, {}, void 0, !1, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 123,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV33(DropdownMenuGroup, { children: [
-              /* @__PURE__ */ jsxDEV33(
+              }
+            ) }),
+            /* @__PURE__ */ jsx33(DropdownMenuSeparator, {}),
+            /* @__PURE__ */ jsxs23(DropdownMenuGroup, { children: [
+              /* @__PURE__ */ jsxs23(
                 DropdownMenuItem,
                 {
                   onClick: () => {
@@ -5948,28 +3218,12 @@ function UserSwitcher({
                   },
                   className: "cursor-pointer",
                   children: [
-                    /* @__PURE__ */ jsxDEV33(BadgeCheck, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-                      fileName: "app/components/user-switcher.tsx",
-                      lineNumber: 132,
-                      columnNumber: 19
-                    }, this),
-                    /* @__PURE__ */ jsxDEV33("span", { children: "Account" }, void 0, !1, {
-                      fileName: "app/components/user-switcher.tsx",
-                      lineNumber: 133,
-                      columnNumber: 19
-                    }, this)
+                    /* @__PURE__ */ jsx33(BadgeCheck, { className: "mr-2 h-4 w-4" }),
+                    /* @__PURE__ */ jsx33("span", { children: "Account" })
                   ]
-                },
-                void 0,
-                !0,
-                {
-                  fileName: "app/components/user-switcher.tsx",
-                  lineNumber: 125,
-                  columnNumber: 17
-                },
-                this
+                }
               ),
-              /* @__PURE__ */ jsxDEV33(
+              /* @__PURE__ */ jsxs23(
                 DropdownMenuItem,
                 {
                   onClick: () => {
@@ -5977,113 +3231,37 @@ function UserSwitcher({
                   },
                   className: "cursor-pointer",
                   children: [
-                    /* @__PURE__ */ jsxDEV33(CreditCard5, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-                      fileName: "app/components/user-switcher.tsx",
-                      lineNumber: 142,
-                      columnNumber: 19
-                    }, this),
-                    /* @__PURE__ */ jsxDEV33("span", { children: "Billing" }, void 0, !1, {
-                      fileName: "app/components/user-switcher.tsx",
-                      lineNumber: 143,
-                      columnNumber: 19
-                    }, this)
+                    /* @__PURE__ */ jsx33(CreditCard5, { className: "mr-2 h-4 w-4" }),
+                    /* @__PURE__ */ jsx33("span", { children: "Billing" })
                   ]
-                },
-                void 0,
-                !0,
-                {
-                  fileName: "app/components/user-switcher.tsx",
-                  lineNumber: 135,
-                  columnNumber: 17
-                },
-                this
+                }
               ),
-              /* @__PURE__ */ jsxDEV33(
+              /* @__PURE__ */ jsxs23(
                 DropdownMenuItem,
                 {
                   onClick: openNotificationSettings,
                   className: "cursor-pointer",
                   children: [
-                    /* @__PURE__ */ jsxDEV33(Bell3, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-                      fileName: "app/components/user-switcher.tsx",
-                      lineNumber: 149,
-                      columnNumber: 19
-                    }, this),
-                    /* @__PURE__ */ jsxDEV33("span", { children: "Notifications" }, void 0, !1, {
-                      fileName: "app/components/user-switcher.tsx",
-                      lineNumber: 150,
-                      columnNumber: 19
-                    }, this)
+                    /* @__PURE__ */ jsx33(Bell3, { className: "mr-2 h-4 w-4" }),
+                    /* @__PURE__ */ jsx33("span", { children: "Notifications" })
                   ]
-                },
-                void 0,
-                !0,
-                {
-                  fileName: "app/components/user-switcher.tsx",
-                  lineNumber: 145,
-                  columnNumber: 17
-                },
-                this
+                }
               )
-            ] }, void 0, !0, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 124,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV33(DropdownMenuSeparator, {}, void 0, !1, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 153,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV33(DropdownMenuItem, { className: "cursor-pointer text-red-600 dark:text-red-400", children: [
-              /* @__PURE__ */ jsxDEV33(LogOut, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 155,
-                columnNumber: 17
-              }, this),
-              /* @__PURE__ */ jsxDEV33("span", { children: "Log out" }, void 0, !1, {
-                fileName: "app/components/user-switcher.tsx",
-                lineNumber: 156,
-                columnNumber: 17
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/user-switcher.tsx",
-              lineNumber: 154,
-              columnNumber: 15
-            }, this)
+            ] }),
+            /* @__PURE__ */ jsx33(DropdownMenuSeparator, {}),
+            /* @__PURE__ */ jsxs23(DropdownMenuItem, { className: "cursor-pointer text-red-600 dark:text-red-400", children: [
+              /* @__PURE__ */ jsx33(LogOut, { className: "mr-2 h-4 w-4" }),
+              /* @__PURE__ */ jsx33("span", { children: "Log out" })
+            ] })
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/user-switcher.tsx",
-          lineNumber: 90,
-          columnNumber: 13
-        },
-        this
+        }
       )
-    ] }, void 0, !0, {
-      fileName: "app/components/user-switcher.tsx",
-      lineNumber: 68,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/user-switcher.tsx",
-      lineNumber: 67,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/components/user-switcher.tsx",
-      lineNumber: 66,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/user-switcher.tsx",
-    lineNumber: 59,
-    columnNumber: 5
-  }, this);
+    ] }) }) })
+  ] });
 }
 
 // app/components/app-sidebar.tsx
-import { jsxDEV as jsxDEV34 } from "react/jsx-dev-runtime";
+import { jsx as jsx34, jsxs as jsxs24 } from "react/jsx-runtime";
 var data = {
   user: {
     name: "John Doe",
@@ -6092,54 +3270,18 @@ var data = {
   }
 };
 function AppSidebar({ onPageTitleChange, ...props }) {
-  return /* @__PURE__ */ jsxDEV34(Sidebar, { className: "border-r-0", ...props, children: [
-    /* @__PURE__ */ jsxDEV34(SidebarHeader, { children: [
-      /* @__PURE__ */ jsxDEV34(UserSwitcher, { user: data.user }, void 0, !1, {
-        fileName: "app/components/app-sidebar.tsx",
-        lineNumber: 39,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV34(NavMain, {}, void 0, !1, {
-        fileName: "app/components/app-sidebar.tsx",
-        lineNumber: 40,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/app-sidebar.tsx",
-      lineNumber: 38,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV34(SidebarContent, { children: [
-      /* @__PURE__ */ jsxDEV34(NavFavorites, {}, void 0, !1, {
-        fileName: "app/components/app-sidebar.tsx",
-        lineNumber: 43,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV34(NavWorkspaces, { onPageTitleChange }, void 0, !1, {
-        fileName: "app/components/app-sidebar.tsx",
-        lineNumber: 44,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/app-sidebar.tsx",
-      lineNumber: 42,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV34(TokenUsage, { totalTokens: 5e4, usedTokens: 25e3 }, void 0, !1, {
-      fileName: "app/components/app-sidebar.tsx",
-      lineNumber: 46,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV34(SidebarRail, {}, void 0, !1, {
-      fileName: "app/components/app-sidebar.tsx",
-      lineNumber: 47,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/app-sidebar.tsx",
-    lineNumber: 37,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsxs24(Sidebar, { className: "border-r-0", ...props, children: [
+    /* @__PURE__ */ jsxs24(SidebarHeader, { children: [
+      /* @__PURE__ */ jsx34(UserSwitcher, { user: data.user }),
+      /* @__PURE__ */ jsx34(NavMain, {})
+    ] }),
+    /* @__PURE__ */ jsxs24(SidebarContent, { children: [
+      /* @__PURE__ */ jsx34(NavFavorites, {}),
+      /* @__PURE__ */ jsx34(NavWorkspaces, { onPageTitleChange })
+    ] }),
+    /* @__PURE__ */ jsx34(TokenUsage, { totalTokens: 5e4, usedTokens: 25e3 }),
+    /* @__PURE__ */ jsx34(SidebarRail, {})
+  ] });
 }
 
 // app/components/emoji-picker.tsx
@@ -6148,9 +3290,9 @@ import { Smile as Smile2 } from "lucide-react";
 // app/components/ui/popover.tsx
 import * as React30 from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { jsxDEV as jsxDEV35 } from "react/jsx-dev-runtime";
+import { jsx as jsx35 } from "react/jsx-runtime";
 var Popover = PopoverPrimitive.Root, PopoverTrigger = PopoverPrimitive.Trigger;
-var PopoverContent = React30.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsxDEV35(PopoverPrimitive.Portal, { children: /* @__PURE__ */ jsxDEV35(
+var PopoverContent = React30.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx35(PopoverPrimitive.Portal, { children: /* @__PURE__ */ jsx35(
   PopoverPrimitive.Content,
   {
     ref,
@@ -6161,24 +3303,12 @@ var PopoverContent = React30.forwardRef(({ className, align = "center", sideOffs
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/popover.tsx",
-    lineNumber: 17,
-    columnNumber: 5
-  },
-  this
-) }, void 0, !1, {
-  fileName: "app/components/ui/popover.tsx",
-  lineNumber: 16,
-  columnNumber: 3
-}, this));
+  }
+) }));
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
 // app/components/emoji-picker.tsx
-import { jsxDEV as jsxDEV36 } from "react/jsx-dev-runtime";
+import { jsx as jsx36, jsxs as jsxs25 } from "react/jsx-runtime";
 var EMOJI_CATEGORIES = [
   {
     name: "Smileys",
@@ -6194,56 +3324,24 @@ var EMOJI_CATEGORIES = [
   }
 ];
 function EmojiPicker({ value = "\u{1F4C4}", onChange }) {
-  return /* @__PURE__ */ jsxDEV36(Popover, { children: [
-    /* @__PURE__ */ jsxDEV36(PopoverTrigger, { asChild: !0, children: /* @__PURE__ */ jsxDEV36(
+  return /* @__PURE__ */ jsxs25(Popover, { children: [
+    /* @__PURE__ */ jsx36(PopoverTrigger, { asChild: !0, children: /* @__PURE__ */ jsx36(
       Button,
       {
         variant: "ghost",
         size: "sm",
         className: "h-auto p-0 text-xl hover:bg-transparent focus-visible:ring-0",
-        children: value || /* @__PURE__ */ jsxDEV36(Smile2, { className: "h-4 w-4" }, void 0, !1, {
-          fileName: "app/components/emoji-picker.tsx",
-          lineNumber: 40,
-          columnNumber: 21
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/emoji-picker.tsx",
-        lineNumber: 35,
-        columnNumber: 9
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/emoji-picker.tsx",
-      lineNumber: 34,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV36(PopoverContent, { className: "w-[280px] p-0", align: "start", children: /* @__PURE__ */ jsxDEV36("div", { className: "grid gap-4 p-4", children: [
-      /* @__PURE__ */ jsxDEV36("div", { className: "space-y-2", children: [
-        /* @__PURE__ */ jsxDEV36("h4", { className: "text-sm font-semibold", children: "Pick an emoji" }, void 0, !1, {
-          fileName: "app/components/emoji-picker.tsx",
-          lineNumber: 46,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV36("p", { className: "text-xs text-muted-foreground", children: "Select an emoji to represent this page" }, void 0, !1, {
-          fileName: "app/components/emoji-picker.tsx",
-          lineNumber: 47,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/emoji-picker.tsx",
-        lineNumber: 45,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV36("div", { className: "grid gap-2", children: EMOJI_CATEGORIES.map((category) => /* @__PURE__ */ jsxDEV36("div", { className: "grid gap-1.5", children: [
-        /* @__PURE__ */ jsxDEV36("div", { className: "text-xs text-muted-foreground", children: category.name }, void 0, !1, {
-          fileName: "app/components/emoji-picker.tsx",
-          lineNumber: 54,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ jsxDEV36("div", { className: "grid grid-cols-8 gap-2", children: category.emojis.map((emoji) => /* @__PURE__ */ jsxDEV36(
+        children: value || /* @__PURE__ */ jsx36(Smile2, { className: "h-4 w-4" })
+      }
+    ) }),
+    /* @__PURE__ */ jsx36(PopoverContent, { className: "w-[280px] p-0", align: "start", children: /* @__PURE__ */ jsxs25("div", { className: "grid gap-4 p-4", children: [
+      /* @__PURE__ */ jsxs25("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ jsx36("h4", { className: "text-sm font-semibold", children: "Pick an emoji" }),
+        /* @__PURE__ */ jsx36("p", { className: "text-xs text-muted-foreground", children: "Select an emoji to represent this page" })
+      ] }),
+      /* @__PURE__ */ jsx36("div", { className: "grid gap-2", children: EMOJI_CATEGORIES.map((category) => /* @__PURE__ */ jsxs25("div", { className: "grid gap-1.5", children: [
+        /* @__PURE__ */ jsx36("div", { className: "text-xs text-muted-foreground", children: category.name }),
+        /* @__PURE__ */ jsx36("div", { className: "grid grid-cols-8 gap-2", children: category.emojis.map((emoji) => /* @__PURE__ */ jsx36(
           Button,
           {
             variant: "outline",
@@ -6251,42 +3349,11 @@ function EmojiPicker({ value = "\u{1F4C4}", onChange }) {
             onClick: () => onChange?.(emoji),
             children: emoji
           },
-          emoji,
-          !1,
-          {
-            fileName: "app/components/emoji-picker.tsx",
-            lineNumber: 59,
-            columnNumber: 21
-          },
-          this
-        )) }, void 0, !1, {
-          fileName: "app/components/emoji-picker.tsx",
-          lineNumber: 57,
-          columnNumber: 17
-        }, this)
-      ] }, category.name, !0, {
-        fileName: "app/components/emoji-picker.tsx",
-        lineNumber: 53,
-        columnNumber: 15
-      }, this)) }, void 0, !1, {
-        fileName: "app/components/emoji-picker.tsx",
-        lineNumber: 51,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/emoji-picker.tsx",
-      lineNumber: 44,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/components/emoji-picker.tsx",
-      lineNumber: 43,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/emoji-picker.tsx",
-    lineNumber: 33,
-    columnNumber: 5
-  }, this);
+          emoji
+        )) })
+      ] }, category.name)) })
+    ] }) })
+  ] });
 }
 
 // app/components/nav-actions.tsx
@@ -6317,42 +3384,22 @@ import { motion, AnimatePresence } from "framer-motion";
 // app/components/ui/scroll-area.tsx
 import * as React31 from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-import { jsxDEV as jsxDEV37 } from "react/jsx-dev-runtime";
-var ScrollArea = React31.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxDEV37(
+import { jsx as jsx37, jsxs as jsxs26 } from "react/jsx-runtime";
+var ScrollArea = React31.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ jsxs26(
   ScrollAreaPrimitive.Root,
   {
     ref,
     className: cn("relative overflow-hidden", className),
     ...props,
     children: [
-      /* @__PURE__ */ jsxDEV37(ScrollAreaPrimitive.Viewport, { className: "h-full w-full rounded-[inherit]", children }, void 0, !1, {
-        fileName: "app/components/ui/scroll-area.tsx",
-        lineNumber: 15,
-        columnNumber: 5
-      }, this),
-      /* @__PURE__ */ jsxDEV37(ScrollBar, {}, void 0, !1, {
-        fileName: "app/components/ui/scroll-area.tsx",
-        lineNumber: 18,
-        columnNumber: 5
-      }, this),
-      /* @__PURE__ */ jsxDEV37(ScrollAreaPrimitive.Corner, {}, void 0, !1, {
-        fileName: "app/components/ui/scroll-area.tsx",
-        lineNumber: 19,
-        columnNumber: 5
-      }, this)
+      /* @__PURE__ */ jsx37(ScrollAreaPrimitive.Viewport, { className: "h-full w-full rounded-[inherit]", children }),
+      /* @__PURE__ */ jsx37(ScrollBar, {}),
+      /* @__PURE__ */ jsx37(ScrollAreaPrimitive.Corner, {})
     ]
-  },
-  void 0,
-  !0,
-  {
-    fileName: "app/components/ui/scroll-area.tsx",
-    lineNumber: 10,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName;
-var ScrollBar = React31.forwardRef(({ className, orientation = "vertical", ...props }, ref) => /* @__PURE__ */ jsxDEV37(
+var ScrollBar = React31.forwardRef(({ className, orientation = "vertical", ...props }, ref) => /* @__PURE__ */ jsx37(
   ScrollAreaPrimitive.ScrollAreaScrollbar,
   {
     ref,
@@ -6364,25 +3411,13 @@ var ScrollBar = React31.forwardRef(({ className, orientation = "vertical", ...pr
       className
     ),
     ...props,
-    children: /* @__PURE__ */ jsxDEV37(ScrollAreaPrimitive.ScrollAreaThumb, { className: "relative flex-1 rounded-full bg-border" }, void 0, !1, {
-      fileName: "app/components/ui/scroll-area.tsx",
-      lineNumber: 41,
-      columnNumber: 5
-    }, this)
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/scroll-area.tsx",
-    lineNumber: 28,
-    columnNumber: 3
-  },
-  this
+    children: /* @__PURE__ */ jsx37(ScrollAreaPrimitive.ScrollAreaThumb, { className: "relative flex-1 rounded-full bg-border" })
+  }
 ));
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName;
 
 // app/components/document-ai-chat.tsx
-import { jsxDEV as jsxDEV38 } from "react/jsx-dev-runtime";
+import { jsx as jsx38, jsxs as jsxs27 } from "react/jsx-runtime";
 function DocumentAIChat({ open, onOpenChange, documentTitle }) {
   let [messages, setMessages] = React32.useState([
     {
@@ -6412,30 +3447,18 @@ function DocumentAIChat({ open, onOpenChange, documentTitle }) {
   };
   return React32.useEffect(() => {
     scrollAreaRef.current && (scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight);
-  }, [messages]), /* @__PURE__ */ jsxDEV38(Sheet, { open, onOpenChange, modal: !1, children: /* @__PURE__ */ jsxDEV38(
+  }, [messages]), /* @__PURE__ */ jsx38(Sheet, { open, onOpenChange, modal: !1, children: /* @__PURE__ */ jsx38(
     SheetContent,
     {
       side: "right",
       className: "w-[400px] p-0 border-l shadow-2xl",
-      children: /* @__PURE__ */ jsxDEV38("div", { className: "flex h-full flex-col", children: [
-        /* @__PURE__ */ jsxDEV38("div", { className: "flex h-14 items-center justify-between border-b px-4", children: [
-          /* @__PURE__ */ jsxDEV38("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxDEV38(Bot, { className: "h-5 w-5" }, void 0, !1, {
-              fileName: "app/components/document-ai-chat.tsx",
-              lineNumber: 76,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV38("span", { className: "font-semibold", children: "Document AI Assistant" }, void 0, !1, {
-              fileName: "app/components/document-ai-chat.tsx",
-              lineNumber: 77,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/document-ai-chat.tsx",
-            lineNumber: 75,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV38(
+      children: /* @__PURE__ */ jsxs27("div", { className: "flex h-full flex-col", children: [
+        /* @__PURE__ */ jsxs27("div", { className: "flex h-14 items-center justify-between border-b px-4", children: [
+          /* @__PURE__ */ jsxs27("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsx38(Bot, { className: "h-5 w-5" }),
+            /* @__PURE__ */ jsx38("span", { className: "font-semibold", children: "Document AI Assistant" })
+          ] }),
+          /* @__PURE__ */ jsxs27(
             Button,
             {
               variant: "ghost",
@@ -6443,33 +3466,13 @@ function DocumentAIChat({ open, onOpenChange, documentTitle }) {
               className: "h-8 w-8",
               onClick: () => onOpenChange?.(!1),
               children: [
-                /* @__PURE__ */ jsxDEV38(X4, { className: "h-4 w-4" }, void 0, !1, {
-                  fileName: "app/components/document-ai-chat.tsx",
-                  lineNumber: 85,
-                  columnNumber: 15
-                }, this),
-                /* @__PURE__ */ jsxDEV38("span", { className: "sr-only", children: "Close" }, void 0, !1, {
-                  fileName: "app/components/document-ai-chat.tsx",
-                  lineNumber: 86,
-                  columnNumber: 15
-                }, this)
+                /* @__PURE__ */ jsx38(X4, { className: "h-4 w-4" }),
+                /* @__PURE__ */ jsx38("span", { className: "sr-only", children: "Close" })
               ]
-            },
-            void 0,
-            !0,
-            {
-              fileName: "app/components/document-ai-chat.tsx",
-              lineNumber: 79,
-              columnNumber: 13
-            },
-            this
+            }
           )
-        ] }, void 0, !0, {
-          fileName: "app/components/document-ai-chat.tsx",
-          lineNumber: 74,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV38(ScrollArea, { ref: scrollAreaRef, className: "flex-1 p-4", children: /* @__PURE__ */ jsxDEV38("div", { className: "space-y-4", children: /* @__PURE__ */ jsxDEV38(AnimatePresence, { initial: !1, children: messages.map((message) => /* @__PURE__ */ jsxDEV38(
+        ] }),
+        /* @__PURE__ */ jsx38(ScrollArea, { ref: scrollAreaRef, className: "flex-1 p-4", children: /* @__PURE__ */ jsx38("div", { className: "space-y-4", children: /* @__PURE__ */ jsx38(AnimatePresence, { initial: !1, children: messages.map((message) => /* @__PURE__ */ jsxs27(
           motion.div,
           {
             className: `flex gap-3 ${message.role === "assistant" ? "justify-start" : "justify-end"}`,
@@ -6477,75 +3480,28 @@ function DocumentAIChat({ open, onOpenChange, documentTitle }) {
             animate: { opacity: 1, y: 0 },
             exit: { opacity: 0, y: 20 },
             children: [
-              message.role === "assistant" && /* @__PURE__ */ jsxDEV38("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsxDEV38(Bot, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/document-ai-chat.tsx",
-                lineNumber: 106,
-                columnNumber: 25
-              }, this) }, void 0, !1, {
-                fileName: "app/components/document-ai-chat.tsx",
-                lineNumber: 105,
-                columnNumber: 23
-              }, this),
-              /* @__PURE__ */ jsxDEV38(
+              message.role === "assistant" && /* @__PURE__ */ jsx38("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsx38(Bot, { className: "h-4 w-4" }) }),
+              /* @__PURE__ */ jsxs27(
                 "div",
                 {
                   className: `group relative flex max-w-[85%] rounded-lg px-3 py-2 text-sm ${message.role === "assistant" ? "bg-muted" : "bg-primary text-primary-foreground"}`,
                   children: [
-                    /* @__PURE__ */ jsxDEV38("div", { className: "prose prose-sm dark:prose-invert", children: message.content }, void 0, !1, {
-                      fileName: "app/components/document-ai-chat.tsx",
-                      lineNumber: 116,
-                      columnNumber: 23
-                    }, this),
-                    /* @__PURE__ */ jsxDEV38(
+                    /* @__PURE__ */ jsx38("div", { className: "prose prose-sm dark:prose-invert", children: message.content }),
+                    /* @__PURE__ */ jsx38(
                       "div",
                       {
                         className: "absolute -top-5 right-0 hidden whitespace-nowrap text-xs text-muted-foreground group-hover:block",
                         children: message.timestamp.toLocaleTimeString()
-                      },
-                      void 0,
-                      !1,
-                      {
-                        fileName: "app/components/document-ai-chat.tsx",
-                        lineNumber: 119,
-                        columnNumber: 23
-                      },
-                      this
+                      }
                     )
                   ]
-                },
-                void 0,
-                !0,
-                {
-                  fileName: "app/components/document-ai-chat.tsx",
-                  lineNumber: 109,
-                  columnNumber: 21
-                },
-                this
+                }
               )
             ]
           },
-          message.id,
-          !0,
-          {
-            fileName: "app/components/document-ai-chat.tsx",
-            lineNumber: 95,
-            columnNumber: 19
-          },
-          this
-        )) }, void 0, !1, {
-          fileName: "app/components/document-ai-chat.tsx",
-          lineNumber: 93,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/document-ai-chat.tsx",
-          lineNumber: 92,
-          columnNumber: 13
-        }, this) }, void 0, !1, {
-          fileName: "app/components/document-ai-chat.tsx",
-          lineNumber: 91,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV38("div", { className: "border-t bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60", children: /* @__PURE__ */ jsxDEV38(
+          message.id
+        )) }) }) }),
+        /* @__PURE__ */ jsx38("div", { className: "border-t bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/60", children: /* @__PURE__ */ jsxs27(
           "form",
           {
             onSubmit: (e) => {
@@ -6553,73 +3509,25 @@ function DocumentAIChat({ open, onOpenChange, documentTitle }) {
             },
             className: "flex gap-2",
             children: [
-              /* @__PURE__ */ jsxDEV38(
+              /* @__PURE__ */ jsx38(
                 Input,
                 {
                   placeholder: "Ask about this document...",
                   value: input,
                   onChange: (e) => setInput(e.target.value),
                   className: "flex-1"
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/document-ai-chat.tsx",
-                  lineNumber: 140,
-                  columnNumber: 15
-                },
-                this
+                }
               ),
-              /* @__PURE__ */ jsxDEV38(Button, { type: "submit", children: [
-                /* @__PURE__ */ jsxDEV38(Send, { className: "h-4 w-4" }, void 0, !1, {
-                  fileName: "app/components/document-ai-chat.tsx",
-                  lineNumber: 147,
-                  columnNumber: 17
-                }, this),
-                /* @__PURE__ */ jsxDEV38("span", { className: "sr-only", children: "Send message" }, void 0, !1, {
-                  fileName: "app/components/document-ai-chat.tsx",
-                  lineNumber: 148,
-                  columnNumber: 17
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/document-ai-chat.tsx",
-                lineNumber: 146,
-                columnNumber: 15
-              }, this)
+              /* @__PURE__ */ jsxs27(Button, { type: "submit", children: [
+                /* @__PURE__ */ jsx38(Send, { className: "h-4 w-4" }),
+                /* @__PURE__ */ jsx38("span", { className: "sr-only", children: "Send message" })
+              ] })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/document-ai-chat.tsx",
-            lineNumber: 133,
-            columnNumber: 13
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/document-ai-chat.tsx",
-          lineNumber: 132,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/document-ai-chat.tsx",
-        lineNumber: 72,
-        columnNumber: 9
-      }, this)
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/document-ai-chat.tsx",
-      lineNumber: 68,
-      columnNumber: 7
-    },
-    this
-  ) }, void 0, !1, {
-    fileName: "app/components/document-ai-chat.tsx",
-    lineNumber: 67,
-    columnNumber: 5
-  }, this);
+          }
+        ) })
+      ] })
+    }
+  ) });
 }
 
 // app/components/export-dialog.tsx
@@ -6630,7 +3538,7 @@ import {
   GraduationCap,
   MessageSquareQuote
 } from "lucide-react";
-import { jsxDEV as jsxDEV39 } from "react/jsx-dev-runtime";
+import { jsx as jsx39, jsxs as jsxs28 } from "react/jsx-runtime";
 var exportOptions = [
   {
     id: "pdf",
@@ -6677,77 +3585,34 @@ function ExportDialog({ open, onOpenChange }) {
       });
     }
   };
-  return /* @__PURE__ */ jsxDEV39(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV39(DialogContent, { className: "max-w-xs p-6", children: [
-    /* @__PURE__ */ jsxDEV39(DialogHeader, { children: /* @__PURE__ */ jsxDEV39(DialogTitle, { className: "text-center", children: "Export As" }, void 0, !1, {
-      fileName: "app/components/export-dialog.tsx",
-      lineNumber: 79,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/export-dialog.tsx",
-      lineNumber: 78,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV39("div", { className: "mt-4", children: exportOptions.map((option) => {
+  return /* @__PURE__ */ jsx39(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs28(DialogContent, { className: "max-w-xs p-6", children: [
+    /* @__PURE__ */ jsx39(DialogHeader, { children: /* @__PURE__ */ jsx39(DialogTitle, { className: "text-center", children: "Export As" }) }),
+    /* @__PURE__ */ jsx39("div", { className: "mt-4", children: exportOptions.map((option) => {
       let Icon = option.icon;
-      return /* @__PURE__ */ jsxDEV39(
+      return /* @__PURE__ */ jsxs28(
         Button,
         {
           variant: "ghost",
           className: "w-full justify-between px-2 py-2 h-10",
           onClick: () => handleExport(option.action),
           children: [
-            /* @__PURE__ */ jsxDEV39("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ jsxDEV39(Icon, { className: "h-4 w-4 text-muted-foreground" }, void 0, !1, {
-                fileName: "app/components/export-dialog.tsx",
-                lineNumber: 93,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV39("span", { children: option.name }, void 0, !1, {
-                fileName: "app/components/export-dialog.tsx",
-                lineNumber: 94,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/export-dialog.tsx",
-              lineNumber: 92,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV39(Download, { className: "h-4 w-4 text-muted-foreground" }, void 0, !1, {
-              fileName: "app/components/export-dialog.tsx",
-              lineNumber: 96,
-              columnNumber: 17
-            }, this)
+            /* @__PURE__ */ jsxs28("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ jsx39(Icon, { className: "h-4 w-4 text-muted-foreground" }),
+              /* @__PURE__ */ jsx39("span", { children: option.name })
+            ] }),
+            /* @__PURE__ */ jsx39(Download, { className: "h-4 w-4 text-muted-foreground" })
           ]
         },
-        option.id,
-        !0,
-        {
-          fileName: "app/components/export-dialog.tsx",
-          lineNumber: 86,
-          columnNumber: 15
-        },
-        this
+        option.id
       );
-    }) }, void 0, !1, {
-      fileName: "app/components/export-dialog.tsx",
-      lineNumber: 82,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/export-dialog.tsx",
-    lineNumber: 77,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/export-dialog.tsx",
-    lineNumber: 76,
-    columnNumber: 5
-  }, this);
+    }) })
+  ] }) });
 }
 
 // app/components/info-dialog.tsx
 import * as React33 from "react";
 import { Download as Download2, Upload as Upload2 } from "lucide-react";
-import { jsxDEV as jsxDEV40 } from "react/jsx-dev-runtime";
+import { jsx as jsx40, jsxs as jsxs29 } from "react/jsx-runtime";
 var scores = [
   { field: "Clarity", score: 85, color: "bg-green-500" },
   { field: "Structure", score: 92, color: "bg-blue-500" },
@@ -6760,144 +3625,52 @@ function InfoDialog({ open, onOpenChange }) {
   }, overallScore = Math.round(
     scores.reduce((acc, curr) => acc + curr.score, 0) / scores.length
   );
-  return /* @__PURE__ */ jsxDEV40(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV40(DialogContent, { className: "max-w-2xl max-h-[85vh]", children: [
-    /* @__PURE__ */ jsxDEV40(DialogHeader, { children: /* @__PURE__ */ jsxDEV40(DialogTitle, { children: "Document Information" }, void 0, !1, {
-      fileName: "app/components/info-dialog.tsx",
-      lineNumber: 51,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/info-dialog.tsx",
-      lineNumber: 50,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV40(ScrollArea, { className: "h-[calc(85vh-8rem)] pr-4", children: /* @__PURE__ */ jsxDEV40("div", { className: "space-y-8", children: [
-      /* @__PURE__ */ jsxDEV40("div", { children: [
-        /* @__PURE__ */ jsxDEV40("h3", { className: "text-lg font-semibold mb-4", children: "Info" }, void 0, !1, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 58,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV40("div", { className: "space-y-4", children: /* @__PURE__ */ jsxDEV40("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ jsxDEV40("div", { className: "flex items-center gap-3", children: [
-            /* @__PURE__ */ jsxDEV40(Avatar, { children: [
-              /* @__PURE__ */ jsxDEV40(AvatarImage, { src: "https://github.com/shadcn.png" }, void 0, !1, {
-                fileName: "app/components/info-dialog.tsx",
-                lineNumber: 63,
-                columnNumber: 23
-              }, this),
-              /* @__PURE__ */ jsxDEV40(AvatarFallback, { children: "JD" }, void 0, !1, {
-                fileName: "app/components/info-dialog.tsx",
-                lineNumber: 64,
-                columnNumber: 23
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 62,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV40("div", { children: [
-              /* @__PURE__ */ jsxDEV40("div", { className: "font-medium", children: "Project Documentation" }, void 0, !1, {
-                fileName: "app/components/info-dialog.tsx",
-                lineNumber: 67,
-                columnNumber: 23
-              }, this),
-              /* @__PURE__ */ jsxDEV40("div", { className: "text-sm text-muted-foreground", children: "Created by John Doe" }, void 0, !1, {
-                fileName: "app/components/info-dialog.tsx",
-                lineNumber: 68,
-                columnNumber: 23
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 66,
-              columnNumber: 21
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/info-dialog.tsx",
-            lineNumber: 61,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ jsxDEV40("div", { className: "text-sm text-muted-foreground", children: "March 15, 2024" }, void 0, !1, {
-            fileName: "app/components/info-dialog.tsx",
-            lineNumber: 71,
-            columnNumber: 19
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 60,
-          columnNumber: 17
-        }, this) }, void 0, !1, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 59,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/info-dialog.tsx",
-        lineNumber: 57,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV40("div", { children: [
-        /* @__PURE__ */ jsxDEV40("h3", { className: "text-lg font-semibold mb-4", children: "Purpose" }, void 0, !1, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 78,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV40(Label2, { children: "AI Goal" }, void 0, !1, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 79,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV40(
+  return /* @__PURE__ */ jsx40(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs29(DialogContent, { className: "max-w-2xl max-h-[85vh]", children: [
+    /* @__PURE__ */ jsx40(DialogHeader, { children: /* @__PURE__ */ jsx40(DialogTitle, { children: "Document Information" }) }),
+    /* @__PURE__ */ jsx40(ScrollArea, { className: "h-[calc(85vh-8rem)] pr-4", children: /* @__PURE__ */ jsxs29("div", { className: "space-y-8", children: [
+      /* @__PURE__ */ jsxs29("div", { children: [
+        /* @__PURE__ */ jsx40("h3", { className: "text-lg font-semibold mb-4", children: "Info" }),
+        /* @__PURE__ */ jsx40("div", { className: "space-y-4", children: /* @__PURE__ */ jsxs29("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxs29("div", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ jsxs29(Avatar, { children: [
+              /* @__PURE__ */ jsx40(AvatarImage, { src: "https://github.com/shadcn.png" }),
+              /* @__PURE__ */ jsx40(AvatarFallback, { children: "JD" })
+            ] }),
+            /* @__PURE__ */ jsxs29("div", { children: [
+              /* @__PURE__ */ jsx40("div", { className: "font-medium", children: "Project Documentation" }),
+              /* @__PURE__ */ jsx40("div", { className: "text-sm text-muted-foreground", children: "Created by John Doe" })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx40("div", { className: "text-sm text-muted-foreground", children: "March 15, 2024" })
+        ] }) })
+      ] }),
+      /* @__PURE__ */ jsxs29("div", { children: [
+        /* @__PURE__ */ jsx40("h3", { className: "text-lg font-semibold mb-4", children: "Purpose" }),
+        /* @__PURE__ */ jsx40(Label2, { children: "AI Goal" }),
+        /* @__PURE__ */ jsx40(
           "textarea",
           {
             className: "w-full min-h-[100px] rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
             placeholder: "Enter the purpose or goal..."
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/info-dialog.tsx",
-            lineNumber: 80,
-            columnNumber: 15
-          },
-          this
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/components/info-dialog.tsx",
-        lineNumber: 77,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV40("div", { children: [
-        /* @__PURE__ */ jsxDEV40("h3", { className: "text-lg font-semibold mb-4", children: "Grading Criteria" }, void 0, !1, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 88,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV40("div", { className: "space-y-4", children: [
-          /* @__PURE__ */ jsxDEV40(
+      ] }),
+      /* @__PURE__ */ jsxs29("div", { children: [
+        /* @__PURE__ */ jsx40("h3", { className: "text-lg font-semibold mb-4", children: "Grading Criteria" }),
+        /* @__PURE__ */ jsxs29("div", { className: "space-y-4", children: [
+          /* @__PURE__ */ jsxs29(
             Button,
             {
               variant: "outline",
               className: "w-full justify-center",
               onClick: () => fileInputRef.current?.click(),
               children: [
-                /* @__PURE__ */ jsxDEV40(Upload2, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-                  fileName: "app/components/info-dialog.tsx",
-                  lineNumber: 95,
-                  columnNumber: 19
-                }, this),
+                /* @__PURE__ */ jsx40(Upload2, { className: "mr-2 h-4 w-4" }),
                 "Upload Documents"
               ]
-            },
-            void 0,
-            !0,
-            {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 90,
-              columnNumber: 17
-            },
-            this
+            }
           ),
-          /* @__PURE__ */ jsxDEV40(
+          /* @__PURE__ */ jsx40(
             "input",
             {
               type: "file",
@@ -6905,33 +3678,17 @@ function InfoDialog({ open, onOpenChange }) {
               className: "hidden",
               onChange: handleFileChange,
               multiple: !0
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 98,
-              columnNumber: 17
-            },
-            this
+            }
           ),
-          files.length > 0 && /* @__PURE__ */ jsxDEV40("div", { className: "rounded-lg border p-4", children: [
-            /* @__PURE__ */ jsxDEV40("h4", { className: "text-sm font-medium mb-2", children: "Uploaded Documents" }, void 0, !1, {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 108,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV40("ul", { className: "space-y-2", children: files.map((file, index) => /* @__PURE__ */ jsxDEV40(
+          files.length > 0 && /* @__PURE__ */ jsxs29("div", { className: "rounded-lg border p-4", children: [
+            /* @__PURE__ */ jsx40("h4", { className: "text-sm font-medium mb-2", children: "Uploaded Documents" }),
+            /* @__PURE__ */ jsx40("ul", { className: "space-y-2", children: files.map((file, index) => /* @__PURE__ */ jsxs29(
               "li",
               {
                 className: "text-sm text-muted-foreground flex items-center justify-between",
                 children: [
-                  /* @__PURE__ */ jsxDEV40("span", { children: file.name }, void 0, !1, {
-                    fileName: "app/components/info-dialog.tsx",
-                    lineNumber: 115,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ jsxDEV40(
+                  /* @__PURE__ */ jsx40("span", { children: file.name }),
+                  /* @__PURE__ */ jsx40(
                     Button,
                     {
                       variant: "ghost",
@@ -6939,164 +3696,53 @@ function InfoDialog({ open, onOpenChange }) {
                       className: "h-6 text-destructive hover:text-destructive",
                       onClick: () => setFiles(files.filter((_, i) => i !== index)),
                       children: "Remove"
-                    },
-                    void 0,
-                    !1,
-                    {
-                      fileName: "app/components/info-dialog.tsx",
-                      lineNumber: 116,
-                      columnNumber: 27
-                    },
-                    this
+                    }
                   )
                 ]
               },
-              index,
-              !0,
-              {
-                fileName: "app/components/info-dialog.tsx",
-                lineNumber: 111,
-                columnNumber: 25
-              },
-              this
-            )) }, void 0, !1, {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 109,
-              columnNumber: 21
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/info-dialog.tsx",
-            lineNumber: 107,
-            columnNumber: 19
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 89,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/info-dialog.tsx",
-        lineNumber: 87,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV40("div", { children: [
-        /* @__PURE__ */ jsxDEV40("h3", { className: "text-lg font-semibold mb-4", children: "Overall Score" }, void 0, !1, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 136,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV40("div", { className: "rounded-lg bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 p-6 text-center mb-8", children: [
-          /* @__PURE__ */ jsxDEV40("div", { className: "text-6xl font-bold tracking-tighter mb-2", children: [
+              index
+            )) })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxs29("div", { children: [
+        /* @__PURE__ */ jsx40("h3", { className: "text-lg font-semibold mb-4", children: "Overall Score" }),
+        /* @__PURE__ */ jsxs29("div", { className: "rounded-lg bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 p-6 text-center mb-8", children: [
+          /* @__PURE__ */ jsxs29("div", { className: "text-6xl font-bold tracking-tighter mb-2", children: [
             overallScore,
             "%"
-          ] }, void 0, !0, {
-            fileName: "app/components/info-dialog.tsx",
-            lineNumber: 138,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV40("div", { className: "text-sm text-muted-foreground", children: "Overall Performance Score" }, void 0, !1, {
-            fileName: "app/components/info-dialog.tsx",
-            lineNumber: 141,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 137,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV40("div", { className: "space-y-4", children: scores.map((score) => /* @__PURE__ */ jsxDEV40("div", { children: [
-          /* @__PURE__ */ jsxDEV40("div", { className: "flex justify-between text-sm mb-1", children: [
-            /* @__PURE__ */ jsxDEV40("span", { children: score.field }, void 0, !1, {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 150,
-              columnNumber: 23
-            }, this),
-            /* @__PURE__ */ jsxDEV40("span", { className: "font-medium", children: [
+          ] }),
+          /* @__PURE__ */ jsx40("div", { className: "text-sm text-muted-foreground", children: "Overall Performance Score" })
+        ] }),
+        /* @__PURE__ */ jsx40("div", { className: "space-y-4", children: scores.map((score) => /* @__PURE__ */ jsxs29("div", { children: [
+          /* @__PURE__ */ jsxs29("div", { className: "flex justify-between text-sm mb-1", children: [
+            /* @__PURE__ */ jsx40("span", { children: score.field }),
+            /* @__PURE__ */ jsxs29("span", { className: "font-medium", children: [
               score.score,
               "%"
-            ] }, void 0, !0, {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 151,
-              columnNumber: 23
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/info-dialog.tsx",
-            lineNumber: 149,
-            columnNumber: 21
-          }, this),
-          /* @__PURE__ */ jsxDEV40("div", { className: "h-2 rounded-full bg-muted overflow-hidden", children: /* @__PURE__ */ jsxDEV40(
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx40("div", { className: "h-2 rounded-full bg-muted overflow-hidden", children: /* @__PURE__ */ jsx40(
             "div",
             {
               className: `h-full ${score.color} transition-all duration-500`,
               style: { width: `${score.score}%` }
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/components/info-dialog.tsx",
-              lineNumber: 154,
-              columnNumber: 23
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/components/info-dialog.tsx",
-            lineNumber: 153,
-            columnNumber: 21
-          }, this)
-        ] }, score.field, !0, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 148,
-          columnNumber: 19
-        }, this)) }, void 0, !1, {
-          fileName: "app/components/info-dialog.tsx",
-          lineNumber: 146,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/info-dialog.tsx",
-        lineNumber: 135,
-        columnNumber: 13
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/info-dialog.tsx",
-      lineNumber: 55,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/info-dialog.tsx",
-      lineNumber: 54,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV40("div", { className: "flex justify-end pt-4 border-t", children: /* @__PURE__ */ jsxDEV40(Button, { className: "w-full justify-center", children: [
-      /* @__PURE__ */ jsxDEV40(Download2, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-        fileName: "app/components/info-dialog.tsx",
-        lineNumber: 168,
-        columnNumber: 13
-      }, this),
+            }
+          ) })
+        ] }, score.field)) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx40("div", { className: "flex justify-end pt-4 border-t", children: /* @__PURE__ */ jsxs29(Button, { className: "w-full justify-center", children: [
+      /* @__PURE__ */ jsx40(Download2, { className: "mr-2 h-4 w-4" }),
       "Download Report"
-    ] }, void 0, !0, {
-      fileName: "app/components/info-dialog.tsx",
-      lineNumber: 167,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/info-dialog.tsx",
-      lineNumber: 166,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/info-dialog.tsx",
-    lineNumber: 49,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/info-dialog.tsx",
-    lineNumber: 48,
-    columnNumber: 5
-  }, this);
+    ] }) })
+  ] }) });
 }
 
 // app/components/link-library-dialog.tsx
 import * as React34 from "react";
 import { Check as Check3, Search as Search4 } from "lucide-react";
-import { jsxDEV as jsxDEV41 } from "react/jsx-dev-runtime";
+import { jsx as jsx41, jsxs as jsxs30 } from "react/jsx-runtime";
 var availableLibraries = [
   {
     id: "ai-research",
@@ -7127,132 +3773,53 @@ function LinkLibraryDialog({ open, onOpenChange }) {
   }, handleSave = () => {
     console.log("Linking libraries:", selectedLibraries), onOpenChange?.(!1);
   };
-  return /* @__PURE__ */ jsxDEV41(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV41(DialogContent, { className: "max-w-md", children: [
-    /* @__PURE__ */ jsxDEV41(DialogHeader, { children: /* @__PURE__ */ jsxDEV41(DialogTitle, { children: "Link Library" }, void 0, !1, {
-      fileName: "app/components/link-library-dialog.tsx",
-      lineNumber: 65,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/link-library-dialog.tsx",
-      lineNumber: 64,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV41("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV41("div", { className: "relative", children: [
-        /* @__PURE__ */ jsxDEV41(Search4, { className: "absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" }, void 0, !1, {
-          fileName: "app/components/link-library-dialog.tsx",
-          lineNumber: 70,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV41(
+  return /* @__PURE__ */ jsx41(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs30(DialogContent, { className: "max-w-md", children: [
+    /* @__PURE__ */ jsx41(DialogHeader, { children: /* @__PURE__ */ jsx41(DialogTitle, { children: "Link Library" }) }),
+    /* @__PURE__ */ jsxs30("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs30("div", { className: "relative", children: [
+        /* @__PURE__ */ jsx41(Search4, { className: "absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" }),
+        /* @__PURE__ */ jsx41(
           Input,
           {
             placeholder: "Search libraries...",
             className: "pl-8",
             value: searchQuery,
             onChange: (e) => setSearchQuery(e.target.value)
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/link-library-dialog.tsx",
-            lineNumber: 71,
-            columnNumber: 13
-          },
-          this
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/components/link-library-dialog.tsx",
-        lineNumber: 69,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV41("div", { className: "space-y-2", children: filteredLibraries.map((library) => /* @__PURE__ */ jsxDEV41(
+      ] }),
+      /* @__PURE__ */ jsx41("div", { className: "space-y-2", children: filteredLibraries.map((library) => /* @__PURE__ */ jsxs30(
         "button",
         {
           onClick: () => toggleLibrary(library.id),
           className: `w-full flex items-center gap-3 rounded-lg border p-3 text-left transition-colors hover:bg-accent ${selectedLibraries.includes(library.id) ? "border-primary bg-primary/5" : "border-border"}`,
           children: [
-            /* @__PURE__ */ jsxDEV41("div", { className: "text-2xl", children: library.emoji }, void 0, !1, {
-              fileName: "app/components/link-library-dialog.tsx",
-              lineNumber: 90,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV41("div", { className: "flex-1 min-w-0", children: [
-              /* @__PURE__ */ jsxDEV41("div", { className: "font-medium", children: library.name }, void 0, !1, {
-                fileName: "app/components/link-library-dialog.tsx",
-                lineNumber: 92,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV41("div", { className: "text-sm text-muted-foreground truncate", children: library.description }, void 0, !1, {
-                fileName: "app/components/link-library-dialog.tsx",
-                lineNumber: 93,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/link-library-dialog.tsx",
-              lineNumber: 91,
-              columnNumber: 17
-            }, this),
-            selectedLibraries.includes(library.id) && /* @__PURE__ */ jsxDEV41(Check3, { className: "h-4 w-4 text-primary" }, void 0, !1, {
-              fileName: "app/components/link-library-dialog.tsx",
-              lineNumber: 98,
-              columnNumber: 19
-            }, this)
+            /* @__PURE__ */ jsx41("div", { className: "text-2xl", children: library.emoji }),
+            /* @__PURE__ */ jsxs30("div", { className: "flex-1 min-w-0", children: [
+              /* @__PURE__ */ jsx41("div", { className: "font-medium", children: library.name }),
+              /* @__PURE__ */ jsx41("div", { className: "text-sm text-muted-foreground truncate", children: library.description })
+            ] }),
+            selectedLibraries.includes(library.id) && /* @__PURE__ */ jsx41(Check3, { className: "h-4 w-4 text-primary" })
           ]
         },
-        library.id,
-        !0,
-        {
-          fileName: "app/components/link-library-dialog.tsx",
-          lineNumber: 81,
-          columnNumber: 15
-        },
-        this
-      )) }, void 0, !1, {
-        fileName: "app/components/link-library-dialog.tsx",
-        lineNumber: 79,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV41("div", { className: "flex justify-end gap-2 pt-4", children: [
-        /* @__PURE__ */ jsxDEV41(Button, { variant: "outline", onClick: () => onOpenChange?.(!1), children: "Cancel" }, void 0, !1, {
-          fileName: "app/components/link-library-dialog.tsx",
-          lineNumber: 105,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV41(Button, { onClick: handleSave, children: [
+        library.id
+      )) }),
+      /* @__PURE__ */ jsxs30("div", { className: "flex justify-end gap-2 pt-4", children: [
+        /* @__PURE__ */ jsx41(Button, { variant: "outline", onClick: () => onOpenChange?.(!1), children: "Cancel" }),
+        /* @__PURE__ */ jsxs30(Button, { onClick: handleSave, children: [
           "Link Selected (",
           selectedLibraries.length,
           ")"
-        ] }, void 0, !0, {
-          fileName: "app/components/link-library-dialog.tsx",
-          lineNumber: 108,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/link-library-dialog.tsx",
-        lineNumber: 104,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/link-library-dialog.tsx",
-      lineNumber: 68,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/link-library-dialog.tsx",
-    lineNumber: 63,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/link-library-dialog.tsx",
-    lineNumber: 62,
-    columnNumber: 5
-  }, this);
+        ] })
+      ] })
+    ] })
+  ] }) });
 }
 
 // app/components/move-to-dialog.tsx
 import * as React35 from "react";
 import { ChevronRight as ChevronRight3, FolderTree, Plus as Plus2 } from "lucide-react";
-import { jsxDEV as jsxDEV42 } from "react/jsx-dev-runtime";
+import { jsx as jsx42, jsxs as jsxs31 } from "react/jsx-runtime";
 function MoveToDialog({ open, onOpenChange }) {
   let { workspaces: workspaces2, addPage } = useWorkspaces(), { toast: toast2 } = useToast(), [selectedWorkspace, setSelectedWorkspace] = React35.useState(null), handleMove = () => {
     selectedWorkspace && (toast2({
@@ -7262,138 +3829,55 @@ function MoveToDialog({ open, onOpenChange }) {
     let newPage = addPage();
     setSelectedWorkspace(newPage.id);
   };
-  return /* @__PURE__ */ jsxDEV42(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV42(DialogContent, { className: "max-w-md", children: [
-    /* @__PURE__ */ jsxDEV42(DialogHeader, { children: /* @__PURE__ */ jsxDEV42(DialogTitle, { children: "Move to" }, void 0, !1, {
-      fileName: "app/components/move-to-dialog.tsx",
-      lineNumber: 44,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/move-to-dialog.tsx",
-      lineNumber: 43,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV42(ScrollArea, { className: "h-[300px] pr-4", children: /* @__PURE__ */ jsxDEV42("div", { className: "space-y-2", children: workspaces2.map((workspace) => /* @__PURE__ */ jsxDEV42(
+  return /* @__PURE__ */ jsx42(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs31(DialogContent, { className: "max-w-md", children: [
+    /* @__PURE__ */ jsx42(DialogHeader, { children: /* @__PURE__ */ jsx42(DialogTitle, { children: "Move to" }) }),
+    /* @__PURE__ */ jsx42(ScrollArea, { className: "h-[300px] pr-4", children: /* @__PURE__ */ jsx42("div", { className: "space-y-2", children: workspaces2.map((workspace) => /* @__PURE__ */ jsxs31(
       "button",
       {
         onClick: () => setSelectedWorkspace(workspace.id),
         className: `w-full flex items-center gap-3 rounded-lg border p-3 text-left transition-colors hover:bg-accent ${selectedWorkspace === workspace.id ? "border-primary bg-primary/5" : "border-border"}`,
         children: [
-          /* @__PURE__ */ jsxDEV42("div", { className: "text-2xl", children: workspace.emoji }, void 0, !1, {
-            fileName: "app/components/move-to-dialog.tsx",
-            lineNumber: 59,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV42("div", { className: "flex-1 min-w-0", children: [
-            /* @__PURE__ */ jsxDEV42("div", { className: "font-medium", children: workspace.name }, void 0, !1, {
-              fileName: "app/components/move-to-dialog.tsx",
-              lineNumber: 61,
-              columnNumber: 19
-            }, this),
-            /* @__PURE__ */ jsxDEV42("div", { className: "text-sm text-muted-foreground truncate", children: [
+          /* @__PURE__ */ jsx42("div", { className: "text-2xl", children: workspace.emoji }),
+          /* @__PURE__ */ jsxs31("div", { className: "flex-1 min-w-0", children: [
+            /* @__PURE__ */ jsx42("div", { className: "font-medium", children: workspace.name }),
+            /* @__PURE__ */ jsxs31("div", { className: "text-sm text-muted-foreground truncate", children: [
               workspace.pages.length,
               " pages"
-            ] }, void 0, !0, {
-              fileName: "app/components/move-to-dialog.tsx",
-              lineNumber: 62,
-              columnNumber: 19
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/move-to-dialog.tsx",
-            lineNumber: 60,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV42(ChevronRight3, { className: "h-4 w-4 text-muted-foreground" }, void 0, !1, {
-            fileName: "app/components/move-to-dialog.tsx",
-            lineNumber: 66,
-            columnNumber: 17
-          }, this)
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx42(ChevronRight3, { className: "h-4 w-4 text-muted-foreground" })
         ]
       },
-      workspace.id,
-      !0,
-      {
-        fileName: "app/components/move-to-dialog.tsx",
-        lineNumber: 50,
-        columnNumber: 15
-      },
-      this
-    )) }, void 0, !1, {
-      fileName: "app/components/move-to-dialog.tsx",
-      lineNumber: 48,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/move-to-dialog.tsx",
-      lineNumber: 47,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV42("div", { className: "space-y-2", children: [
-      /* @__PURE__ */ jsxDEV42(
+      workspace.id
+    )) }) }),
+    /* @__PURE__ */ jsxs31("div", { className: "space-y-2", children: [
+      /* @__PURE__ */ jsxs31(
         Button,
         {
           variant: "outline",
           className: "w-full justify-start gap-2",
           onClick: handleCreateWorkspace,
           children: [
-            /* @__PURE__ */ jsxDEV42(Plus2, { className: "h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/move-to-dialog.tsx",
-              lineNumber: 78,
-              columnNumber: 13
-            }, this),
+            /* @__PURE__ */ jsx42(Plus2, { className: "h-4 w-4" }),
             "Create New Workspace"
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/move-to-dialog.tsx",
-          lineNumber: 73,
-          columnNumber: 11
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ jsxDEV42("div", { className: "flex justify-end gap-2", children: [
-        /* @__PURE__ */ jsxDEV42(Button, { variant: "outline", onClick: () => onOpenChange?.(!1), children: "Cancel" }, void 0, !1, {
-          fileName: "app/components/move-to-dialog.tsx",
-          lineNumber: 83,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV42(Button, { onClick: handleMove, disabled: !selectedWorkspace, children: [
-          /* @__PURE__ */ jsxDEV42(FolderTree, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-            fileName: "app/components/move-to-dialog.tsx",
-            lineNumber: 87,
-            columnNumber: 15
-          }, this),
+      /* @__PURE__ */ jsxs31("div", { className: "flex justify-end gap-2", children: [
+        /* @__PURE__ */ jsx42(Button, { variant: "outline", onClick: () => onOpenChange?.(!1), children: "Cancel" }),
+        /* @__PURE__ */ jsxs31(Button, { onClick: handleMove, disabled: !selectedWorkspace, children: [
+          /* @__PURE__ */ jsx42(FolderTree, { className: "mr-2 h-4 w-4" }),
           "Move"
-        ] }, void 0, !0, {
-          fileName: "app/components/move-to-dialog.tsx",
-          lineNumber: 86,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/move-to-dialog.tsx",
-        lineNumber: 82,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/move-to-dialog.tsx",
-      lineNumber: 72,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/move-to-dialog.tsx",
-    lineNumber: 42,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/move-to-dialog.tsx",
-    lineNumber: 41,
-    columnNumber: 5
-  }, this);
+        ] })
+      ] })
+    ] })
+  ] }) });
 }
 
 // app/components/share-dialog.tsx
 import * as React36 from "react";
 import { Check as Check4, Copy, Crown, Plus as Plus3, Search as Search5 } from "lucide-react";
-import { Fragment as Fragment5, jsxDEV as jsxDEV43 } from "react/jsx-dev-runtime";
+import { Fragment as Fragment5, jsx as jsx43, jsxs as jsxs32 } from "react/jsx-runtime";
 var owner = {
   name: "You",
   email: "you@example.com",
@@ -7425,389 +3909,125 @@ var owner = {
 ];
 function ShareDialog({ open, onOpenChange }) {
   let [copied, setCopied] = React36.useState(!1), [searchQuery, setSearchQuery] = React36.useState("");
-  return /* @__PURE__ */ jsxDEV43(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV43(DialogContent, { className: "max-w-2xl", children: [
-    /* @__PURE__ */ jsxDEV43(DialogHeader, { children: /* @__PURE__ */ jsxDEV43(DialogTitle, { children: "Share Document" }, void 0, !1, {
-      fileName: "app/components/share-dialog.tsx",
-      lineNumber: 64,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/share-dialog.tsx",
-      lineNumber: 63,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV43("div", { className: "mt-4 space-y-4", children: [
-      /* @__PURE__ */ jsxDEV43("div", { className: "rounded-lg border p-3", children: /* @__PURE__ */ jsxDEV43("div", { className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ jsxDEV43("div", { children: [
-          /* @__PURE__ */ jsxDEV43("h3", { className: "text-sm font-medium", children: "Share via link" }, void 0, !1, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 72,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV43("p", { className: "text-sm text-muted-foreground", children: "Anyone with the link can view" }, void 0, !1, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 73,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/share-dialog.tsx",
-          lineNumber: 71,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV43(Button, { variant: "outline", size: "sm", onClick: () => {
+  return /* @__PURE__ */ jsx43(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs32(DialogContent, { className: "max-w-2xl", children: [
+    /* @__PURE__ */ jsx43(DialogHeader, { children: /* @__PURE__ */ jsx43(DialogTitle, { children: "Share Document" }) }),
+    /* @__PURE__ */ jsxs32("div", { className: "mt-4 space-y-4", children: [
+      /* @__PURE__ */ jsx43("div", { className: "rounded-lg border p-3", children: /* @__PURE__ */ jsxs32("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsxs32("div", { children: [
+          /* @__PURE__ */ jsx43("h3", { className: "text-sm font-medium", children: "Share via link" }),
+          /* @__PURE__ */ jsx43("p", { className: "text-sm text-muted-foreground", children: "Anyone with the link can view" })
+        ] }),
+        /* @__PURE__ */ jsx43(Button, { variant: "outline", size: "sm", onClick: () => {
           navigator.clipboard.writeText(window.location.href), setCopied(!0), setTimeout(() => setCopied(!1), 2e3);
-        }, children: copied ? /* @__PURE__ */ jsxDEV43(Fragment5, { children: [
-          /* @__PURE__ */ jsxDEV43(Check4, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 78,
-            columnNumber: 21
-          }, this),
+        }, children: copied ? /* @__PURE__ */ jsxs32(Fragment5, { children: [
+          /* @__PURE__ */ jsx43(Check4, { className: "mr-2 h-4 w-4" }),
           "Copied!"
-        ] }, void 0, !0, {
-          fileName: "app/components/share-dialog.tsx",
-          lineNumber: 77,
-          columnNumber: 19
-        }, this) : /* @__PURE__ */ jsxDEV43(Fragment5, { children: [
-          /* @__PURE__ */ jsxDEV43(Copy, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 83,
-            columnNumber: 21
-          }, this),
+        ] }) : /* @__PURE__ */ jsxs32(Fragment5, { children: [
+          /* @__PURE__ */ jsx43(Copy, { className: "mr-2 h-4 w-4" }),
           "Copy link"
-        ] }, void 0, !0, {
-          fileName: "app/components/share-dialog.tsx",
-          lineNumber: 82,
-          columnNumber: 19
-        }, this) }, void 0, !1, {
-          fileName: "app/components/share-dialog.tsx",
-          lineNumber: 75,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/share-dialog.tsx",
-        lineNumber: 70,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/components/share-dialog.tsx",
-        lineNumber: 69,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV43("div", { children: [
-        /* @__PURE__ */ jsxDEV43("div", { className: "mb-4", children: [
-          /* @__PURE__ */ jsxDEV43("h3", { className: "text-sm font-medium", children: "Share with people" }, void 0, !1, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 94,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV43("div", { className: "mt-2 flex gap-2", children: [
-            /* @__PURE__ */ jsxDEV43("div", { className: "relative flex-1", children: [
-              /* @__PURE__ */ jsxDEV43(Search5, { className: "absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 97,
-                columnNumber: 19
-              }, this),
-              /* @__PURE__ */ jsxDEV43(
+        ] }) })
+      ] }) }),
+      /* @__PURE__ */ jsxs32("div", { children: [
+        /* @__PURE__ */ jsxs32("div", { className: "mb-4", children: [
+          /* @__PURE__ */ jsx43("h3", { className: "text-sm font-medium", children: "Share with people" }),
+          /* @__PURE__ */ jsxs32("div", { className: "mt-2 flex gap-2", children: [
+            /* @__PURE__ */ jsxs32("div", { className: "relative flex-1", children: [
+              /* @__PURE__ */ jsx43(Search5, { className: "absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" }),
+              /* @__PURE__ */ jsx43(
                 Input,
                 {
                   placeholder: "Search by name or email...",
                   className: "pl-8",
                   value: searchQuery,
                   onChange: (e) => setSearchQuery(e.target.value)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/share-dialog.tsx",
-                  lineNumber: 98,
-                  columnNumber: 19
-                },
-                this
+                }
               )
-            ] }, void 0, !0, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 96,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV43(Button, { children: [
-              /* @__PURE__ */ jsxDEV43(Plus3, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 106,
-                columnNumber: 19
-              }, this),
+            ] }),
+            /* @__PURE__ */ jsxs32(Button, { children: [
+              /* @__PURE__ */ jsx43(Plus3, { className: "mr-2 h-4 w-4" }),
               "Invite people"
-            ] }, void 0, !0, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 105,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 95,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/share-dialog.tsx",
-          lineNumber: 93,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV43("div", { className: "rounded-lg border", children: /* @__PURE__ */ jsxDEV43("table", { className: "min-w-full divide-y divide-border", children: [
-          /* @__PURE__ */ jsxDEV43("thead", { children: /* @__PURE__ */ jsxDEV43("tr", { children: [
-            /* @__PURE__ */ jsxDEV43("th", { scope: "col", className: "py-3.5 pl-4 pr-3 text-left text-sm font-medium text-muted-foreground", children: "Name" }, void 0, !1, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 116,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV43("th", { scope: "col", className: "px-3 py-3.5 text-left text-sm font-medium text-muted-foreground", children: "Access" }, void 0, !1, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 119,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV43("th", { scope: "col", className: "px-3 py-3.5 text-left text-sm font-medium text-muted-foreground", children: "Last active" }, void 0, !1, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 122,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV43("th", { scope: "col", className: "relative py-3.5 pl-3 pr-4", children: /* @__PURE__ */ jsxDEV43("span", { className: "sr-only", children: "Actions" }, void 0, !1, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 126,
-              columnNumber: 23
-            }, this) }, void 0, !1, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 125,
-              columnNumber: 21
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 115,
-            columnNumber: 19
-          }, this) }, void 0, !1, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 114,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV43("tbody", { className: "divide-y divide-border", children: [
-            /* @__PURE__ */ jsxDEV43("tr", { className: "bg-muted/30", children: [
-              /* @__PURE__ */ jsxDEV43("td", { className: "whitespace-nowrap py-4 pl-4 pr-3", children: /* @__PURE__ */ jsxDEV43("div", { className: "flex items-center gap-3", children: [
-                /* @__PURE__ */ jsxDEV43(
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx43("div", { className: "rounded-lg border", children: /* @__PURE__ */ jsxs32("table", { className: "min-w-full divide-y divide-border", children: [
+          /* @__PURE__ */ jsx43("thead", { children: /* @__PURE__ */ jsxs32("tr", { children: [
+            /* @__PURE__ */ jsx43("th", { scope: "col", className: "py-3.5 pl-4 pr-3 text-left text-sm font-medium text-muted-foreground", children: "Name" }),
+            /* @__PURE__ */ jsx43("th", { scope: "col", className: "px-3 py-3.5 text-left text-sm font-medium text-muted-foreground", children: "Access" }),
+            /* @__PURE__ */ jsx43("th", { scope: "col", className: "px-3 py-3.5 text-left text-sm font-medium text-muted-foreground", children: "Last active" }),
+            /* @__PURE__ */ jsx43("th", { scope: "col", className: "relative py-3.5 pl-3 pr-4", children: /* @__PURE__ */ jsx43("span", { className: "sr-only", children: "Actions" }) })
+          ] }) }),
+          /* @__PURE__ */ jsxs32("tbody", { className: "divide-y divide-border", children: [
+            /* @__PURE__ */ jsxs32("tr", { className: "bg-muted/30", children: [
+              /* @__PURE__ */ jsx43("td", { className: "whitespace-nowrap py-4 pl-4 pr-3", children: /* @__PURE__ */ jsxs32("div", { className: "flex items-center gap-3", children: [
+                /* @__PURE__ */ jsx43(
                   "img",
                   {
                     src: owner.avatar,
                     alt: "",
                     className: "h-8 w-8 rounded-full"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/share-dialog.tsx",
-                    lineNumber: 135,
-                    columnNumber: 25
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV43("div", { children: [
-                  /* @__PURE__ */ jsxDEV43("div", { className: "font-medium", children: owner.name }, void 0, !1, {
-                    fileName: "app/components/share-dialog.tsx",
-                    lineNumber: 141,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ jsxDEV43("div", { className: "text-sm text-muted-foreground", children: owner.email }, void 0, !1, {
-                    fileName: "app/components/share-dialog.tsx",
-                    lineNumber: 142,
-                    columnNumber: 27
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/components/share-dialog.tsx",
-                  lineNumber: 140,
-                  columnNumber: 25
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 134,
-                columnNumber: 23
-              }, this) }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 133,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ jsxDEV43("td", { className: "whitespace-nowrap px-3 py-4", children: /* @__PURE__ */ jsxDEV43("div", { className: "flex items-center gap-2 text-sm font-medium", children: [
-                /* @__PURE__ */ jsxDEV43(Crown, { className: "h-4 w-4 text-amber-500" }, void 0, !1, {
-                  fileName: "app/components/share-dialog.tsx",
-                  lineNumber: 150,
-                  columnNumber: 25
-                }, this),
+                /* @__PURE__ */ jsxs32("div", { children: [
+                  /* @__PURE__ */ jsx43("div", { className: "font-medium", children: owner.name }),
+                  /* @__PURE__ */ jsx43("div", { className: "text-sm text-muted-foreground", children: owner.email })
+                ] })
+              ] }) }),
+              /* @__PURE__ */ jsx43("td", { className: "whitespace-nowrap px-3 py-4", children: /* @__PURE__ */ jsxs32("div", { className: "flex items-center gap-2 text-sm font-medium", children: [
+                /* @__PURE__ */ jsx43(Crown, { className: "h-4 w-4 text-amber-500" }),
                 "Owner"
-              ] }, void 0, !0, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 149,
-                columnNumber: 23
-              }, this) }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 148,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ jsxDEV43("td", { className: "whitespace-nowrap px-3 py-4 text-sm text-muted-foreground", children: owner.lastActive }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 154,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ jsxDEV43("td", { className: "whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm" }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 157,
-                columnNumber: 21
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 132,
-              columnNumber: 19
-            }, this),
-            people.map((person) => /* @__PURE__ */ jsxDEV43("tr", { children: [
-              /* @__PURE__ */ jsxDEV43("td", { className: "whitespace-nowrap py-4 pl-4 pr-3", children: /* @__PURE__ */ jsxDEV43("div", { className: "flex items-center gap-3", children: [
-                /* @__PURE__ */ jsxDEV43(
+              ] }) }),
+              /* @__PURE__ */ jsx43("td", { className: "whitespace-nowrap px-3 py-4 text-sm text-muted-foreground", children: owner.lastActive }),
+              /* @__PURE__ */ jsx43("td", { className: "whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm" })
+            ] }),
+            people.map((person) => /* @__PURE__ */ jsxs32("tr", { children: [
+              /* @__PURE__ */ jsx43("td", { className: "whitespace-nowrap py-4 pl-4 pr-3", children: /* @__PURE__ */ jsxs32("div", { className: "flex items-center gap-3", children: [
+                /* @__PURE__ */ jsx43(
                   "img",
                   {
                     src: person.avatar,
                     alt: "",
                     className: "h-8 w-8 rounded-full"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/share-dialog.tsx",
-                    lineNumber: 167,
-                    columnNumber: 27
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV43("div", { children: [
-                  /* @__PURE__ */ jsxDEV43("div", { className: "font-medium", children: person.name }, void 0, !1, {
-                    fileName: "app/components/share-dialog.tsx",
-                    lineNumber: 173,
-                    columnNumber: 29
-                  }, this),
-                  /* @__PURE__ */ jsxDEV43("div", { className: "text-sm text-muted-foreground", children: person.email }, void 0, !1, {
-                    fileName: "app/components/share-dialog.tsx",
-                    lineNumber: 174,
-                    columnNumber: 29
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/components/share-dialog.tsx",
-                  lineNumber: 172,
-                  columnNumber: 27
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 166,
-                columnNumber: 25
-              }, this) }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 165,
-                columnNumber: 23
-              }, this),
-              /* @__PURE__ */ jsxDEV43("td", { className: "whitespace-nowrap px-3 py-4", children: /* @__PURE__ */ jsxDEV43(
+                /* @__PURE__ */ jsxs32("div", { children: [
+                  /* @__PURE__ */ jsx43("div", { className: "font-medium", children: person.name }),
+                  /* @__PURE__ */ jsx43("div", { className: "text-sm text-muted-foreground", children: person.email })
+                ] })
+              ] }) }),
+              /* @__PURE__ */ jsx43("td", { className: "whitespace-nowrap px-3 py-4", children: /* @__PURE__ */ jsxs32(
                 "select",
                 {
                   className: "w-24 rounded-md border-0 bg-transparent py-1.5 text-sm ring-1 ring-inset ring-border focus:ring-2 focus:ring-inset focus:ring-ring",
                   defaultValue: person.role.toLowerCase(),
                   children: [
-                    /* @__PURE__ */ jsxDEV43("option", { value: "viewer", children: "Viewer" }, void 0, !1, {
-                      fileName: "app/components/share-dialog.tsx",
-                      lineNumber: 185,
-                      columnNumber: 27
-                    }, this),
-                    /* @__PURE__ */ jsxDEV43("option", { value: "editor", children: "Editor" }, void 0, !1, {
-                      fileName: "app/components/share-dialog.tsx",
-                      lineNumber: 186,
-                      columnNumber: 27
-                    }, this),
-                    /* @__PURE__ */ jsxDEV43("option", { value: "admin", children: "Admin" }, void 0, !1, {
-                      fileName: "app/components/share-dialog.tsx",
-                      lineNumber: 187,
-                      columnNumber: 27
-                    }, this)
+                    /* @__PURE__ */ jsx43("option", { value: "viewer", children: "Viewer" }),
+                    /* @__PURE__ */ jsx43("option", { value: "editor", children: "Editor" }),
+                    /* @__PURE__ */ jsx43("option", { value: "admin", children: "Admin" })
                   ]
-                },
-                void 0,
-                !0,
-                {
-                  fileName: "app/components/share-dialog.tsx",
-                  lineNumber: 181,
-                  columnNumber: 25
-                },
-                this
-              ) }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 180,
-                columnNumber: 23
-              }, this),
-              /* @__PURE__ */ jsxDEV43("td", { className: "whitespace-nowrap px-3 py-4 text-sm text-muted-foreground", children: person.lastActive }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 190,
-                columnNumber: 23
-              }, this),
-              /* @__PURE__ */ jsxDEV43("td", { className: "whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm", children: /* @__PURE__ */ jsxDEV43(
+                }
+              ) }),
+              /* @__PURE__ */ jsx43("td", { className: "whitespace-nowrap px-3 py-4 text-sm text-muted-foreground", children: person.lastActive }),
+              /* @__PURE__ */ jsx43("td", { className: "whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm", children: /* @__PURE__ */ jsx43(
                 Button,
                 {
                   variant: "ghost",
                   size: "sm",
                   className: "text-destructive hover:text-destructive",
                   children: "Remove"
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/share-dialog.tsx",
-                  lineNumber: 194,
-                  columnNumber: 25
-                },
-                this
-              ) }, void 0, !1, {
-                fileName: "app/components/share-dialog.tsx",
-                lineNumber: 193,
-                columnNumber: 23
-              }, this)
-            ] }, person.email, !0, {
-              fileName: "app/components/share-dialog.tsx",
-              lineNumber: 164,
-              columnNumber: 21
-            }, this))
-          ] }, void 0, !0, {
-            fileName: "app/components/share-dialog.tsx",
-            lineNumber: 130,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/share-dialog.tsx",
-          lineNumber: 113,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/share-dialog.tsx",
-          lineNumber: 112,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/share-dialog.tsx",
-        lineNumber: 92,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/share-dialog.tsx",
-      lineNumber: 67,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/share-dialog.tsx",
-    lineNumber: 62,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/share-dialog.tsx",
-    lineNumber: 61,
-    columnNumber: 5
-  }, this);
+                }
+              ) })
+            ] }, person.email))
+          ] })
+        ] }) })
+      ] })
+    ] })
+  ] }) });
 }
 
 // app/components/version-history-dialog.tsx
 import * as React37 from "react";
 import { Check as Check5, Clock as Clock2, RotateCcw } from "lucide-react";
-import { jsxDEV as jsxDEV44 } from "react/jsx-dev-runtime";
+import { jsx as jsx44, jsxs as jsxs33 } from "react/jsx-runtime";
 var versions = [
   {
     id: "v1",
@@ -7852,87 +4072,35 @@ function VersionHistoryDialog({ open, onOpenChange }) {
       description: "Version restored successfully"
     }), onOpenChange?.(!1));
   };
-  return /* @__PURE__ */ jsxDEV44(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxDEV44(DialogContent, { className: "max-w-2xl", children: [
-    /* @__PURE__ */ jsxDEV44(DialogHeader, { children: /* @__PURE__ */ jsxDEV44(DialogTitle, { children: "Version History" }, void 0, !1, {
-      fileName: "app/components/version-history-dialog.tsx",
-      lineNumber: 87,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/version-history-dialog.tsx",
-      lineNumber: 86,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV44(ScrollArea, { className: "h-[400px] pr-4", children: /* @__PURE__ */ jsxDEV44("div", { className: "relative", children: [
-      /* @__PURE__ */ jsxDEV44("div", { className: "absolute left-8 top-0 bottom-0 w-px bg-border" }, void 0, !1, {
-        fileName: "app/components/version-history-dialog.tsx",
-        lineNumber: 93,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ jsxDEV44("div", { className: "space-y-8", children: versions.map((version) => /* @__PURE__ */ jsxDEV44("div", { className: "relative", children: /* @__PURE__ */ jsxDEV44(
+  return /* @__PURE__ */ jsx44(Dialog, { open, onOpenChange, children: /* @__PURE__ */ jsxs33(DialogContent, { className: "max-w-2xl", children: [
+    /* @__PURE__ */ jsx44(DialogHeader, { children: /* @__PURE__ */ jsx44(DialogTitle, { children: "Version History" }) }),
+    /* @__PURE__ */ jsx44(ScrollArea, { className: "h-[400px] pr-4", children: /* @__PURE__ */ jsxs33("div", { className: "relative", children: [
+      /* @__PURE__ */ jsx44("div", { className: "absolute left-8 top-0 bottom-0 w-px bg-border" }),
+      /* @__PURE__ */ jsx44("div", { className: "space-y-8", children: versions.map((version) => /* @__PURE__ */ jsx44("div", { className: "relative", children: /* @__PURE__ */ jsxs33(
         "button",
         {
           onClick: () => setSelectedVersion(version.id),
           className: `w-full group rounded-lg border p-4 text-left transition-colors hover:bg-accent ${selectedVersion === version.id ? "border-primary bg-primary/5" : "border-border"}`,
           children: [
-            /* @__PURE__ */ jsxDEV44("div", { className: "absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full border bg-background", children: /* @__PURE__ */ jsxDEV44(Clock2, { className: "h-3 w-3 text-muted-foreground" }, void 0, !1, {
-              fileName: "app/components/version-history-dialog.tsx",
-              lineNumber: 107,
-              columnNumber: 23
-            }, this) }, void 0, !1, {
-              fileName: "app/components/version-history-dialog.tsx",
-              lineNumber: 106,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV44("div", { className: "flex items-center justify-between", children: [
-              /* @__PURE__ */ jsxDEV44("div", { className: "flex items-center gap-3", children: [
-                /* @__PURE__ */ jsxDEV44(
+            /* @__PURE__ */ jsx44("div", { className: "absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full border bg-background", children: /* @__PURE__ */ jsx44(Clock2, { className: "h-3 w-3 text-muted-foreground" }) }),
+            /* @__PURE__ */ jsxs33("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ jsxs33("div", { className: "flex items-center gap-3", children: [
+                /* @__PURE__ */ jsx44(
                   "img",
                   {
                     src: version.author.avatar,
                     alt: "",
                     className: "h-8 w-8 rounded-full"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/version-history-dialog.tsx",
-                    lineNumber: 112,
-                    columnNumber: 25
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV44("div", { children: [
-                  /* @__PURE__ */ jsxDEV44("div", { className: "font-medium", children: version.author.name }, void 0, !1, {
-                    fileName: "app/components/version-history-dialog.tsx",
-                    lineNumber: 118,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ jsxDEV44("div", { className: "text-sm text-muted-foreground", children: version.timestamp.toLocaleString() }, void 0, !1, {
-                    fileName: "app/components/version-history-dialog.tsx",
-                    lineNumber: 119,
-                    columnNumber: 27
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/components/version-history-dialog.tsx",
-                  lineNumber: 117,
-                  columnNumber: 25
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/version-history-dialog.tsx",
-                lineNumber: 111,
-                columnNumber: 23
-              }, this),
-              selectedVersion === version.id && /* @__PURE__ */ jsxDEV44(Check5, { className: "h-4 w-4 text-primary" }, void 0, !1, {
-                fileName: "app/components/version-history-dialog.tsx",
-                lineNumber: 125,
-                columnNumber: 25
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/version-history-dialog.tsx",
-              lineNumber: 110,
-              columnNumber: 21
-            }, this),
-            /* @__PURE__ */ jsxDEV44("div", { className: "mt-2 space-y-1", children: version.changes.map((change, index) => /* @__PURE__ */ jsxDEV44(
+                /* @__PURE__ */ jsxs33("div", { children: [
+                  /* @__PURE__ */ jsx44("div", { className: "font-medium", children: version.author.name }),
+                  /* @__PURE__ */ jsx44("div", { className: "text-sm text-muted-foreground", children: version.timestamp.toLocaleString() })
+                ] })
+              ] }),
+              selectedVersion === version.id && /* @__PURE__ */ jsx44(Check5, { className: "h-4 w-4 text-primary" })
+            ] }),
+            /* @__PURE__ */ jsx44("div", { className: "mt-2 space-y-1", children: version.changes.map((change, index) => /* @__PURE__ */ jsxs33(
               "div",
               {
                 className: "text-sm text-muted-foreground",
@@ -7941,94 +4109,31 @@ function VersionHistoryDialog({ open, onOpenChange }) {
                   change
                 ]
               },
-              index,
-              !0,
-              {
-                fileName: "app/components/version-history-dialog.tsx",
-                lineNumber: 131,
-                columnNumber: 25
-              },
-              this
-            )) }, void 0, !1, {
-              fileName: "app/components/version-history-dialog.tsx",
-              lineNumber: 129,
-              columnNumber: 21
-            }, this)
+              index
+            )) })
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/version-history-dialog.tsx",
-          lineNumber: 98,
-          columnNumber: 19
-        },
-        this
-      ) }, version.id, !1, {
-        fileName: "app/components/version-history-dialog.tsx",
-        lineNumber: 97,
-        columnNumber: 17
-      }, this)) }, void 0, !1, {
-        fileName: "app/components/version-history-dialog.tsx",
-        lineNumber: 95,
-        columnNumber: 13
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/version-history-dialog.tsx",
-      lineNumber: 91,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/version-history-dialog.tsx",
-      lineNumber: 90,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV44("div", { className: "flex justify-end gap-2", children: [
-      /* @__PURE__ */ jsxDEV44(Button, { variant: "outline", onClick: () => onOpenChange?.(!1), children: "Cancel" }, void 0, !1, {
-        fileName: "app/components/version-history-dialog.tsx",
-        lineNumber: 147,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV44(
+        }
+      ) }, version.id)) })
+    ] }) }),
+    /* @__PURE__ */ jsxs33("div", { className: "flex justify-end gap-2", children: [
+      /* @__PURE__ */ jsx44(Button, { variant: "outline", onClick: () => onOpenChange?.(!1), children: "Cancel" }),
+      /* @__PURE__ */ jsxs33(
         Button,
         {
           onClick: handleRestore,
           disabled: !selectedVersion,
           children: [
-            /* @__PURE__ */ jsxDEV44(RotateCcw, { className: "mr-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/version-history-dialog.tsx",
-              lineNumber: 154,
-              columnNumber: 13
-            }, this),
+            /* @__PURE__ */ jsx44(RotateCcw, { className: "mr-2 h-4 w-4" }),
             "Restore Version"
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/version-history-dialog.tsx",
-          lineNumber: 150,
-          columnNumber: 11
-        },
-        this
+        }
       )
-    ] }, void 0, !0, {
-      fileName: "app/components/version-history-dialog.tsx",
-      lineNumber: 146,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/version-history-dialog.tsx",
-    lineNumber: 85,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/version-history-dialog.tsx",
-    lineNumber: 84,
-    columnNumber: 5
-  }, this);
+    ] })
+  ] }) });
 }
 
 // app/components/nav-actions.tsx
-import { Fragment as Fragment6, jsxDEV as jsxDEV45 } from "react/jsx-dev-runtime";
+import { Fragment as Fragment6, jsx as jsx45, jsxs as jsxs34 } from "react/jsx-runtime";
 var linkedLibraries = [
   {
     id: "react-docs",
@@ -8121,50 +4226,18 @@ function NavActions() {
   };
   return React38.useEffect(() => {
     setIsOpen(!0);
-  }, []), /* @__PURE__ */ jsxDEV45(Fragment6, { children: [
-    /* @__PURE__ */ jsxDEV45(ShareDialog, { open: shareOpen, onOpenChange: setShareOpen }, void 0, !1, {
-      fileName: "app/components/nav-actions.tsx",
-      lineNumber: 196,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV45(InfoDialog, { open: infoOpen, onOpenChange: setInfoOpen }, void 0, !1, {
-      fileName: "app/components/nav-actions.tsx",
-      lineNumber: 197,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV45(DocumentAIChat, { open: aiChatOpen, onOpenChange: setAiChatOpen, documentTitle: "Project Documentation" }, void 0, !1, {
-      fileName: "app/components/nav-actions.tsx",
-      lineNumber: 198,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV45(LinkLibraryDialog, { open: linkLibraryOpen, onOpenChange: setLinkLibraryOpen }, void 0, !1, {
-      fileName: "app/components/nav-actions.tsx",
-      lineNumber: 199,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV45(MoveToDialog, { open: moveToOpen, onOpenChange: setMoveToOpen }, void 0, !1, {
-      fileName: "app/components/nav-actions.tsx",
-      lineNumber: 200,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV45(VersionHistoryDialog, { open: versionHistoryOpen, onOpenChange: setVersionHistoryOpen }, void 0, !1, {
-      fileName: "app/components/nav-actions.tsx",
-      lineNumber: 201,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV45(ExportDialog, { open: exportOpen, onOpenChange: setExportOpen }, void 0, !1, {
-      fileName: "app/components/nav-actions.tsx",
-      lineNumber: 202,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV45("div", { className: "flex items-center gap-2 text-sm", children: [
-      /* @__PURE__ */ jsxDEV45("div", { className: "hidden font-medium text-muted-foreground md:inline-block", children: "Edit Oct 08" }, void 0, !1, {
-        fileName: "app/components/nav-actions.tsx",
-        lineNumber: 204,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV45("div", { className: "hidden md:flex items-center gap-2", children: [
-        /* @__PURE__ */ jsxDEV45(
+  }, []), /* @__PURE__ */ jsxs34(Fragment6, { children: [
+    /* @__PURE__ */ jsx45(ShareDialog, { open: shareOpen, onOpenChange: setShareOpen }),
+    /* @__PURE__ */ jsx45(InfoDialog, { open: infoOpen, onOpenChange: setInfoOpen }),
+    /* @__PURE__ */ jsx45(DocumentAIChat, { open: aiChatOpen, onOpenChange: setAiChatOpen, documentTitle: "Project Documentation" }),
+    /* @__PURE__ */ jsx45(LinkLibraryDialog, { open: linkLibraryOpen, onOpenChange: setLinkLibraryOpen }),
+    /* @__PURE__ */ jsx45(MoveToDialog, { open: moveToOpen, onOpenChange: setMoveToOpen }),
+    /* @__PURE__ */ jsx45(VersionHistoryDialog, { open: versionHistoryOpen, onOpenChange: setVersionHistoryOpen }),
+    /* @__PURE__ */ jsx45(ExportDialog, { open: exportOpen, onOpenChange: setExportOpen }),
+    /* @__PURE__ */ jsxs34("div", { className: "flex items-center gap-2 text-sm", children: [
+      /* @__PURE__ */ jsx45("div", { className: "hidden font-medium text-muted-foreground md:inline-block", children: "Edit Oct 08" }),
+      /* @__PURE__ */ jsxs34("div", { className: "hidden md:flex items-center gap-2", children: [
+        /* @__PURE__ */ jsxs34(
           Button,
           {
             variant: "ghost",
@@ -8172,28 +4245,12 @@ function NavActions() {
             className: "h-7 w-7",
             onClick: () => setInfoOpen(!0),
             children: [
-              /* @__PURE__ */ jsxDEV45(Info, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 214,
-                columnNumber: 13
-              }, this),
-              /* @__PURE__ */ jsxDEV45("span", { className: "sr-only", children: "Info" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 215,
-                columnNumber: 13
-              }, this)
+              /* @__PURE__ */ jsx45(Info, { className: "h-4 w-4" }),
+              /* @__PURE__ */ jsx45("span", { className: "sr-only", children: "Info" })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-actions.tsx",
-            lineNumber: 208,
-            columnNumber: 11
-          },
-          this
+          }
         ),
-        /* @__PURE__ */ jsxDEV45(
+        /* @__PURE__ */ jsxs34(
           Button,
           {
             variant: "ghost",
@@ -8201,130 +4258,42 @@ function NavActions() {
             className: "h-7 w-7",
             onClick: () => setAiChatOpen(!0),
             children: [
-              /* @__PURE__ */ jsxDEV45(Sparkles4, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 223,
-                columnNumber: 13
-              }, this),
-              /* @__PURE__ */ jsxDEV45("span", { className: "sr-only", children: "Ask AI" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 224,
-                columnNumber: 13
-              }, this)
+              /* @__PURE__ */ jsx45(Sparkles4, { className: "h-4 w-4" }),
+              /* @__PURE__ */ jsx45("span", { className: "sr-only", children: "Ask AI" })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-actions.tsx",
-            lineNumber: 217,
-            columnNumber: 11
-          },
-          this
+          }
         ),
-        /* @__PURE__ */ jsxDEV45(DropdownMenu, { children: [
-          /* @__PURE__ */ jsxDEV45(DropdownMenuTrigger, { asChild: !0, children: /* @__PURE__ */ jsxDEV45(
+        /* @__PURE__ */ jsxs34(DropdownMenu, { children: [
+          /* @__PURE__ */ jsx45(DropdownMenuTrigger, { asChild: !0, children: /* @__PURE__ */ jsxs34(
             Button,
             {
               variant: "ghost",
               size: "icon",
               className: "h-7 w-7",
               children: [
-                /* @__PURE__ */ jsxDEV45(BookOpen, { className: "h-4 w-4" }, void 0, !1, {
-                  fileName: "app/components/nav-actions.tsx",
-                  lineNumber: 233,
-                  columnNumber: 17
-                }, this),
-                /* @__PURE__ */ jsxDEV45("span", { className: "sr-only", children: "Library" }, void 0, !1, {
-                  fileName: "app/components/nav-actions.tsx",
-                  lineNumber: 234,
-                  columnNumber: 17
-                }, this)
+                /* @__PURE__ */ jsx45(BookOpen, { className: "h-4 w-4" }),
+                /* @__PURE__ */ jsx45("span", { className: "sr-only", children: "Library" })
               ]
-            },
-            void 0,
-            !0,
-            {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 228,
-              columnNumber: 15
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/components/nav-actions.tsx",
-            lineNumber: 227,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ jsxDEV45(DropdownMenuContent, { align: "end", className: "w-56", children: [
-            /* @__PURE__ */ jsxDEV45("div", { className: "px-2 py-1.5", children: [
-              /* @__PURE__ */ jsxDEV45("h4", { className: "text-sm font-medium", children: "Linked Libraries" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 239,
-                columnNumber: 17
-              }, this),
-              /* @__PURE__ */ jsxDEV45("p", { className: "text-xs text-muted-foreground", children: "Libraries connected to this document" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 240,
-                columnNumber: 17
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 238,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV45(DropdownMenuSeparator, {}, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 244,
-              columnNumber: 15
-            }, this),
-            linkedLibraries.map((library) => /* @__PURE__ */ jsxDEV45(DropdownMenuItem, { asChild: !0, children: /* @__PURE__ */ jsxDEV45(Link4, { to: `/library/${library.id}`, className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ jsxDEV45("span", { className: "text-base", children: library.emoji }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 248,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ jsxDEV45("span", { children: library.name }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 249,
-                columnNumber: 21
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 247,
-              columnNumber: 19
-            }, this) }, library.id, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 246,
-              columnNumber: 17
-            }, this)),
-            /* @__PURE__ */ jsxDEV45(DropdownMenuSeparator, {}, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 253,
-              columnNumber: 15
-            }, this),
-            /* @__PURE__ */ jsxDEV45(DropdownMenuItem, { onSelect: () => setLinkLibraryOpen(!0), children: [
-              /* @__PURE__ */ jsxDEV45(LinkIcon, { className: "h-4 w-4 mr-2" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 255,
-                columnNumber: 17
-              }, this),
+            }
+          ) }),
+          /* @__PURE__ */ jsxs34(DropdownMenuContent, { align: "end", className: "w-56", children: [
+            /* @__PURE__ */ jsxs34("div", { className: "px-2 py-1.5", children: [
+              /* @__PURE__ */ jsx45("h4", { className: "text-sm font-medium", children: "Linked Libraries" }),
+              /* @__PURE__ */ jsx45("p", { className: "text-xs text-muted-foreground", children: "Libraries connected to this document" })
+            ] }),
+            /* @__PURE__ */ jsx45(DropdownMenuSeparator, {}),
+            linkedLibraries.map((library) => /* @__PURE__ */ jsx45(DropdownMenuItem, { asChild: !0, children: /* @__PURE__ */ jsxs34(Link4, { to: `/library/${library.id}`, className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ jsx45("span", { className: "text-base", children: library.emoji }),
+              /* @__PURE__ */ jsx45("span", { children: library.name })
+            ] }) }, library.id)),
+            /* @__PURE__ */ jsx45(DropdownMenuSeparator, {}),
+            /* @__PURE__ */ jsxs34(DropdownMenuItem, { onSelect: () => setLinkLibraryOpen(!0), children: [
+              /* @__PURE__ */ jsx45(LinkIcon, { className: "h-4 w-4 mr-2" }),
               "Link Library"
-            ] }, void 0, !0, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 254,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/nav-actions.tsx",
-            lineNumber: 237,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/nav-actions.tsx",
-          lineNumber: 226,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV45(
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxs34(
           Button,
           {
             variant: "ghost",
@@ -8332,33 +4301,13 @@ function NavActions() {
             className: "h-7 w-7",
             onClick: () => setShareOpen(!0),
             children: [
-              /* @__PURE__ */ jsxDEV45(Share2, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 266,
-                columnNumber: 13
-              }, this),
-              /* @__PURE__ */ jsxDEV45("span", { className: "sr-only", children: "Share" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 267,
-                columnNumber: 13
-              }, this)
+              /* @__PURE__ */ jsx45(Share2, { className: "h-4 w-4" }),
+              /* @__PURE__ */ jsx45("span", { className: "sr-only", children: "Share" })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-actions.tsx",
-            lineNumber: 260,
-            columnNumber: 11
-          },
-          this
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/components/nav-actions.tsx",
-        lineNumber: 207,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV45(
+      ] }),
+      /* @__PURE__ */ jsxs34(
         Button,
         {
           variant: "ghost",
@@ -8366,160 +4315,56 @@ function NavActions() {
           className: "h-7 w-7",
           onClick: toggleBookmark,
           children: [
-            bookmarked ? /* @__PURE__ */ jsxDEV45(BookmarkCheck, { className: "h-4 w-4 fill-current" }, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 276,
-              columnNumber: 25
-            }, this) : /* @__PURE__ */ jsxDEV45(Bookmark, { className: "h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 276,
-              columnNumber: 78
-            }, this),
-            /* @__PURE__ */ jsxDEV45("span", { className: "sr-only", children: "Bookmark" }, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 277,
-              columnNumber: 11
-            }, this)
+            bookmarked ? /* @__PURE__ */ jsx45(BookmarkCheck, { className: "h-4 w-4 fill-current" }) : /* @__PURE__ */ jsx45(Bookmark, { className: "h-4 w-4" }),
+            /* @__PURE__ */ jsx45("span", { className: "sr-only", children: "Bookmark" })
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/nav-actions.tsx",
-          lineNumber: 270,
-          columnNumber: 9
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ jsxDEV45(Popover, { open: isOpen, onOpenChange: setIsOpen, children: [
-        /* @__PURE__ */ jsxDEV45(PopoverTrigger, { asChild: !0, children: /* @__PURE__ */ jsxDEV45(
+      /* @__PURE__ */ jsxs34(Popover, { open: isOpen, onOpenChange: setIsOpen, children: [
+        /* @__PURE__ */ jsx45(PopoverTrigger, { asChild: !0, children: /* @__PURE__ */ jsxs34(
           Button,
           {
             variant: "ghost",
             size: "icon",
             className: "h-7 w-7 data-[state=open]:bg-accent",
             children: [
-              /* @__PURE__ */ jsxDEV45(MoreHorizontal4, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 286,
-                columnNumber: 15
-              }, this),
-              /* @__PURE__ */ jsxDEV45("span", { className: "sr-only", children: "More options" }, void 0, !1, {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 287,
-                columnNumber: 15
-              }, this)
+              /* @__PURE__ */ jsx45(MoreHorizontal4, { className: "h-4 w-4" }),
+              /* @__PURE__ */ jsx45("span", { className: "sr-only", children: "More options" })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/nav-actions.tsx",
-            lineNumber: 281,
-            columnNumber: 13
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/nav-actions.tsx",
-          lineNumber: 280,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV45(
+          }
+        ) }),
+        /* @__PURE__ */ jsx45(
           PopoverContent,
           {
             className: "w-56 overflow-hidden rounded-lg p-0",
             align: "end",
-            children: /* @__PURE__ */ jsxDEV45(Sidebar, { collapsible: "none", className: "bg-transparent", children: /* @__PURE__ */ jsxDEV45(SidebarContent, { children: data2.map((group, index) => /* @__PURE__ */ jsxDEV45(SidebarGroup, { className: "border-b last:border-none", children: /* @__PURE__ */ jsxDEV45(SidebarGroupContent, { className: "gap-0", children: /* @__PURE__ */ jsxDEV45(SidebarMenu, { children: group.map((item, index2) => /* @__PURE__ */ jsxDEV45(SidebarMenuItem, { children: /* @__PURE__ */ jsxDEV45(
+            children: /* @__PURE__ */ jsx45(Sidebar, { collapsible: "none", className: "bg-transparent", children: /* @__PURE__ */ jsx45(SidebarContent, { children: data2.map((group, index) => /* @__PURE__ */ jsx45(SidebarGroup, { className: "border-b last:border-none", children: /* @__PURE__ */ jsx45(SidebarGroupContent, { className: "gap-0", children: /* @__PURE__ */ jsx45(SidebarMenu, { children: group.map((item, index2) => /* @__PURE__ */ jsx45(SidebarMenuItem, { children: /* @__PURE__ */ jsxs34(
               SidebarMenuButton,
               {
                 className: item.className,
                 onClick: () => handleAction(item.action, item.dialog),
                 children: [
-                  /* @__PURE__ */ jsxDEV45(item.icon, {}, void 0, !1, {
-                    fileName: "app/components/nav-actions.tsx",
-                    lineNumber: 306,
-                    columnNumber: 31
-                  }, this),
+                  /* @__PURE__ */ jsx45(item.icon, {}),
                   " ",
-                  /* @__PURE__ */ jsxDEV45("span", { children: item.label }, void 0, !1, {
-                    fileName: "app/components/nav-actions.tsx",
-                    lineNumber: 306,
-                    columnNumber: 45
-                  }, this)
+                  /* @__PURE__ */ jsx45("span", { children: item.label })
                 ]
-              },
-              void 0,
-              !0,
-              {
-                fileName: "app/components/nav-actions.tsx",
-                lineNumber: 302,
-                columnNumber: 29
-              },
-              this
-            ) }, index2, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 301,
-              columnNumber: 27
-            }, this)) }, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 299,
-              columnNumber: 23
-            }, this) }, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 298,
-              columnNumber: 21
-            }, this) }, index, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 297,
-              columnNumber: 19
-            }, this)) }, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 295,
-              columnNumber: 15
-            }, this) }, void 0, !1, {
-              fileName: "app/components/nav-actions.tsx",
-              lineNumber: 294,
-              columnNumber: 13
-            }, this)
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/nav-actions.tsx",
-            lineNumber: 290,
-            columnNumber: 11
-          },
-          this
+              }
+            ) }, index2)) }) }) }, index)) }) })
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/components/nav-actions.tsx",
-        lineNumber: 279,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/nav-actions.tsx",
-      lineNumber: 203,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/nav-actions.tsx",
-    lineNumber: 195,
-    columnNumber: 5
-  }, this);
+      ] })
+    ] })
+  ] });
 }
 
 // app/components/ui/breadcrumb.tsx
 import * as React39 from "react";
 import { Slot as Slot3 } from "@radix-ui/react-slot";
 import { ChevronRight as ChevronRight4, MoreHorizontal as MoreHorizontal5 } from "lucide-react";
-import { jsxDEV as jsxDEV46 } from "react/jsx-dev-runtime";
-var Breadcrumb = React39.forwardRef(({ ...props }, ref) => /* @__PURE__ */ jsxDEV46("nav", { ref, "aria-label": "breadcrumb", ...props }, void 0, !1, {
-  fileName: "app/components/ui/breadcrumb.tsx",
-  lineNumber: 13,
-  columnNumber: 26
-}, this));
+import { jsx as jsx46, jsxs as jsxs35 } from "react/jsx-runtime";
+var Breadcrumb = React39.forwardRef(({ ...props }, ref) => /* @__PURE__ */ jsx46("nav", { ref, "aria-label": "breadcrumb", ...props }));
 Breadcrumb.displayName = "Breadcrumb";
-var BreadcrumbList = React39.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV46(
+var BreadcrumbList = React39.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx46(
   "ol",
   {
     ref,
@@ -8528,70 +4373,38 @@ var BreadcrumbList = React39.forwardRef(({ className, ...props }, ref) => /* @__
       className
     ),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/breadcrumb.tsx",
-    lineNumber: 20,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 BreadcrumbList.displayName = "BreadcrumbList";
-var BreadcrumbItem = React39.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV46(
+var BreadcrumbItem = React39.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx46(
   "li",
   {
     ref,
     className: cn("inline-flex items-center gap-1.5", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/breadcrumb.tsx",
-    lineNumber: 35,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 BreadcrumbItem.displayName = "BreadcrumbItem";
-var BreadcrumbLink = React39.forwardRef(({ asChild, className, ...props }, ref) => /* @__PURE__ */ jsxDEV46(
+var BreadcrumbLink = React39.forwardRef(({ asChild, className, ...props }, ref) => /* @__PURE__ */ jsx46(
   asChild ? Slot3 : "a",
   {
     ref,
     className: cn("transition-colors hover:text-foreground", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/breadcrumb.tsx",
-    lineNumber: 52,
-    columnNumber: 5
-  },
-  this
+  }
 ));
 BreadcrumbLink.displayName = "BreadcrumbLink";
-var BreadcrumbInput = React39.forwardRef(({ value, onChange }, ref) => /* @__PURE__ */ jsxDEV46(
+var BreadcrumbInput = React39.forwardRef(({ value, onChange }, ref) => /* @__PURE__ */ jsx46(
   Input,
   {
     ref,
     value,
     onChange: (e) => onChange?.(e.target.value),
     className: "h-auto border-none bg-transparent px-0 text-base font-semibold shadow-none focus-visible:ring-0"
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/breadcrumb.tsx",
-    lineNumber: 70,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 BreadcrumbInput.displayName = "BreadcrumbInput";
-var BreadcrumbPage = React39.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxDEV46(
+var BreadcrumbPage = React39.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsx46(
   "span",
   {
     ref,
@@ -8600,48 +4413,28 @@ var BreadcrumbPage = React39.forwardRef(({ className, ...props }, ref) => /* @__
     "aria-current": "page",
     className: cn("font-normal text-foreground", className),
     ...props
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/breadcrumb.tsx",
-    lineNumber: 83,
-    columnNumber: 3
-  },
-  this
+  }
 ));
 BreadcrumbPage.displayName = "BreadcrumbPage";
 var BreadcrumbSeparator = ({
   children,
   className,
   ...props
-}) => /* @__PURE__ */ jsxDEV46(
+}) => /* @__PURE__ */ jsx46(
   "li",
   {
     role: "presentation",
     "aria-hidden": "true",
     className: cn("[&>svg]:w-3.5 [&>svg]:h-3.5", className),
     ...props,
-    children: children ?? /* @__PURE__ */ jsxDEV46(ChevronRight4, {}, void 0, !1, {
-      fileName: "app/components/ui/breadcrumb.tsx",
-      lineNumber: 105,
-      columnNumber: 18
-    }, this)
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/ui/breadcrumb.tsx",
-    lineNumber: 99,
-    columnNumber: 3
-  },
-  this
+    children: children ?? /* @__PURE__ */ jsx46(ChevronRight4, {})
+  }
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 var BreadcrumbEllipsis = ({
   className,
   ...props
-}) => /* @__PURE__ */ jsxDEV46(
+}) => /* @__PURE__ */ jsxs35(
   "span",
   {
     role: "presentation",
@@ -8649,31 +4442,15 @@ var BreadcrumbEllipsis = ({
     className: cn("flex h-9 w-9 items-center justify-center", className),
     ...props,
     children: [
-      /* @__PURE__ */ jsxDEV46(MoreHorizontal5, { className: "h-4 w-4" }, void 0, !1, {
-        fileName: "app/components/ui/breadcrumb.tsx",
-        lineNumber: 120,
-        columnNumber: 5
-      }, this),
-      /* @__PURE__ */ jsxDEV46("span", { className: "sr-only", children: "More" }, void 0, !1, {
-        fileName: "app/components/ui/breadcrumb.tsx",
-        lineNumber: 121,
-        columnNumber: 5
-      }, this)
+      /* @__PURE__ */ jsx46(MoreHorizontal5, { className: "h-4 w-4" }),
+      /* @__PURE__ */ jsx46("span", { className: "sr-only", children: "More" })
     ]
-  },
-  void 0,
-  !0,
-  {
-    fileName: "app/components/ui/breadcrumb.tsx",
-    lineNumber: 114,
-    columnNumber: 3
-  },
-  this
+  }
 );
 BreadcrumbEllipsis.displayName = "BreadcrumbElipssis";
 
 // app/components/layout.tsx
-import { Fragment as Fragment7, jsxDEV as jsxDEV47 } from "react/jsx-dev-runtime";
+import { Fragment as Fragment7, jsx as jsx47, jsxs as jsxs36 } from "react/jsx-runtime";
 function Layout({
   children,
   title,
@@ -8682,109 +4459,29 @@ function Layout({
   onEmojiChange,
   minimal = !1
 }) {
-  return /* @__PURE__ */ jsxDEV47(SidebarProvider, { children: [
-    /* @__PURE__ */ jsxDEV47(AppSidebar, { onPageTitleChange: onTitleChange }, void 0, !1, {
-      fileName: "app/components/layout.tsx",
-      lineNumber: 37,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV47(SidebarInset, { children: [
-      /* @__PURE__ */ jsxDEV47("header", { className: "flex h-14 shrink-0 items-center", children: minimal ? /* @__PURE__ */ jsxDEV47("div", { className: "px-3", children: /* @__PURE__ */ jsxDEV47(SidebarTrigger, {}, void 0, !1, {
-        fileName: "app/components/layout.tsx",
-        lineNumber: 42,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/layout.tsx",
-        lineNumber: 41,
-        columnNumber: 13
-      }, this) : /* @__PURE__ */ jsxDEV47(Fragment7, { children: [
-        /* @__PURE__ */ jsxDEV47("div", { className: "flex flex-1 items-center gap-2 px-3", children: [
-          /* @__PURE__ */ jsxDEV47(SidebarTrigger, {}, void 0, !1, {
-            fileName: "app/components/layout.tsx",
-            lineNumber: 47,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV47(Separator2, { orientation: "vertical", className: "mr-2 h-4" }, void 0, !1, {
-            fileName: "app/components/layout.tsx",
-            lineNumber: 48,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ jsxDEV47(Breadcrumb, { children: /* @__PURE__ */ jsxDEV47(BreadcrumbList, { children: /* @__PURE__ */ jsxDEV47(BreadcrumbItem, { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxDEV47(EmojiPicker, { value: emoji, onChange: onEmojiChange }, void 0, !1, {
-              fileName: "app/components/layout.tsx",
-              lineNumber: 52,
-              columnNumber: 23
-            }, this),
-            /* @__PURE__ */ jsxDEV47(
+  return /* @__PURE__ */ jsxs36(SidebarProvider, { children: [
+    /* @__PURE__ */ jsx47(AppSidebar, { onPageTitleChange: onTitleChange }),
+    /* @__PURE__ */ jsxs36(SidebarInset, { children: [
+      /* @__PURE__ */ jsx47("header", { className: "flex h-14 shrink-0 items-center", children: minimal ? /* @__PURE__ */ jsx47("div", { className: "px-3", children: /* @__PURE__ */ jsx47(SidebarTrigger, {}) }) : /* @__PURE__ */ jsxs36(Fragment7, { children: [
+        /* @__PURE__ */ jsxs36("div", { className: "flex flex-1 items-center gap-2 px-3", children: [
+          /* @__PURE__ */ jsx47(SidebarTrigger, {}),
+          /* @__PURE__ */ jsx47(Separator2, { orientation: "vertical", className: "mr-2 h-4" }),
+          /* @__PURE__ */ jsx47(Breadcrumb, { children: /* @__PURE__ */ jsx47(BreadcrumbList, { children: /* @__PURE__ */ jsxs36(BreadcrumbItem, { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsx47(EmojiPicker, { value: emoji, onChange: onEmojiChange }),
+            /* @__PURE__ */ jsx47(
               BreadcrumbInput,
               {
                 value: title,
                 onChange: onTitleChange
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/components/layout.tsx",
-                lineNumber: 53,
-                columnNumber: 23
-              },
-              this
+              }
             )
-          ] }, void 0, !0, {
-            fileName: "app/components/layout.tsx",
-            lineNumber: 51,
-            columnNumber: 21
-          }, this) }, void 0, !1, {
-            fileName: "app/components/layout.tsx",
-            lineNumber: 50,
-            columnNumber: 19
-          }, this) }, void 0, !1, {
-            fileName: "app/components/layout.tsx",
-            lineNumber: 49,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/layout.tsx",
-          lineNumber: 46,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV47("div", { className: "ml-auto px-3", children: /* @__PURE__ */ jsxDEV47(NavActions, {}, void 0, !1, {
-          fileName: "app/components/layout.tsx",
-          lineNumber: 62,
-          columnNumber: 17
-        }, this) }, void 0, !1, {
-          fileName: "app/components/layout.tsx",
-          lineNumber: 61,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/layout.tsx",
-        lineNumber: 45,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/components/layout.tsx",
-        lineNumber: 39,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ jsxDEV47("div", { className: "flex flex-1 flex-col gap-4 px-4 py-10", children: /* @__PURE__ */ jsxDEV47("div", { className: "mx-auto w-full max-w-3xl", children }, void 0, !1, {
-        fileName: "app/components/layout.tsx",
-        lineNumber: 68,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/components/layout.tsx",
-        lineNumber: 67,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/layout.tsx",
-      lineNumber: 38,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/layout.tsx",
-    lineNumber: 36,
-    columnNumber: 5
-  }, this);
+          ] }) }) })
+        ] }),
+        /* @__PURE__ */ jsx47("div", { className: "ml-auto px-3", children: /* @__PURE__ */ jsx47(NavActions, {}) })
+      ] }) }),
+      /* @__PURE__ */ jsx47("div", { className: "flex flex-1 flex-col gap-4 px-4 py-10", children: /* @__PURE__ */ jsx47("div", { className: "mx-auto w-full max-w-3xl", children }) })
+    ] })
+  ] });
 }
 
 // app/components/editor.tsx
@@ -8812,7 +4509,7 @@ import {
 import * as React40 from "react";
 import { Bot as Bot2, ChevronDown, Lightbulb, Sparkles as Sparkles5, X as X5 } from "lucide-react";
 import { motion as motion2, AnimatePresence as AnimatePresence2 } from "framer-motion";
-import { jsxDEV as jsxDEV48 } from "react/jsx-dev-runtime";
+import { jsx as jsx48, jsxs as jsxs37 } from "react/jsx-runtime";
 function getLetterGradeStyle(grade) {
   switch (grade) {
     case "A":
@@ -8911,38 +4608,18 @@ function AiSuggestions({ content }) {
       setSuggestions(newSuggestions), setOpenSuggestion(newSuggestions[0].id), setLoading(!1);
     }, 1500);
     return () => clearTimeout(timer);
-  }, [content]), loading ? /* @__PURE__ */ jsxDEV48(
+  }, [content]), loading ? /* @__PURE__ */ jsx48(
     motion2.div,
     {
       initial: { opacity: 0, y: 20 },
       animate: { opacity: 1, y: 0 },
       className: "rounded-lg bg-muted/50 p-4",
-      children: /* @__PURE__ */ jsxDEV48("div", { className: "flex items-center gap-2 text-sm text-muted-foreground", children: [
-        /* @__PURE__ */ jsxDEV48(Bot2, { className: "h-4 w-4 animate-pulse" }, void 0, !1, {
-          fileName: "app/components/ai-suggestions.tsx",
-          lineNumber: 152,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ jsxDEV48("p", { children: "Analyzing content..." }, void 0, !1, {
-          fileName: "app/components/ai-suggestions.tsx",
-          lineNumber: 153,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/ai-suggestions.tsx",
-        lineNumber: 151,
-        columnNumber: 9
-      }, this)
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/ai-suggestions.tsx",
-      lineNumber: 146,
-      columnNumber: 7
-    },
-    this
-  ) : /* @__PURE__ */ jsxDEV48(ScrollArea, { className: "h-[calc(100vh-12rem)]", children: /* @__PURE__ */ jsxDEV48(
+      children: /* @__PURE__ */ jsxs37("div", { className: "flex items-center gap-2 text-sm text-muted-foreground", children: [
+        /* @__PURE__ */ jsx48(Bot2, { className: "h-4 w-4 animate-pulse" }),
+        /* @__PURE__ */ jsx48("p", { children: "Analyzing content..." })
+      ] })
+    }
+  ) : /* @__PURE__ */ jsx48(ScrollArea, { className: "h-[calc(100vh-12rem)]", children: /* @__PURE__ */ jsxs37(
     motion2.div,
     {
       className: "space-y-4 pr-4",
@@ -8950,15 +4627,15 @@ function AiSuggestions({ content }) {
       animate: { opacity: 1 },
       transition: { duration: 0.3 },
       children: [
-        /* @__PURE__ */ jsxDEV48(
+        /* @__PURE__ */ jsx48(
           motion2.div,
           {
             initial: { opacity: 0, scale: 0.95 },
             animate: { opacity: 1, scale: 1 },
             transition: { duration: 0.4, delay: 0.1 },
             className: "rounded-lg bg-muted/50 p-6",
-            children: /* @__PURE__ */ jsxDEV48("div", { className: "flex items-center justify-between", children: [
-              /* @__PURE__ */ jsxDEV48("div", { children: /* @__PURE__ */ jsxDEV48(
+            children: /* @__PURE__ */ jsxs37("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ jsx48("div", { children: /* @__PURE__ */ jsxs37(
                 motion2.p,
                 {
                   className: "text-2xl font-bold tracking-tight",
@@ -8969,21 +4646,9 @@ function AiSuggestions({ content }) {
                     score,
                     "%"
                   ]
-                },
-                void 0,
-                !0,
-                {
-                  fileName: "app/components/ai-suggestions.tsx",
-                  lineNumber: 176,
-                  columnNumber: 15
-                },
-                this
-              ) }, void 0, !1, {
-                fileName: "app/components/ai-suggestions.tsx",
-                lineNumber: 175,
-                columnNumber: 13
-              }, this),
-              /* @__PURE__ */ jsxDEV48(
+                }
+              ) }),
+              /* @__PURE__ */ jsx48(
                 motion2.div,
                 {
                   className: cn("flex h-14 w-14 items-center justify-center rounded-full transition-colors", gradeStyle),
@@ -8995,118 +4660,50 @@ function AiSuggestions({ content }) {
                     damping: 15,
                     delay: 0.4
                   },
-                  children: /* @__PURE__ */ jsxDEV48("span", { className: "text-2xl font-bold", children: letterGrade }, void 0, !1, {
-                    fileName: "app/components/ai-suggestions.tsx",
-                    lineNumber: 196,
-                    columnNumber: 15
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/ai-suggestions.tsx",
-                  lineNumber: 185,
-                  columnNumber: 13
-                },
-                this
+                  children: /* @__PURE__ */ jsx48("span", { className: "text-2xl font-bold", children: letterGrade })
+                }
               )
-            ] }, void 0, !0, {
-              fileName: "app/components/ai-suggestions.tsx",
-              lineNumber: 174,
-              columnNumber: 11
-            }, this)
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/ai-suggestions.tsx",
-            lineNumber: 168,
-            columnNumber: 9
-          },
-          this
+            ] })
+          }
         ),
-        suggestions.map((suggestion, index) => /* @__PURE__ */ jsxDEV48(
+        suggestions.map((suggestion, index) => /* @__PURE__ */ jsx48(
           motion2.div,
           {
             initial: { opacity: 0, y: 20 },
             animate: { opacity: 1, y: 0 },
             transition: { duration: 0.3, delay: 0.1 * (index + 2) },
-            children: /* @__PURE__ */ jsxDEV48(
+            children: /* @__PURE__ */ jsx48(
               Collapsible,
               {
                 open: openSuggestion === suggestion.id,
                 onOpenChange: (open) => setOpenSuggestion(open ? suggestion.id : null),
-                children: /* @__PURE__ */ jsxDEV48("div", { className: "rounded-lg bg-muted/50", children: [
-                  /* @__PURE__ */ jsxDEV48(CollapsibleTrigger2, { className: "flex w-full items-center justify-between p-4", children: [
-                    /* @__PURE__ */ jsxDEV48("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ jsxDEV48(
+                children: /* @__PURE__ */ jsxs37("div", { className: "rounded-lg bg-muted/50", children: [
+                  /* @__PURE__ */ jsxs37(CollapsibleTrigger2, { className: "flex w-full items-center justify-between p-4", children: [
+                    /* @__PURE__ */ jsxs37("div", { className: "flex items-center gap-2", children: [
+                      /* @__PURE__ */ jsxs37(
                         motion2.div,
                         {
                           whileHover: { scale: 1.1 },
                           whileTap: { scale: 0.95 },
                           children: [
-                            suggestion.type === "improvement" && /* @__PURE__ */ jsxDEV48(Sparkles5, { className: "h-4 w-4 text-blue-500" }, void 0, !1, {
-                              fileName: "app/components/ai-suggestions.tsx",
-                              lineNumber: 220,
-                              columnNumber: 25
-                            }, this),
-                            suggestion.type === "insight" && /* @__PURE__ */ jsxDEV48(Lightbulb, { className: "h-4 w-4 text-amber-500" }, void 0, !1, {
-                              fileName: "app/components/ai-suggestions.tsx",
-                              lineNumber: 223,
-                              columnNumber: 25
-                            }, this),
-                            suggestion.type === "enhancement" && /* @__PURE__ */ jsxDEV48(Bot2, { className: "h-4 w-4 text-emerald-500" }, void 0, !1, {
-                              fileName: "app/components/ai-suggestions.tsx",
-                              lineNumber: 226,
-                              columnNumber: 25
-                            }, this)
+                            suggestion.type === "improvement" && /* @__PURE__ */ jsx48(Sparkles5, { className: "h-4 w-4 text-blue-500" }),
+                            suggestion.type === "insight" && /* @__PURE__ */ jsx48(Lightbulb, { className: "h-4 w-4 text-amber-500" }),
+                            suggestion.type === "enhancement" && /* @__PURE__ */ jsx48(Bot2, { className: "h-4 w-4 text-emerald-500" })
                           ]
-                        },
-                        void 0,
-                        !0,
-                        {
-                          fileName: "app/components/ai-suggestions.tsx",
-                          lineNumber: 215,
-                          columnNumber: 21
-                        },
-                        this
+                        }
                       ),
-                      /* @__PURE__ */ jsxDEV48("span", { className: "text-sm font-medium", children: suggestion.title }, void 0, !1, {
-                        fileName: "app/components/ai-suggestions.tsx",
-                        lineNumber: 229,
-                        columnNumber: 21
-                      }, this)
-                    ] }, void 0, !0, {
-                      fileName: "app/components/ai-suggestions.tsx",
-                      lineNumber: 214,
-                      columnNumber: 19
-                    }, this),
-                    /* @__PURE__ */ jsxDEV48(
+                      /* @__PURE__ */ jsx48("span", { className: "text-sm font-medium", children: suggestion.title })
+                    ] }),
+                    /* @__PURE__ */ jsx48(
                       motion2.div,
                       {
                         animate: { rotate: openSuggestion === suggestion.id ? 180 : 0 },
                         transition: { duration: 0.2 },
-                        children: /* @__PURE__ */ jsxDEV48(ChevronDown, { className: "h-4 w-4 text-muted-foreground" }, void 0, !1, {
-                          fileName: "app/components/ai-suggestions.tsx",
-                          lineNumber: 237,
-                          columnNumber: 21
-                        }, this)
-                      },
-                      void 0,
-                      !1,
-                      {
-                        fileName: "app/components/ai-suggestions.tsx",
-                        lineNumber: 233,
-                        columnNumber: 19
-                      },
-                      this
+                        children: /* @__PURE__ */ jsx48(ChevronDown, { className: "h-4 w-4 text-muted-foreground" })
+                      }
                     )
-                  ] }, void 0, !0, {
-                    fileName: "app/components/ai-suggestions.tsx",
-                    lineNumber: 213,
-                    columnNumber: 17
-                  }, this),
-                  /* @__PURE__ */ jsxDEV48(CollapsibleContent2, { children: /* @__PURE__ */ jsxDEV48(AnimatePresence2, { children: openSuggestion === suggestion.id && /* @__PURE__ */ jsxDEV48(
+                  ] }),
+                  /* @__PURE__ */ jsx48(CollapsibleContent2, { children: /* @__PURE__ */ jsx48(AnimatePresence2, { children: openSuggestion === suggestion.id && /* @__PURE__ */ jsx48(
                     motion2.div,
                     {
                       initial: { height: 0, opacity: 0 },
@@ -9114,43 +4711,20 @@ function AiSuggestions({ content }) {
                       exit: { height: 0, opacity: 0 },
                       transition: { duration: 0.2 },
                       className: "border-t border-border/50",
-                      children: /* @__PURE__ */ jsxDEV48("div", { className: "p-4", children: [
-                        /* @__PURE__ */ jsxDEV48("p", { className: "text-sm text-muted-foreground mb-3", children: suggestion.content.summary }, void 0, !1, {
-                          fileName: "app/components/ai-suggestions.tsx",
-                          lineNumber: 251,
-                          columnNumber: 27
-                        }, this),
-                        /* @__PURE__ */ jsxDEV48("div", { className: "space-y-2", children: suggestion.content.highlights.map((highlight, i) => /* @__PURE__ */ jsxDEV48(
+                      children: /* @__PURE__ */ jsxs37("div", { className: "p-4", children: [
+                        /* @__PURE__ */ jsx48("p", { className: "text-sm text-muted-foreground mb-3", children: suggestion.content.summary }),
+                        /* @__PURE__ */ jsx48("div", { className: "space-y-2", children: suggestion.content.highlights.map((highlight, i) => /* @__PURE__ */ jsxs37(
                           "div",
                           {
                             className: "flex items-center gap-2 text-sm",
                             children: [
-                              /* @__PURE__ */ jsxDEV48("div", { className: "h-1.5 w-1.5 rounded-full bg-primary/50" }, void 0, !1, {
-                                fileName: "app/components/ai-suggestions.tsx",
-                                lineNumber: 260,
-                                columnNumber: 33
-                              }, this),
-                              /* @__PURE__ */ jsxDEV48("span", { className: "font-medium text-primary", children: highlight }, void 0, !1, {
-                                fileName: "app/components/ai-suggestions.tsx",
-                                lineNumber: 261,
-                                columnNumber: 33
-                              }, this)
+                              /* @__PURE__ */ jsx48("div", { className: "h-1.5 w-1.5 rounded-full bg-primary/50" }),
+                              /* @__PURE__ */ jsx48("span", { className: "font-medium text-primary", children: highlight })
                             ]
                           },
-                          i,
-                          !0,
-                          {
-                            fileName: "app/components/ai-suggestions.tsx",
-                            lineNumber: 256,
-                            columnNumber: 31
-                          },
-                          this
-                        )) }, void 0, !1, {
-                          fileName: "app/components/ai-suggestions.tsx",
-                          lineNumber: 254,
-                          columnNumber: 27
-                        }, this),
-                        /* @__PURE__ */ jsxDEV48(
+                          i
+                        )) }),
+                        /* @__PURE__ */ jsxs37(
                           motion2.div,
                           {
                             className: "mt-4 flex gap-2",
@@ -9158,126 +4732,47 @@ function AiSuggestions({ content }) {
                             animate: { opacity: 1, y: 0 },
                             transition: { delay: 0.1 },
                             children: [
-                              /* @__PURE__ */ jsxDEV48(
+                              /* @__PURE__ */ jsx48(
                                 Button,
                                 {
                                   size: "sm",
                                   className: "w-full bg-primary/10 text-primary hover:bg-primary/20",
                                   children: "Accept Suggestion"
-                                },
-                                void 0,
-                                !1,
-                                {
-                                  fileName: "app/components/ai-suggestions.tsx",
-                                  lineNumber: 273,
-                                  columnNumber: 29
-                                },
-                                this
+                                }
                               ),
-                              /* @__PURE__ */ jsxDEV48(
+                              /* @__PURE__ */ jsx48(
                                 Button,
                                 {
                                   size: "sm",
                                   variant: "ghost",
                                   className: "w-8 p-0 text-muted-foreground hover:text-foreground",
-                                  children: /* @__PURE__ */ jsxDEV48(X5, { className: "h-4 w-4" }, void 0, !1, {
-                                    fileName: "app/components/ai-suggestions.tsx",
-                                    lineNumber: 284,
-                                    columnNumber: 31
-                                  }, this)
-                                },
-                                void 0,
-                                !1,
-                                {
-                                  fileName: "app/components/ai-suggestions.tsx",
-                                  lineNumber: 279,
-                                  columnNumber: 29
-                                },
-                                this
+                                  children: /* @__PURE__ */ jsx48(X5, { className: "h-4 w-4" })
+                                }
                               )
                             ]
-                          },
-                          void 0,
-                          !0,
-                          {
-                            fileName: "app/components/ai-suggestions.tsx",
-                            lineNumber: 267,
-                            columnNumber: 27
-                          },
-                          this
+                          }
                         )
-                      ] }, void 0, !0, {
-                        fileName: "app/components/ai-suggestions.tsx",
-                        lineNumber: 250,
-                        columnNumber: 25
-                      }, this)
-                    },
-                    void 0,
-                    !1,
-                    {
-                      fileName: "app/components/ai-suggestions.tsx",
-                      lineNumber: 243,
-                      columnNumber: 23
-                    },
-                    this
-                  ) }, void 0, !1, {
-                    fileName: "app/components/ai-suggestions.tsx",
-                    lineNumber: 241,
-                    columnNumber: 19
-                  }, this) }, void 0, !1, {
-                    fileName: "app/components/ai-suggestions.tsx",
-                    lineNumber: 240,
-                    columnNumber: 17
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/components/ai-suggestions.tsx",
-                  lineNumber: 212,
-                  columnNumber: 15
-                }, this)
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/components/ai-suggestions.tsx",
-                lineNumber: 208,
-                columnNumber: 13
-              },
-              this
+                      ] })
+                    }
+                  ) }) })
+                ] })
+              }
             )
           },
-          suggestion.id,
-          !1,
-          {
-            fileName: "app/components/ai-suggestions.tsx",
-            lineNumber: 202,
-            columnNumber: 11
-          },
-          this
+          suggestion.id
         ))
       ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/ai-suggestions.tsx",
-      lineNumber: 161,
-      columnNumber: 7
-    },
-    this
-  ) }, void 0, !1, {
-    fileName: "app/components/ai-suggestions.tsx",
-    lineNumber: 160,
-    columnNumber: 5
-  }, this);
+    }
+  ) });
 }
 
 // app/components/editor.tsx
-import { jsxDEV as jsxDEV49 } from "react/jsx-dev-runtime";
+import { jsx as jsx49, jsxs as jsxs38 } from "react/jsx-runtime";
 var MenuButton = ({
   isActive,
   onClick,
   children
-}) => /* @__PURE__ */ jsxDEV49(
+}) => /* @__PURE__ */ jsx49(
   Button,
   {
     variant: isActive ? "secondary" : "ghost",
@@ -9285,15 +4780,7 @@ var MenuButton = ({
     className: "h-7 w-7 p-0",
     onClick,
     children
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/editor.tsx",
-    lineNumber: 34,
-    columnNumber: 3
-  },
-  this
+  }
 );
 function Editor({ title, onTitleChange }) {
   let [showSuggestions, setShowSuggestions] = React41.useState(!0), editor = useEditor({
@@ -9336,9 +4823,9 @@ function Editor({ title, onTitleChange }) {
         content: [{ type: "text", text: title }]
       }
     ]);
-  }, [editor, title]), editor ? /* @__PURE__ */ jsxDEV49("div", { className: "relative flex gap-8", children: [
-    /* @__PURE__ */ jsxDEV49("div", { className: "relative min-h-[500px] w-full max-w-2xl border-none sm:mb-[calc(20vh)]", children: [
-      editor && /* @__PURE__ */ jsxDEV49(
+  }, [editor, title]), editor ? /* @__PURE__ */ jsxs38("div", { className: "relative flex gap-8", children: [
+    /* @__PURE__ */ jsxs38("div", { className: "relative min-h-[500px] w-full max-w-2xl border-none sm:mb-[calc(20vh)]", children: [
+      editor && /* @__PURE__ */ jsxs38(
         BubbleMenu,
         {
           className: cn(
@@ -9347,254 +4834,102 @@ function Editor({ title, onTitleChange }) {
           tippyOptions: { duration: 100 },
           editor,
           children: [
-            /* @__PURE__ */ jsxDEV49("div", { className: "flex items-center gap-1 px-1", children: [
-              /* @__PURE__ */ jsxDEV49(
+            /* @__PURE__ */ jsxs38("div", { className: "flex items-center gap-1 px-1", children: [
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("heading", { level: 1 }),
                   onClick: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
-                  children: /* @__PURE__ */ jsxDEV49(Heading1, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 122,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 118,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(Heading1, { className: "h-4 w-4" })
+                }
               ),
-              /* @__PURE__ */ jsxDEV49(
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("heading", { level: 2 }),
                   onClick: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
-                  children: /* @__PURE__ */ jsxDEV49(Heading2, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 128,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 124,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(Heading2, { className: "h-4 w-4" })
+                }
               ),
-              /* @__PURE__ */ jsxDEV49(
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("heading", { level: 3 }),
                   onClick: () => editor.chain().focus().toggleHeading({ level: 3 }).run(),
-                  children: /* @__PURE__ */ jsxDEV49(Heading3, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 134,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 130,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(Heading3, { className: "h-4 w-4" })
+                }
               )
-            ] }, void 0, !0, {
-              fileName: "app/components/editor.tsx",
-              lineNumber: 117,
-              columnNumber: 13
-            }, this),
-            /* @__PURE__ */ jsxDEV49("div", { className: "flex items-center gap-1 px-1", children: [
-              /* @__PURE__ */ jsxDEV49(
+            ] }),
+            /* @__PURE__ */ jsxs38("div", { className: "flex items-center gap-1 px-1", children: [
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("bold"),
                   onClick: () => editor.chain().focus().toggleBold().run(),
-                  children: /* @__PURE__ */ jsxDEV49(Bold, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 143,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 139,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(Bold, { className: "h-4 w-4" })
+                }
               ),
-              /* @__PURE__ */ jsxDEV49(
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("italic"),
                   onClick: () => editor.chain().focus().toggleItalic().run(),
-                  children: /* @__PURE__ */ jsxDEV49(Italic, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 149,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 145,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(Italic, { className: "h-4 w-4" })
+                }
               ),
-              /* @__PURE__ */ jsxDEV49(
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("strike"),
                   onClick: () => editor.chain().focus().toggleStrike().run(),
-                  children: /* @__PURE__ */ jsxDEV49(Strikethrough, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 155,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 151,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(Strikethrough, { className: "h-4 w-4" })
+                }
               )
-            ] }, void 0, !0, {
-              fileName: "app/components/editor.tsx",
-              lineNumber: 138,
-              columnNumber: 13
-            }, this),
-            /* @__PURE__ */ jsxDEV49("div", { className: "flex items-center gap-1 px-1", children: [
-              /* @__PURE__ */ jsxDEV49(
+            ] }),
+            /* @__PURE__ */ jsxs38("div", { className: "flex items-center gap-1 px-1", children: [
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("bulletList"),
                   onClick: () => editor.chain().focus().toggleBulletList().run(),
-                  children: /* @__PURE__ */ jsxDEV49(List2, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 164,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 160,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(List2, { className: "h-4 w-4" })
+                }
               ),
-              /* @__PURE__ */ jsxDEV49(
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("orderedList"),
                   onClick: () => editor.chain().focus().toggleOrderedList().run(),
-                  children: /* @__PURE__ */ jsxDEV49(ListOrdered, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 170,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 166,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(ListOrdered, { className: "h-4 w-4" })
+                }
               ),
-              /* @__PURE__ */ jsxDEV49(
+              /* @__PURE__ */ jsx49(
                 MenuButton,
                 {
                   isActive: editor.isActive("blockquote"),
                   onClick: () => editor.chain().focus().toggleBlockquote().run(),
-                  children: /* @__PURE__ */ jsxDEV49(Quote, { className: "h-4 w-4" }, void 0, !1, {
-                    fileName: "app/components/editor.tsx",
-                    lineNumber: 176,
-                    columnNumber: 17
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/editor.tsx",
-                  lineNumber: 172,
-                  columnNumber: 15
-                },
-                this
+                  children: /* @__PURE__ */ jsx49(Quote, { className: "h-4 w-4" })
+                }
               )
-            ] }, void 0, !0, {
-              fileName: "app/components/editor.tsx",
-              lineNumber: 159,
-              columnNumber: 13
-            }, this)
+            ] })
           ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/editor.tsx",
-          lineNumber: 110,
-          columnNumber: 11
-        },
-        this
+        }
       ),
-      /* @__PURE__ */ jsxDEV49(EditorContent, { editor }, void 0, !1, {
-        fileName: "app/components/editor.tsx",
-        lineNumber: 181,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/editor.tsx",
-      lineNumber: 108,
-      columnNumber: 7
-    }, this),
-    showSuggestions && /* @__PURE__ */ jsxDEV49("div", { className: "relative hidden w-96 xl:block", children: /* @__PURE__ */ jsxDEV49("div", { className: "fixed right-8 w-96", children: /* @__PURE__ */ jsxDEV49(AiSuggestions, { content: editor.getText() }, void 0, !1, {
-      fileName: "app/components/editor.tsx",
-      lineNumber: 187,
-      columnNumber: 13
-    }, this) }, void 0, !1, {
-      fileName: "app/components/editor.tsx",
-      lineNumber: 186,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/editor.tsx",
-      lineNumber: 185,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/editor.tsx",
-    lineNumber: 107,
-    columnNumber: 5
-  }, this) : null;
+      /* @__PURE__ */ jsx49(EditorContent, { editor })
+    ] }),
+    showSuggestions && /* @__PURE__ */ jsx49("div", { className: "relative hidden w-96 xl:block", children: /* @__PURE__ */ jsx49("div", { className: "fixed right-8 w-96", children: /* @__PURE__ */ jsx49(AiSuggestions, { content: editor.getText() }) }) })
+  ] }) : null;
 }
 
 // app/routes/getting-started.tsx
-import { jsxDEV as jsxDEV50 } from "react/jsx-dev-runtime";
+import { jsx as jsx50, jsxs as jsxs39 } from "react/jsx-runtime";
 var loader5 = async () => {
   let __filename = fileURLToPath(import.meta.url), __dirname = path.dirname(__filename), filePath = path.resolve(__dirname, "../../GETTING_STARTED.md"), content = await fs.readFile(filePath, "utf-8");
   return json9({ content });
 };
 function GettingStarted() {
   let { title, setTitle } = usePageTitle("getting-started"), { emoji, setEmoji } = usePageEmoji("getting-started");
-  return /* @__PURE__ */ jsxDEV50(
+  return /* @__PURE__ */ jsxs39(
     Layout,
     {
       title,
@@ -9602,12 +4937,8 @@ function GettingStarted() {
       onTitleChange: setTitle,
       onEmojiChange: setEmoji,
       children: [
-        /* @__PURE__ */ jsxDEV50(Editor, { title, onTitleChange: setTitle }, void 0, !1, {
-          fileName: "app/routes/getting-started.tsx",
-          lineNumber: 70,
-          columnNumber: 7
-        }, this),
-        /* @__PURE__ */ jsxDEV50("div", { className: "prose mx-auto p-4", children: /* @__PURE__ */ jsxDEV50(ReactMarkdown, { children: `# Getting Started with Studr
+        /* @__PURE__ */ jsx50(Editor, { title, onTitleChange: setTitle }),
+        /* @__PURE__ */ jsx50("div", { className: "prose mx-auto p-4", children: /* @__PURE__ */ jsx50(ReactMarkdown, { children: `# Getting Started with Studr
 
 Welcome to Studr! This guide will help you get started with our application and make the most out of its features.
 
@@ -9644,25 +4975,9 @@ Studr is a powerful application designed to help you manage your documents and w
 
 If you have any questions or need assistance, our support team is here to help. Visit our [support page](#) or contact us at support@studr.com.
 
-Thank you for choosing Studr! We hope you enjoy using our application.` }, void 0, !1, {
-          fileName: "app/routes/getting-started.tsx",
-          lineNumber: 72,
-          columnNumber: 9
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/getting-started.tsx",
-          lineNumber: 71,
-          columnNumber: 7
-        }, this)
+Thank you for choosing Studr! We hope you enjoy using our application.` }) })
       ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/routes/getting-started.tsx",
-      lineNumber: 64,
-      columnNumber: 5
-    },
-    this
+    }
   );
 }
 
@@ -9694,7 +5009,7 @@ __export(auth_register_exports, {
 import { json as json10, redirect as redirect3 } from "@remix-run/node";
 import { Form, Link as Link5, useActionData, useNavigation } from "@remix-run/react";
 import { createServerClient as createServerClient3 } from "@supabase/auth-helpers-remix";
-import { jsxDEV as jsxDEV51 } from "react/jsx-dev-runtime";
+import { jsx as jsx51, jsxs as jsxs40 } from "react/jsx-runtime";
 var loader7 = async ({ request }) => {
   let response = new Response(), supabase = createServerClient3(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -9744,31 +5059,15 @@ var loader7 = async ({ request }) => {
 };
 function RegisterPage() {
   let actionData = useActionData(), isSubmitting = useNavigation().state === "submitting";
-  return /* @__PURE__ */ jsxDEV51("div", { className: "flex flex-col justify-center min-h-screen bg-muted/40", children: /* @__PURE__ */ jsxDEV51("div", { className: "mx-auto w-full max-w-[350px] space-y-6", children: [
-    /* @__PURE__ */ jsxDEV51("div", { className: "flex flex-col space-y-2 text-center", children: [
-      /* @__PURE__ */ jsxDEV51("h1", { className: "text-2xl font-semibold tracking-tight", children: "Create an account" }, void 0, !1, {
-        fileName: "app/routes/auth.register.tsx",
-        lineNumber: 104,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV51("p", { className: "text-sm text-muted-foreground", children: "Enter your information to get started" }, void 0, !1, {
-        fileName: "app/routes/auth.register.tsx",
-        lineNumber: 107,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/auth.register.tsx",
-      lineNumber: 103,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV51("div", { className: "grid gap-6", children: [
-      /* @__PURE__ */ jsxDEV51(Form, { method: "post", children: [
-        /* @__PURE__ */ jsxDEV51("input", { type: "hidden", name: "provider", value: "google" }, void 0, !1, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 114,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV51(
+  return /* @__PURE__ */ jsx51("div", { className: "flex flex-col justify-center min-h-screen bg-muted/40", children: /* @__PURE__ */ jsxs40("div", { className: "mx-auto w-full max-w-[350px] space-y-6", children: [
+    /* @__PURE__ */ jsxs40("div", { className: "flex flex-col space-y-2 text-center", children: [
+      /* @__PURE__ */ jsx51("h1", { className: "text-2xl font-semibold tracking-tight", children: "Create an account" }),
+      /* @__PURE__ */ jsx51("p", { className: "text-sm text-muted-foreground", children: "Enter your information to get started" })
+    ] }),
+    /* @__PURE__ */ jsxs40("div", { className: "grid gap-6", children: [
+      /* @__PURE__ */ jsxs40(Form, { method: "post", children: [
+        /* @__PURE__ */ jsx51("input", { type: "hidden", name: "provider", value: "google" }),
+        /* @__PURE__ */ jsxs40(
           Button,
           {
             type: "submit",
@@ -9776,121 +5075,49 @@ function RegisterPage() {
             className: "w-full bg-background",
             disabled: isSubmitting,
             children: [
-              /* @__PURE__ */ jsxDEV51("svg", { className: "w-4 h-4 mr-2", viewBox: "0 0 24 24", children: [
-                /* @__PURE__ */ jsxDEV51(
+              /* @__PURE__ */ jsxs40("svg", { className: "w-4 h-4 mr-2", viewBox: "0 0 24 24", children: [
+                /* @__PURE__ */ jsx51(
                   "path",
                   {
                     d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z",
                     fill: "#4285F4"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/auth.register.tsx",
-                    lineNumber: 122,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV51(
+                /* @__PURE__ */ jsx51(
                   "path",
                   {
                     d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z",
                     fill: "#34A853"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/auth.register.tsx",
-                    lineNumber: 126,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV51(
+                /* @__PURE__ */ jsx51(
                   "path",
                   {
                     d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z",
                     fill: "#FBBC05"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/auth.register.tsx",
-                    lineNumber: 130,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV51(
+                /* @__PURE__ */ jsx51(
                   "path",
                   {
                     d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z",
                     fill: "#EA4335"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/auth.register.tsx",
-                    lineNumber: 134,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 )
-              ] }, void 0, !0, {
-                fileName: "app/routes/auth.register.tsx",
-                lineNumber: 121,
-                columnNumber: 15
-              }, this),
+              ] }),
               "Continue with Google"
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/routes/auth.register.tsx",
-            lineNumber: 115,
-            columnNumber: 13
-          },
-          this
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/routes/auth.register.tsx",
-        lineNumber: 113,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV51("div", { className: "relative", children: [
-        /* @__PURE__ */ jsxDEV51("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ jsxDEV51("span", { className: "w-full border-t" }, void 0, !1, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 145,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 144,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV51("div", { className: "relative flex justify-center text-xs uppercase", children: /* @__PURE__ */ jsxDEV51("span", { className: "px-2 bg-background text-muted-foreground", children: "Or continue with" }, void 0, !1, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 148,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 147,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/auth.register.tsx",
-        lineNumber: 143,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV51(Form, { method: "post", className: "grid gap-4", children: [
-        /* @__PURE__ */ jsxDEV51("div", { className: "grid gap-2", children: [
-          /* @__PURE__ */ jsxDEV51(Label2, { htmlFor: "name", children: "Name" }, void 0, !1, {
-            fileName: "app/routes/auth.register.tsx",
-            lineNumber: 156,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV51(
+      ] }),
+      /* @__PURE__ */ jsxs40("div", { className: "relative", children: [
+        /* @__PURE__ */ jsx51("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ jsx51("span", { className: "w-full border-t" }) }),
+        /* @__PURE__ */ jsx51("div", { className: "relative flex justify-center text-xs uppercase", children: /* @__PURE__ */ jsx51("span", { className: "px-2 bg-background text-muted-foreground", children: "Or continue with" }) })
+      ] }),
+      /* @__PURE__ */ jsxs40(Form, { method: "post", className: "grid gap-4", children: [
+        /* @__PURE__ */ jsxs40("div", { className: "grid gap-2", children: [
+          /* @__PURE__ */ jsx51(Label2, { htmlFor: "name", children: "Name" }),
+          /* @__PURE__ */ jsx51(
             Input,
             {
               id: "name",
@@ -9898,28 +5125,12 @@ function RegisterPage() {
               type: "text",
               autoComplete: "name",
               required: !0
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/auth.register.tsx",
-              lineNumber: 157,
-              columnNumber: 15
-            },
-            this
+            }
           )
-        ] }, void 0, !0, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 155,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV51("div", { className: "grid gap-2", children: [
-          /* @__PURE__ */ jsxDEV51(Label2, { htmlFor: "email", children: "Email" }, void 0, !1, {
-            fileName: "app/routes/auth.register.tsx",
-            lineNumber: 167,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV51(
+        ] }),
+        /* @__PURE__ */ jsxs40("div", { className: "grid gap-2", children: [
+          /* @__PURE__ */ jsx51(Label2, { htmlFor: "email", children: "Email" }),
+          /* @__PURE__ */ jsx51(
             Input,
             {
               id: "email",
@@ -9929,28 +5140,12 @@ function RegisterPage() {
               autoComplete: "email",
               autoCorrect: "off",
               required: !0
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/auth.register.tsx",
-              lineNumber: 168,
-              columnNumber: 15
-            },
-            this
+            }
           )
-        ] }, void 0, !0, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 166,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV51("div", { className: "grid gap-2", children: [
-          /* @__PURE__ */ jsxDEV51(Label2, { htmlFor: "password", children: "Password" }, void 0, !1, {
-            fileName: "app/routes/auth.register.tsx",
-            lineNumber: 180,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV51(
+        ] }),
+        /* @__PURE__ */ jsxs40("div", { className: "grid gap-2", children: [
+          /* @__PURE__ */ jsx51(Label2, { htmlFor: "password", children: "Password" }),
+          /* @__PURE__ */ jsx51(
             Input,
             {
               id: "password",
@@ -9958,74 +5153,26 @@ function RegisterPage() {
               type: "password",
               autoComplete: "new-password",
               required: !0
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/auth.register.tsx",
-              lineNumber: 181,
-              columnNumber: 15
-            },
-            this
+            }
           )
-        ] }, void 0, !0, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 179,
-          columnNumber: 13
-        }, this),
-        actionData?.error && /* @__PURE__ */ jsxDEV51("div", { className: "text-sm text-red-500", children: actionData.error }, void 0, !1, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 191,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV51(Button, { className: "w-full", disabled: isSubmitting, children: isSubmitting ? "Creating account..." : "Create account" }, void 0, !1, {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 194,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/auth.register.tsx",
-        lineNumber: 154,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/auth.register.tsx",
-      lineNumber: 112,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV51("div", { className: "text-sm text-center", children: [
+        ] }),
+        actionData?.error && /* @__PURE__ */ jsx51("div", { className: "text-sm text-red-500", children: actionData.error }),
+        /* @__PURE__ */ jsx51(Button, { className: "w-full", disabled: isSubmitting, children: isSubmitting ? "Creating account..." : "Create account" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs40("div", { className: "text-sm text-center", children: [
       "Already have an account?",
       " ",
-      /* @__PURE__ */ jsxDEV51(
+      /* @__PURE__ */ jsx51(
         Link5,
         {
           to: "/auth/login",
           className: "font-medium text-primary hover:underline",
           children: "Sign in"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/auth.register.tsx",
-          lineNumber: 202,
-          columnNumber: 11
-        },
-        this
+        }
       )
-    ] }, void 0, !0, {
-      fileName: "app/routes/auth.register.tsx",
-      lineNumber: 200,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/auth.register.tsx",
-    lineNumber: 102,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/auth.register.tsx",
-    lineNumber: 101,
-    columnNumber: 5
-  }, this);
+    ] })
+  ] }) });
 }
 
 // app/routes/api.ai.chat.tsx
@@ -10110,7 +5257,7 @@ import { useParams as useParams2 } from "@remix-run/react";
 // app/components/library-viewer.tsx
 import * as React42 from "react";
 import { FileText as FileText5 } from "lucide-react";
-import { jsxDEV as jsxDEV52 } from "react/jsx-dev-runtime";
+import { jsx as jsx52, jsxs as jsxs41 } from "react/jsx-runtime";
 function LibraryViewer({ item }) {
   let [loading, setLoading] = React42.useState(!0);
   return React42.useEffect(() => {
@@ -10118,51 +5265,15 @@ function LibraryViewer({ item }) {
       setLoading(!1);
     }, 1e3);
     return () => clearTimeout(timer);
-  }, [item]), loading ? /* @__PURE__ */ jsxDEV52("div", { className: "flex min-h-[calc(100vh-3.5rem)] items-center justify-center", children: /* @__PURE__ */ jsxDEV52("div", { className: "rounded-lg border bg-card p-8 text-center shadow-sm", children: [
-    /* @__PURE__ */ jsxDEV52("div", { className: "animate-spin text-muted-foreground", children: /* @__PURE__ */ jsxDEV52(FileText5, { className: "h-8 w-8" }, void 0, !1, {
-      fileName: "app/components/library-viewer.tsx",
-      lineNumber: 29,
-      columnNumber: 13
-    }, this) }, void 0, !1, {
-      fileName: "app/components/library-viewer.tsx",
-      lineNumber: 28,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ jsxDEV52("p", { className: "mt-4 font-medium", children: "Loading document..." }, void 0, !1, {
-      fileName: "app/components/library-viewer.tsx",
-      lineNumber: 31,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ jsxDEV52("p", { className: "mt-1.5 text-sm text-muted-foreground", children: "Please wait while we prepare your content" }, void 0, !1, {
-      fileName: "app/components/library-viewer.tsx",
-      lineNumber: 32,
-      columnNumber: 11
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/library-viewer.tsx",
-    lineNumber: 27,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/components/library-viewer.tsx",
-    lineNumber: 26,
-    columnNumber: 7
-  }, this) : /* @__PURE__ */ jsxDEV52("div", { className: "mx-auto max-w-3xl rounded-lg border bg-card p-8 shadow-sm", children: /* @__PURE__ */ jsxDEV52("div", { className: "prose prose-sm sm:prose-base dark:prose-invert", children: /* @__PURE__ */ jsxDEV52("div", { dangerouslySetInnerHTML: { __html: item.content } }, void 0, !1, {
-    fileName: "app/components/library-viewer.tsx",
-    lineNumber: 43,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/components/library-viewer.tsx",
-    lineNumber: 42,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/library-viewer.tsx",
-    lineNumber: 41,
-    columnNumber: 5
-  }, this);
+  }, [item]), loading ? /* @__PURE__ */ jsx52("div", { className: "flex min-h-[calc(100vh-3.5rem)] items-center justify-center", children: /* @__PURE__ */ jsxs41("div", { className: "rounded-lg border bg-card p-8 text-center shadow-sm", children: [
+    /* @__PURE__ */ jsx52("div", { className: "animate-spin text-muted-foreground", children: /* @__PURE__ */ jsx52(FileText5, { className: "h-8 w-8" }) }),
+    /* @__PURE__ */ jsx52("p", { className: "mt-4 font-medium", children: "Loading document..." }),
+    /* @__PURE__ */ jsx52("p", { className: "mt-1.5 text-sm text-muted-foreground", children: "Please wait while we prepare your content" })
+  ] }) }) : /* @__PURE__ */ jsx52("div", { className: "mx-auto max-w-3xl rounded-lg border bg-card p-8 shadow-sm", children: /* @__PURE__ */ jsx52("div", { className: "prose prose-sm sm:prose-base dark:prose-invert", children: /* @__PURE__ */ jsx52("div", { dangerouslySetInnerHTML: { __html: item.content } }) }) });
 }
 
 // app/routes/library.$id.tsx
-import { jsxDEV as jsxDEV53 } from "react/jsx-dev-runtime";
+import { jsx as jsx53 } from "react/jsx-runtime";
 function LibraryRoute() {
   let { id } = useParams2(), item = ((id2) => ({
     "react-docs": {
@@ -10233,15 +5344,7 @@ function LibraryRoute() {
     type: "file",
     content: "<h1>Document Not Found</h1><p>The requested document could not be found in the library.</p>"
   })(id);
-  return /* @__PURE__ */ jsxDEV53(Layout, { minimal: !0, title: item.name, children: /* @__PURE__ */ jsxDEV53(LibraryViewer, { item }, void 0, !1, {
-    fileName: "app/routes/library.$id.tsx",
-    lineNumber: 86,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/library.$id.tsx",
-    lineNumber: 85,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsx53(Layout, { minimal: !0, title: item.name, children: /* @__PURE__ */ jsx53(LibraryViewer, { item }) });
 }
 
 // app/routes/auth.login.tsx
@@ -10254,7 +5357,7 @@ __export(auth_login_exports, {
 import { json as json12, redirect as redirect5 } from "@remix-run/node";
 import { Form as Form2, Link as Link6, useActionData as useActionData2, useNavigation as useNavigation2 } from "@remix-run/react";
 import { createServerClient as createServerClient5 } from "@supabase/auth-helpers-remix";
-import { jsxDEV as jsxDEV54 } from "react/jsx-dev-runtime";
+import { jsx as jsx54, jsxs as jsxs42 } from "react/jsx-runtime";
 var loader9 = async ({ request }) => {
   let response = new Response(), supabase = createServerClient5(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -10276,7 +5379,7 @@ var loader9 = async ({ request }) => {
     let { data: data3, error: error2 } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${new URL(request.url).origin}/auth/callback`
+        redirectTo: "https://studr-ai-six.vercel.app/auth/callback"
       }
     });
     return error2 ? json12({ error: error2.message }, { status: 400 }) : redirect5(data3.url, {
@@ -10293,31 +5396,15 @@ var loader9 = async ({ request }) => {
 };
 function LoginPage() {
   let actionData = useActionData2(), isSubmitting = useNavigation2().state === "submitting";
-  return /* @__PURE__ */ jsxDEV54("div", { className: "flex min-h-screen flex-col justify-center bg-muted/40", children: /* @__PURE__ */ jsxDEV54("div", { className: "mx-auto w-full max-w-[350px] space-y-6", children: [
-    /* @__PURE__ */ jsxDEV54("div", { className: "flex flex-col space-y-2 text-center", children: [
-      /* @__PURE__ */ jsxDEV54("h1", { className: "text-2xl font-semibold tracking-tight", children: "Welcome back" }, void 0, !1, {
-        fileName: "app/routes/auth.login.tsx",
-        lineNumber: 86,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV54("p", { className: "text-sm text-muted-foreground", children: "Enter your credentials to access your account" }, void 0, !1, {
-        fileName: "app/routes/auth.login.tsx",
-        lineNumber: 87,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/auth.login.tsx",
-      lineNumber: 85,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV54("div", { className: "grid gap-6", children: [
-      /* @__PURE__ */ jsxDEV54(Form2, { method: "post", children: [
-        /* @__PURE__ */ jsxDEV54("input", { type: "hidden", name: "provider", value: "google" }, void 0, !1, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 94,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV54(
+  return /* @__PURE__ */ jsx54("div", { className: "flex flex-col justify-center min-h-screen bg-muted/40", children: /* @__PURE__ */ jsxs42("div", { className: "mx-auto w-full max-w-[350px] space-y-6", children: [
+    /* @__PURE__ */ jsxs42("div", { className: "flex flex-col space-y-2 text-center", children: [
+      /* @__PURE__ */ jsx54("h1", { className: "text-2xl font-semibold tracking-tight", children: "Welcome back" }),
+      /* @__PURE__ */ jsx54("p", { className: "text-sm text-muted-foreground", children: "Enter your credentials to access your account" })
+    ] }),
+    /* @__PURE__ */ jsxs42("div", { className: "grid gap-6", children: [
+      /* @__PURE__ */ jsxs42(Form2, { method: "post", children: [
+        /* @__PURE__ */ jsx54("input", { type: "hidden", name: "provider", value: "google" }),
+        /* @__PURE__ */ jsxs42(
           Button,
           {
             type: "submit",
@@ -10325,121 +5412,49 @@ function LoginPage() {
             className: "w-full bg-background",
             disabled: isSubmitting,
             children: [
-              /* @__PURE__ */ jsxDEV54("svg", { className: "mr-2 h-4 w-4", viewBox: "0 0 24 24", children: [
-                /* @__PURE__ */ jsxDEV54(
+              /* @__PURE__ */ jsxs42("svg", { className: "w-4 h-4 mr-2", viewBox: "0 0 24 24", children: [
+                /* @__PURE__ */ jsx54(
                   "path",
                   {
                     d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z",
                     fill: "#4285F4"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/auth.login.tsx",
-                    lineNumber: 102,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV54(
+                /* @__PURE__ */ jsx54(
                   "path",
                   {
                     d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z",
                     fill: "#34A853"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/auth.login.tsx",
-                    lineNumber: 106,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV54(
+                /* @__PURE__ */ jsx54(
                   "path",
                   {
                     d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z",
                     fill: "#FBBC05"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/auth.login.tsx",
-                    lineNumber: 110,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 ),
-                /* @__PURE__ */ jsxDEV54(
+                /* @__PURE__ */ jsx54(
                   "path",
                   {
                     d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z",
                     fill: "#EA4335"
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/auth.login.tsx",
-                    lineNumber: 114,
-                    columnNumber: 17
-                  },
-                  this
+                  }
                 )
-              ] }, void 0, !0, {
-                fileName: "app/routes/auth.login.tsx",
-                lineNumber: 101,
-                columnNumber: 15
-              }, this),
+              ] }),
               "Continue with Google"
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/routes/auth.login.tsx",
-            lineNumber: 95,
-            columnNumber: 13
-          },
-          this
+          }
         )
-      ] }, void 0, !0, {
-        fileName: "app/routes/auth.login.tsx",
-        lineNumber: 93,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV54("div", { className: "relative", children: [
-        /* @__PURE__ */ jsxDEV54("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ jsxDEV54("span", { className: "w-full border-t" }, void 0, !1, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 125,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 124,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV54("div", { className: "relative flex justify-center text-xs uppercase", children: /* @__PURE__ */ jsxDEV54("span", { className: "bg-background px-2 text-muted-foreground", children: "Or continue with" }, void 0, !1, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 128,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 127,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/auth.login.tsx",
-        lineNumber: 123,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV54(Form2, { method: "post", className: "grid gap-4", children: [
-        /* @__PURE__ */ jsxDEV54("div", { className: "grid gap-2", children: [
-          /* @__PURE__ */ jsxDEV54(Label2, { htmlFor: "email", children: "Email" }, void 0, !1, {
-            fileName: "app/routes/auth.login.tsx",
-            lineNumber: 136,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV54(
+      ] }),
+      /* @__PURE__ */ jsxs42("div", { className: "relative", children: [
+        /* @__PURE__ */ jsx54("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ jsx54("span", { className: "w-full border-t" }) }),
+        /* @__PURE__ */ jsx54("div", { className: "relative flex justify-center text-xs uppercase", children: /* @__PURE__ */ jsx54("span", { className: "px-2 bg-background text-muted-foreground", children: "Or continue with" }) })
+      ] }),
+      /* @__PURE__ */ jsxs42(Form2, { method: "post", className: "grid gap-4", children: [
+        /* @__PURE__ */ jsxs42("div", { className: "grid gap-2", children: [
+          /* @__PURE__ */ jsx54(Label2, { htmlFor: "email", children: "Email" }),
+          /* @__PURE__ */ jsx54(
             Input,
             {
               id: "email",
@@ -10449,28 +5464,12 @@ function LoginPage() {
               autoComplete: "email",
               autoCorrect: "off",
               required: !0
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/auth.login.tsx",
-              lineNumber: 137,
-              columnNumber: 15
-            },
-            this
+            }
           )
-        ] }, void 0, !0, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 135,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV54("div", { className: "grid gap-2", children: [
-          /* @__PURE__ */ jsxDEV54(Label2, { htmlFor: "password", children: "Password" }, void 0, !1, {
-            fileName: "app/routes/auth.login.tsx",
-            lineNumber: 149,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV54(
+        ] }),
+        /* @__PURE__ */ jsxs42("div", { className: "grid gap-2", children: [
+          /* @__PURE__ */ jsx54(Label2, { htmlFor: "password", children: "Password" }),
+          /* @__PURE__ */ jsx54(
             Input,
             {
               id: "password",
@@ -10478,74 +5477,26 @@ function LoginPage() {
               type: "password",
               autoComplete: "current-password",
               required: !0
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/auth.login.tsx",
-              lineNumber: 150,
-              columnNumber: 15
-            },
-            this
+            }
           )
-        ] }, void 0, !0, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 148,
-          columnNumber: 13
-        }, this),
-        actionData?.error && /* @__PURE__ */ jsxDEV54("div", { className: "text-sm text-red-500", children: actionData.error }, void 0, !1, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 160,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ jsxDEV54(Button, { className: "w-full", disabled: isSubmitting, children: isSubmitting ? "Signing in..." : "Sign in" }, void 0, !1, {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 163,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/auth.login.tsx",
-        lineNumber: 134,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/auth.login.tsx",
-      lineNumber: 92,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV54("div", { className: "text-center text-sm", children: [
+        ] }),
+        actionData?.error && /* @__PURE__ */ jsx54("div", { className: "text-sm text-red-500", children: actionData.error }),
+        /* @__PURE__ */ jsx54(Button, { className: "w-full", disabled: isSubmitting, children: isSubmitting ? "Signing in..." : "Sign in" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs42("div", { className: "text-sm text-center", children: [
       "Don't have an account?",
       " ",
-      /* @__PURE__ */ jsxDEV54(
+      /* @__PURE__ */ jsx54(
         Link6,
         {
           to: "/auth/register",
           className: "font-medium text-primary hover:underline",
           children: "Sign up"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/auth.login.tsx",
-          lineNumber: 171,
-          columnNumber: 11
-        },
-        this
+        }
       )
-    ] }, void 0, !0, {
-      fileName: "app/routes/auth.login.tsx",
-      lineNumber: 169,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/auth.login.tsx",
-    lineNumber: 84,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/auth.login.tsx",
-    lineNumber: 83,
-    columnNumber: 5
-  }, this);
+    ] })
+  ] }) });
 }
 
 // app/routes/pages.$id.tsx
@@ -10556,7 +5507,7 @@ __export(pages_id_exports, {
 });
 import { json as json13 } from "@remix-run/node";
 import { useLoaderData as useLoaderData2 } from "@remix-run/react";
-import { jsxDEV as jsxDEV55 } from "react/jsx-dev-runtime";
+import { jsx as jsx55 } from "react/jsx-runtime";
 var loader10 = async ({ request, params }) => {
   let { supabase, response } = await requireAuth(request), { id } = params, { data: document2 } = await supabase.from("documents").select("*").eq("id", id).single();
   if (!document2)
@@ -10568,27 +5519,15 @@ var loader10 = async ({ request, params }) => {
 };
 function DocumentPage() {
   let { document: document2 } = useLoaderData2(), { title, setTitle } = usePageTitle(document2.id), { emoji, setEmoji } = usePageEmoji(document2.id);
-  return /* @__PURE__ */ jsxDEV55(
+  return /* @__PURE__ */ jsx55(
     Layout,
     {
       title: title || document2.title,
       emoji: emoji || document2.emoji,
       onTitleChange: setTitle,
       onEmojiChange: setEmoji,
-      children: /* @__PURE__ */ jsxDEV55(Editor, { title: title || document2.title, onTitleChange: setTitle }, void 0, !1, {
-        fileName: "app/routes/pages.$id.tsx",
-        lineNumber: 42,
-        columnNumber: 7
-      }, this)
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/routes/pages.$id.tsx",
-      lineNumber: 36,
-      columnNumber: 5
-    },
-    this
+      children: /* @__PURE__ */ jsx55(Editor, { title: title || document2.title, onTitleChange: setTitle })
+    }
   );
 }
 
@@ -10612,32 +5551,16 @@ import {
   Star as Star2
 } from "lucide-react";
 import { Link as Link7 } from "@remix-run/react";
-import { jsxDEV as jsxDEV56 } from "react/jsx-dev-runtime";
+import { jsx as jsx56, jsxs as jsxs43 } from "react/jsx-runtime";
 function HomePage({ recentDocuments, starredDocuments }) {
-  return /* @__PURE__ */ jsxDEV56(Layout, { minimal: !0, children: /* @__PURE__ */ jsxDEV56("div", { className: "grid gap-6", children: [
-    /* @__PURE__ */ jsxDEV56("div", { children: [
-      /* @__PURE__ */ jsxDEV56("h1", { className: "text-3xl font-bold", children: "Welcome back!" }, void 0, !1, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 49,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV56("p", { className: "mt-2 text-muted-foreground", children: "Here's what's been happening in your workspace." }, void 0, !1, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 50,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/pages/home.tsx",
-      lineNumber: 48,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV56("div", { children: [
-      /* @__PURE__ */ jsxDEV56("h2", { className: "text-lg font-semibold", children: "Quick Actions" }, void 0, !1, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 57,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV56("div", { className: "mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3", children: [
+  return /* @__PURE__ */ jsx56(Layout, { minimal: !0, children: /* @__PURE__ */ jsxs43("div", { className: "grid gap-6", children: [
+    /* @__PURE__ */ jsxs43("div", { children: [
+      /* @__PURE__ */ jsx56("h1", { className: "text-3xl font-bold", children: "Welcome back!" }),
+      /* @__PURE__ */ jsx56("p", { className: "mt-2 text-muted-foreground", children: "Here's what's been happening in your workspace." })
+    ] }),
+    /* @__PURE__ */ jsxs43("div", { children: [
+      /* @__PURE__ */ jsx56("h2", { className: "text-lg font-semibold", children: "Quick Actions" }),
+      /* @__PURE__ */ jsx56("div", { className: "mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3", children: [
         {
           name: "New Page",
           description: "Create a blank page",
@@ -10656,397 +5579,136 @@ function HomePage({ recentDocuments, starredDocuments }) {
           icon: LayoutDashboard,
           href: "#"
         }
-      ].map((action12) => /* @__PURE__ */ jsxDEV56(
+      ].map((action12) => /* @__PURE__ */ jsx56(
         Button,
         {
           variant: "outline",
           className: "h-auto flex-col items-start gap-2 p-4 hover:bg-muted",
           asChild: !0,
-          children: /* @__PURE__ */ jsxDEV56(Link7, { to: action12.href, children: [
-            /* @__PURE__ */ jsxDEV56("div", { className: "flex w-full items-center gap-2", children: [
-              /* @__PURE__ */ jsxDEV56(action12.icon, { className: "h-5 w-5" }, void 0, !1, {
-                fileName: "app/components/pages/home.tsx",
-                lineNumber: 68,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ jsxDEV56("span", { className: "font-medium", children: action12.name }, void 0, !1, {
-                fileName: "app/components/pages/home.tsx",
-                lineNumber: 69,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ jsxDEV56(ArrowRight, { className: "ml-auto h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/pages/home.tsx",
-                lineNumber: 70,
-                columnNumber: 21
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 67,
-              columnNumber: 19
-            }, this),
-            /* @__PURE__ */ jsxDEV56("p", { className: "line-clamp-1 text-sm text-muted-foreground", children: action12.description }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 72,
-              columnNumber: 19
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 66,
-            columnNumber: 17
-          }, this)
+          children: /* @__PURE__ */ jsxs43(Link7, { to: action12.href, children: [
+            /* @__PURE__ */ jsxs43("div", { className: "flex w-full items-center gap-2", children: [
+              /* @__PURE__ */ jsx56(action12.icon, { className: "h-5 w-5" }),
+              /* @__PURE__ */ jsx56("span", { className: "font-medium", children: action12.name }),
+              /* @__PURE__ */ jsx56(ArrowRight, { className: "ml-auto h-4 w-4" })
+            ] }),
+            /* @__PURE__ */ jsx56("p", { className: "line-clamp-1 text-sm text-muted-foreground", children: action12.description })
+          ] })
         },
-        action12.name,
-        !1,
-        {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 60,
-          columnNumber: 15
-        },
-        this
-      )) }, void 0, !1, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 58,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/pages/home.tsx",
-      lineNumber: 56,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV56("div", { className: "grid gap-6 sm:grid-cols-2", children: [
-      /* @__PURE__ */ jsxDEV56("div", { className: "space-y-4", children: [
-        /* @__PURE__ */ jsxDEV56("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ jsxDEV56("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxDEV56(Clock3, { className: "h-5 w-5" }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 86,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV56("h2", { className: "text-lg font-semibold", children: "Recent Pages" }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 87,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 85,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV56(Button, { variant: "ghost", size: "sm", children: [
+        action12.name
+      )) })
+    ] }),
+    /* @__PURE__ */ jsxs43("div", { className: "grid gap-6 sm:grid-cols-2", children: [
+      /* @__PURE__ */ jsxs43("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ jsxs43("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsx56(Clock3, { className: "h-5 w-5" }),
+            /* @__PURE__ */ jsx56("h2", { className: "text-lg font-semibold", children: "Recent Pages" })
+          ] }),
+          /* @__PURE__ */ jsxs43(Button, { variant: "ghost", size: "sm", children: [
             "View All",
-            /* @__PURE__ */ jsxDEV56(ArrowRight, { className: "ml-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 91,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 89,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 84,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV56(ScrollArea, { className: "h-[280px] rounded-lg border", children: /* @__PURE__ */ jsxDEV56("div", { className: "space-y-4 p-4", children: [
-          recentDocuments.map((doc) => /* @__PURE__ */ jsxDEV56(
+            /* @__PURE__ */ jsx56(ArrowRight, { className: "ml-2 h-4 w-4" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx56(ScrollArea, { className: "h-[280px] rounded-lg border", children: /* @__PURE__ */ jsxs43("div", { className: "space-y-4 p-4", children: [
+          recentDocuments.map((doc) => /* @__PURE__ */ jsxs43(
             Link7,
             {
               to: `/pages/${doc.id}`,
               className: "block space-y-1 rounded-lg p-2 hover:bg-muted",
               children: [
-                /* @__PURE__ */ jsxDEV56("div", { className: "flex items-center gap-2", children: [
-                  /* @__PURE__ */ jsxDEV56("span", { className: "text-xl", children: doc.emoji }, void 0, !1, {
-                    fileName: "app/components/pages/home.tsx",
-                    lineNumber: 103,
-                    columnNumber: 23
-                  }, this),
-                  /* @__PURE__ */ jsxDEV56("span", { className: "font-medium", children: doc.title }, void 0, !1, {
-                    fileName: "app/components/pages/home.tsx",
-                    lineNumber: 104,
-                    columnNumber: 23
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/components/pages/home.tsx",
-                  lineNumber: 102,
-                  columnNumber: 21
-                }, this),
-                /* @__PURE__ */ jsxDEV56("p", { className: "text-sm text-muted-foreground", children: [
+                /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-2", children: [
+                  /* @__PURE__ */ jsx56("span", { className: "text-xl", children: doc.emoji }),
+                  /* @__PURE__ */ jsx56("span", { className: "font-medium", children: doc.title })
+                ] }),
+                /* @__PURE__ */ jsxs43("p", { className: "text-sm text-muted-foreground", children: [
                   "Updated ",
                   new Date(doc.updated_at).toLocaleDateString()
-                ] }, void 0, !0, {
-                  fileName: "app/components/pages/home.tsx",
-                  lineNumber: 106,
-                  columnNumber: 21
-                }, this)
+                ] })
               ]
             },
-            doc.id,
-            !0,
-            {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 97,
-              columnNumber: 19
-            },
-            this
+            doc.id
           )),
-          recentDocuments.length === 0 && /* @__PURE__ */ jsxDEV56("div", { className: "text-center text-sm text-muted-foreground", children: "No recent pages" }, void 0, !1, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 112,
-            columnNumber: 19
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 95,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 94,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 83,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV56("div", { className: "space-y-4", children: [
-        /* @__PURE__ */ jsxDEV56("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ jsxDEV56("div", { className: "flex items-center gap-2", children: [
-            /* @__PURE__ */ jsxDEV56(Star2, { className: "h-5 w-5" }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 124,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV56("h2", { className: "text-lg font-semibold", children: "Starred Pages" }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 125,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 123,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV56(Button, { variant: "ghost", size: "sm", children: [
+          recentDocuments.length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-center text-sm text-muted-foreground", children: "No recent pages" })
+        ] }) })
+      ] }),
+      /* @__PURE__ */ jsxs43("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ jsxs43("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsx56(Star2, { className: "h-5 w-5" }),
+            /* @__PURE__ */ jsx56("h2", { className: "text-lg font-semibold", children: "Starred Pages" })
+          ] }),
+          /* @__PURE__ */ jsxs43(Button, { variant: "ghost", size: "sm", children: [
             "View All",
-            /* @__PURE__ */ jsxDEV56(ArrowRight, { className: "ml-2 h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 129,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 127,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 122,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV56(ScrollArea, { className: "h-[280px] rounded-lg border", children: /* @__PURE__ */ jsxDEV56("div", { className: "space-y-4 p-4", children: [
-          (starredDocuments || []).map((doc) => /* @__PURE__ */ jsxDEV56(
+            /* @__PURE__ */ jsx56(ArrowRight, { className: "ml-2 h-4 w-4" })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsx56(ScrollArea, { className: "h-[280px] rounded-lg border", children: /* @__PURE__ */ jsxs43("div", { className: "space-y-4 p-4", children: [
+          (starredDocuments || []).map((doc) => /* @__PURE__ */ jsx56(
             Link7,
             {
               to: `/pages/${doc.id}`,
               className: "block space-y-1 rounded-lg p-2 hover:bg-muted",
-              children: /* @__PURE__ */ jsxDEV56("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ jsxDEV56("span", { className: "text-xl", children: doc.emoji }, void 0, !1, {
-                  fileName: "app/components/pages/home.tsx",
-                  lineNumber: 141,
-                  columnNumber: 23
-                }, this),
-                /* @__PURE__ */ jsxDEV56("span", { className: "font-medium", children: doc.title }, void 0, !1, {
-                  fileName: "app/components/pages/home.tsx",
-                  lineNumber: 142,
-                  columnNumber: 23
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/pages/home.tsx",
-                lineNumber: 140,
-                columnNumber: 21
-              }, this)
+              children: /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ jsx56("span", { className: "text-xl", children: doc.emoji }),
+                /* @__PURE__ */ jsx56("span", { className: "font-medium", children: doc.title })
+              ] })
             },
-            doc.id,
-            !1,
-            {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 135,
-              columnNumber: 19
-            },
-            this
+            doc.id
           )),
-          (starredDocuments || []).length === 0 && /* @__PURE__ */ jsxDEV56("div", { className: "text-center text-sm text-muted-foreground", children: "No starred pages" }, void 0, !1, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 147,
-            columnNumber: 19
-          }, this),
-          /* @__PURE__ */ jsxDEV56(
+          (starredDocuments || []).length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-center text-sm text-muted-foreground", children: "No starred pages" }),
+          /* @__PURE__ */ jsxs43(
             Button,
             {
               variant: "outline",
               className: "w-full justify-start gap-2",
               size: "sm",
               children: [
-                /* @__PURE__ */ jsxDEV56(Plus4, { className: "h-4 w-4" }, void 0, !1, {
-                  fileName: "app/components/pages/home.tsx",
-                  lineNumber: 156,
-                  columnNumber: 19
-                }, this),
+                /* @__PURE__ */ jsx56(Plus4, { className: "h-4 w-4" }),
                 "Add to starred"
               ]
-            },
-            void 0,
-            !0,
-            {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 151,
-              columnNumber: 17
-            },
-            this
+            }
           )
-        ] }, void 0, !0, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 133,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 132,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 121,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/pages/home.tsx",
-      lineNumber: 81,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ jsxDEV56("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ jsxDEV56("div", { className: "flex items-center justify-between", children: [
-        /* @__PURE__ */ jsxDEV56("h2", { className: "text-lg font-semibold", children: "Recent Activity" }, void 0, !1, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 167,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ jsxDEV56(Button, { variant: "ghost", size: "sm", children: [
+        ] }) })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxs43("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs43("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ jsx56("h2", { className: "text-lg font-semibold", children: "Recent Activity" }),
+        /* @__PURE__ */ jsxs43(Button, { variant: "ghost", size: "sm", children: [
           "View All",
-          /* @__PURE__ */ jsxDEV56(ArrowRight, { className: "ml-2 h-4 w-4" }, void 0, !1, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 170,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 168,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 166,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ jsxDEV56("div", { className: "rounded-lg border", children: /* @__PURE__ */ jsxDEV56("div", { className: "p-4", children: /* @__PURE__ */ jsxDEV56("div", { className: "space-y-4", children: [
-        recentDocuments.slice(0, 2).map((doc, i) => /* @__PURE__ */ jsxDEV56("div", { children: [
-          /* @__PURE__ */ jsxDEV56("div", { className: "flex items-center gap-4", children: [
-            /* @__PURE__ */ jsxDEV56("div", { className: "flex h-8 w-8 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsxDEV56(FileText6, { className: "h-4 w-4" }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 180,
-              columnNumber: 25
-            }, this) }, void 0, !1, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 179,
-              columnNumber: 23
-            }, this),
-            /* @__PURE__ */ jsxDEV56("div", { className: "flex-1 space-y-1", children: [
-              /* @__PURE__ */ jsxDEV56("p", { className: "text-sm", children: [
+          /* @__PURE__ */ jsx56(ArrowRight, { className: "ml-2 h-4 w-4" })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx56("div", { className: "rounded-lg border", children: /* @__PURE__ */ jsx56("div", { className: "p-4", children: /* @__PURE__ */ jsxs43("div", { className: "space-y-4", children: [
+        recentDocuments.slice(0, 2).map((doc, i) => /* @__PURE__ */ jsxs43("div", { children: [
+          /* @__PURE__ */ jsxs43("div", { className: "flex items-center gap-4", children: [
+            /* @__PURE__ */ jsx56("div", { className: "flex h-8 w-8 items-center justify-center rounded-full bg-primary/10", children: /* @__PURE__ */ jsx56(FileText6, { className: "h-4 w-4" }) }),
+            /* @__PURE__ */ jsxs43("div", { className: "flex-1 space-y-1", children: [
+              /* @__PURE__ */ jsxs43("p", { className: "text-sm", children: [
                 "You updated",
                 " ",
-                /* @__PURE__ */ jsxDEV56(
+                /* @__PURE__ */ jsx56(
                   Link7,
                   {
                     to: `/pages/${doc.id}`,
                     className: "font-medium underline-offset-4 hover:underline",
                     children: doc.title
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/components/pages/home.tsx",
-                    lineNumber: 185,
-                    columnNumber: 27
-                  },
-                  this
+                  }
                 )
-              ] }, void 0, !0, {
-                fileName: "app/components/pages/home.tsx",
-                lineNumber: 183,
-                columnNumber: 25
-              }, this),
-              /* @__PURE__ */ jsxDEV56("p", { className: "text-sm text-muted-foreground", children: new Date(doc.updated_at).toLocaleDateString() }, void 0, !1, {
-                fileName: "app/components/pages/home.tsx",
-                lineNumber: 192,
-                columnNumber: 25
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/components/pages/home.tsx",
-              lineNumber: 182,
-              columnNumber: 23
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 178,
-            columnNumber: 21
-          }, this),
-          i < recentDocuments.length - 1 && /* @__PURE__ */ jsxDEV56(Separator2, { className: "my-4" }, void 0, !1, {
-            fileName: "app/components/pages/home.tsx",
-            lineNumber: 198,
-            columnNumber: 23
-          }, this)
-        ] }, doc.id, !0, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 177,
-          columnNumber: 19
-        }, this)),
-        recentDocuments.length === 0 && /* @__PURE__ */ jsxDEV56("div", { className: "text-center text-sm text-muted-foreground", children: "No recent activity" }, void 0, !1, {
-          fileName: "app/components/pages/home.tsx",
-          lineNumber: 203,
-          columnNumber: 19
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 175,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 174,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/components/pages/home.tsx",
-        lineNumber: 173,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/pages/home.tsx",
-      lineNumber: 165,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/pages/home.tsx",
-    lineNumber: 46,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/pages/home.tsx",
-    lineNumber: 45,
-    columnNumber: 5
-  }, this);
+              ] }),
+              /* @__PURE__ */ jsx56("p", { className: "text-sm text-muted-foreground", children: new Date(doc.updated_at).toLocaleDateString() })
+            ] })
+          ] }),
+          i < recentDocuments.length - 1 && /* @__PURE__ */ jsx56(Separator2, { className: "my-4" })
+        ] }, doc.id)),
+        recentDocuments.length === 0 && /* @__PURE__ */ jsx56("div", { className: "text-center text-sm text-muted-foreground", children: "No recent activity" })
+      ] }) }) })
+    ] })
+  ] }) });
 }
 
 // app/routes/_index.tsx
-import { jsxDEV as jsxDEV57 } from "react/jsx-dev-runtime";
+import { jsx as jsx57 } from "react/jsx-runtime";
 var loader11 = async ({ request }) => {
   let { supabase, response } = await requireAuth(request), { data: recentDocuments } = await supabase.from("documents").select("*").order("updated_at", { ascending: !1 }).limit(5), { data: starredDocuments } = await supabase.from("documents").select("*").eq("is_starred", !0).limit(5);
   return json14(
@@ -11056,11 +5718,7 @@ var loader11 = async ({ request }) => {
 };
 function Index() {
   let { recentDocuments, starredDocuments } = useLoaderData3();
-  return /* @__PURE__ */ jsxDEV57(HomePage, { recentDocuments, starredDocuments }, void 0, !1, {
-    fileName: "app/routes/_index.tsx",
-    lineNumber: 32,
-    columnNumber: 10
-  }, this);
+  return /* @__PURE__ */ jsx57(HomePage, { recentDocuments, starredDocuments });
 }
 
 // app/routes/askai.tsx
@@ -11073,7 +5731,7 @@ __export(askai_exports, {
 import * as React43 from "react";
 import { Bot as Bot3, Send as Send2, Sparkles as Sparkles6, User as User3 } from "lucide-react";
 import { motion as motion3, AnimatePresence as AnimatePresence3 } from "framer-motion";
-import { jsxDEV as jsxDEV58 } from "react/jsx-dev-runtime";
+import { jsx as jsx58, jsxs as jsxs44 } from "react/jsx-runtime";
 function AiChat() {
   let [messages, setMessages] = React43.useState([]), [input, setInput] = React43.useState(""), [isExpanded, setIsExpanded] = React43.useState(!1), scrollAreaRef = React43.useRef(null), inputRef = React43.useRef(null), formRef = React43.useRef(null), handleSend = () => {
     if (!input.trim())
@@ -11096,8 +5754,8 @@ function AiChat() {
   };
   return React43.useEffect(() => {
     scrollAreaRef.current && (scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight), !isExpanded && inputRef.current && inputRef.current.focus();
-  }, [messages, isExpanded]), /* @__PURE__ */ jsxDEV58("div", { className: "flex h-[calc(100vh-3.5rem)] flex-col overflow-hidden", children: [
-    /* @__PURE__ */ jsxDEV58(AnimatePresence3, { mode: "wait", children: isExpanded ? /* @__PURE__ */ jsxDEV58(
+  }, [messages, isExpanded]), /* @__PURE__ */ jsxs44("div", { className: "flex h-[calc(100vh-3.5rem)] flex-col overflow-hidden", children: [
+    /* @__PURE__ */ jsx58(AnimatePresence3, { mode: "wait", children: isExpanded ? /* @__PURE__ */ jsx58(
       motion3.div,
       {
         className: "flex-1 overflow-hidden",
@@ -11105,7 +5763,7 @@ function AiChat() {
         animate: { opacity: 1, y: 0 },
         exit: { opacity: 0, y: -20 },
         transition: { duration: 0.3 },
-        children: /* @__PURE__ */ jsxDEV58(ScrollArea, { ref: scrollAreaRef, className: "h-full px-4 py-8", children: /* @__PURE__ */ jsxDEV58("div", { className: "mx-auto max-w-2xl space-y-4", children: messages.map((message) => /* @__PURE__ */ jsxDEV58(
+        children: /* @__PURE__ */ jsx58(ScrollArea, { ref: scrollAreaRef, className: "h-full px-4 py-8", children: /* @__PURE__ */ jsx58("div", { className: "mx-auto max-w-2xl space-y-4", children: messages.map((message) => /* @__PURE__ */ jsxs44(
           motion3.div,
           {
             className: `flex gap-3 ${message.role === "assistant" ? "justify-start" : "justify-end"}`,
@@ -11113,89 +5771,31 @@ function AiChat() {
             animate: { opacity: 1, y: 0 },
             transition: { duration: 0.2 },
             children: [
-              message.role === "assistant" && /* @__PURE__ */ jsxDEV58("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsxDEV58(Bot3, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/ai-chat.tsx",
-                lineNumber: 85,
-                columnNumber: 25
-              }, this) }, void 0, !1, {
-                fileName: "app/components/ai-chat.tsx",
-                lineNumber: 84,
-                columnNumber: 23
-              }, this),
-              /* @__PURE__ */ jsxDEV58(
+              message.role === "assistant" && /* @__PURE__ */ jsx58("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsx58(Bot3, { className: "h-4 w-4" }) }),
+              /* @__PURE__ */ jsxs44(
                 "div",
                 {
                   className: `group relative flex max-w-xl rounded-lg px-3 py-2 text-sm ${message.role === "assistant" ? "bg-muted" : "bg-primary text-primary-foreground"}`,
                   children: [
-                    /* @__PURE__ */ jsxDEV58("div", { className: "prose prose-sm dark:prose-invert", children: message.content }, void 0, !1, {
-                      fileName: "app/components/ai-chat.tsx",
-                      lineNumber: 95,
-                      columnNumber: 23
-                    }, this),
-                    /* @__PURE__ */ jsxDEV58(
+                    /* @__PURE__ */ jsx58("div", { className: "prose prose-sm dark:prose-invert", children: message.content }),
+                    /* @__PURE__ */ jsx58(
                       "div",
                       {
                         className: "absolute -top-5 right-0 hidden whitespace-nowrap text-xs text-muted-foreground group-hover:block",
                         children: message.timestamp.toLocaleTimeString()
-                      },
-                      void 0,
-                      !1,
-                      {
-                        fileName: "app/components/ai-chat.tsx",
-                        lineNumber: 98,
-                        columnNumber: 23
-                      },
-                      this
+                      }
                     )
                   ]
-                },
-                void 0,
-                !0,
-                {
-                  fileName: "app/components/ai-chat.tsx",
-                  lineNumber: 88,
-                  columnNumber: 21
-                },
-                this
+                }
               ),
-              message.role === "user" && /* @__PURE__ */ jsxDEV58("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsxDEV58(User3, { className: "h-4 w-4" }, void 0, !1, {
-                fileName: "app/components/ai-chat.tsx",
-                lineNumber: 106,
-                columnNumber: 25
-              }, this) }, void 0, !1, {
-                fileName: "app/components/ai-chat.tsx",
-                lineNumber: 105,
-                columnNumber: 23
-              }, this)
+              message.role === "user" && /* @__PURE__ */ jsx58("div", { className: "flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-md bg-primary text-primary-foreground", children: /* @__PURE__ */ jsx58(User3, { className: "h-4 w-4" }) })
             ]
           },
-          message.id,
-          !0,
-          {
-            fileName: "app/components/ai-chat.tsx",
-            lineNumber: 74,
-            columnNumber: 19
-          },
-          this
-        )) }, void 0, !1, {
-          fileName: "app/components/ai-chat.tsx",
-          lineNumber: 72,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/ai-chat.tsx",
-          lineNumber: 71,
-          columnNumber: 13
-        }, this)
+          message.id
+        )) }) })
       },
-      "chat",
-      !1,
-      {
-        fileName: "app/components/ai-chat.tsx",
-        lineNumber: 63,
-        columnNumber: 11
-      },
-      this
-    ) : /* @__PURE__ */ jsxDEV58(
+      "chat"
+    ) : /* @__PURE__ */ jsx58(
       motion3.div,
       {
         className: "flex flex-1 items-center justify-center p-4",
@@ -11203,39 +5803,15 @@ function AiChat() {
         animate: { opacity: 1, y: 0 },
         exit: { opacity: 0, y: 20 },
         transition: { duration: 0.3 },
-        children: /* @__PURE__ */ jsxDEV58("div", { className: "w-full max-w-2xl px-4", children: [
-          /* @__PURE__ */ jsxDEV58("div", { className: "text-center mb-8", children: [
-            /* @__PURE__ */ jsxDEV58("div", { className: "inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 mb-4", children: /* @__PURE__ */ jsxDEV58(Sparkles6, { className: "h-6 w-6 text-primary" }, void 0, !1, {
-              fileName: "app/components/ai-chat.tsx",
-              lineNumber: 126,
-              columnNumber: 19
-            }, this) }, void 0, !1, {
-              fileName: "app/components/ai-chat.tsx",
-              lineNumber: 125,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV58("h1", { className: "text-3xl font-bold tracking-tight mb-2", children: "How can I help you today?" }, void 0, !1, {
-              fileName: "app/components/ai-chat.tsx",
-              lineNumber: 128,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV58("p", { className: "text-lg text-muted-foreground", children: "Ask me anything - I'm here to assist with your questions" }, void 0, !1, {
-              fileName: "app/components/ai-chat.tsx",
-              lineNumber: 129,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/ai-chat.tsx",
-            lineNumber: 124,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ jsxDEV58("div", { className: "relative", children: [
-            /* @__PURE__ */ jsxDEV58("div", { className: "absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 blur-3xl -z-10" }, void 0, !1, {
-              fileName: "app/components/ai-chat.tsx",
-              lineNumber: 134,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ jsxDEV58(
+        children: /* @__PURE__ */ jsxs44("div", { className: "w-full max-w-2xl px-4", children: [
+          /* @__PURE__ */ jsxs44("div", { className: "text-center mb-8", children: [
+            /* @__PURE__ */ jsx58("div", { className: "inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 mb-4", children: /* @__PURE__ */ jsx58(Sparkles6, { className: "h-6 w-6 text-primary" }) }),
+            /* @__PURE__ */ jsx58("h1", { className: "text-3xl font-bold tracking-tight mb-2", children: "How can I help you today?" }),
+            /* @__PURE__ */ jsx58("p", { className: "text-lg text-muted-foreground", children: "Ask me anything - I'm here to assist with your questions" })
+          ] }),
+          /* @__PURE__ */ jsxs44("div", { className: "relative", children: [
+            /* @__PURE__ */ jsx58("div", { className: "absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 blur-3xl -z-10" }),
+            /* @__PURE__ */ jsxs44(
               "form",
               {
                 ref: formRef,
@@ -11244,7 +5820,7 @@ function AiChat() {
                 },
                 className: "relative flex gap-2 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-1 rounded-lg border shadow-lg",
                 children: [
-                  /* @__PURE__ */ jsxDEV58(
+                  /* @__PURE__ */ jsx58(
                     Input,
                     {
                       ref: inputRef,
@@ -11252,64 +5828,21 @@ function AiChat() {
                       value: input,
                       onChange: (e) => setInput(e.target.value),
                       className: "flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
-                    },
-                    void 0,
-                    !1,
-                    {
-                      fileName: "app/components/ai-chat.tsx",
-                      lineNumber: 143,
-                      columnNumber: 19
-                    },
-                    this
+                    }
                   ),
-                  /* @__PURE__ */ jsxDEV58(Button, { type: "submit", size: "sm", children: [
-                    /* @__PURE__ */ jsxDEV58(Send2, { className: "h-4 w-4 mr-2" }, void 0, !1, {
-                      fileName: "app/components/ai-chat.tsx",
-                      lineNumber: 151,
-                      columnNumber: 21
-                    }, this),
+                  /* @__PURE__ */ jsxs44(Button, { type: "submit", size: "sm", children: [
+                    /* @__PURE__ */ jsx58(Send2, { className: "h-4 w-4 mr-2" }),
                     "Send"
-                  ] }, void 0, !0, {
-                    fileName: "app/components/ai-chat.tsx",
-                    lineNumber: 150,
-                    columnNumber: 19
-                  }, this)
+                  ] })
                 ]
-              },
-              void 0,
-              !0,
-              {
-                fileName: "app/components/ai-chat.tsx",
-                lineNumber: 135,
-                columnNumber: 17
-              },
-              this
+              }
             )
-          ] }, void 0, !0, {
-            fileName: "app/components/ai-chat.tsx",
-            lineNumber: 133,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/ai-chat.tsx",
-          lineNumber: 123,
-          columnNumber: 13
-        }, this)
+          ] })
+        ] })
       },
-      "input",
-      !1,
-      {
-        fileName: "app/components/ai-chat.tsx",
-        lineNumber: 115,
-        columnNumber: 11
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/ai-chat.tsx",
-      lineNumber: 61,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ jsxDEV58(AnimatePresence3, { children: isExpanded && /* @__PURE__ */ jsxDEV58(
+      "input"
+    ) }),
+    /* @__PURE__ */ jsx58(AnimatePresence3, { children: isExpanded && /* @__PURE__ */ jsx58(
       motion3.div,
       {
         initial: { opacity: 0, y: 20 },
@@ -11317,7 +5850,7 @@ function AiChat() {
         exit: { opacity: 0, y: 20 },
         transition: { duration: 0.3 },
         className: "border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
-        children: /* @__PURE__ */ jsxDEV58("div", { className: "mx-auto max-w-2xl p-4", children: /* @__PURE__ */ jsxDEV58(
+        children: /* @__PURE__ */ jsx58("div", { className: "mx-auto max-w-2xl p-4", children: /* @__PURE__ */ jsxs44(
           "form",
           {
             onSubmit: (e) => {
@@ -11325,7 +5858,7 @@ function AiChat() {
             },
             className: "flex gap-2",
             children: [
-              /* @__PURE__ */ jsxDEV58(
+              /* @__PURE__ */ jsx58(
                 Input,
                 {
                   ref: inputRef,
@@ -11333,91 +5866,31 @@ function AiChat() {
                   value: input,
                   onChange: (e) => setInput(e.target.value),
                   className: "flex-1"
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/components/ai-chat.tsx",
-                  lineNumber: 178,
-                  columnNumber: 17
-                },
-                this
+                }
               ),
-              /* @__PURE__ */ jsxDEV58(Button, { type: "submit", children: [
-                /* @__PURE__ */ jsxDEV58(Send2, { className: "h-4 w-4" }, void 0, !1, {
-                  fileName: "app/components/ai-chat.tsx",
-                  lineNumber: 186,
-                  columnNumber: 19
-                }, this),
-                /* @__PURE__ */ jsxDEV58("span", { className: "sr-only", children: "Send message" }, void 0, !1, {
-                  fileName: "app/components/ai-chat.tsx",
-                  lineNumber: 187,
-                  columnNumber: 19
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/components/ai-chat.tsx",
-                lineNumber: 185,
-                columnNumber: 17
-              }, this)
+              /* @__PURE__ */ jsxs44(Button, { type: "submit", children: [
+                /* @__PURE__ */ jsx58(Send2, { className: "h-4 w-4" }),
+                /* @__PURE__ */ jsx58("span", { className: "sr-only", children: "Send message" })
+              ] })
             ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/ai-chat.tsx",
-            lineNumber: 171,
-            columnNumber: 15
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/ai-chat.tsx",
-          lineNumber: 170,
-          columnNumber: 13
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/ai-chat.tsx",
-        lineNumber: 163,
-        columnNumber: 11
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/ai-chat.tsx",
-      lineNumber: 161,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/ai-chat.tsx",
-    lineNumber: 60,
-    columnNumber: 5
-  }, this);
+          }
+        ) })
+      }
+    ) })
+  ] });
 }
 
 // app/routes/askai.tsx
-import { jsxDEV as jsxDEV59 } from "react/jsx-dev-runtime";
+import { jsx as jsx59 } from "react/jsx-runtime";
 function AskAiPage() {
-  return /* @__PURE__ */ jsxDEV59(Layout, { minimal: !0, children: /* @__PURE__ */ jsxDEV59("div", { className: "h-[calc(100vh-3.5rem)] overflow-hidden", children: /* @__PURE__ */ jsxDEV59(AiChat, {}, void 0, !1, {
-    fileName: "app/routes/askai.tsx",
-    lineNumber: 8,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/askai.tsx",
-    lineNumber: 7,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/askai.tsx",
-    lineNumber: 6,
-    columnNumber: 5
-  }, this);
+  return /* @__PURE__ */ jsx59(Layout, { minimal: !0, children: /* @__PURE__ */ jsx59("div", { className: "h-[calc(100vh-3.5rem)] overflow-hidden", children: /* @__PURE__ */ jsx59(AiChat, {}) }) });
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-VRT672WI.js", imports: ["/build/_shared/chunk-X3PXDGUE.js", "/build/_shared/chunk-A7JXTRIT.js", "/build/_shared/chunk-F4KNNEUR.js", "/build/_shared/chunk-JSRQUTTN.js", "/build/_shared/chunk-JR22VO6P.js", "/build/_shared/chunk-PLT55Z5M.js", "/build/_shared/chunk-2Z2JGDFU.js", "/build/_shared/chunk-PZDJHGND.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HIFVE4KM.js", imports: ["/build/_shared/chunk-UE3OXSCW.js", "/build/_shared/chunk-NBEH4DGX.js", "/build/_shared/chunk-XJ2E5TH5.js", "/build/_shared/chunk-Y6RJRNBS.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-3HFRX3GK.js", imports: ["/build/_shared/chunk-2ECIRKNT.js", "/build/_shared/chunk-RLMXWHHF.js", "/build/_shared/chunk-6W4A6LHK.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.ai.chat": { id: "routes/api.ai.chat", parentId: "root", path: "api/ai/chat", index: void 0, caseSensitive: void 0, module: "/build/routes/api.ai.chat-SQ6FZ3UL.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.analytics": { id: "routes/api.documents.analytics", parentId: "root", path: "api/documents/analytics", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.analytics-DFNFC3HF.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.archive": { id: "routes/api.documents.archive", parentId: "root", path: "api/documents/archive", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.archive-TEEQSU2F.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.create": { id: "routes/api.documents.create", parentId: "root", path: "api/documents/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.create-YCQDWI4F.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.share": { id: "routes/api.documents.share", parentId: "root", path: "api/documents/share", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.share-RHYMFIBD.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.update": { id: "routes/api.documents.update", parentId: "root", path: "api/documents/update", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.update-4KXM6HXC.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.versions": { id: "routes/api.documents.versions", parentId: "root", path: "api/documents/versions", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.versions-KNJFD4AW.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.workspaces.create": { id: "routes/api.workspaces.create", parentId: "root", path: "api/workspaces/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.workspaces.create-NH6YVHGI.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/askai": { id: "routes/askai", parentId: "root", path: "askai", index: void 0, caseSensitive: void 0, module: "/build/routes/askai-MACKNK6R.js", imports: ["/build/_shared/chunk-RLMXWHHF.js", "/build/_shared/chunk-6W4A6LHK.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.callback": { id: "routes/auth.callback", parentId: "root", path: "auth/callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.callback-GXIK36BP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.login": { id: "routes/auth.login", parentId: "root", path: "auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.login-Y4OXG6K4.js", imports: ["/build/_shared/chunk-6YFM57I6.js", "/build/_shared/chunk-LFAKDRIB.js", "/build/_shared/chunk-6W4A6LHK.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.logout": { id: "routes/auth.logout", parentId: "root", path: "auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.logout-2O3YH4IY.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.register": { id: "routes/auth.register", parentId: "root", path: "auth/register", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.register-6Y6EZPSE.js", imports: ["/build/_shared/chunk-6YFM57I6.js", "/build/_shared/chunk-LFAKDRIB.js", "/build/_shared/chunk-6W4A6LHK.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/getting-started": { id: "routes/getting-started", parentId: "root", path: "getting-started", index: void 0, caseSensitive: void 0, module: "/build/routes/getting-started-CK2GUTKN.js", imports: ["/build/_shared/chunk-V7UCO6WB.js", "/build/_shared/chunk-RLMXWHHF.js", "/build/_shared/chunk-6W4A6LHK.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/library.$id": { id: "routes/library.$id", parentId: "root", path: "library/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/library.$id-NNI4NQJF.js", imports: ["/build/_shared/chunk-RLMXWHHF.js", "/build/_shared/chunk-6W4A6LHK.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/pages.$id": { id: "routes/pages.$id", parentId: "root", path: "pages/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/pages.$id-GUW22MZU.js", imports: ["/build/_shared/chunk-2ECIRKNT.js", "/build/_shared/chunk-V7UCO6WB.js", "/build/_shared/chunk-RLMXWHHF.js", "/build/_shared/chunk-6W4A6LHK.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "92f5ba63", hmr: { runtime: "/build/_shared\\chunk-JSRQUTTN.js", timestamp: 1733291406086 }, url: "/build/manifest-92F5BA63.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-42RXAVJ3.js", imports: ["/build/_shared/chunk-BTR25ETF.js", "/build/_shared/chunk-ADMCF34Z.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-3D6GBP6H.js", imports: ["/build/_shared/chunk-SSCGI46Q.js", "/build/_shared/chunk-VZQVWFLO.js", "/build/_shared/chunk-EJN3WSGI.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-PA3NKEXX.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.ai.chat": { id: "routes/api.ai.chat", parentId: "root", path: "api/ai/chat", index: void 0, caseSensitive: void 0, module: "/build/routes/api.ai.chat-MDMCJIAM.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.analytics": { id: "routes/api.documents.analytics", parentId: "root", path: "api/documents/analytics", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.analytics-AULYKJVM.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.archive": { id: "routes/api.documents.archive", parentId: "root", path: "api/documents/archive", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.archive-SFHWZAY7.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.create": { id: "routes/api.documents.create", parentId: "root", path: "api/documents/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.create-3AKBCRTE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.share": { id: "routes/api.documents.share", parentId: "root", path: "api/documents/share", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.share-GDZ545KH.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.update": { id: "routes/api.documents.update", parentId: "root", path: "api/documents/update", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.update-GEUH6PAG.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.documents.versions": { id: "routes/api.documents.versions", parentId: "root", path: "api/documents/versions", index: void 0, caseSensitive: void 0, module: "/build/routes/api.documents.versions-DJOJAU4C.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.workspaces.create": { id: "routes/api.workspaces.create", parentId: "root", path: "api/workspaces/create", index: void 0, caseSensitive: void 0, module: "/build/routes/api.workspaces.create-2QXVU4PY.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/askai": { id: "routes/askai", parentId: "root", path: "askai", index: void 0, caseSensitive: void 0, module: "/build/routes/askai-JGLIR5EP.js", imports: ["/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.callback": { id: "routes/auth.callback", parentId: "root", path: "auth/callback", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.callback-DVJNLOQV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.login": { id: "routes/auth.login", parentId: "root", path: "auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.login-LX2DPFQS.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.logout": { id: "routes/auth.logout", parentId: "root", path: "auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.logout-WEDPT6S2.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/auth.register": { id: "routes/auth.register", parentId: "root", path: "auth/register", index: void 0, caseSensitive: void 0, module: "/build/routes/auth.register-VYJM44XB.js", imports: ["/build/_shared/chunk-PLAJB7ME.js", "/build/_shared/chunk-5EDNXG7T.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/getting-started": { id: "routes/getting-started", parentId: "root", path: "getting-started", index: void 0, caseSensitive: void 0, module: "/build/routes/getting-started-EX4JOFH3.js", imports: ["/build/_shared/chunk-QI47UT7V.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/library.$id": { id: "routes/library.$id", parentId: "root", path: "library/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/library.$id-Y4PANMKH.js", imports: ["/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/pages.$id": { id: "routes/pages.$id", parentId: "root", path: "pages/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/pages.$id-GLTEJLDO.js", imports: ["/build/_shared/chunk-XA5TB5MP.js", "/build/_shared/chunk-QI47UT7V.js", "/build/_shared/chunk-VL54LBOE.js", "/build/_shared/chunk-U7AMMUHG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "f8eeb35f", hmr: void 0, url: "/build/manifest-F8EEB35F.js" };
 
 // server-entry-module:@remix-run/dev/server-build
-var mode = "development", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
+var mode = "production", assetsBuildDirectory = "public\\build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
   root: {
     id: "root",
     parentId: void 0,
@@ -11572,4 +6045,3 @@ export {
   publicPath,
   routes
 };
-//# sourceMappingURL=index.js.map
