@@ -20,8 +20,8 @@
       "dest": "/server.js"
     },
     {
-      "src": "public/build/_assets/(.*)",
-      "dest": "public/build/_assets/$1"
+      "src": "/build/_assets/(.*)",
+      "dest": "/build/_assets/$1"
     }
   ]
 }
